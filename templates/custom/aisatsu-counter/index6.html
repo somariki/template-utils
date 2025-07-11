@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>OneComme | Custom Template - Aisatsu Box</title>
+    <meta name="referrer" content="no-referrer" />
+    <link rel="stylesheet" href="/plugins/onecomme.plugin.template-utils/css/fonts.css" />
+    <link rel="stylesheet" href="./style3.css" />
+  </head>
+  <body hidden>
+    <div id="container" class="container">
+      <div class="counter">
+        <div class="text-top">
+					<span class="title"></span>
+				</div>
+				<div class="container-box">
+          <div class="meter">
+            <div class="text-num">
+              <span class="counter-value" v-if="counter3.current">{{ counter3.current }}</span>
+              <span class="counter-value" v-else>0</span>
+					  </div>
+            <div class="text-target">
+              <span class="counter-target" v-if="counter3.target">{{ counter3.target }}</span>
+              <span class="counter-target" v-else>0</span>
+            </div>
+          </div>
+				</div>
+      </div>
+    </div>
+    <script src="../__origin/js/vue.min.js"></script>
+    <script src="../__origin/js/onesdk.js"></script>
+    <script src="/plugins/onecomme.plugin.template-utils/template-counter.js"></script>
+  </body>
+</html>

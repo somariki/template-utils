@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>OneComme | Custom Template - Aisatsu Basic</title>
+    <meta name="referrer" content="no-referrer" />
+    <link rel="stylesheet" href="/plugins/onecomme.plugin.template-utils/css/fonts.css" />
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body hidden>
+    <div id="container" class="container">
+      <div class="counter">
+        <div class="counter-value" v-if="counter3.current">{{ counter3.current }}</div>
+        <div class="counter-value" v-else >0</div>
+      </div>
+    </div>
+    <script src="../__origin/js/vue.min.js"></script>
+    <script src="../__origin/js/onesdk.js"></script>
+    <script src="/plugins/onecomme.plugin.template-utils/template-counter.js"></script>
+  </body>
+</html>

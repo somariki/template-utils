@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Template Utils | Setting</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet" type="text/css">
+    <link href="https://use.fontawesome.com/releases/v6.1.1/css/all.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900|Material+Icons|Material+Icons+Outlined|Material+Icons+Round|Material+Icons+Sharp" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined|Material+Symbols+Rounded|Material+Symbols+Sharp" rel="stylesheet" type="text/css">
+    <link href="https://cdn.jsdelivr.net/npm/animate.css@^4.0.0/animate.min.css" rel="stylesheet" type="text/css">
+    <link href="https://cdn.jsdelivr.net/npm/quasar@2.17.5/dist/quasar.prod.css" rel="stylesheet" type="text/css">
+    <link href="./css/style.css" rel="stylesheet" type="text/css">
+  </head>
+  <body hidden>
+    <div id="app" class="app">
+        <div v-if="!loaded">Loading...</div>
+        <div v-else>
+            <q-layout view="hHh lpR fFf">
+
+              <q-header reveal elevated class="bg-primary text-white">
+                <q-toolbar>
+                  <q-btn dense flat icon="menu" @click="toggleLeftDrawer" />
+                  <q-toolbar-title>
+                    {{ settingPage.currentPageTitle }}
+                  </q-toolbar-title>
+                </q-toolbar>
+              </q-header>
+            
+              <q-drawer show-if-above v-model="leftDrawerOpen" side="left" bordered class="bg-grey-3">
+                <q-list>
+                  <q-item clickable v-ripple :active="settingPage.currentPage === 'filter'" @click="switchPage('filter', ui.lg.menu.filter)" >
+                    <q-item-section avatar>
+                      <q-icon name="fa-solid fa-filter"></q-icon>
+                    </q-item-section>
+                    <q-item-section>
+                      <q-item-label>{{ui.lg.menu.filter}}</q-item-label>
+                    </q-item-section>
+                  </q-item>
+                  <q-item clickable v-ripple :active="settingPage.currentPage === 'datetime'" @click="switchPage('datetime', ui.lg.menu.datetime)" >
+                    <q-item-section avatar>
+                      <q-icon name="fa-regular fa-clock"></q-icon>
+                    </q-item-section>
+                    <q-item-section>
+                      <q-item-label>{{ui.lg.menu.datetime}}</q-item-label>
+                    </q-item-section>
+                  </q-item>
+
+                </q-list>
+              </q-drawer>
+            
+              <q-page-container>
+                <div v-if="settingPage.currentPage === 'filter'" class="fit row wrap justify-center">
+                  <div class="col-xs-12 col-sm-10 col-md-8 col-lg-6">
+                    <q-card class="q-ma-md q-px-md">
+                      <q-card-section>
+                        <q-toggle v-model="setting.filter.enableFilter" color="green" keep-color checked-icon="check" unchecked-icon="clear" :label="setting.filter.enableFilter ? ui.lg.input.enableFilter : ui.lg.input.disableFilter "></q-toggle>
+                      </q-card-section>
+                      <q-separator></q-separator>
+                      <q-card-section v-if="setting.filter.enableFilter === true" class="row q-gutter-sm items-center">
+
+                        <div class="q-pa-sm rounded-borders" class="bg-grey-2">
+                          {{ui.lg.input.platform}}
+                          <q-option-group name="filter_platform" v-model="setting.filter.platform" :options="setting.filter.platformOpt" option-label="label" option-value="value" type="checkbox" :color="color" inline keep-color ></q-option-group>
+                        </div>
+
+                      </q-card-section>
+                    </q-card>
+                    <q-card class="q-ma-md q-pa-md" v-if="setting.filter.enableFilter === true">
+                      <q-card-section>
+                        <p>{{ui.lg.input.replaceText}}</p>
+                        <q-input outlined v-model="setting.filter.replaceText"></q-input>
+                      </q-card-section>
+                      <q-separator></q-separator>
+                      <q-card-section>
+                        <div class="row">
+                          <div class="col-12">
+                            <p>{{ui.lg.input.replaceFilter}}</p>
+                            <q-input v-model="filterTarget" filled type="textarea" ></q-input>
+                          </div>
+                        </div>
+                        <div class="row q-mt-md">
+                          <div class="col-12" align="right">
+                            <q-btn color="green" class="ui-btn-width" icon="fa-solid fa-floppy-disk" @click="saveSetting('save-filter')" :label="ui.lg.button.save"></q-btn>
+                          </div>
+                        </div>
+                      </q-card-section>
+                    </q-card>
+                  </div>
+                </div>
+                <div v-if="settingPage.currentPage === 'datetime'" class="fit row wrap justify-center">
+                  <div class="col-xs-12 col-sm-10 col-md-8 col-lg-6">
+                    <q-card class="q-ma-md q-px-md">
+                      <q-card-section>
+                        <q-toggle v-model="setting.datetime.isAutoTimezone" color="green" keep-color checked-icon="check" unchecked-icon="clear" :label="setting.datetime.isAutoTimezone ? ui.lg.input.autoTimezoneTrue : ui.lg.input.autoTimezoneFalse " ></q-toggle>
+                        <q-separator></q-separator>
+                        <div class="tip">{{ui.lg.tip.timezoneTip}}</div>
+                      </q-card-section>
+                      
+                      <q-card-section v-if="setting.datetime.isAutoTimezone === false" class="row">
+                        <div class="col-6">
+                          <q-select 
+                            outlined 
+                            v-model="setting.datetime.timeZone" 
+                            :options="ui.timeZones" 
+                            :label="ui.lg.input.timezone" 
+                            emit-value 
+                            map-options
+                            option-label="label" 
+                            option-value="value"
+                          ></q-select>
+                        </div>
+                        <div class="col-12" align="right">
+                          <q-btn color="green" class="ui-btn-width" icon="fa-solid fa-floppy-disk" @click="saveSetting('save-datetime')" :label="ui.lg.button.save"></q-btn>
+                        </div>
+                      </q-card-section>
+                    </q-card>
+                  </div>
+                </div>
+                <div class="row q-mt-lg">
+                  <div class="col-12" align="center">
+                    <q-btn outline rounded color="grey-5" class="ui-btn-width" icon="fa-solid fa-rotate-left" :href="web.homeURL" :label="ui.lg.button.goback"></q-btn>
+                  </div>
+                </div>
+              </q-page-container>
+            
+            </q-layout>
+
+            <q-dialog v-model="isModal">
+              <q-card>
+                <q-card-section>
+                  <div class="text-h6">{{modalDialog.title}}</div>
+                </q-card-section>
+        
+                <q-card-section v-if="modalDialog.prefix==='save-another-preset'" class="q-pt-none" style="width: 300px;">
+                  <q-input filled v-model="presetNewName" :label="ui.lg.input.presetName" min="1" max="50" :rules="[val => !!val || ui.lg.validation.fieldRequired]" > </q-input>
+                </q-card-section>
+                
+                <q-card-section v-else class="q-pt-none">
+                  {{modalDialog.content}}
+                </q-card-section>
+        
+                <q-card-actions align="right">
+
+                    <q-btn v-if="modalDialog.isPriBtn === true " flat class="btn-fixed-width" color="primary" :label="modalDialog.priBtnLabel" v-close-popup ></q-btn>
+                    <q-btn v-if="modalDialog.isSecBtn === true "flat class="btn-fixed-width" color="blue-grey-3" :label="modalDialog.secBtnLabel" v-close-popup ></q-btn>
+                    <q-btn v-if="modalDialog.isAction === true " flat class="btn-fixed-width" color="primary" :label="modalDialog.actionBtnLabel" @click="modalConfirmation = true" ></q-btn>
+                </q-card-actions>
+              </q-card>
+            </q-dialog>
+
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@3/dist/vue.global.prod.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/quasar@2.17.5/dist/quasar.umd.prod.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/quasar@2.17.5/dist/icon-set/fontawesome-v6.umd.prod.js"></script>
+    <script src="./js/setting.js"></script>
+  </body>
+</html>

@@ -1,0 +1,50 @@
+[
+  {
+    "name": "Time Widget",
+    "code": "datetime-widget1",
+    "type": "time-utils",
+    "isOriginal": true,
+    "indexFile": null,
+    "assetFile": "asset1.json",
+    "presetFile": "preset1.json",
+    "cssFile": "preset1.css",
+    "presetId": 1,
+    "position": 0
+  },
+  {
+    "name": "Date Time Widget",
+    "code": "datetime-widget2",
+    "type": "time-utils",
+    "isOriginal": true,
+    "indexFile": "index2.html",
+    "assetFile": "asset2.json",
+    "presetFile": "preset2.json",
+    "cssFile": "preset2.css",
+    "presetId": 2,
+    "position": 1
+  },
+  {
+    "name": "Time Widget With Title",
+    "code": "datetime-widget3",
+    "type": "time-utils",
+    "isOriginal": true,
+    "indexFile": "index3.html",
+    "assetFile": "asset3.json",
+    "presetFile": "preset3.json",
+    "cssFile": "preset3.css",
+    "presetId": 3,
+    "position": 2
+  },
+  {
+    "name": "Date Time Widget Simple",
+    "code": "datetime-widget4",
+    "type": "time-utils",
+    "isOriginal": true,
+    "indexFile": "index4.html",
+    "assetFile": "asset4.json",
+    "presetFile": "preset4.json",
+    "cssFile": "preset4.css",
+    "presetId": 4,
+    "position": 3
+  }
+]

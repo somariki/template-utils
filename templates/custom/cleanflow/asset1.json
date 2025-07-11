@@ -1,0 +1,2541 @@
+{
+  "parentCode": "cleanflow",
+  "presetId": 1,
+  "section": [
+    {
+      "parentCode": "cleanflow",
+      "code": "layout",
+      "position": 0
+    },
+    {
+      "parentCode": "cleanflow",
+      "code": "comment",
+      "position": 1
+    },
+    {
+      "parentCode": "cleanflow",
+      "code": "username",
+      "position": 2
+    },
+    {
+      "parentCode": "cleanflow",
+      "code": "animation",
+      "position": 3
+    },
+    {
+      "parentCode": "cleanflow",
+      "code": "others",
+      "position": 4
+    }
+  ],
+  "part": [
+    {
+      "parentCode": "layout",
+      "code": "mode",
+      "position": 0
+    },
+    {
+      "parentCode": "layout",
+      "code": "comment-paid",
+      "position": 1
+    },
+    {
+      "parentCode": "layout",
+      "code": "user-row",
+      "position": 2
+    },
+    {
+      "parentCode": "layout",
+      "code": "column-icon",
+      "position": 3
+    },
+    {
+      "parentCode": "layout",
+      "code": "bar",
+      "position": 4
+    },
+    {
+      "parentCode": "comment",
+      "code": "box",
+      "position": 0
+    },
+    {
+      "parentCode": "comment",
+      "code": "comment-background",
+      "position": 1
+    },
+    {
+      "parentCode": "comment",
+      "code": "comment-text",
+      "position": 2
+    },
+    {
+      "parentCode": "comment",
+      "code": "emoji-related",
+      "position": 3
+    },
+    {
+      "parentCode": "comment",
+      "code": "bilibili-sticker",
+      "position": 4
+    },
+    {
+      "parentCode": "comment",
+      "code": "header",
+      "position": 5
+    },
+    {
+      "parentCode": "comment",
+      "code": "footer",
+      "position": 6
+    },
+    {
+      "parentCode": "username",
+      "code": "avatar",
+      "position": 0
+    },
+    {
+      "parentCode": "username",
+      "code": "name",
+      "position": 1
+    },
+    {
+      "parentCode": "username",
+      "code": "roles",
+      "position": 2
+    },
+    {
+      "parentCode": "username",
+      "code": "badges",
+      "position": 3
+    },
+    {
+      "parentCode": "animation",
+      "code": "global",
+      "position": 0
+    },
+    {
+      "parentCode": "others",
+      "code": "images",
+      "position": 0
+    },
+    {
+      "parentCode": "others",
+      "code": "unit",
+      "position": 1
+    }
+  ],
+  "attribute": [
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": false,
+      "isCustom": false,
+      "isOriginal": false,
+      "oriFrom": null,
+      "code": "comment-move-direction",
+      "parentCode": "mode",
+      "attribute": "button-toggle-2",
+      "value": "bottom-to-top",
+      "color": "pink",
+      "togleOptions": [
+        {
+          "label": "⬆",
+          "value": "bottom-to-top",
+          "paramSet": [
+            {
+              "value": "column",
+              "code": "comment-move-direction"
+            },
+            {
+              "value": "translateY(100%)",
+              "code": "comment-enter-from"
+            },
+            {
+              "value": "translateY(-100%)",
+              "code": "comment-enter-to"
+            }
+          ]
+        },
+        {
+          "label": "⬇",
+          "value": "top-to-bottom",
+          "paramSet": [
+            {
+              "value": "column-reverse",
+              "code": "comment-move-direction"
+            },
+            {
+              "value": "translateY(-100%)",
+              "code": "comment-enter-from"
+            },
+            {
+              "value": "translateY(100%)",
+              "code": "comment-enter-to"
+            }
+          ]
+        },
+        {
+          "label": "🠔",
+          "value": "right-to-left",
+          "paramSet": [
+            {
+              "value": "row",
+              "code": "comment-move-direction"
+            },
+            {
+              "value": "translateX(100%)",
+              "code": "comment-enter-from"
+            },
+            {
+              "value": "translateX(-100%)",
+              "code": "comment-enter-to"
+            }
+          ]
+        },
+        {
+          "label": "🠖",
+          "value": "left-to-right",
+          "paramSet": [
+            {
+              "value": "row-reverse",
+              "code": "comment-move-direction"
+            },
+            {
+              "value": "translateX(-100%)",
+              "code": "comment-enter-from"
+            },
+            {
+              "value": "translateX(100%)",
+              "code": "comment-enter-to"
+            }
+          ]
+        }
+      ],
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": false,
+      "isCustom": false,
+      "isOriginal": false,
+      "oriFrom": null,
+      "cssvar": "--comment-width",
+      "code": "comment-width",
+      "parentCode": "mode",
+      "attribute": "size-range-condition",
+      "value": 300,
+      "range": {
+        "min": 180,
+        "max": 350
+      },
+      "unit": "px",
+      "min": 0,
+      "max": 500,
+      "isDefault": true,
+      "isDefaultMin": true,
+      "isDefaultMax": true,
+      "defaultValue": "100%",
+      "defaultValueMin": "none",
+      "defaultValueMax": "none",
+      "masks": {
+        "0": "0",
+        "500": "500"
+      },
+      "description": true
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": false,
+      "isCustom": false,
+      "isOriginal": false,
+      "oriFrom": null,
+      "cssvar": "--comment-height",
+      "code": "comment-height",
+      "parentCode": "mode",
+      "attribute": "size-range-condition",
+      "value": 92,
+      "range": {
+        "min": 45,
+        "max": 92
+      },
+      "unit": "px",
+      "min": 0,
+      "max": 500,
+      "isDefault": true,
+      "isDefaultMin": false,
+      "isDefaultMax": true,
+      "defaultValue": "100%",
+      "defaultValueMin": "none",
+      "defaultValueMax": "none",
+      "masks": {
+        "0": "0",
+        "500": "500"
+      },
+      "description": true
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": false,
+      "isCustom": false,
+      "isOriginal": false,
+      "oriFrom": null,
+      "cssvar": "--comment-box-margin",
+      "code": "comment-box-margin",
+      "parentCode": "mode",
+      "attribute": "margin",
+      "unit": "px",
+      "min": 0,
+      "max": 50,
+      "value": [
+        5,
+        8,
+        5,
+        8
+      ],
+      "masks": {
+        "0": "0",
+        "50": "50"
+      },
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": false,
+      "isCustom": false,
+      "isOriginal": false,
+      "oriFrom": null,
+      "cssvar": "--comment-paid-width",
+      "code": "comment-paid-width",
+      "parentCode": "comment-paid",
+      "attribute": "size-range-condition",
+      "value": 330,
+      "range": {
+        "min": 270,
+        "max": 400
+      },
+      "unit": "px",
+      "min": 0,
+      "max": 600,
+      "isDefault": true,
+      "isDefaultMin": true,
+      "isDefaultMax": true,
+      "defaultValue": "100%",
+      "defaultValueMin": "none",
+      "defaultValueMax": "none",
+      "masks": {
+        "0": "0",
+        "600": "600"
+      },
+      "description": true
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": false,
+      "isCustom": false,
+      "isOriginal": false,
+      "oriFrom": null,
+      "cssvar": "--comment-paid-height",
+      "code": "comment-paid-height",
+      "parentCode": "comment-paid",
+      "attribute": "size-range-condition",
+      "value": 92,
+      "range": {
+        "min": 45,
+        "max": 92
+      },
+      "unit": "px",
+      "min": 0,
+      "max": 500,
+      "isDefault": true,
+      "isDefaultMin": true,
+      "isDefaultMax": true,
+      "defaultValue": "100%",
+      "defaultValueMin": "none",
+      "defaultValueMax": "none",
+      "masks": {
+        "0": "0",
+        "500": "500"
+      },
+      "description": true
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": false,
+      "isCustom": false,
+      "isOriginal": false,
+      "oriFrom": null,
+      "cssvar": "--user-row-margin",
+      "code": "user-row-margin",
+      "parentCode": "user-row",
+      "attribute": "margin",
+      "unit": "px",
+      "min": 0,
+      "max": 50,
+      "value": [
+        0,
+        0,
+        4,
+        0
+      ],
+      "masks": {
+        "0": "0",
+        "50": "50"
+      },
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": false,
+      "isCustom": false,
+      "isOriginal": false,
+      "oriFrom": null,
+      "cssvar": "--column1-right-margin",
+      "code": "column1-right-margin",
+      "parentCode": "column-icon",
+      "attribute": "size",
+      "value": 5,
+      "unit": "px",
+      "min": 0,
+      "max": 100,
+      "masks": {
+        "0": "0",
+        "100": "100"
+      },
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": false,
+      "isCustom": false,
+      "isOriginal": false,
+      "oriFrom": null,
+      "code": "comment-bar-display",
+      "parentCode": "bar",
+      "attribute": "button-toggle",
+      "truedefine": "flex",
+      "falsedefine": "none",
+      "value": "on",
+      "color": "red",
+      "togleOptions": [
+        {
+          "code": "comment-bar-display-off",
+          "label": "OFF",
+          "value": "off",
+          "cssvar": "--comment-bar-display-off"
+        },
+        {
+          "code": "comment-bar-display",
+          "label": "ON",
+          "value": "on",
+          "cssvar": "--comment-bar-display"
+        }
+      ],
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": false,
+      "isCustom": false,
+      "isOriginal": false,
+      "oriFrom": null,
+      "cssvar": "--comment-bar-width",
+      "code": "comment-bar-width",
+      "parentCode": "bar",
+      "attribute": "size",
+      "value": 4,
+      "unit": "px",
+      "min": 0,
+      "max": 100,
+      "masks": {
+        "0": "0",
+        "100": "100"
+      },
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": false,
+      "isCustom": false,
+      "isOriginal": false,
+      "oriFrom": null,
+      "cssvar": "--comment-bar-radius",
+      "code": "comment-bar-radius",
+      "parentCode": "bar",
+      "attribute": "radius",
+      "unit": "px",
+      "min": 0,
+      "max": 100,
+      "value": [
+        25,
+        25,
+        25,
+        25
+      ],
+      "masks": {
+        "0": "0",
+        "100": "100"
+      },
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": false,
+      "isCustom": false,
+      "isOriginal": false,
+      "oriFrom": null,
+      "cssvar": "--comment-bar-color-default",
+      "code": "comment-bar-color-default",
+      "parentCode": "bar",
+      "attribute": "color",
+      "value": "#00000099",
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": false,
+      "isCustom": false,
+      "isOriginal": false,
+      "oriFrom": null,
+      "cssvar": "--comment-bar-color-special",
+      "code": "comment-bar-color-special",
+      "parentCode": "bar",
+      "attribute": "color",
+      "value": "#ffd700",
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": false,
+      "isCustom": false,
+      "isOriginal": false,
+      "oriFrom": null,
+      "cssvar": "--comment-border-radius",
+      "code": "comment-border-radius",
+      "parentCode": "box",
+      "attribute": "radius",
+      "unit": "px",
+      "min": 0,
+      "max": 100,
+      "value": [
+        15,
+        15,
+        15,
+        15
+      ],
+      "masks": {
+        "0": "0",
+        "100": "100"
+      },
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": false,
+      "isCustom": false,
+      "isOriginal": false,
+      "oriFrom": null,
+      "cssvar": "--comment-bg-default-color",
+      "code": "comment-bg-default-color",
+      "parentCode": "comment-background",
+      "attribute": "color",
+      "value": "#00000099",
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": false,
+      "isCustom": false,
+      "isOriginal": false,
+      "oriFrom": null,
+      "cssvar": "--comment-bg-special-color",
+      "code": "comment-bg-special-color",
+      "parentCode": "comment-background",
+      "attribute": "color",
+      "value": "#ffd700",
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": false,
+      "isCustom": false,
+      "isOriginal": false,
+      "oriFrom": null,
+      "cssvar": "--special-sticker-size",
+      "code": "special-sticker-size",
+      "parentCode": "comment-background",
+      "attribute": "size",
+      "value": 50,
+      "unit": "px",
+      "min": 0,
+      "max": 100,
+      "masks": {
+        "0": "0",
+        "100": "100"
+      },
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": false,
+      "isCustom": false,
+      "isOriginal": false,
+      "oriFrom": null,
+      "code": "comment-text-font",
+      "parentCode": "comment-text",
+      "attribute": "font",
+      "cssvarColor": "--comment-text-default-color",
+      "cssvarFont": "--comment-text-font",
+      "cssvarSize": "--comment-text-font-size",
+      "cssvarWeight": "--comment-text-font-weight",
+      "color": "#FFFFFF",
+      "font": "Noto Sans JP",
+      "style": "normal",
+      "type": "none",
+      "size": 16,
+      "unit": "px",
+      "weight": 600,
+      "minSize": 0,
+      "maxSize": 50,
+      "minWeight": 0,
+      "maxWeight": 900,
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": false,
+      "isCustom": false,
+      "isOriginal": false,
+      "oriFrom": null,
+      "cssvar": "--comment-text-special-color",
+      "code": "comment-text-special-color",
+      "parentCode": "comment-text",
+      "attribute": "color",
+      "value": "#ffffffff",
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": false,
+      "isCustom": false,
+      "isOriginal": false,
+      "oriFrom": null,
+      "cssvar": "--comment-line-height",
+      "code": "comment-line-height",
+      "parentCode": "comment-text",
+      "attribute": "size",
+      "value": 20,
+      "unit": "px",
+      "min": 0,
+      "max": 60,
+      "masks": {
+        "0": "0",
+        "60": "60"
+      },
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": false,
+      "isCustom": false,
+      "isOriginal": false,
+      "oriFrom": null,
+      "cssvar": "--comment-text-default-align",
+      "code": "comment-text-default-align",
+      "parentCode": "comment-text",
+      "attribute": "text-align",
+      "value": "left",
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": false,
+      "isCustom": false,
+      "isOriginal": false,
+      "oriFrom": null,
+      "cssvar": "--comment-text-special-align",
+      "code": "comment-text-special-align",
+      "parentCode": "comment-text",
+      "attribute": "text-align",
+      "value": "center",
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": false,
+      "isCustom": false,
+      "isOriginal": false,
+      "oriFrom": null,
+      "cssvar": "--comment-text-padding",
+      "code": "comment-text-padding",
+      "parentCode": "comment-text",
+      "attribute": "padding",
+      "unit": "px",
+      "min": 0,
+      "max": 50,
+      "value": [
+        5,
+        10,
+        5,
+        10
+      ],
+      "masks": {
+        "0": "0",
+        "50": "50"
+      },
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": false,
+      "isCustom": false,
+      "isOriginal": false,
+      "oriFrom": null,
+      "cssvar": "--comment-emoji-size",
+      "code": "comment-emoji-size",
+      "parentCode": "emoji-related",
+      "attribute": "size",
+      "value": 20,
+      "unit": "px",
+      "min": 0,
+      "max": 100,
+      "masks": {
+        "0": "0",
+        "100": "100"
+      },
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": false,
+      "isCustom": false,
+      "isOriginal": false,
+      "oriFrom": null,
+      "cssvar": "--comment-emoji-margin",
+      "code": "comment-emoji-margin",
+      "parentCode": "emoji-related",
+      "attribute": "margin",
+      "unit": "px",
+      "min": 0,
+      "max": 50,
+      "value": [
+        0,
+        3,
+        0,
+        3
+      ],
+      "masks": {
+        "0": "0",
+        "50": "50"
+      },
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": false,
+      "isCustom": false,
+      "isOriginal": false,
+      "oriFrom": null,
+      "cssvar": "--comment-sticker-size",
+      "code": "comment-sticker-size",
+      "parentCode": "bilibili-sticker",
+      "attribute": "size",
+      "value": 50,
+      "unit": "px",
+      "min": 0,
+      "max": 100,
+      "masks": {
+        "0": "0",
+        "100": "100"
+      },
+      "description": true
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": false,
+      "isCustom": false,
+      "isOriginal": false,
+      "oriFrom": null,
+      "cssvar": "--comment-sticker-margin",
+      "code": "comment-sticker-margin",
+      "parentCode": "bilibili-sticker",
+      "attribute": "margin",
+      "unit": "px",
+      "min": 0,
+      "max": 50,
+      "value": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "masks": {
+        "0": "0",
+        "50": "50"
+      },
+      "description": true
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": false,
+      "isCustom": false,
+      "isOriginal": false,
+      "oriFrom": null,
+      "cssvar": "--special-header-bar-size",
+      "code": "special-header-bar-size",
+      "parentCode": "header",
+      "attribute": "size",
+      "value": 15,
+      "unit": "px",
+      "min": 0,
+      "max": 50,
+      "masks": {
+        "0": "0",
+        "50": "50"
+      },
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": false,
+      "isCustom": false,
+      "isOriginal": false,
+      "oriFrom": null,
+      "cssvar": "--special-header-bar-margin",
+      "code": "special-header-bar-margin",
+      "parentCode": "header",
+      "attribute": "margin",
+      "unit": "px",
+      "min": 0,
+      "max": 50,
+      "value": [
+        5,
+        5,
+        5,
+        5
+      ],
+      "masks": {
+        "0": "0",
+        "50": "50"
+      },
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": false,
+      "isCustom": false,
+      "isOriginal": false,
+      "oriFrom": null,
+      "cssvar": "--special-header-bar-default-color",
+      "code": "special-header-bar-default-color",
+      "parentCode": "header",
+      "attribute": "color",
+      "value": "#ffffffb3",
+      "description": true
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": false,
+      "isCustom": false,
+      "isOriginal": false,
+      "oriFrom": null,
+      "cssvar": "--special-header-bar-special-color",
+      "code": "special-header-bar-special-color",
+      "parentCode": "header",
+      "attribute": "color",
+      "value": "#ffffffb3",
+      "description": true
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": false,
+      "isCustom": false,
+      "isOriginal": false,
+      "oriFrom": null,
+      "cssvar": "--special-header-bar-radius",
+      "code": "special-header-bar-radius",
+      "parentCode": "header",
+      "attribute": "radius",
+      "unit": "px",
+      "min": 0,
+      "max": 100,
+      "value": [
+        20,
+        20,
+        20,
+        20
+      ],
+      "masks": {
+        "0": "0",
+        "100": "100"
+      },
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": false,
+      "isCustom": false,
+      "isOriginal": false,
+      "oriFrom": null,
+      "cssvar": "--special-header-icon-size",
+      "code": "special-header-icon-size",
+      "parentCode": "header",
+      "attribute": "size",
+      "value": 20,
+      "unit": "px",
+      "min": 0,
+      "max": 100,
+      "masks": {
+        "0": "0",
+        "100": "100"
+      },
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": false,
+      "isCustom": false,
+      "isOriginal": false,
+      "oriFrom": null,
+      "cssvar": "--special-header-icon-padding",
+      "code": "special-header-icon-padding",
+      "parentCode": "header",
+      "attribute": "size",
+      "value": 3,
+      "unit": "px",
+      "min": 0,
+      "max": 20,
+      "masks": {
+        "0": "0",
+        "20": "20"
+      },
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": false,
+      "isCustom": false,
+      "isOriginal": false,
+      "oriFrom": null,
+      "cssvar": "--special-header-icon-color",
+      "code": "special-header-icon-color",
+      "parentCode": "header",
+      "attribute": "color",
+      "value": "#ffd700",
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": false,
+      "isCustom": false,
+      "isOriginal": false,
+      "oriFrom": null,
+      "cssvar": "--special-header-icon-bg-color",
+      "code": "special-header-icon-bg-color",
+      "parentCode": "header",
+      "attribute": "color",
+      "value": "#FFFFFF",
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": false,
+      "isCustom": false,
+      "isOriginal": false,
+      "oriFrom": null,
+      "cssvar": "--special-header-icon-distance-top",
+      "code": "special-header-icon-distance-top",
+      "parentCode": "header",
+      "attribute": "edge",
+      "value": 0,
+      "edge": "top",
+      "unit": "px",
+      "min": -100,
+      "max": 100,
+      "masks": {
+        "100": "100",
+        "-100": "-100"
+      },
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": false,
+      "isCustom": false,
+      "isOriginal": false,
+      "oriFrom": null,
+      "cssvar": "--special-header-icon-distance-side",
+      "code": "special-header-icon-distance-side",
+      "parentCode": "header",
+      "attribute": "edge",
+      "value": 12,
+      "edge": "left",
+      "unit": "px",
+      "min": -100,
+      "max": 100,
+      "masks": {
+        "100": "100",
+        "-100": "-100"
+      },
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": false,
+      "isCustom": false,
+      "isOriginal": false,
+      "oriFrom": null,
+      "cssvar": "--special-header-padding",
+      "code": "special-header-padding",
+      "parentCode": "header",
+      "attribute": "padding",
+      "unit": "px",
+      "min": 0,
+      "max": 50,
+      "value": [
+        5,
+        5,
+        5,
+        5
+      ],
+      "masks": {
+        "0": "0",
+        "50": "50"
+      },
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": false,
+      "isCustom": false,
+      "isOriginal": false,
+      "oriFrom": null,
+      "code": "special-footer-font",
+      "parentCode": "footer",
+      "attribute": "font",
+      "cssvarColor": "--special-footer-color",
+      "cssvarFont": "--special-footer-font",
+      "cssvarSize": "--special-footer-font-size",
+      "cssvarWeight": "--special-footer-weight",
+      "color": "#FFFFFF",
+      "font": "Noto Sans JP",
+      "style": "normal",
+      "type": "none",
+      "size": 13,
+      "unit": "px",
+      "weight": 600,
+      "minSize": 0,
+      "maxSize": 50,
+      "minWeight": 0,
+      "maxWeight": 900,
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": false,
+      "isCustom": false,
+      "isOriginal": false,
+      "oriFrom": null,
+      "cssvar": "--special-footer-align",
+      "code": "special-footer-align",
+      "parentCode": "footer",
+      "attribute": "text-align",
+      "value": "center",
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": false,
+      "isCustom": false,
+      "isOriginal": false,
+      "oriFrom": null,
+      "cssvar": "--special-footer-default-color",
+      "code": "special-footer-default-color",
+      "parentCode": "footer",
+      "attribute": "color",
+      "value": "#ffffff66",
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": false,
+      "isCustom": false,
+      "isOriginal": false,
+      "oriFrom": null,
+      "cssvar": "--special-footer-padding",
+      "code": "special-footer-padding",
+      "parentCode": "footer",
+      "attribute": "padding",
+      "unit": "px",
+      "min": 0,
+      "max": 50,
+      "value": [
+        5,
+        8,
+        5,
+        8
+      ],
+      "masks": {
+        "0": "0",
+        "50": "50"
+      },
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": false,
+      "isCustom": false,
+      "isOriginal": false,
+      "oriFrom": null,
+      "cssvar": "--avatar-size",
+      "code": "avatar-size",
+      "parentCode": "avatar",
+      "attribute": "size",
+      "value": 25,
+      "unit": "px",
+      "min": 0,
+      "max": 100,
+      "masks": {
+        "0": "0",
+        "100": "100"
+      },
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": false,
+      "isCustom": false,
+      "isOriginal": false,
+      "oriFrom": null,
+      "cssvar": "--avatar-border",
+      "code": "avatar-border",
+      "parentCode": "avatar",
+      "attribute": "border",
+      "value": 0,
+      "style": "none",
+      "color": "#FFFFFF",
+      "unit": "px",
+      "min": 0,
+      "max": 10,
+      "masks": {
+        "0": "0",
+        "10": "10"
+      },
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": false,
+      "isCustom": false,
+      "isOriginal": false,
+      "oriFrom": null,
+      "cssvar": "--avatar-border-radius",
+      "code": "avatar-border-radius",
+      "parentCode": "avatar",
+      "attribute": "radius",
+      "unit": "%",
+      "min": 0,
+      "max": 100,
+      "value": [
+        50,
+        50,
+        50,
+        50
+      ],
+      "masks": {
+        "0": "0",
+        "100": "100"
+      },
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": false,
+      "isCustom": false,
+      "isOriginal": false,
+      "oriFrom": null,
+      "cssvar": "--username-min-width",
+      "code": "username-min-width",
+      "parentCode": "name",
+      "attribute": "size",
+      "value": 80,
+      "unit": "px",
+      "min": 0,
+      "max": 100,
+      "masks": {
+        "0": "0",
+        "100": "100"
+      },
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": false,
+      "isCustom": false,
+      "isOriginal": false,
+      "oriFrom": null,
+      "cssvar": "--username-max-width",
+      "code": "username-max-width",
+      "parentCode": "name",
+      "attribute": "size",
+      "value": 200,
+      "unit": "px",
+      "min": 0,
+      "max": 500,
+      "masks": {
+        "0": "0",
+        "500": "500"
+      },
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": false,
+      "isCustom": false,
+      "isOriginal": false,
+      "oriFrom": null,
+      "cssvar": "--username-padding",
+      "code": "username-padding",
+      "parentCode": "name",
+      "attribute": "padding",
+      "unit": "px",
+      "min": 0,
+      "max": 50,
+      "value": [
+        3,
+        10,
+        3,
+        10
+      ],
+      "masks": {
+        "0": "0",
+        "50": "50"
+      },
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": false,
+      "isCustom": false,
+      "isOriginal": false,
+      "oriFrom": null,
+      "cssvar": "--username-border-radius",
+      "code": "username-border-radius",
+      "parentCode": "name",
+      "attribute": "radius",
+      "unit": "px",
+      "min": 0,
+      "max": 100,
+      "value": [
+        30,
+        30,
+        30,
+        30
+      ],
+      "masks": {
+        "0": "0",
+        "100": "100"
+      },
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": false,
+      "isCustom": false,
+      "isOriginal": false,
+      "oriFrom": null,
+      "code": "username-font-family",
+      "parentCode": "name",
+      "attribute": "font",
+      "cssvarColor": "--username-color",
+      "cssvarFont": "--username-font-family",
+      "cssvarSize": "--username-font-size",
+      "cssvarWeight": "--username-font-weight",
+      "color": "#FFFFFF",
+      "font": "Noto Sans JP",
+      "style": "normal",
+      "type": "none",
+      "size": 13,
+      "unit": "px",
+      "weight": 600,
+      "minSize": 0,
+      "maxSize": 50,
+      "minWeight": 0,
+      "maxWeight": 900,
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": false,
+      "isCustom": false,
+      "isOriginal": false,
+      "oriFrom": null,
+      "cssvar": "--username-default-bg-color",
+      "code": "username-default-bg-color",
+      "parentCode": "roles",
+      "attribute": "color",
+      "value": "#707070",
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": true,
+      "isCustom": false,
+      "isOriginal": false,
+      "oriFrom": null,
+      "cssvar": "--username-member-color",
+      "code": "username-member-color",
+      "parentCode": "roles",
+      "attribute": "color",
+      "value": "#FFFFFF",
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": true,
+      "isCustom": false,
+      "isOriginal": true,
+      "oriFrom": "username-default-bg-color",
+      "cssvar": "--username-member-bg-color",
+      "code": "username-member-bg-color",
+      "parentCode": "roles",
+      "attribute": "color",
+      "value": "#ffd700",
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": true,
+      "isCustom": false,
+      "isOriginal": false,
+      "oriFrom": null,
+      "cssvar": "--username-moderator-color",
+      "code": "username-moderator-color",
+      "parentCode": "roles",
+      "attribute": "color",
+      "value": "#FFFFFF",
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": true,
+      "isCustom": false,
+      "isOriginal": true,
+      "oriFrom": "username-default-bg-color",
+      "cssvar": "--username-moderator-bg-color",
+      "code": "username-moderator-bg-color",
+      "parentCode": "roles",
+      "attribute": "color",
+      "value": "#930fff",
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": true,
+      "isCustom": false,
+      "isOriginal": false,
+      "oriFrom": null,
+      "cssvar": "--username-owner-color",
+      "code": "username-owner-color",
+      "parentCode": "roles",
+      "attribute": "color",
+      "value": "#FFFFFF",
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": true,
+      "isCustom": false,
+      "isOriginal": true,
+      "oriFrom": "username-default-bg-color",
+      "cssvar": "--username-owner-bg-color",
+      "code": "username-owner-bg-color",
+      "parentCode": "roles",
+      "attribute": "color",
+      "value": "#c20010",
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": false,
+      "isCustom": false,
+      "isOriginal": false,
+      "oriFrom": null,
+      "cssvar": "--badges-size",
+      "code": "badges-size",
+      "parentCode": "badges",
+      "attribute": "size",
+      "value": 18,
+      "unit": "px",
+      "min": 0,
+      "max": 100,
+      "masks": {
+        "0": "0",
+        "100": "100"
+      },
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": false,
+      "isCustom": false,
+      "isOriginal": false,
+      "oriFrom": null,
+      "cssvar": "--badges-margin-distance",
+      "code": "badges-margin-distance",
+      "parentCode": "badges",
+      "attribute": "margin",
+      "unit": "px",
+      "min": 0,
+      "max": 50,
+      "value": [
+        0,
+        3,
+        0,
+        3
+      ],
+      "masks": {
+        "0": "0",
+        "50": "50"
+      },
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": false,
+      "isCustom": false,
+      "isOriginal": false,
+      "oriFrom": null,
+      "cssvar": "--comment-move-duration",
+      "code": "comment-move-duration",
+      "parentCode": "global",
+      "attribute": "time",
+      "value": 150,
+      "unit": "ms",
+      "min_ms": 0,
+      "max_ms": 5000,
+      "min_sec": 0,
+      "max_sec": 10,
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": false,
+      "isCustom": false,
+      "isOriginal": false,
+      "oriFrom": null,
+      "cssvar": "--comment-move-timing",
+      "code": "comment-move-timing",
+      "parentCode": "global",
+      "attribute": "timing-function",
+      "value": "ease-out",
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": false,
+      "isCustom": false,
+      "isOriginal": false,
+      "oriFrom": null,
+      "cssvar": "--comment-enter-duration",
+      "code": "comment-enter-duration",
+      "parentCode": "global",
+      "attribute": "time",
+      "value": 150,
+      "unit": "ms",
+      "min_ms": 0,
+      "max_ms": 5000,
+      "min_sec": 0,
+      "max_sec": 10,
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": false,
+      "isCustom": false,
+      "isOriginal": false,
+      "oriFrom": null,
+      "cssvar": "--comment-enter-timing",
+      "code": "comment-enter-timing",
+      "parentCode": "global",
+      "attribute": "timing-function",
+      "value": "ease-out",
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": false,
+      "isCustom": false,
+      "isOriginal": false,
+      "oriFrom": null,
+      "cssvar": "--special-header-icon-default",
+      "code": "special-header-icon-default",
+      "parentCode": "images",
+      "attribute": "image",
+      "value": "images/diamond.svg",
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": false,
+      "isCustom": false,
+      "isOriginal": false,
+      "oriFrom": null,
+      "cssvar": "--special-header-icon-gift",
+      "code": "special-header-icon-gift",
+      "parentCode": "images",
+      "attribute": "image",
+      "value": "images/gift.svg",
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": false,
+      "isCustom": false,
+      "isOriginal": false,
+      "oriFrom": null,
+      "cssvar": "--special-header-icon-superchat",
+      "code": "special-header-icon-superchat",
+      "parentCode": "images",
+      "attribute": "image",
+      "value": "images/heart.svg",
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": false,
+      "isCustom": false,
+      "isOriginal": false,
+      "oriFrom": null,
+      "cssvar": "--special-footer-bilibili-price-unit",
+      "code": "special-footer-bilibili-price-unit",
+      "parentCode": "unit",
+      "attribute": "content",
+      "value": "￥",
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": false,
+      "isCustom": false,
+      "isOriginal": false,
+      "oriFrom": null,
+      "cssvar": "--special-footer-twitch-price-unit-1",
+      "code": "special-footer-twitch-price-unit-1",
+      "parentCode": "unit",
+      "attribute": "content",
+      "value": "Bits",
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": false,
+      "isCustom": false,
+      "isOriginal": false,
+      "oriFrom": null,
+      "cssvar": "--special-footer-twitch-price-unit-2",
+      "code": "special-footer-twitch-price-unit-2",
+      "parentCode": "unit",
+      "attribute": "content",
+      "value": "CP",
+      "description": false
+    }
+  ],
+  "language": [
+    {
+      "code": "layout",
+      "en-US": "Layout",
+      "ja": "レイアウト",
+      "zh-CN": "布局",
+      "zh-TW": "版面配置"
+    },
+    {
+      "code": "mode",
+      "en-US": "Mode",
+      "ja": "モード",
+      "zh-CN": "模式",
+      "zh-TW": "模式"
+    },
+    {
+      "code": "comment-move-direction",
+      "en-US": "Comment move direction",
+      "ja": "コメント移動の方向",
+      "zh-CN": "评论移动方向",
+      "zh-TW": "留言移動方向"
+    },
+    {
+      "code": "comment-width",
+      "en-US": "Comment Width",
+      "ja": "コメント・幅",
+      "zh-CN": "评论・宽度",
+      "zh-TW": "留言・寬度"
+    },
+    {
+      "code": "comment-height",
+      "en-US": "Comment Height",
+      "ja": "コメント・高さ",
+      "zh-CN": "评论・高度",
+      "zh-TW": "留言・高度"
+    },
+    {
+      "code": "comment-box-margin",
+      "en-US": "Comment Margin",
+      "ja": "コメント・マージン",
+      "zh-CN": "评论・外边距",
+      "zh-TW": "留言・外邊距"
+    },
+    {
+      "code": "comment-paid",
+      "en-US": "Paid Content",
+      "ja": "有料コンテン",
+      "zh-CN": "付费内容",
+      "zh-TW": "付費內容"
+    },
+    {
+      "code": "comment-paid-width",
+      "en-US": "Paid Comment Width",
+      "ja": "有料コメント・幅",
+      "zh-CN": "付费评论・宽度",
+      "zh-TW": "付費留言・寬度"
+    },
+    {
+      "code": "comment-paid-height",
+      "en-US": "Paid Comment Height",
+      "ja": "有料コメント・高さ",
+      "zh-CN": "付费评论・高度",
+      "zh-TW": "付費留言・高度"
+    },
+    {
+      "code": "user-row",
+      "en-US": "User Row",
+      "ja": "ユーザ行",
+      "zh-CN": "用户行",
+      "zh-TW": "用戶列"
+    },
+    {
+      "code": "user-row-margin",
+      "en-US": "User Row Margin",
+      "ja": "ユーザ行のマージン",
+      "zh-CN": "用户行间距",
+      "zh-TW": "用戶列邊距"
+    },
+    {
+      "code": "column-icon",
+      "en-US": "Icon Column",
+      "ja": "アイコン列",
+      "zh-CN": "图标列排",
+      "zh-TW": "图标列排"
+    },
+    {
+      "code": "column1-right-margin",
+      "en-US": "Icon Distance",
+      "ja": "アイコンの間隔",
+      "zh-CN": "图标间距",
+      "zh-TW": "圖示間距"
+    },
+    {
+      "code": "bar",
+      "en-US": "Decoration Bar",
+      "ja": "装飾・バー",
+      "zh-CN": "装饰条",
+      "zh-TW": "裝飾條"
+    },
+    {
+      "code": "comment-bar-display",
+      "en-US": "ON/OFF",
+      "ja": "オン・オフ",
+      "zh-CN": "开/关",
+      "zh-TW": "開/關"
+    },
+    {
+      "code": "comment-bar-width",
+      "en-US": "Comment bar width",
+      "ja": "コメントバーの幅",
+      "zh-CN": "评论条宽度",
+      "zh-TW": "留言條寬度"
+    },
+    {
+      "code": "comment-bar-radius",
+      "en-US": "Bar Radius",
+      "ja": "バー・枠の角丸",
+      "zh-CN": "条・边框圆角",
+      "zh-TW": "條・邊框圓角"
+    },
+    {
+      "code": "comment-bar-color-default",
+      "en-US": "Default color",
+      "ja": "デフォルト色",
+      "zh-CN": "默认颜色",
+      "zh-TW": "默認顏色"
+    },
+    {
+      "code": "comment-bar-color-special",
+      "en-US": "Bar special color",
+      "ja": "バー・特別色",
+      "zh-CN": "条・特殊颜色",
+      "zh-TW": "條・特殊顏色"
+    },
+    {
+      "code": "comment",
+      "en-US": "Comment",
+      "ja": "コメント",
+      "zh-CN": "评论区",
+      "zh-TW": "留言區"
+    },
+    {
+      "code": "box",
+      "en-US": "Comment Box",
+      "ja": "コメントボックス",
+      "zh-CN": "评论框",
+      "zh-TW": "留言框"
+    },
+    {
+      "code": "comment-border-radius",
+      "en-US": "Comment Border Radius",
+      "ja": "コメント・枠の角丸",
+      "zh-CN": "边框圆角",
+      "zh-TW": "邊框圓角"
+    },
+    {
+      "code": "comment-background",
+      "en-US": "Background",
+      "ja": "背景",
+      "zh-CN": "背景",
+      "zh-TW": "背景"
+    },
+    {
+      "code": "comment-bg-default-color",
+      "en-US": "Default Background Color",
+      "ja": "デフォルトの背景色",
+      "zh-CN": "默认背景颜色",
+      "zh-TW": "默認背景顏色"
+    },
+    {
+      "code": "comment-bg-special-color",
+      "en-US": "Paid Comment Background Color",
+      "ja": "有料コメントの背景色",
+      "zh-CN": "付费评论背景色",
+      "zh-TW": "付費留言背景色"
+    },
+    {
+      "code": "special-sticker-size",
+      "en-US": "Youtube Super Sticker Size",
+      "ja": "YouTubeスーパーステッカーのサイズ",
+      "zh-CN": "YouTube超级贴图尺寸",
+      "zh-TW": "YouTube超級貼圖尺寸"
+    },
+    {
+      "code": "comment-text",
+      "en-US": "Comment Text",
+      "ja": "コメント文字",
+      "zh-CN": "评论文字",
+      "zh-TW": "留言文字"
+    },
+    {
+      "code": "comment-text-font",
+      "en-US": "Normal Text Font",
+      "ja": "ノーマル・テキスト・フォント",
+      "zh-CN": "一般字体",
+      "zh-TW": "一般字體"
+    },
+    {
+      "code": "comment-text-special-color",
+      "en-US": "Paid Text Color",
+      "ja": "有料テキストカラー",
+      "zh-CN": "付费文字颜色",
+      "zh-TW": "付費文字顏色"
+    },
+    {
+      "code": "comment-line-height",
+      "en-US": "Line Height",
+      "ja": "行の高さ",
+      "zh-CN": "文字行高度",
+      "zh-TW": "文字行高度"
+    },
+    {
+      "code": "comment-text-default-align",
+      "en-US": "Normal Text Alignment",
+      "ja": "ノーマル・テキスト・配置",
+      "zh-CN": "一般文字对齐",
+      "zh-TW": "一般文字對齊"
+    },
+    {
+      "code": "comment-text-special-align",
+      "en-US": "Paid Text Alignment",
+      "ja": "有料テキストの配置",
+      "zh-CN": "付费文字对齐",
+      "zh-TW": "付費文字對齊"
+    },
+    {
+      "code": "comment-text-padding",
+      "en-US": "Padding",
+      "ja": "パディング",
+      "zh-CN": "内边距",
+      "zh-TW": "內邊距"
+    },
+    {
+      "code": "emoji-related",
+      "en-US": "Emoji Related",
+      "ja": "絵文字関連",
+      "zh-CN": "表情符号相关",
+      "zh-TW": "表情符號相關"
+    },
+    {
+      "code": "comment-emoji-size",
+      "en-US": "Emoji size",
+      "ja": "絵文字・サイズ",
+      "zh-CN": "表情・大小",
+      "zh-TW": "表情・大小"
+    },
+    {
+      "code": "comment-emoji-margin",
+      "en-US": "Margin",
+      "ja": "マージン",
+      "zh-CN": "边距",
+      "zh-TW": "邊距"
+    },
+    {
+      "code": "bilibili-sticker",
+      "en-US": "BiliBili : Sticker",
+      "ja": "BiliBili：ステッカー",
+      "zh-CN": "哔哩哔哩：表情图",
+      "zh-TW": "嗶哩嗶哩：表情圖"
+    },
+    {
+      "code": "comment-sticker-size",
+      "en-US": "Size",
+      "ja": "サイズ",
+      "zh-CN": "大小",
+      "zh-TW": "大小"
+    },
+    {
+      "code": "comment-sticker-margin",
+      "en-US": "Margin",
+      "ja": "マージン",
+      "zh-CN": "外边距",
+      "zh-TW": "外邊距"
+    },
+    {
+      "code": "header",
+      "en-US": "Paid Content: Header Related",
+      "ja": "有料コンテンツ：ヘッダー関連",
+      "zh-CN": "付费内容：头部相关",
+      "zh-TW": "付費內容：頭部相關"
+    },
+    {
+      "code": "special-header-bar-size",
+      "en-US": "Bar Size",
+      "ja": "バーのサイズ",
+      "zh-CN": "标题栏大小",
+      "zh-TW": "標題欄大小"
+    },
+    {
+      "code": "special-header-bar-margin",
+      "en-US": "Bar Adjust Position",
+      "ja": "バー位置の調整",
+      "zh-CN": "条形位置调整",
+      "zh-TW": "條形位置調整"
+    },
+    {
+      "code": "special-header-bar-default-color",
+      "en-US": "Normal Header Color",
+      "ja": "通常のヘッダー・カラー",
+      "zh-CN": "一般头部颜色",
+      "zh-TW": "一般頭部顏色"
+    },
+    {
+      "code": "special-header-bar-special-color",
+      "en-US": "Paid Header Color",
+      "ja": "有料のヘッダー・カラー",
+      "zh-CN": "付费头部颜色",
+      "zh-TW": "付費頭部顏色"
+    },
+    {
+      "code": "special-header-bar-radius",
+      "en-US": "Bar Radius",
+      "ja": "バーの角丸",
+      "zh-CN": "条形圆角",
+      "zh-TW": "條形圓角"
+    },
+    {
+      "code": "special-header-icon-size",
+      "en-US": "Icon Size",
+      "ja": "アイコンのサイズ",
+      "zh-CN": "图标大小",
+      "zh-TW": "圖示大小"
+    },
+    {
+      "code": "special-header-icon-padding",
+      "en-US": "Icon Background Size",
+      "ja": "アイコンの背景サイズ",
+      "zh-CN": "图标背景大小",
+      "zh-TW": "圖標背景大小"
+    },
+    {
+      "code": "special-header-icon-color",
+      "en-US": "Icon Color",
+      "ja": "アイコンの色",
+      "zh-CN": "图标颜色",
+      "zh-TW": "圖示顏色"
+    },
+    {
+      "code": "special-header-icon-bg-color",
+      "en-US": "Icon Background Color",
+      "ja": "アイコンの背景色",
+      "zh-CN": "图标背景颜色",
+      "zh-TW": "圖標背景顏色"
+    },
+    {
+      "code": "special-header-icon-distance-top",
+      "en-US": "Icon Distance Top",
+      "ja": "アイコンの上部距離",
+      "zh-CN": "图标顶部距离",
+      "zh-TW": "圖標頂部距離"
+    },
+    {
+      "code": "special-header-icon-distance-side",
+      "en-US": "Icon Distance Side",
+      "ja": "アイコンの横距離",
+      "zh-CN": "图标侧边距离",
+      "zh-TW": "圖標側邊距離"
+    },
+    {
+      "code": "special-header-padding",
+      "en-US": "Padding",
+      "ja": "パディング",
+      "zh-CN": "内边距",
+      "zh-TW": "內邊距"
+    },
+    {
+      "code": "footer",
+      "en-US": "Paid Content: Bottom",
+      "ja": "有料コンテンツ：下部",
+      "zh-CN": "付费内容：底部",
+      "zh-TW": "付費內容：底部"
+    },
+    {
+      "code": "special-footer-font",
+      "en-US": "Font",
+      "ja": "フォント",
+      "zh-CN": "字体",
+      "zh-TW": "字體"
+    },
+    {
+      "code": "special-footer-align",
+      "en-US": "Text Align",
+      "ja": "文字揃え",
+      "zh-CN": "文本对齐",
+      "zh-TW": "文本對齊"
+    },
+    {
+      "code": "special-footer-default-color",
+      "en-US": "Footer Color",
+      "ja": "フッターの色",
+      "zh-CN": "页底颜色",
+      "zh-TW": "頁底顏色"
+    },
+    {
+      "code": "special-footer-padding",
+      "en-US": "Special footer padding",
+      "ja": "特別フッターのパディング",
+      "zh-CN": "特殊页脚内边距",
+      "zh-TW": "特殊頁腳內邊距"
+    },
+    {
+      "code": "username",
+      "en-US": "User Name",
+      "ja": "ユーザー名",
+      "zh-CN": "用户名",
+      "zh-TW": "用戶名"
+    },
+    {
+      "code": "avatar",
+      "en-US": "Avatar",
+      "ja": "アバター",
+      "zh-CN": "头像",
+      "zh-TW": "頭像"
+    },
+    {
+      "code": "avatar-size",
+      "en-US": "Avatar size",
+      "ja": "アバターサイズ",
+      "zh-CN": "头像大小",
+      "zh-TW": "頭像大小"
+    },
+    {
+      "code": "avatar-border",
+      "en-US": "Avatar border",
+      "ja": "アバターボーダー",
+      "zh-CN": "头像边框",
+      "zh-TW": "頭像邊框"
+    },
+    {
+      "code": "avatar-border-radius",
+      "en-US": "Avatar border radius",
+      "ja": "アバターボーダー半径",
+      "zh-CN": "头像边框半径",
+      "zh-TW": "頭像邊框半徑"
+    },
+    {
+      "code": "name",
+      "en-US": "Name",
+      "ja": "名前",
+      "zh-CN": "名字",
+      "zh-TW": "名字"
+    },
+    {
+      "code": "username-min-width",
+      "en-US": "Username Minimum Width",
+      "ja": "ユーザー名の最小幅",
+      "zh-CN": "用户名 最小宽度",
+      "zh-TW": "用戶名 最小寬度"
+    },
+    {
+      "code": "username-max-width",
+      "en-US": "Username Maximum Width",
+      "ja": "ユーザー名の最大幅",
+      "zh-CN": "用户名 最大宽度",
+      "zh-TW": "用戶名最大寬度"
+    },
+    {
+      "code": "username-padding",
+      "en-US": "Padding",
+      "ja": "パディング",
+      "zh-CN": "内边距",
+      "zh-TW": "內邊距"
+    },
+    {
+      "code": "username-border-radius",
+      "en-US": "Border Radius",
+      "ja": "枠の角丸",
+      "zh-CN": "边框圆角",
+      "zh-TW": "邊框圓角"
+    },
+    {
+      "code": "username-font-family",
+      "en-US": "Font",
+      "ja": "フォント",
+      "zh-CN": "字体",
+      "zh-TW": "字體"
+    },
+    {
+      "code": "roles",
+      "en-US": "Roles",
+      "ja": "やくわり",
+      "zh-CN": "角色",
+      "zh-TW": "角色"
+    },
+    {
+      "code": "username-default-bg-color",
+      "en-US": "Username Default Background Color",
+      "ja": "ユーザー名のデフォルト背景色",
+      "zh-CN": "用户名 默认背景色",
+      "zh-TW": "用戶名 默認背景色"
+    },
+    {
+      "code": "username-member-color",
+      "en-US": "Member Font Color",
+      "ja": "メンバーのフォント・色",
+      "zh-CN": "会员 字体颜色",
+      "zh-TW": "會員 字體顏色"
+    },
+    {
+      "code": "username-member-bg-color",
+      "en-US": "Member Background Color",
+      "ja": "メンバー背景色",
+      "zh-CN": "会员背景色",
+      "zh-TW": "會員背景色"
+    },
+    {
+      "code": "username-moderator-color",
+      "en-US": "Moderator Font Color",
+      "ja": "モデレーターのフォント・色",
+      "zh-CN": "管理员 字体颜色",
+      "zh-TW": "管理員 字體顏色"
+    },
+    {
+      "code": "username-moderator-bg-color",
+      "en-US": "Moderator Background color",
+      "ja": "モデレーター背景色",
+      "zh-CN": "管理员 背景色",
+      "zh-TW": "管理員 背景色"
+    },
+    {
+      "code": "username-owner-color",
+      "en-US": "Owner Font Color",
+      "ja": "配信者のフォント・色",
+      "zh-CN": "主播 字体颜色",
+      "zh-TW": "實況主 字體顏色"
+    },
+    {
+      "code": "username-owner-bg-color",
+      "en-US": "Owner background color",
+      "ja": "配信者の背景色",
+      "zh-CN": "主播 背景色",
+      "zh-TW": "實況主 背景色"
+    },
+    {
+      "code": "badges",
+      "en-US": "Badges",
+      "ja": "バッジ",
+      "zh-CN": "徽章",
+      "zh-TW": "徽章"
+    },
+    {
+      "code": "badges-size",
+      "en-US": "Badges size",
+      "ja": "バッジのサイズ",
+      "zh-CN": "徽章大小",
+      "zh-TW": "徽章大小"
+    },
+    {
+      "code": "badges-margin-distance",
+      "en-US": "Margin",
+      "ja": "マージン",
+      "zh-CN": "边距",
+      "zh-TW": "邊距"
+    },
+    {
+      "code": "animation",
+      "en-US": "Animation",
+      "ja": "アニメーション",
+      "zh-CN": "动画",
+      "zh-TW": "動畫"
+    },
+    {
+      "code": "global",
+      "en-US": "Global",
+      "ja": "グローバル",
+      "zh-CN": "全局",
+      "zh-TW": "全域"
+    },
+    {
+      "code": "comment-move-duration",
+      "en-US": "Comment move duration",
+      "ja": "コメント移動の時間",
+      "zh-CN": "评论移动时长",
+      "zh-TW": "留言移動時長"
+    },
+    {
+      "code": "comment-move-timing",
+      "en-US": "Comment move timing",
+      "ja": "コメント移動のタイミング",
+      "zh-CN": "评论移动曲线",
+      "zh-TW": "留言移動曲線"
+    },
+    {
+      "code": "comment-enter-duration",
+      "en-US": "Comment enter duration",
+      "ja": "コメント入力の時間",
+      "zh-CN": "评论进入时长",
+      "zh-TW": "留言進入時長"
+    },
+    {
+      "code": "comment-enter-timing",
+      "en-US": "Comment enter timing",
+      "ja": "コメント入力のタイミング",
+      "zh-CN": "评论进入曲线",
+      "zh-TW": "留言進入曲線"
+    },
+    {
+      "code": "others",
+      "en-US": "Others",
+      "ja": "その他",
+      "zh-CN": "其他",
+      "zh-TW": "其他"
+    },
+    {
+      "code": "images",
+      "en-US": "Paid Content",
+      "ja": "有料コンテン",
+      "zh-CN": "付费内容",
+      "zh-TW": "付費內容"
+    },
+    {
+      "code": "special-header-icon-default",
+      "en-US": "Default Icon",
+      "ja": "デフォルトアイコン",
+      "zh-CN": "默认图标",
+      "zh-TW": "默認圖示"
+    },
+    {
+      "code": "special-header-icon-gift",
+      "en-US": "Gift Icon",
+      "ja": "ギフトアイコン",
+      "zh-CN": "礼物图标",
+      "zh-TW": "禮物圖示"
+    },
+    {
+      "code": "special-header-icon-superchat",
+      "en-US": "Superchat Icon",
+      "ja": "スーパーチャット・アイコン",
+      "zh-CN": "超级评论图标",
+      "zh-TW": "超級留言图标"
+    },
+    {
+      "code": "unit",
+      "en-US": "Unit",
+      "ja": "単位",
+      "zh-CN": "单位",
+      "zh-TW": "單位"
+    },
+    {
+      "code": "special-footer-bilibili-price-unit",
+      "en-US": "Bilibili Coin Unit",
+      "ja": "ビリビリコインの単位",
+      "zh-CN": "哔哩哔哩 货币 单位",
+      "zh-TW": "嗶哩嗶哩 貨幣 單位"
+    },
+    {
+      "code": "special-footer-twitch-price-unit-1",
+      "en-US": "Twitch coin unit",
+      "ja": "Twitchコインの単位",
+      "zh-CN": "Twitch 货币 单位",
+      "zh-TW": "Twitch 貨幣 單位"
+    },
+    {
+      "code": "special-footer-twitch-price-unit-2",
+      "en-US": "Twitch Point Unit",
+      "ja": "Twitchポイントの単位",
+      "zh-CN": "Twitch 点数 单位",
+      "zh-TW": "Twitch 點數 單位"
+    }
+  ],
+  "description": [
+    {
+      "code": "comment-width",
+      "en-US": "Enable width setting when using horizontal layout mode.",
+      "ja": "横書きモードでは、幅の設定を有効にする必要があります。",
+      "zh-CN": "在横排模式，需开启宽度大小",
+      "zh-TW": "在橫排模式，需開啟寬度大小"
+    },
+    {
+      "code": "comment-height",
+      "en-US": "Enable height setting when using horizontal layout mode.",
+      "ja": "横書きモードでは、高さの設定を有効にする必要があります。",
+      "zh-CN": "在横排模式，需开启高度大小",
+      "zh-TW": "在橫排模式，需開啟高度大小"
+    },
+    {
+      "code": "comment-paid-width",
+      "en-US": "Enable width setting when using horizontal layout mode.",
+      "ja": "横書きモードでは、幅の設定を有効にする必要があります。",
+      "zh-CN": "在横排模式，需开启宽度大小",
+      "zh-TW": "在橫排模式，需開啟寬度大小"
+    },
+    {
+      "code": "comment-paid-height",
+      "en-US": "Enable height setting when using horizontal layout mode.",
+      "ja": "横書きモードでは、高さの設定を有効にする必要があります。",
+      "zh-CN": "在横排模式，需开启高度大小",
+      "zh-TW": "在橫排模式，需開啟高度大小"
+    },
+    {
+      "code": "comment-sticker-size",
+      "en-US": "Only for Bilibili",
+      "ja": "ビリビリ専用",
+      "zh-CN": "仅限哔哩哔哩",
+      "zh-TW": "僅限嗶哩嗶哩"
+    },
+    {
+      "code": "comment-sticker-margin",
+      "en-US": "Only for Bilibili",
+      "ja": "ビリビリ専用",
+      "zh-CN": "仅限哔哩哔哩",
+      "zh-TW": "僅限嗶哩嗶哩"
+    },
+    {
+      "code": "special-header-bar-default-color",
+      "en-US": "Only YouTube Gifts Received",
+      "ja": "YouTubeで受け取ったギフトのみ",
+      "zh-CN": "仅限YouTube收到礼物",
+      "zh-TW": "僅限YouTube收到禮物"
+    },
+    {
+      "code": "special-header-bar-special-color",
+      "en-US": "All Paid Content: Gifts, SC",
+      "ja": "すべての有料コンテンツ：ギフト、スパチャ",
+      "zh-CN": "所有付费内容：礼物、SC",
+      "zh-TW": "所有付費內容：禮物、SC"
+    }
+  ]
+}

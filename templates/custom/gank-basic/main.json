@@ -1,0 +1,110 @@
+[
+  {
+    "name": "Gank Basic",
+    "code": "gank-basic",
+    "type": "gank-donation-bar",
+    "isOriginal": true,
+    "indexFile": null,
+    "assetFile": "asset1.json",
+    "presetFile": "preset1.json",
+    "cssFile": "preset1.css",
+    "presetId": 1,
+    "position": 0
+  },
+  {
+    "name": "Gank Basic-Lime",
+    "code": "gank-basic",
+    "type": "gank-donation-bar",
+    "isOriginal": true,
+    "indexFile": null,
+    "assetFile": "asset1.json",
+    "presetFile": "preset2.json",
+    "cssFile": "preset1.css",
+    "presetId": 2,
+    "position": 1
+  },
+  {
+    "name": "Gank Basic-Pink",
+    "code": "gank-basic",
+    "type": "gank-donation-bar",
+    "isOriginal": true,
+    "indexFile": null,
+    "assetFile": "asset1.json",
+    "presetFile": "preset3.json",
+    "cssFile": "preset1.css",
+    "presetId": 3,
+    "position": 2
+  },
+  {
+    "name": "Gank Basic-Purple",
+    "code": "gank-basic",
+    "type": "gank-donation-bar",
+    "isOriginal": true,
+    "indexFile": null,
+    "assetFile": "asset1.json",
+    "presetFile": "preset4.json",
+    "cssFile": "preset1.css",
+    "presetId": 4,
+    "position": 3
+  },
+  {
+    "name": "Gank Basic-Orange",
+    "code": "gank-basic",
+    "type": "gank-donation-bar",
+    "isOriginal": true,
+    "indexFile": null,
+    "assetFile": "asset1.json",
+    "presetFile": "preset5.json",
+    "cssFile": "preset.css",
+    "presetId": 5,
+    "position": 4
+  },
+  {
+    "name": "Gank Basic-Blood Red",
+    "code": "gank-basic",
+    "type": "gank-donation-bar",
+    "isOriginal": true,
+    "indexFile": null,
+    "assetFile": "asset1.json",
+    "presetFile": "preset6.json",
+    "cssFile": "preset1.css",
+    "presetId": 6,
+    "position": 5
+  },
+  {
+    "name": "Gank Basic-Yellow",
+    "code": "gank-basic",
+    "type": "gank-donation-bar",
+    "isOriginal": true,
+    "indexFile": null,
+    "assetFile": "asset1.json",
+    "presetFile": "preset7.json",
+    "cssFile": "preset1.css",
+    "presetId": 7,
+    "position": 6
+  },
+  {
+    "name": "Gank Basic-Cyan",
+    "code": "gank-basic",
+    "type": "gank-donation-bar",
+    "isOriginal": true,
+    "indexFile": null,
+    "assetFile": "asset1.json",
+    "presetFile": "preset8.json",
+    "cssFile": "preset1.css",
+    "presetId": 8,
+    "position": 7
+  },
+  {
+    "name": "Gank Basic-Black&White",
+    "code": "gank-basic",
+    "type": "gank-donation-bar",
+    "isOriginal": true,
+    "indexFile": null,
+    "assetFile": "asset1.json",
+    "presetFile": "preset9.json",
+    "cssFile": "preset1.css",
+    "presetId": 9,
+    "position": 8
+  }
+]

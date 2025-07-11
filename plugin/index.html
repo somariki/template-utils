@@ -1,0 +1,2278 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>OneComme | Template Utils</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet" type="text/css">
+    <link href="https://use.fontawesome.com/releases/v6.1.1/css/all.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900|Material+Icons|Material+Icons+Outlined|Material+Icons+Round|Material+Icons+Sharp" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined|Material+Symbols+Rounded|Material+Symbols+Sharp" rel="stylesheet" type="text/css">
+    <link href="https://cdn.jsdelivr.net/npm/animate.css@^4.0.0/animate.min.css" rel="stylesheet" type="text/css">
+    <link href="https://cdn.jsdelivr.net/npm/quasar@2.17.5/dist/quasar.prod.css" rel="stylesheet" type="text/css">
+    <link href="css/style.css" rel="stylesheet" type="text/css">
+  </head>
+  <body hidden>
+    <div id="app" class="app">
+      <div v-if="!loaded">Loading...</div>
+      <div v-else>
+        <div v-if="ui.windowWidth < ui.goodShowSize">
+          <div>To ensure the best experience, please use a screen with a width greater than {{ui.goodScreenSize}}px. Your current screen width is {{ui.windowWidth}}px.</div>
+        </div>
+        <div v-else>
+          <q-splitter v-model="ui.splitterCur" :style="{ height: 'auto' }" :limits="ui.splitterLimit" v-bind:horizontal="ui.mode" emit-immediately>
+            <template v-slot:before v-if="ui.mode">
+              <div class="preview-background" :style="{ backgroundColor: ui.reviewDefaultColor, height: ui.spViewHeight, width:'auto'}">
+                <iframe v-if="presetData.configURL" :src="presetData.configURL" title="description" :style="{ height: ui.spViewHeight, width: ui.spViewWidth}" ></iframe>
+              </div>
+            </template>
+            <template v-slot:before v-if="!ui.mode">
+              <div class="preview-background" :style="{ backgroundColor: ui.reviewDefaultColor, height: ui.spHViewHeight, width:'auto'}">
+                <iframe v-if="presetData.configURL" :src="presetData.configURL" title="description" :style="{ height: ui.spViewHeight, width: ui.spViewWidth }" ></iframe>
+              </div>
+            </template>
+
+            <template v-slot:separator>
+              <q-avatar color="primary" text-color="white" size="20px">
+                <i v-if="ui.mode" class="fa fa-arrows-v" aria-hidden="true"></i>
+                <i v-else class="fa fa-arrows-h" aria-hidden="true"></i>
+              </q-avatar>
+            </template>
+
+            <template v-slot:after>
+              <q-scroll-area :style="{ height: ui.spScrollHeight}">
+                <div class="q-px-md q-pt-xs">
+                  
+                  <q-card flat bordered class="q-mb-sm preview-control-card">
+                    <q-card-section class="q-px-sm q-pt-xs q-pb-xs">
+                      <div class="row justify-between">
+                        <div class="col-4">
+                          <q-input dense borderless :label="ui.lg.input.previewBg" v-model="ui.reviewDefaultColor" :rules="['anyColor']" color="teal" class="ui-input-color ui-input-color-std">
+                            <template v-slot:prepend>
+                              <q-btn round unelevated no-caps size="10px" icon="colorize" :style="{ backgroundColor: ui.reviewDefaultColor }">
+                                <q-popup-proxy cover transition-show="scale" transition-hide="scale">
+                                  <q-color flat square v-model="ui.reviewDefaultColor" :format-model="ui.colorFormat" :palette="ui.colorPalette" />
+                                </q-popup-proxy>
+                              </q-btn>
+                            </template>
+                          </q-input>
+                        </div>
+
+                        <div class="col-4 items-center" align="right">
+
+                          <q-btn flat round dense icon="fa-solid fa-ellipsis"></q-btn>
+                          <q-menu v-model="ui.menu" anchor="top right" self="bottom right" >
+                            <q-list style="min-width: 180px">
+                              <q-item clickable v-close-popup>
+                                <q-item-section>
+                                  <a class="text-decoration-none text-black" @click="changeLanguage('confirm')" >{{ui.lg.menu.language}}</a>
+                                </q-item-section>
+                              </q-item>
+                              <q-item clickable v-close-popup>
+                                <q-item-section>
+                                  <a href="./setting.html" class="text-decoration-none text-black">{{ui.lg.menu.setting}}</a>
+                                </q-item-section>
+                              </q-item>
+
+                              <q-item>
+                                <q-item-section>
+                                  <q-item-label>{{ui.lg.menu.layout}}:</q-item-label>
+                                </q-item-section>
+                                <q-item-section avatar>
+                                  <q-btn-toggle 
+                                    toggle-color="secondary"
+                                    v-model="ui.mode" 
+                                    :options="[
+                                      {label: ui.lg.menu.vertical, value: false},
+                                      {label: ui.lg.menu.horizontal, value: true}
+                                    ]"
+                                  ></q-btn-toggle>
+                                </q-item-section>
+                              </q-item>
+
+
+                              <q-item clickable v-close-popup>
+                                <q-item-section>
+                                  <a class="text-decoration-none text-black" @click="cleanupStorage()" >{{ui.lg.menu.cleanupStorage}}</a>
+                                </q-item-section>
+                              </q-item>
+                            </q-list>
+                          </q-menu>
+
+                        </div>
+                      </div>
+                    </q-card-section>
+                  </q-card>
+
+                  <q-card flat bordered class="q-mb-sm template-control-card">
+                    <q-card-section class="q-px-sm q-pt-none q-pb-xs">
+                      <div class="row q-col-gutter-x-md">
+                        <div class="col-6">
+                          <q-select v-model="selectedTemplateOption" :options="templateOption" :label="ui.lg.input.template" color="teal" options-selected-class="text-deep-orange" option-label="label" option-value="value" emit-value map-options >
+                            <template v-slot:option="scope">
+                              <q-item v-bind="scope.itemProps">
+                                <q-item-section avatar>
+                                  <q-icon :name="scope.opt.icon" ></q-icon>
+                                </q-item-section>
+                                <q-item-section>
+                                  <q-item-label>{{ scope.opt.label }}</q-item-label>
+                                  <q-item-label caption>{{ scope.opt.description }}</q-item-label>
+                                </q-item-section>
+                              </q-item>
+                            </template>
+                          </q-select>
+                        </div>
+                        <div v-if ="isPresetOption" class="col-6">
+                          <q-select v-model="selectedPresetOption" :options="presetOption" :label="ui.lg.input.preset" color="teal" options-selected-class="text-deep-orange" option-label="label" option-value="value" emit-value map-options >
+                            <template v-slot:option="scope">
+                              <q-item v-bind="scope.itemProps">
+                                <q-item-section avatar>
+                                  <q-icon :name="scope.opt.icon" />
+                                </q-item-section>
+                                <q-item-section>
+                                  <q-item-label>{{ scope.opt.label }}</q-item-label>
+                                  <q-item-label caption>{{ scope.opt.description }}</q-item-label>
+                                </q-item-section>
+                              </q-item>
+                            </template>
+                          </q-select>
+                        </div>
+                      </div>
+                    </q-card-section>
+                  </q-card>
+                  <q-card flat bordered class="q-mb-sm note-warning" v-if="presetData.isOriginal === true && presetData.status === true">
+                    <q-card-section class="q-px-sm q-pt-xs q-pb-xs">
+                      <div class="note-warning-title">{{ui.lg.warning.noAllowSaveOriginalTitle}}</div>
+                      <div class="note-warning-content">{{ui.lg.warning.noAllowSaveOriginalContent}}</div>
+                    </q-card-section>
+                  </q-card>
+
+                  <q-card v-if="presetData.status === true" flat bordered class="template-control-card">
+                    <q-tabs v-model="presetData.defaultEditTabs" dense class="text-grey" active-color="primary" indicator-color="primary" align="justify" narrow-indicator >
+                      <q-tab v-for="(item, index) in presetData.section" :key="item.code" :name="item.code" :label="lang(item.code)"></q-tab>
+                    </q-tabs>
+        
+                    <q-separator></q-separator>
+
+                    <q-tab-panels v-model="presetData.defaultEditTabs" animated>
+                      
+                      <q-tab-panel v-for="(sectionItem, sectionIndex) in presetData.section" :key="sectionItem.code" :name="sectionItem.code">
+                        <div v-for="(partItem, partIndex) in presetData.part" :key="partItem.code">
+                          <div class="section-panel" v-if="partItem.parentCode === sectionItem.code">
+                            <div class="q-gutter-sm ui-group-title">
+                              <q-chip color="orange" size="16px" text-color="white" class="ui-group-title-chip">
+                                {{lang(partItem.code)}}
+                              </q-chip>
+                            </div>
+
+                            <div v-for="(attr, attributeIndex) in presetData.attribute" :key="attr.code">
+                              <div v-if="attr.flag.isVisible && attr.parentCode === partItem.code">
+                                
+                                <div v-if="attr.attribute ==='time'">
+                                  <div class="row q-col-gutter-x-md q-py-sm" >
+                                    <div class="col-12">
+                                      <div class="row items-center">
+                                        <div class="col-6">
+                                          <q-chip outline color="primary" text-color="white" icon="tune" >
+                                            {{lang(attr.code)}}
+                                          </q-chip>
+                                          <q-avatar size="20px" color="red" text-color="white" icon="fa-solid fa-question" v-if="attr.description">
+                                            <q-tooltip class="text-body2" anchor="center right" self="center start">
+                                              {{tips(attr.code)}}
+                                            </q-tooltip>
+                                          </q-avatar>
+                                        </div>
+                                        <div class="col-6">
+                                          <div class="column items-end">
+                                            <q-btn flat round dense color="grey-5" size="xs" icon="fa-solid fa-rotate-right" @click="undo(attr.code)">
+                                              <q-tooltip class="text-body2" anchor="top middle" self="bottom middle">
+                                                {{ui.lg.tip.redo}}
+                                              </q-tooltip>
+                                            </q-btn>
+                                          </div>
+                                        </div>
+                                        <div class="col-12" v-if="attr.isSetCustom">
+                                          <q-toggle color="purple" keep-color v-model="presetData.data[dtExIndex(attr.code)].isCustom" :label="presetData.data[dtExIndex(attr.code)].isCustom ? ui.lg.input.enableCustom : ui.lg.input.disableCustom" checked-icon="check" unchecked-icon="clear"></q-toggle>
+                                        </div>
+                                        
+                                      </div>
+                                    </div>
+  
+                                    <div class="col-12">
+                                      <div class="input-panel">
+                                        <div class="row q-col-gutter-x-md">
+                                          <div class="col-12">
+                                            <div class="input-inline">
+                                              <div class="q-pr-sm">{{ui.lg.input.time}}</div>
+                                              <div class="q-pr-sm ui-time-field" v-if="presetData.data[dtExIndex(attr.code)].unit === 'ms'">
+                                                <q-input type="number" class="ui-input ui-time-input" input-class="ui-input-field-c" outlined rounded dense v-model="presetData.data[dtExIndex(attr.code)].value" :min="attr.min_ms" :max="attr.max_ms" step="50" color="light-blue-6">
+                                                  {{presetData.data[dtExIndex(attr.code)].unit}}
+                                                </q-input>
+                                              </div>
+    
+                                              <div class="q-pr-sm ui-time-field" v-if="presetData.data[dtExIndex(attr.code)].unit === 's'">
+                                                <q-input type="number" class="ui-input ui-time-input" input-class="ui-input-field-c" outlined rounded dense  v-model="presetData.data[dtExIndex(attr.code)].value" :min="attr.min_sec" :max="attr.max_sec" step="1" color="pink-6" >
+                                                  {{presetData.data[dtExIndex(attr.code)].unit}}
+                                                </q-input>
+                                              </div>
+    
+                                              <div class="q-pr-sm ui-time-slider-col" v-if="presetData.data[dtExIndex(attr.code)].unit === 'ms'">
+                                                <q-slider dense label v-model="presetData.data[dtExIndex(attr.code)].value" :min="attr.min_ms" :max="attr.max_ms" step="50" color="light-blue-6"></q-slider>
+                                              </div>
+    
+                                              <div class="q-pr-sm ui-time-slider-col" v-if="presetData.data[dtExIndex(attr.code)].unit === 's'">
+                                                <q-slider dense label v-model="presetData.data[dtExIndex(attr.code)].value" :min="attr.min_sec" :max="attr.max_sec" step="1" color="pink-6"></q-slider>
+                                              </div>
+    
+                                              <div class="q-ml-sm q-pr-sm ui-time-selector-col">
+                                                <q-select rounded outlined bg-color="purple-1" color="purple" class="ui-time-unit-selector" v-model="presetData.data[dtExIndex(attr.code)].unit" :options="form.timeOpt" option-label="label" option-value="value" emit-value map-options ></q-select>
+                                              </div>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+
+                                <div v-if="attr.attribute ==='timing-function'">
+                                  <div class="row q-col-gutter-x-md q-py-sm" >
+                                    <div class="col-12">
+                                      <div class="row items-center">
+                                        <div class="col-6">
+                                          <q-chip outline color="primary" text-color="white" icon="tune" >
+                                            {{lang(attr.code)}}
+                                          </q-chip>
+                                          <q-avatar size="20px" color="red" text-color="white" icon="fa-solid fa-question" v-if="attr.description">
+                                            <q-tooltip class="text-body2" anchor="center right" self="center start">
+                                              {{tips(attr.code)}}
+                                            </q-tooltip>
+                                          </q-avatar>
+                                        </div>
+                                        <div class="col-6">
+                                          <div class="column items-end">
+                                            <q-btn flat round dense color="grey-5" size="xs" icon="fa-solid fa-rotate-right" @click="undo(attr.code)">
+                                              <q-tooltip class="text-body2" anchor="top middle" self="bottom middle">
+                                                {{ui.lg.tip.redo}}
+                                              </q-tooltip>
+                                            </q-btn>
+                                          </div>
+                                        </div>
+                                        <div class="col-12" v-if="attr.isSetCustom">
+                                          <q-toggle color="purple" keep-color v-model="presetData.data[dtExIndex(attr.code)].isCustom" :label="presetData.data[dtExIndex(attr.code)].isCustom ? ui.lg.input.enableCustom : ui.lg.input.disableCustom" checked-icon="check" unchecked-icon="clear"></q-toggle>
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <div class="col-12">
+                                      <div class="input-panel">
+                                        <div class="q-gutter-sm">
+                                          <q-radio v-model="presetData.data[dtExIndex(attr.code)].value" v-for="(v, k) in form.timingOpt" :key="k" :val="v.value" :label="v.label" color="teal"></q-radio>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+
+                                <div v-if="['flex-column', 'flex-row', 'flex-direction', 'transform-translate'].includes(attr.attribute)">                             
+                                  <div class="row q-col-gutter-x-md q-py-sm" >
+                                    <div class="col-12">
+                                      <div class="row items-center">
+                                        <div class="col-6">
+                                          <q-chip outline color="primary" text-color="white" icon="tune" >
+                                            {{lang(attr.code)}}
+                                          </q-chip>
+                                          <q-avatar size="20px" color="red" text-color="white" icon="fa-solid fa-question" v-if="attr.description">
+                                            <q-tooltip class="text-body2" anchor="center right" self="center start">
+                                              {{tips(attr.code)}}
+                                            </q-tooltip>
+                                          </q-avatar>
+                                        </div>
+                                        <div class="col-6">
+                                          <div class="column items-end">
+                                            <q-btn flat round dense color="grey-5" size="xs" icon="fa-solid fa-rotate-right" @click="undo(attr.code)">
+                                              <q-tooltip class="text-body2" anchor="top middle" self="bottom middle">
+                                                {{ui.lg.tip.redo}}
+                                              </q-tooltip>
+                                            </q-btn>
+                                          </div>
+                                        </div>
+                                        <div class="col-12" v-if="attr.isSetCustom">
+                                          <q-toggle color="purple" keep-color v-model="presetData.data[dtExIndex(attr.code)].isCustom" :label="presetData.data[dtExIndex(attr.code)].isCustom ? ui.lg.input.enableCustom : ui.lg.input.disableCustom" checked-icon="check" unchecked-icon="clear"></q-toggle>
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <div class="col-12">
+                                      <div class="input-panel">
+                                        <div class="q-gutter-sm" v-if="attr.attribute === 'flex-column'">
+                                          <q-radio v-model="presetData.data[dtExIndex(attr.code)].value" v-for="(v, k) in form.columnOpt" :key="k" :val="v.value" :label="v.label" color="teal"></q-radio>
+                                        </div>
+                                        <div class="q-gutter-sm" v-if="attr.attribute === 'flex-row'">
+                                          <q-radio v-model="presetData.data[dtExIndex(attr.code)].value" v-for="(v, k) in form.rowOpt" :key="k" :val="v.value" :label="v.label" color="teal"></q-radio>
+                                        </div>
+                                        <div class="q-gutter-sm" v-if="attr.attribute === 'flex-direction'">
+                                          <q-radio v-model="presetData.data[dtExIndex(attr.code)].value" v-for="(v, k) in form.flexDirectionOpt" :key="k" :val="v.value" :label="v.label" color="teal"></q-radio>
+                                        </div>
+                                        <div class="q-gutter-sm" v-if="attr.attribute === 'transform-translate'">
+                                          <q-radio v-model="presetData.data[dtExIndex(attr.code)].value" v-for="(v, k) in form.transformTranslateOpt" :key="k" :val="v.value" :label="v.label" color="teal"></q-radio>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>                              
+                                </div>
+
+                                <div v-if="attr.attribute ==='color'">
+                                  <div class="row q-col-gutter-x-md q-py-sm" >
+                                    <div class="col-6">
+                                      <div class="row items-center">
+                                        <div class="col-12">
+                                          <q-chip outline color="primary" text-color="white" icon="tune" >
+                                            {{lang(attr.code)}}
+                                          </q-chip>
+                                          <q-avatar size="20px" color="red" text-color="white" icon="fa-solid fa-question" v-if="attr.description">
+                                            <q-tooltip class="text-body2" anchor="center right" self="center start">
+                                              {{tips(attr.code)}}
+                                            </q-tooltip>
+                                          </q-avatar>
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <div class="col-6">
+                                      <div class="column items-end">
+                                        <q-btn flat round dense color="grey-5" size="xs" icon="fa-solid fa-rotate-right" @click="undo(attr.code)">
+                                          <q-tooltip class="text-body2" anchor="top middle" self="bottom middle">
+                                            {{ui.lg.tip.redo}}
+                                          </q-tooltip>
+                                        </q-btn>
+                                      </div>
+                                    </div>
+                                    <div class="col-12" v-if="attr.isSetCustom">
+                                      <q-toggle color="purple" keep-color v-model="presetData.data[dtExIndex(attr.code)].isCustom" :label="presetData.data[dtExIndex(attr.code)].isCustom ? ui.lg.input.enableCustom : ui.lg.input.disableCustom" checked-icon="check" unchecked-icon="clear"></q-toggle>
+                                    </div>
+                                    
+                                    <div class="col-12">
+                                      <div class="input-panel">
+                                        <div class="q-gutter-sm">
+                                          <div class="ui-color-field">
+                                            <q-input dense borderless v-model="presetData.data[dtExIndex(attr.code)].value" :rules="['anyColor']" color="teal" class="ui-input-color-small ui-input-color-std">
+                                              <template v-slot:prepend>
+                                                <q-btn round unelevated no-caps size="10px" icon="colorize" :style="{ backgroundColor: presetData.data[dtExIndex(attr.code)].value }">
+                                                  <q-popup-proxy cover transition-show="scale" transition-hide="scale">
+                                                    <q-color flat square v-model="presetData.data[dtExIndex(attr.code)].value" :format-model="ui.colorFormat" />
+                                                  </q-popup-proxy>
+                                                </q-btn>
+                                              </template>
+                                            </q-input>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+
+                                <div v-if="['text-align', 'justify-content', 'justify-items', 'align-content', 'align-items', 'display', 'position'].includes(attr.attribute)">
+                                  <div class="row q-col-gutter-x-md q-py-sm" >
+                                    <div class="col-12">
+                                      <div class="row items-center">
+                                        <div class="col-6">
+                                          <q-chip outline color="primary" text-color="white" icon="tune" >
+                                            {{lang(attr.code)}}
+                                          </q-chip>
+                                          <q-avatar size="20px" color="red" text-color="white" icon="fa-solid fa-question" v-if="attr.description">
+                                            <q-tooltip class="text-body2" anchor="center right" self="center start">
+                                              {{tips(attr.code)}}
+                                            </q-tooltip>
+                                          </q-avatar>
+                                        </div>
+                                        <div class="col-6">
+                                          <div class="column items-end">
+                                            <q-btn flat round dense color="grey-5" size="xs" icon="fa-solid fa-rotate-right" @click="undo(attr.code)">
+                                              <q-tooltip class="text-body2" anchor="top middle" self="bottom middle">
+                                                {{ui.lg.tip.redo}}
+                                              </q-tooltip>
+                                            </q-btn>
+                                          </div>
+                                        </div>
+                                        <div class="col-12" v-if="attr.isSetCustom">
+                                          <q-toggle color="purple" keep-color v-model="presetData.data[dtExIndex(attr.code)].isCustom" :label="presetData.data[dtExIndex(attr.code)].isCustom ? ui.lg.input.enableCustom : ui.lg.input.disableCustom" checked-icon="check" unchecked-icon="clear"></q-toggle>
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <div class="col-12">
+                                      <div class="input-panel">
+                                        <div class="q-gutter-sm" v-if="attr.attribute === 'text-align'">
+                                          <q-radio v-model="presetData.data[dtExIndex(attr.code)].value" v-for="(v, k) in form.textAlign" :key="k" :val="v.value" :label="v.label" color="teal"></q-radio>
+                                        </div>
+                                        <div class="q-gutter-sm" v-if="attr.attribute === 'justify-content'">
+                                          <q-radio v-model="presetData.data[dtExIndex(attr.code)].value" v-for="(v, k) in form.justifyContent" :key="k" :val="v.value" :label="v.label" color="teal"></q-radio>
+                                        </div>
+                                        <div class="q-gutter-sm" v-if="attr.attribute === 'justify-items'">
+                                          <q-radio v-model="presetData.data[dtExIndex(attr.code)].value" v-for="(v, k) in form.justifyItems" :key="k" :val="v.value" :label="v.label" color="teal"></q-radio>
+                                        </div>
+                                        <div class="q-gutter-sm" v-if="attr.attribute === 'align-content'">
+                                          <q-radio v-model="presetData.data[dtExIndex(attr.code)].value" v-for="(v, k) in form.alignContent" :key="k" :val="v.value" :label="v.label" color="teal"></q-radio>
+                                        </div>
+                                        <div class="q-gutter-sm" v-if="attr.attribute === 'align-items'">
+                                          <q-radio v-model="presetData.data[dtExIndex(attr.code)].value" v-for="(v, k) in form.alignItems" :key="k" :val="v.value" :label="v.label" color="teal"></q-radio>
+                                        </div>
+                                        <div class="q-gutter-sm" v-if="attr.attribute === 'display'">
+                                          <q-radio v-model="presetData.data[dtExIndex(attr.code)].value" v-for="(v, k) in form.displayOpt" :key="k" :val="v.value" :label="v.label" color="teal"></q-radio>
+                                        </div>
+                                        <div class="q-gutter-sm" v-if="attr.attribute === 'position'">
+                                          <q-radio v-model="presetData.data[dtExIndex(attr.code)].value" v-for="(v, k) in form.positionOpt" :key="k" :val="v.value" :label="v.label" color="teal"></q-radio>
+                                        </div>
+                                        
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+
+                                <div v-if="attr.attribute ==='image'">
+                                  <div class="row q-col-gutter-x-md q-py-sm" >
+                                    <div class="col-12">
+                                      <div class="row items-center">
+                                        <div class="col-6">
+                                          <q-chip outline color="primary" text-color="white" icon="tune" >
+                                            {{lang(attr.code)}}
+                                          </q-chip>
+                                          <q-avatar size="20px" color="red" text-color="white" icon="fa-solid fa-question" v-if="attr.description">
+                                            <q-tooltip class="text-body2" anchor="center right" self="center start">
+                                              {{tips(attr.code)}}
+                                            </q-tooltip>
+                                          </q-avatar>
+                                        </div>
+                                        <div class="col-6">
+                                          <div class="column items-end">
+                                            <q-btn flat round dense color="grey-5" size="xs" icon="fa-solid fa-rotate-right" @click="undo(attr.code)">
+                                              <q-tooltip class="text-body2" anchor="top middle" self="bottom middle">
+                                                {{ui.lg.tip.redo}}
+                                              </q-tooltip>
+                                            </q-btn>
+                                          </div>
+                                        </div>
+                                        <div class="col-12" v-if="attr.isSetCustom">
+                                          <q-toggle color="purple" keep-color v-model="presetData.data[dtExIndex(attr.code)].isCustom" :label="presetData.data[dtExIndex(attr.code)].isCustom ? ui.lg.input.enableCustom : ui.lg.input.disableCustom" checked-icon="check" unchecked-icon="clear"></q-toggle>
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <div class="col-12">
+                                      <div class="input-panel">
+                                        <div class="q-gutter-sm">
+                                          <q-input filled v-model="presetData.data[dtExIndex(attr.code)].value" :label="ui.lg.input.imagePath" ></q-input>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+  
+                                <div v-if="attr.attribute ==='content'"> 
+                                  <div class="row q-col-gutter-x-md q-py-sm" >
+                                    <div class="col-12">
+                                      <div class="row items-center">
+                                        <div class="col-6 q-gutter-x-xs">
+                                          <q-chip outline color="primary" text-color="white" icon="tune" >
+                                            {{lang(attr.code)}}
+                                          </q-chip>
+                                          <q-avatar size="20px" color="red" text-color="white" icon="fa-solid fa-question" v-if="attr.description">
+                                            <q-tooltip class="text-body2" anchor="center right" self="center start">
+                                              {{tips(attr.code)}}
+                                            </q-tooltip>
+                                          </q-avatar>
+                                        </div>
+                                        <div class="col-6">
+                                          <div class="column items-end">
+                                            <q-btn flat round dense color="grey-5" size="xs" icon="fa-solid fa-rotate-right" @click="undo(attr.code)">
+                                              <q-tooltip class="text-body2" anchor="top middle" self="bottom middle">
+                                                {{ui.lg.tip.redo}}
+                                              </q-tooltip>
+                                            </q-btn>
+                                          </div>
+                                        </div>
+                                        <div class="col-12" v-if="attr.isSetCustom">
+                                          <q-toggle color="purple" keep-color v-model="presetData.data[dtExIndex(attr.code)].isCustom" :label="presetData.data[dtExIndex(attr.code)].isCustom ? ui.lg.input.enableCustom : ui.lg.input.disableCustom" checked-icon="check" unchecked-icon="clear"></q-toggle>
+                                        </div>
+                                      </div>
+                                    </div>
+                                    
+                                    <div class="col-12">
+                                      <div class="input-panel">
+                                        <div class="q-gutter-sm">
+                                          <q-input filled v-model="presetData.data[dtExIndex(attr.code)].value" ></q-input>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+
+                                <div v-if="['size', 'degree'].includes(attr.attribute)">
+                                  <div class="row q-col-gutter-x-md q-py-sm" >
+                                    <div class="col-12">
+                                      <div class="row items-center">
+                                        <div class="col-6">
+                                          <q-chip outline color="primary" text-color="white" icon="tune" >
+                                            {{lang(attr.code)}}
+                                          </q-chip>
+                                          <q-avatar size="20px" color="red" text-color="white" icon="fa-solid fa-question" v-if="attr.description">
+                                            <q-tooltip class="text-body2" anchor="center right" self="center start">
+                                              {{tips(attr.code)}}
+                                            </q-tooltip>
+                                          </q-avatar>
+                                        </div>
+                                        <div class="col-6">
+                                          <div class="column items-end">
+                                            <q-btn flat round dense color="grey-5" size="xs" icon="fa-solid fa-rotate-right" @click="undo(attr.code)">
+                                              <q-tooltip class="text-body2" anchor="top middle" self="bottom middle">
+                                                {{ui.lg.tip.redo}}
+                                              </q-tooltip>
+                                            </q-btn>
+                                          </div>
+                                        </div>
+                                        <div class="col-12" v-if="attr.isSetCustom">
+                                          <q-toggle color="purple" keep-color v-model="presetData.data[dtExIndex(attr.code)].isCustom" :label="presetData.data[dtExIndex(attr.code)].isCustom ? ui.lg.input.enableCustom : ui.lg.input.disableCustom" checked-icon="check" unchecked-icon="clear"></q-toggle>
+                                        </div>
+                                        <div class="col-12" v-if="attr.attribute === 'size'">
+                                          <div class="input-panel">
+                                            <div class="row items-center">
+                                              <div class="col-2">
+                                                <q-input type="number" class="ui-input ui-input-field" input-class="ui-input-field-c" outlined rounded dense  v-model="presetData.data[dtExIndex(attr.code)].value" :min="attr.min" :max="attr.max" color="red">
+                                                  {{presetData.data[dtExIndex(attr.code)].unit}}
+                                                </q-input>
+                                              </div>
+                                              <div class="col-10 q-px-sm q-mt-xs">
+                                                <q-slider dense label :markers="10" v-model="presetData.data[dtExIndex(attr.code)].value" :min="attr.min" :max="attr.max" color="red"></q-slider>
+                                              </div>
+                                            </div>
+                                          </div>
+                                        </div>
+                                        <div class="col-12" v-if="attr.attribute === 'degree'">
+                                          <div class="input-panel">
+                                            <div class="row items-center">
+                                              <div class="col-2">
+                                                <q-input type="number" class="ui-input ui-input-field" input-class="ui-input-field-c" outlined rounded dense  v-model="presetData.data[dtExIndex(attr.code)].value" :min="attr.min" :max="attr.max" color="red">
+                                                  {{presetData.data[dtExIndex(attr.code)].unit}}
+                                                </q-input>
+                                              </div>
+                                              <div class="col-10 q-px-sm q-mt-xs">
+                                                <q-slider dense label :markers="10" v-model="presetData.data[dtExIndex(attr.code)].value" :min="attr.min" :max="attr.max" color="red"></q-slider>
+                                              </div>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+
+                                <div v-if="attr.attribute ==='size-condition'">
+                                  <div class="row q-col-gutter-x-md q-py-sm" >
+                                    <div class="col-12">
+                                      <div class="row items-center">
+                                        <div class="col-6">
+                                          <q-chip outline color="primary" text-color="white" icon="tune" >
+                                            {{lang(attr.code)}}
+                                          </q-chip>
+                                          <q-avatar size="20px" color="red" text-color="white" icon="fa-solid fa-question" v-if="attr.description">
+                                            <q-tooltip class="text-body2" anchor="center right" self="center start">
+                                              {{tips(attr.code)}}
+                                            </q-tooltip>
+                                          </q-avatar>
+                                        </div>
+                                        <div class="col-6">
+                                          <div class="column items-end">
+                                            <q-btn flat round dense color="grey-5" size="xs" icon="fa-solid fa-rotate-right" @click="undo(attr.code)">
+                                              <q-tooltip class="text-body2" anchor="top middle" self="bottom middle">
+                                                {{ui.lg.tip.redo}}
+                                              </q-tooltip>
+                                            </q-btn>
+                                          </div>
+                                        </div>
+                                        <div class="col-12" v-if="attr.isSetCustom">
+                                          <q-toggle color="purple" keep-color v-model="presetData.data[dtExIndex(attr.code)].isCustom" :label="presetData.data[dtExIndex(attr.code)].isCustom ? ui.lg.input.enableCustom : ui.lg.input.disableCustom" checked-icon="check" unchecked-icon="clear"></q-toggle>
+                                        </div>
+                                        <div class="col-12">
+                                          <div class="input-panel">
+                                            <div class="row items-center">
+                                              <div class="col-12">
+                                                <q-toggle color="teal" keep-color v-model="presetData.data[dtExIndex(attr.code)].isDefault" :label="presetData.data[dtExIndex(attr.code)].isDefault ? ui.lg.input.enableDefault : ui.lg.input.disableDefault" checked-icon="hdr_auto" unchecked-icon="fa-solid fa-sliders"></q-toggle>
+                                              </div>
+                                              <div class="col-2">
+                                                <q-input type="number" class="ui-input ui-input-field" input-class="ui-input-field-c" outlined rounded dense  v-model="presetData.data[dtExIndex(attr.code)].value" :min="attr.min" :max="attr.max" color="red" v-bind:disable="presetData.data[dtExIndex(attr.code)].isDefault">
+                                                  {{presetData.data[dtExIndex(attr.code)].unit}}
+                                                </q-input>
+                                              </div>
+                                              <div class="col-10 q-px-sm q-mt-xs">
+                                                <q-slider dense label :markers="10" v-model="presetData.data[dtExIndex(attr.code)].value" :min="attr.min" :max="attr.max" color="red" v-bind:disable="presetData.data[dtExIndex(attr.code)].isDefault" ></q-slider>
+                                              </div>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+
+                                <div v-if="attr.attribute ==='size-range-condition'">
+                                  <div class="row q-col-gutter-x-md q-py-sm" >
+                                    <div class="col-12">
+                                      <div class="row items-center">
+                                        <div class="col-6">
+                                          <q-chip outline color="primary" text-color="white" icon="tune" >
+                                            {{lang(attr.code)}}
+                                          </q-chip>
+                                          <q-avatar size="20px" color="red" text-color="white" icon="fa-solid fa-question" v-if="attr.description">
+                                            <q-tooltip class="text-body2" anchor="center right" self="center start">
+                                              {{tips(attr.code)}}
+                                            </q-tooltip>
+                                          </q-avatar>
+                                        </div>
+                                        <div class="col-6">
+                                          <div class="column items-end">
+                                            <q-btn flat round dense color="grey-5" size="xs" icon="fa-solid fa-rotate-right" @click="undo(attr.code)">
+                                              <q-tooltip class="text-body2" anchor="top middle" self="bottom middle">
+                                                {{ui.lg.tip.redo}}
+                                              </q-tooltip>
+                                            </q-btn>
+                                          </div>
+                                        </div>
+                                        <div class="col-12" v-if="attr.isSetCustom">
+                                          <q-toggle color="purple" keep-color v-model="presetData.data[dtExIndex(attr.code)].isCustom" :label="presetData.data[dtExIndex(attr.code)].isCustom ? ui.lg.input.enableCustom : ui.lg.input.disableCustom" checked-icon="check" unchecked-icon="clear"></q-toggle>
+                                        </div>
+                                        <div class="col-12">
+                                          <div class="input-panel">
+                                            <div class="row items-center">
+                                              <div class="col-12">
+                                                <q-toggle color="teal" keep-color v-model="presetData.data[dtExIndex(attr.code)].isDefault" :label="presetData.data[dtExIndex(attr.code)].isDefault ? ui.lg.input.enableDefault : ui.lg.input.disableDefault" checked-icon="hdr_auto" unchecked-icon="fa-solid fa-sliders"></q-toggle>
+                                              </div>
+                                              <div class="col-2">
+                                                <q-input type="number" class="ui-input ui-input-field" input-class="ui-input-field-c" outlined rounded dense  v-model="presetData.data[dtExIndex(attr.code)].value" :min="attr.min" :max="attr.max" color="red" v-bind:disable="presetData.data[dtExIndex(attr.code)].isDefault">
+                                                  {{presetData.data[dtExIndex(attr.code)].unit}}
+                                                </q-input>
+                                              </div>
+                                              <div class="col-10 q-px-sm q-mt-xs">
+                                                <q-slider dense label :markers="10" v-model="presetData.data[dtExIndex(attr.code)].value" :min="attr.min" :max="attr.max" color="red" v-bind:disable="presetData.data[dtExIndex(attr.code)].isDefault" ></q-slider>
+                                              </div>
+                                            </div>
+    
+                                            <div class="row items-center" v-if="presetData.data[dtExIndex(attr.code)].isDefault">
+                                              <q-separator inset spaced class="q-my-sm"></q-separator>
+                                              <div class="col-12">
+                                                <q-toggle color="teal" keep-color v-model="presetData.data[dtExIndex(attr.code)].isDefaultMin" :label="presetData.data[dtExIndex(attr.code)].isDefaultMin ? 'Min: ' + ui.lg.input.enableDefault : 'Min: ' + ui.lg.input.disableDefault" checked-icon="hdr_auto" unchecked-icon="fa-solid fa-sliders"></q-toggle>
+                                                <q-toggle color="teal" keep-color v-model="presetData.data[dtExIndex(attr.code)].isDefaultMax" :label="presetData.data[dtExIndex(attr.code)].isDefaultMax ? 'Max: ' + ui.lg.input.enableDefault : 'Max: ' + ui.lg.input.disableDefault" checked-icon="hdr_auto" unchecked-icon="fa-solid fa-sliders"></q-toggle>
+                                              </div>
+                                              <div class="col-12">
+                                                <q-range
+                                                  class="q-mt-lg"
+                                                  v-model="presetData.data[dtExIndex(attr.code)].range"
+                                                  :min="attr.min"
+                                                  :max="attr.max"
+                                                  :left-label-value="'Min: ' + presetData.data[dtExIndex(attr.code)].range.min + presetData.data[dtExIndex(attr.code)].unit"
+                                                  :right-label-value="'Max: ' + presetData.data[dtExIndex(attr.code)].range.max + presetData.data[dtExIndex(attr.code)].unit"
+                                                  label-always
+                                                  color="purple"
+                                                ></q-range>
+                                              </div>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+
+                                <div v-if="['number', 'double'].includes(attr.attribute)">
+                                  <div class="row q-col-gutter-x-md q-py-sm" >
+                                    <div class="col-12">
+                                      <div class="row items-center">
+                                        <div class="col-6">
+                                          <q-chip outline color="primary" text-color="white" icon="tune" >
+                                            {{lang(attr.code)}}
+                                          </q-chip>
+                                          <q-avatar size="20px" color="red" text-color="white" icon="fa-solid fa-question" v-if="attr.description">
+                                            <q-tooltip class="text-body2" anchor="center right" self="center start">
+                                              {{tips(attr.code)}}
+                                            </q-tooltip>
+                                          </q-avatar>
+                                        </div>
+                                        <div class="col-6">
+                                          <div class="column items-end">
+                                            <q-btn flat round dense color="grey-5" size="xs" icon="fa-solid fa-rotate-right" @click="undo(attr.code)">
+                                              <q-tooltip class="text-body2" anchor="top middle" self="bottom middle">
+                                                {{ui.lg.tip.redo}}
+                                              </q-tooltip>
+                                            </q-btn>
+                                          </div>
+                                        </div>
+                                        <div class="col-12" v-if="attr.isSetCustom">
+                                          <q-toggle color="purple" keep-color v-model="presetData.data[dtExIndex(attr.code)].isCustom" :label="presetData.data[dtExIndex(attr.code)].isCustom ? ui.lg.input.enableCustom : ui.lg.input.disableCustom" checked-icon="check" unchecked-icon="clear"></q-toggle>
+                                        </div>
+                                        <div class="col-12" v-if="attr.attribute === 'number'">
+                                          <div class="input-panel">
+                                            <div class="row items-center">
+                                              <div class="col-2">
+                                                <q-input type="number" class="ui-input ui-input-field" input-class="ui-input-field-c" outlined rounded dense  v-model="presetData.data[dtExIndex(attr.code)].value" :min="attr.min" :max="attr.max" color="red"></q-input>
+                                              </div>
+                                              <div class="col-10 q-px-sm q-mt-xs">
+                                                <q-slider dense label :markers="10" v-model="presetData.data[dtExIndex(attr.code)].value" :min="attr.min" :max="attr.max" color="red"></q-slider>
+                                              </div>
+                                            </div>
+                                          </div>
+                                        </div>
+                                        <div class="col-12" v-if="attr.attribute === 'double'">
+                                          <div class="input-panel">
+                                            <div class="row items-center">
+                                              <div class="col-2">
+                                                <q-input type="number" class="ui-input ui-input-field" input-class="ui-input-field-c" outlined rounded dense  v-model="presetData.data[dtExIndex(attr.code)].value" :min="attr.min" :max="attr.max" color="red" step="0.01"></q-input>
+                                              </div>
+                                              <div class="col-10 q-px-sm q-mt-xs">
+                                                <q-slider dense label :markers="0.5" step="0.01" v-model="presetData.data[dtExIndex(attr.code)].value" :min="attr.min" :max="attr.max" color="red"></q-slider>
+                                              </div>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+
+                                <div v-if="attr.attribute ==='radius'">
+                                  <div class="row q-col-gutter-x-md q-py-sm" >
+                                    <div class="col-12">
+                                      <div class="row items-center">
+                                        <div class="col-6">
+                                          <q-chip outline color="primary" text-color="white" icon="tune" >
+                                            {{lang(attr.code)}}
+                                          </q-chip>
+                                          <q-avatar size="20px" color="red" text-color="white" icon="fa-solid fa-question" v-if="attr.description">
+                                            <q-tooltip class="text-body2" anchor="center right" self="center start">
+                                              {{tips(attr.code)}}
+                                            </q-tooltip>
+                                          </q-avatar>
+                                        </div>
+                                        <div class="col-6">
+                                          <div class="row justify-end items-center">
+                                            <q-select rounded  outlined  bg-color="red-1" color="red" class="q-mr-sm ui-input-field-unit-selector" v-model="presetData.data[dtExIndex(attr.code)].unit"  :options="form.radiusOpt" option-label="label" option-value="value" emit-value map-options ></q-select>
+                                            <q-btn  flat round  dense  color="grey-5"  size="xs"  icon="fa-solid fa-rotate-right" @click="undo(attr.code)" >
+                                              <q-tooltip class="text-body2" anchor="top middle" self="bottom middle">
+                                                {{ ui.lg.tip.redo }}
+                                              </q-tooltip>
+                                            </q-btn>
+                                          </div>
+                                        </div>
+                                        <div class="col-12" v-if="attr.isSetCustom">
+                                          <q-toggle color="purple" keep-color v-model="presetData.data[dtExIndex(attr.code)].isCustom" :label="presetData.data[dtExIndex(attr.code)].isCustom ? ui.lg.input.enableCustom : ui.lg.input.disableCustom" checked-icon="check" unchecked-icon="clear"></q-toggle>
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <div class="col-12">
+                                      <div class="input-panel">
+                                        <div class="row q-col-gutter-x-md">
+                                          <div class="col-6 q-py-sm">
+                                            <div class="row items-center">
+                                              <div class="col-3 field-name-slider">
+                                                {{ui.lg.input.topLeft}}
+                                              </div>
+                                              <div class="col-2">
+                                                <q-input type="number" class="ui-input ui-input-field" input-class="ui-input-field-c" outlined rounded dense  v-model="presetData.data[dtExIndex(attr.code)].value[0]" :min="attr.min" :max="attr.max" color="blue">
+                                                  {{presetData.data[dtExIndex(attr.code)].unit}}
+                                                </q-input>
+                                              </div>
+                                              <div class="col-7 q-px-md">
+                                                <q-slider dense label v-model="presetData.data[dtExIndex(attr.code)].value[0]" :min="attr.min" :max="attr.max" color="blue"></q-slider>
+                                              </div>
+                                            </div>
+                                          </div>
+                                          <div class="col-6 q-py-sm">
+                                            <div class="row items-center">
+                                              <div class="col-3 field-name-slider">
+                                                {{ui.lg.input.topRight}}
+                                              </div>
+                                              <div class="col-2">
+                                                <q-input type="number" class="ui-input ui-input-field" input-class="ui-input-field-c" outlined rounded dense  v-model="presetData.data[dtExIndex(attr.code)].value[1]" :min="attr.min" :max="attr.max" color="green">
+                                                  {{presetData.data[dtExIndex(attr.code)].unit}}
+                                                </q-input>
+                                              </div>
+                                              <div class="col-7 q-px-md">
+                                                <q-slider dense label v-model="presetData.data[dtExIndex(attr.code)].value[1]" :min="attr.min" :max="attr.max" color="green"></q-slider>
+                                              </div>
+                                            </div>
+                                          </div>
+                                          <div class="col-6 q-py-sm">
+                                            <div class="row items-center">
+                                              <div class="col-3 field-name-slider">
+                                                {{ui.lg.input.bottomLeft}}
+                                              </div>
+                                              <div class="col-2">
+                                                <q-input type="number" class="ui-input ui-input-field" input-class="ui-input-field-c" outlined rounded dense v-model="presetData.data[dtExIndex(attr.code)].value[3]" :min="attr.min" :max="attr.max" color="cyan">
+                                                  {{presetData.data[dtExIndex(attr.code)].unit}}
+                                                </q-input>
+                                              </div>
+                                              <div class="col-7 q-px-md">
+                                                <q-slider dense label v-model="presetData.data[dtExIndex(attr.code)].value[3]" :min="attr.min" :max="attr.max" color="cyan"></q-slider>
+                                              </div>
+                                            </div>
+                                          </div>
+                                          <div class="col-6 q-py-sm">
+                                            <div class="row items-center">
+                                              <div class="col-3 field-name-slider">
+                                                {{ui.lg.input.bottomRight}}
+                                              </div>
+                                              <div class="col-2">
+                                                <q-input type="number" class="ui-input ui-input-field" input-class="ui-input-field-c" outlined rounded dense  v-model="presetData.data[dtExIndex(attr.code)].value[2]" :min="attr.min" :max="attr.max" color="light-green">
+                                                  {{presetData.data[dtExIndex(attr.code)].unit}}
+                                                </q-input>
+                                              </div>
+                                              <div class="col-7 q-px-md">
+                                                <q-slider dense label v-model="presetData.data[dtExIndex(attr.code)].value[2]" :min="attr.min" :max="attr.max" color="light-green"></q-slider>
+                                              </div>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+
+                                <div v-if="['margin', 'padding'].includes(attr.attribute)">
+                                  <div class="row q-col-gutter-x-md q-py-sm" >
+                                    <div class="col-6">
+                                      <q-chip outline color="primary" text-color="white" icon="tune" >
+                                        {{lang(attr.code)}}
+                                      </q-chip>
+                                      <q-avatar size="20px" color="red" text-color="white" icon="fa-solid fa-question" v-if="attr.description">
+                                        <q-tooltip class="text-body2" anchor="center right" self="center start">
+                                          {{tips(attr.code)}}
+                                        </q-tooltip>
+                                      </q-avatar>
+                                    </div>
+                                    <div class="col-6">
+                                      <div class="column items-end">
+                                        <q-btn flat round dense color="grey-5" size="xs" icon="fa-solid fa-rotate-right" @click="undo(attr.code)">
+                                          <q-tooltip class="text-body2" anchor="top middle" self="bottom middle">
+                                            {{ui.lg.tip.redo}}
+                                          </q-tooltip>
+                                        </q-btn>
+                                      </div>
+                                    </div>
+                                    <div class="col-12" v-if="attr.isSetCustom">
+                                      <q-toggle color="purple" keep-color v-model="presetData.data[dtExIndex(attr.code)].isCustom" :label="presetData.data[dtExIndex(attr.code)].isCustom ? ui.lg.input.enableCustom : ui.lg.input.disableCustom" checked-icon="check" unchecked-icon="clear"></q-toggle>
+                                    </div>
+                                    <div class="col-12">
+                                      <div class="input-panel">
+                                        <div class="row q-col-gutter-x-md">
+                                          <div class="col-6 q-py-sm">
+                                            <div class="row items-center">
+                                              <div class="col-3 field-name-slider">
+                                                {{ui.lg.input.top}}
+                                              </div>
+                                              <div class="col-2">
+                                                <q-input type="number" class="ui-input ui-input-field" input-class="ui-input-field-c" outlined rounded dense  v-model="presetData.data[dtExIndex(attr.code)].value[0]" :min="attr.min" :max="attr.max" color="deep-purple">
+                                                  {{presetData.data[dtExIndex(attr.code)].unit}}
+                                                </q-input>
+                                              </div>
+                                              <div class="col-7 q-px-md">
+                                                <q-slider dense label v-model="presetData.data[dtExIndex(attr.code)].value[0]" :min="attr.min" :max="attr.max" color="deep-purple"></q-slider>
+                                              </div>
+                                            </div>
+                                          </div>
+                                          <div class="col-6 q-py-sm">
+                                            <div class="row items-center">
+                                              <div class="col-3 field-name-slider">
+                                                {{ui.lg.input.left}}
+                                              </div>
+                                              <div class="col-2">
+                                                <q-input type="number" class="ui-input ui-input-field" input-class="ui-input-field-c" outlined rounded dense  v-model="presetData.data[dtExIndex(attr.code)].value[3]" :min="attr.min" :max="attr.max" color="orange">
+                                                  {{presetData.data[dtExIndex(attr.code)].unit}}
+                                                </q-input>
+                                              </div>
+                                              <div class="col-7 q-px-md">
+                                                <q-slider dense label v-model="presetData.data[dtExIndex(attr.code)].value[3]" :min="attr.min" :max="attr.max" color="orange"></q-slider>
+                                              </div>
+                                            </div>
+                                          </div>
+                                          <div class="col-6 q-py-sm">
+                                            <div class="row items-center">
+                                              <div class="col-3 field-name-slider">
+                                                {{ui.lg.input.bottom}}
+                                              </div>
+                                              <div class="col-2">
+                                                <q-input type="number" class="ui-input ui-input-field" input-class="ui-input-field-c" outlined rounded dense v-model="presetData.data[dtExIndex(attr.code)].value[2]" :min="attr.min" :max="attr.max" color="purple">
+                                                  {{presetData.data[dtExIndex(attr.code)].unit}}
+                                                </q-input>
+                                              </div>
+                                              <div class="col-7 q-px-md">
+                                                <q-slider dense label v-model="presetData.data[dtExIndex(attr.code)].value[2]" :min="attr.min" :max="attr.max" color="purple"></q-slider>
+                                              </div>
+                                            </div>
+                                          </div>
+                                          <div class="col-6 q-py-sm">
+                                            <div class="row items-center">
+                                              <div class="col-3 field-name-slider">
+                                                {{ui.lg.input.right}}
+                                              </div>
+                                              <div class="col-2">
+                                                <q-input type="number" class="ui-input ui-input-field" input-class="ui-input-field-c" outlined rounded dense  v-model="presetData.data[dtExIndex(attr.code)].value[1]" :min="attr.min" :max="attr.max" color="amber">
+                                                  {{presetData.data[dtExIndex(attr.code)].unit}}
+                                                </q-input>
+                                              </div>
+                                              <div class="col-7 q-px-md">
+                                                <q-slider dense label v-model="presetData.data[dtExIndex(attr.code)].value[1]" :min="attr.min" :max="attr.max" color="amber"></q-slider>
+                                              </div>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+
+                                <div v-if="['border', 'border-top', 'border-right', 'border-bottom', 'border-left'].includes(attr.attribute)">
+                                  <div class="row q-col-gutter-x-md q-py-sm" >
+                                    <div class="col-12">
+                                      <div class="row items-center">
+                                        <div class="col-6">
+                                          <q-chip outline color="primary" text-color="white" icon="tune" >
+                                            {{lang(attr.code)}}
+                                          </q-chip>
+                                          <q-avatar size="20px" color="red" text-color="white" icon="fa-solid fa-question" v-if="attr.description">
+                                            <q-tooltip class="text-body2" anchor="center right" self="center start">
+                                              {{tips(attr.code)}}
+                                            </q-tooltip>
+                                          </q-avatar>
+  
+                                          <q-avatar size="20px" class="q-ml-xs" color="grey" text-color="white" icon="fa-solid fa-arrows-up-down-left-right" v-if="attr.attribute ==='border'">
+                                            <q-tooltip class="text-body2" anchor="center right" self="center start">
+                                              {{ui.lg.tip.side_border}}
+                                            </q-tooltip>
+                                          </q-avatar>
+                                          <q-avatar size="20px" class="q-ml-xs" color="grey" text-color="white" icon="fa-solid fa-arrow-up" v-if="attr.attribute ==='border-top'">
+                                            <q-tooltip class="text-body2" anchor="center right" self="center start">
+                                              {{ui.lg.tip.top_border}}
+                                            </q-tooltip>
+                                          </q-avatar>
+                                          <q-avatar size="20px" class="q-ml-xs" color="grey" text-color="white" icon="fa-solid fa-arrow-right" v-if="attr.attribute ==='border-right'">
+                                            <q-tooltip class="text-body2" anchor="center right" self="center start">
+                                              {{ui.lg.tip.right_border}}
+                                            </q-tooltip>
+                                          </q-avatar>
+                                          <q-avatar size="20px" class="q-ml-xs" color="grey" text-color="white" icon="fa-solid fa-arrow-down" v-if="attr.attribute ==='border-bottom'">
+                                            <q-tooltip class="text-body2" anchor="center right" self="center start">
+                                              {{ui.lg.tip.bottom_border}}
+                                            </q-tooltip>
+                                          </q-avatar>
+                                          <q-avatar size="20px" class="q-ml-xs" color="grey" text-color="white" icon="fa-solid fa-arrow-left" v-if="attr.attribute ==='border-left'">
+                                            <q-tooltip class="text-body2" anchor="center right" self="center start">
+                                              {{ui.lg.tip.left_border}}
+                                            </q-tooltip>
+                                          </q-avatar>
+  
+                                        </div>
+                                        <div class="col-6">
+                                          <div class="column items-end">
+                                            <q-btn flat round dense color="grey-5" size="xs" icon="fa-solid fa-rotate-right" @click="undo(attr.code)">
+                                              <q-tooltip class="text-body2" anchor="top middle" self="bottom middle">
+                                                {{ui.lg.tip.redo}}
+                                              </q-tooltip>
+                                            </q-btn>
+                                          </div>
+                                        </div>
+                                        <div class="col-12" v-if="attr.isSetCustom">
+                                          <q-toggle color="purple" keep-color v-model="presetData.data[dtExIndex(attr.code)].isCustom" :label="presetData.data[dtExIndex(attr.code)].isCustom ? ui.lg.input.enableCustom : ui.lg.input.disableCustom" checked-icon="check" unchecked-icon="clear"></q-toggle>
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <div class="col-12">
+                                      <div class="input-panel">
+                                        <div class="row q-col-gutter-x-md">
+                                          <div class="col-12">
+                                            <div class="input-inline">
+                                              <div class="q-pr-sm ui-color-field">
+                                                <q-input dense borderless v-model="presetData.data[dtExIndex(attr.code)].color" :rules="['anyColor']" color="teal" class="ui-input-color-small ui-input-color-std">
+                                                  <template v-slot:prepend>
+                                                    <q-btn round unelevated no-caps size="10px" icon="colorize" :style="{ backgroundColor: presetData.data[dtExIndex(attr.code)].color }">
+                                                      <q-popup-proxy cover transition-show="scale" transition-hide="scale">
+                                                        <q-color flat square v-model="presetData.data[dtExIndex(attr.code)].color" :format-model="ui.colorFormat" />
+                                                      </q-popup-proxy>
+                                                    </q-btn>
+                                                  </template>
+                                                </q-input>
+                                              </div>
+                                              <div class="q-ml-sm q-pr-sm ui-time-selector-col">
+                                                <q-select rounded outlined bg-color="light-blue-1" color="light-blue" class="ui-input-field-unit-selector" v-model="presetData.data[dtExIndex(attr.code)].style" :options="form.borderOpt" option-label="label" option-value="value" emit-value map-options ></q-select>
+                                              </div>
+                                              <div class="q-pr-sm ui-border-field">
+                                                <q-input type="number" class="ui-input ui-input-field" input-class="ui-input-field-c" outlined rounded dense  v-model="presetData.data[dtExIndex(attr.code)].value" :min="attr.min" :max="attr.max" color="light-blue">
+                                                  {{presetData.data[dtExIndex(attr.code)].unit}}
+                                                </q-input>
+                                              </div>
+                                              <div class="q-pr-sm ui-field-slider-col">
+                                                <q-slider dense v-model="presetData.data[dtExIndex(attr.code)].value" :min="attr.min" :max="attr.max" color="light-blue"></q-slider>
+                                              </div>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+
+                                <div v-if="attr.attribute ==='font'">
+                                  <div class="row q-col-gutter-x-md q-py-sm" >
+                                    <div class="col-12">
+                                      <div class="row items-center">
+                                        <div class="col-6">
+                                          <q-chip outline color="primary" text-color="white" icon="tune" >
+                                            {{lang(attr.code)}}
+                                          </q-chip>
+                                          <q-avatar size="20px" color="red" text-color="white" icon="fa-solid fa-question" v-if="attr.description">
+                                            <q-tooltip class="text-body2" anchor="center right" self="center start">
+                                              {{tips(attr.code)}}
+                                            </q-tooltip>
+                                          </q-avatar>
+                                        </div>
+                                        <div class="col-6">
+                                          <div class="column items-end">
+                                            <q-btn flat round dense color="grey-5" size="xs" icon="fa-solid fa-rotate-right" @click="undo(attr.code)">
+                                              <q-tooltip class="text-body2" anchor="top middle" self="bottom middle">
+                                                {{ui.lg.tip.redo}}
+                                              </q-tooltip>
+                                            </q-btn>
+                                          </div>
+                                        </div>
+                                        <div class="col-12" v-if="attr.isSetCustom">
+                                          <q-toggle color="purple" keep-color v-model="presetData.data[dtExIndex(attr.code)].isCustom" :label="presetData.data[dtExIndex(attr.code)].isCustom ? ui.lg.input.enableCustom : ui.lg.input.disableCustom" checked-icon="check" unchecked-icon="clear"></q-toggle>
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <div class="col-12">
+                                      <div class="input-panel">
+                                        <div class="row q-col-gutter-x-sm q-py-sm">
+                                          <div class="col-3" v-if="presetData.data[dtExIndex(attr.code)].color">
+                                            <div class="ui-color-field">
+                                              <q-input dense outlined v-model="presetData.data[dtExIndex(attr.code)].color" :rules="['anyColor']" color="teal" class="ui-input-color-small ui-input-color-std" :label="ui.lg.input.color">
+                                                <template v-slot:prepend>
+                                                  <q-btn round unelevated no-caps size="10px" icon="colorize" :style="{ backgroundColor: presetData.data[dtExIndex(attr.code)].color }">
+                                                    <q-popup-proxy cover transition-show="scale" transition-hide="scale">
+                                                      <q-color flat square v-model="presetData.data[dtExIndex(attr.code)].color" :format-model="ui.colorFormat" />
+                                                    </q-popup-proxy>
+                                                  </q-btn>
+                                                </template>
+                                              </q-input>
+                                            </div>
+                                          </div>
+                                          <div class="col-5" v-if="presetData.data[dtExIndex(attr.code)].font" >
+                                            <div class="q-gutter-sm">
+                                              <q-select dense outlined class="ui-select" :label="ui.lg.input.fonts" v-model="presetData.data[dtExIndex(attr.code)].font" :options="form.fontOpt" option-label="label" option-value="value" emit-value map-options ></q-select>
+                                            </div>
+                                          </div>
+                                          <div class="col-4" v-if="presetData.data[dtExIndex(attr.code)].type" >
+                                            <div class="q-gutter-sm">
+                                              <q-select dense outlined class="ui-select" :label="ui.lg.input.typeface" v-model="presetData.data[dtExIndex(attr.code)].type" :options="form.fontType" option-label="label" option-value="value" emit-value map-options ></q-select>
+                                            </div>
+                                          </div>
+                                        </div>
+  
+                                        <div class="row q-col-gutter-x-sm q-py-sm" v-if="presetData.data[dtExIndex(attr.code)].style">
+                                          <div class="col-3">
+                                            <div class="q-gutter-sm">
+                                              <q-select dense outlined class="ui-select" :label="ui.lg.input.fontStyle" v-model="presetData.data[dtExIndex(attr.code)].style" :options="form.fontStyle" option-label="label" option-value="value" emit-value map-options ></q-select>
+                                            </div>
+                                          </div>
+                                        </div>
+  
+                                        <div class="row q-col-gutter-x-sm q-py-sm">
+                                          <div class="col-6" v-if="presetData.data[dtExIndex(attr.code)].size">
+                                            <q-badge color="dark">
+                                              {{ui.lg.input.size}}
+                                            </q-badge>
+                                            <div class="row items-center">
+                                              <div class="col-2">
+                                                <q-input type="number" class="ui-input ui-input-field" input-class="ui-input-field-c" outlined rounded dense  v-model="presetData.data[dtExIndex(attr.code)].size" :min="attr.minSize" :max="attr.maxSize" color="orange">
+                                                  {{presetData.data[dtExIndex(attr.code)].unit}}
+                                                </q-input>
+                                              </div>
+                                              <div class="col-10 q-px-sm q-mt-xs">
+                                                <q-slider dense label :markers="10" step="1" v-model="presetData.data[dtExIndex(attr.code)].size" :min="attr.minSize" :max="attr.maxSize" color="orange"></q-slider>
+                                              </div>
+                                            </div>
+                                          </div>
+  
+                                          <div class="col-6" v-if="presetData.data[dtExIndex(attr.code)].weight" >
+                                            <q-badge color="dark">
+                                              {{ui.lg.input.fontweight}}
+                                            </q-badge>
+                                            <div class="row items-center">
+                                              <div class="col-2">
+                                                <q-input type="number" class="ui-input ui-input-field" input-class="ui-input-field-c" outlined rounded dense  v-model="presetData.data[dtExIndex(attr.code)].weight" :min="attr.minWeight" :max="attr.maxWeight" color="amber">
+                                                </q-input>
+                                              </div>
+                                              <div class="col-10 q-px-sm q-mt-xs">
+                                                <q-slider dense label :markers="100" step="100" v-model="presetData.data[dtExIndex(attr.code)].weight" :min="attr.minWeight" :max="attr.maxWeight" color="amber"></q-slider>
+                                              </div>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+
+                                <div v-if="attr.attribute ==='font-weight'">
+                                  <div class="row q-col-gutter-x-md q-py-sm" >
+                                    <div class="col-12">
+                                      <div class="row items-center">
+                                        <div class="col-6">
+                                          <q-chip outline color="primary" text-color="white" icon="tune" >
+                                            {{lang(attr.code)}}
+                                          </q-chip>
+                                          <q-avatar size="20px" color="red" text-color="white" icon="fa-solid fa-question" v-if="attr.description">
+                                            <q-tooltip class="text-body2" anchor="center right" self="center start">
+                                              {{tips(attr.code)}}
+                                            </q-tooltip>
+                                          </q-avatar>
+                                        </div>
+                                        <div class="col-6">
+                                          <div class="column items-end">
+                                            <q-btn flat round dense color="grey-5" size="xs" icon="fa-solid fa-rotate-right" @click="undo(attr.code)">
+                                              <q-tooltip class="text-body2" anchor="top middle" self="bottom middle">
+                                                {{ui.lg.tip.redo}}
+                                              </q-tooltip>
+                                            </q-btn>
+                                          </div>
+                                        </div>
+                                        <div class="col-12" v-if="attr.isSetCustom">
+                                          <q-toggle color="purple" keep-color v-model="presetData.data[dtExIndex(attr.code)].isCustom" :label="presetData.data[dtExIndex(attr.code)].isCustom ? ui.lg.input.enableCustom : ui.lg.input.disableCustom" checked-icon="check" unchecked-icon="clear"></q-toggle>
+                                        </div>
+                                        <div class="col-12">
+                                          <div class="input-panel">
+                                            <div class="row items-center">
+                                              <div class="col-2">
+                                                <q-input type="number" class="ui-input ui-input-field" input-class="ui-input-field-c" outlined rounded dense  v-model="presetData.data[dtExIndex(attr.code)].value" :min="attr.min" :max="attr.max" color="red">
+                                                  {{presetData.data[dtExIndex(attr.code)].unit}}
+                                                </q-input>
+                                              </div>
+                                              <div class="col-10 q-px-sm q-mt-xs">
+                                                <q-slider dense label :markers="100" step="50" v-model="presetData.data[dtExIndex(attr.code)].value" :min="attr.min" :max="attr.max" color="red"></q-slider>
+                                              </div>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+
+                                <div v-if="attr.attribute ==='edge'">
+                                  <div class="row q-col-gutter-x-md q-py-sm" >
+                                    <div class="col-6">
+                                      <div class="row items-center">
+                                        <div class="col-12">
+                                          <q-chip outline color="primary" text-color="white" icon="tune" >
+                                            {{lang(attr.code)}}
+                                          </q-chip>
+                                          <q-avatar size="20px" color="red" text-color="white" icon="fa-solid fa-question" v-if="attr.description">
+                                            <q-tooltip class="text-body2" anchor="center right" self="center start">
+                                              {{tips(attr.code)}}
+                                            </q-tooltip>
+                                          </q-avatar>
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <div class="col-6">
+                                      <div class="column items-end">
+                                        <q-btn flat round dense color="grey-5" size="xs" icon="fa-solid fa-rotate-right" @click="undo(attr.code)">
+                                          <q-tooltip class="text-body2" anchor="top middle" self="bottom middle">
+                                            {{ui.lg.tip.redo}}
+                                          </q-tooltip>
+                                        </q-btn>
+                                      </div>
+                                    </div>
+                                    <div class="col-12" v-if="attr.isSetCustom">
+                                      <q-toggle color="purple" keep-color v-model="presetData.data[dtExIndex(attr.code)].isCustom" :label="presetData.data[dtExIndex(attr.code)].isCustom ? ui.lg.input.enableCustom : ui.lg.input.disableCustom" checked-icon="check" unchecked-icon="clear"></q-toggle>
+                                    </div>
+                                    <div class="col-12">
+                                      <div class="input-panel">
+                                        <div class="col-12">
+                                          <div class="q-gutter-sm">
+                                            <q-radio v-model="presetData.data[dtExIndex(attr.code)].edge" v-for="(v, k) in form.edgeOpt" :key="k" :val="v.value" :label="v.label" color="teal" disable ></q-radio>
+                                          </div>
+                                        </div>
+                                        <q-separator></q-separator>
+                                        <div class="row items-center q-mt-sm">
+                                          <div class="col-2">
+                                            <q-input type="number" class="ui-input ui-input-field" input-class="ui-input-field-c" outlined rounded dense v-model="presetData.data[dtExIndex(attr.code)].value" :min="attr.min" :max="attr.max" color="red">
+                                              {{presetData.data[dtExIndex(attr.code)].unit}}
+                                            </q-input>
+                                          </div>
+                                          <div class="col-10 q-px-sm q-mt-xs">
+                                            <q-slider dense label :markers="10" v-model="presetData.data[dtExIndex(attr.code)].value" :min="attr.min" :max="attr.max" color="red"></q-slider>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+
+                                <div v-if="attr.attribute ==='text-shadow'">
+                                  <div class="row q-col-gutter-x-md q-py-sm" >
+                                    <div class="col-12">
+                                      <div class="row items-center">
+                                        <div class="col-6">
+                                          <q-chip outline color="primary" text-color="white" icon="tune" >
+                                            {{lang(attr.code)}}
+                                          </q-chip>
+                                          <q-avatar size="20px" color="red" text-color="white" icon="fa-solid fa-question" v-if="attr.description">
+                                            <q-tooltip class="text-body2" anchor="center right" self="center start">
+                                              {{tips(attr.code)}}
+                                            </q-tooltip>
+                                          </q-avatar>
+                                        </div>
+                                        <div class="col-6">
+                                          <div class="column items-end">
+                                            <q-toggle v-model="presetData.data[dtExIndex(attr.code)].isEffect" color="red" keep-color :label="presetData.data[dtExIndex(attr.code)].isEffect ? ui.lg.input.onEffect : ui.lg.input.offEffect" checked-icon="check" unchecked-icon="clear"></q-toggle>
+                                          </div>
+                                        </div>
+                                        <div class="col-12" v-if="attr.isSetCustom">
+                                          <q-toggle color="purple" keep-color v-model="presetData.data[dtExIndex(attr.code)].isCustom" :label="presetData.data[dtExIndex(attr.code)].isCustom ? ui.lg.input.enableCustom : ui.lg.input.disableCustom" checked-icon="check" unchecked-icon="clear"></q-toggle>
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <div class="col-12">
+                                      <div class="input-panel">
+                                        <div class="row q-col-gutter-x-md">
+                                          <div class="col-6 q-py-sm">
+                                            <div class="row items-center">
+                                              <div class="col-3 field-name-slider">
+                                                {{ui.lg.input.horizontal}}
+                                              </div>
+                                              <div class="col-2">
+                                                <q-input type="number" class="ui-input ui-input-field" input-class="ui-input-field-c" outlined rounded dense  v-model="presetData.data[dtExIndex(attr.code)].horizontal" :min="attr.minlength" :max="attr.maxlength" color="green">
+                                                  {{presetData.data[dtExIndex(attr.code)].unit}}
+                                                </q-input>
+                                              </div>
+                                              <div class="col-7 q-px-md">
+                                                <q-slider dense label v-model="presetData.data[dtExIndex(attr.code)].horizontal" :min="attr.minlength" :max="attr.maxlength" color="green"></q-slider>
+                                              </div>
+                                            </div>
+                                          </div>
+  
+                                          <div class="col-6 q-py-sm">
+                                            <div class="row items-center">
+                                              <div class="col-3 field-name-slider">
+                                                {{ui.lg.input.blur}}
+                                              </div>
+                                              <div class="col-2">
+                                                <q-input type="number" class="ui-input ui-input-field" input-class="ui-input-field-c" outlined rounded dense  v-model="presetData.data[dtExIndex(attr.code)].blur" :min="attr.minblur" :max="attr.maxblur" color="deep-orange">
+                                                  {{presetData.data[dtExIndex(attr.code)].unit}}
+                                                </q-input>
+                                              </div>
+                                              <div class="col-7 q-px-md">
+                                                <q-slider dense label v-model="presetData.data[dtExIndex(attr.code)].blur" :min="attr.minblur" :max="attr.maxblur" color="deep-orange"></q-slider>
+                                              </div>
+                                            </div>
+                                          </div>
+  
+                                          <div class="col-6 q-py-sm">
+                                            <div class="row items-center">
+                                              <div class="col-3 field-name-slider">
+                                                {{ui.lg.input.vertical}}
+                                              </div>
+                                              <div class="col-2">
+                                                <q-input type="number" class="ui-input ui-input-field" input-class="ui-input-field-c" outlined rounded dense v-model="presetData.data[dtExIndex(attr.code)].vertical" :min="attr.minlength" :max="attr.maxlength" color="light-green">
+                                                  {{presetData.data[dtExIndex(attr.code)].unit}}
+                                                </q-input>
+                                              </div>
+                                              <div class="col-7 q-px-md">
+                                                <q-slider dense label v-model="presetData.data[dtExIndex(attr.code)].vertical" :min="attr.minlength" :max="attr.maxlength" color="light-green"></q-slider>
+                                              </div>
+                                            </div>
+                                          </div>
+  
+                                          <div class="col-6 q-py-sm">
+                                            <div class="row items-center">
+                                              <div class="col-3 field-name-slider">
+                                                {{ui.lg.input.color}}
+                                              </div>
+                                              <div class="col-5">
+                                                <div class="ui-color-field">
+                                                  <q-input dense borderless v-model="presetData.data[dtExIndex(attr.code)].color" :rules="['anyColor']" color="teal" class="ui-input-color-small ui-input-color-std">
+                                                    <template v-slot:prepend>
+                                                      <q-btn round unelevated no-caps size="10px" icon="colorize" :style="{ backgroundColor: presetData.data[dtExIndex(attr.code)].color }">
+                                                        <q-popup-proxy cover transition-show="scale" transition-hide="scale">
+                                                          <q-color flat square v-model="presetData.data[dtExIndex(attr.code)].color" :format-model="ui.colorFormat" />
+                                                        </q-popup-proxy>
+                                                      </q-btn>
+                                                    </template>
+                                                  </q-input>
+                                                </div>
+                                              </div>
+                                              <div class="col-4">
+                                                <div class="column items-end">
+                                                  <q-btn flat round dense color="grey-5" size="xs" icon="fa-solid fa-rotate-right" @click="undo(attr.code)">
+                                                    <q-tooltip class="text-body2" anchor="top middle" self="bottom middle">
+                                                      {{ui.lg.tip.redo}}
+                                                    </q-tooltip>
+                                                  </q-btn>
+                                                </div>
+                                              </div>
+                                            </div>
+                                          </div>
+  
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+
+                                <div v-if="attr.attribute ==='box-shadow'">
+                                  <div class="row q-col-gutter-x-md q-py-sm" >
+                                    <div class="col-12">
+                                      <div class="row items-center">
+                                        <div class="col-6">
+                                          <q-chip outline color="primary" text-color="white" icon="tune" >
+                                            {{lang(attr.code)}}
+                                          </q-chip>
+                                          <q-avatar size="20px" color="red" text-color="white" icon="fa-solid fa-question" v-if="attr.description">
+                                            <q-tooltip class="text-body2" anchor="center right" self="center start">
+                                              {{tips(attr.code)}}
+                                            </q-tooltip>
+                                          </q-avatar>
+                                        </div>
+                                        <div class="col-6">
+                                          <div class="column items-end">
+                                            <q-toggle v-model="presetData.data[dtExIndex(attr.code)].isEffect" color="red" keep-color :label="presetData.data[dtExIndex(attr.code)].isEffect ? ui.lg.input.onEffect : ui.lg.input.offEffect" checked-icon="check" unchecked-icon="clear"></q-toggle>
+                                          </div>
+                                        </div>
+                                        <div class="col-12" v-if="attr.isSetCustom">
+                                          <q-toggle color="purple" keep-color v-model="presetData.data[dtExIndex(attr.code)].isCustom" :label="presetData.data[dtExIndex(attr.code)].isCustom ? ui.lg.input.enableCustom : ui.lg.input.disableCustom" checked-icon="check" unchecked-icon="clear"></q-toggle>
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <div class="col-12">
+                                      <div class="input-panel">
+                                        <div class="row q-col-gutter-x-md">
+                                          <div class="col-6 q-py-sm">
+                                            <div class="row items-center">
+                                              <div class="col-3 field-name-slider">
+                                                {{ui.lg.input.horizontal}}
+                                              </div>
+                                              <div class="col-2">
+                                                <q-input type="number" class="ui-input ui-input-field" input-class="ui-input-field-c" outlined rounded dense  v-model="presetData.data[dtExIndex(attr.code)].horizontal" :min="attr.minlength" :max="attr.maxlength" color="green">
+                                                  {{presetData.data[dtExIndex(attr.code)].unit}}
+                                                </q-input>
+                                              </div>
+                                              <div class="col-7 q-px-md">
+                                                <q-slider dense label v-model="presetData.data[dtExIndex(attr.code)].horizontal" :min="attr.minlength" :max="attr.maxlength" color="green"></q-slider>
+                                              </div>
+                                            </div>
+                                          </div>
+  
+                                          <div class="col-6 q-py-sm">
+                                            <div class="row items-center">
+                                              <div class="col-3 field-name-slider">
+                                                {{ui.lg.input.blur}}
+                                              </div>
+                                              <div class="col-2">
+                                                <q-input type="number" class="ui-input ui-input-field" input-class="ui-input-field-c" outlined rounded dense  v-model="presetData.data[dtExIndex(attr.code)].blur" :min="attr.minblur" :max="attr.maxblur" color="deep-orange">
+                                                  {{presetData.data[dtExIndex(attr.code)].unit}}
+                                                </q-input>
+                                              </div>
+                                              <div class="col-7 q-px-md">
+                                                <q-slider dense label v-model="presetData.data[dtExIndex(attr.code)].blur" :min="attr.minblur" :max="attr.maxblur" color="deep-orange"></q-slider>
+                                              </div>
+                                            </div>
+                                          </div>
+  
+                                          <div class="col-6 q-py-sm">
+                                            <div class="row items-center">
+                                              <div class="col-3 field-name-slider">
+                                                {{ui.lg.input.vertical}}
+                                              </div>
+                                              <div class="col-2">
+                                                <q-input type="number" class="ui-input ui-input-field" input-class="ui-input-field-c" outlined rounded dense v-model="presetData.data[dtExIndex(attr.code)].vertical" :min="attr.minlength" :max="attr.maxlength" color="light-green">
+                                                  {{presetData.data[dtExIndex(attr.code)].unit}}
+                                                </q-input>
+                                              </div>
+                                              <div class="col-7 q-px-md">
+                                                <q-slider dense label v-model="presetData.data[dtExIndex(attr.code)].vertical" :min="attr.minlength" :max="attr.maxlength" color="light-green"></q-slider>
+                                              </div>
+                                            </div>
+                                          </div>
+  
+                                          <div class="col-6 q-py-sm">
+                                            <div class="row items-center">
+                                              <div class="col-3 field-name-slider">
+                                                {{ui.lg.input.spread}}
+                                              </div>
+                                              <div class="col-2">
+                                                <q-input type="number" class="ui-input ui-input-field" input-class="ui-input-field-c" outlined rounded dense v-model="presetData.data[dtExIndex(attr.code)].spread" :min="attr.minspread" :max="attr.maxspread" color="light-green">
+                                                  {{presetData.data[dtExIndex(attr.code)].unit}}
+                                                </q-input>
+                                              </div>
+                                              <div class="col-7 q-px-md">
+                                                <q-slider dense label v-model="presetData.data[dtExIndex(attr.code)].spread" :min="attr.minspread" :max="attr.maxspread" color="light-green"></q-slider>
+                                              </div>
+                                            </div>
+                                          </div>
+  
+                                          <div class="col-6 q-py-sm">
+                                            <div class="row items-center">
+                                              <div class="col-3 field-name-slider">
+                                                {{ui.lg.input.color}}
+                                              </div>
+                                              <div class="col-9">
+                                                <div class="ui-color-field">
+                                                  <q-input dense borderless v-model="presetData.data[dtExIndex(attr.code)].color" :rules="['anyColor']" color="teal" class="ui-input-color-small ui-input-color-std">
+                                                    <template v-slot:prepend>
+                                                      <q-btn round unelevated no-caps size="10px" icon="colorize" :style="{ backgroundColor: presetData.data[dtExIndex(attr.code)].color }">
+                                                        <q-popup-proxy cover transition-show="scale" transition-hide="scale">
+                                                          <q-color flat square v-model="presetData.data[dtExIndex(attr.code)].color" :format-model="ui.colorFormat" />
+                                                        </q-popup-proxy>
+                                                      </q-btn>
+                                                    </template>
+                                                  </q-input>
+                                                </div>
+                                              </div>
+                                            </div>
+                                          </div>
+  
+                                          <div class="col-6 q-py-sm">
+                                            <div class="row items-center">
+                                              <div class="col-3 field-name-slider">
+                                                {{ui.lg.input.shadow}}
+                                              </div>
+                                              <div class="col-5">
+                                                <div class="ui-color-field">
+                                                  <q-toggle v-model="presetData.data[dtExIndex(attr.code)].inset" color="red" keep-color :label="presetData.data[dtExIndex(attr.code)].inset ? ui.lg.input.insetShadow : ui.lg.input.outlineShadow" checked-icon="check" unchecked-icon="clear"></q-toggle>
+                                                </div>
+                                              </div>
+                                              <div class="col-4">
+                                                <div class="column items-end">
+                                                  <q-btn flat round dense color="grey-5" size="xs" icon="fa-solid fa-rotate-right" @click="undo(attr.code)">
+                                                    <q-tooltip class="text-body2" anchor="top middle" self="bottom middle">
+                                                      {{ui.lg.tip.redo}}
+                                                    </q-tooltip>
+                                                  </q-btn>
+                                                </div>
+                                              </div>
+                                            </div>
+                                          </div>
+  
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+
+                                <div v-if="attr.attribute ==='boolean-multoggle'">
+                                  <div class="row q-col-gutter-x-md q-py-sm" >
+                                    <div class="col-12">
+                                      <div class="row items-center">
+                                        <div class="col-6">
+                                          <q-chip outline color="primary" text-color="white" icon="tune" >
+                                            {{lang(attr.code)}}
+                                          </q-chip>
+                                          <q-avatar size="20px" color="red" text-color="white" icon="fa-solid fa-question" v-if="attr.description">
+                                            <q-tooltip class="text-body2" anchor="center right" self="center start">
+                                              {{tips(attr.code)}}
+                                            </q-tooltip>
+                                          </q-avatar>
+                                        </div>
+                                        <div class="col-6">
+                                          <div class="column items-end">
+                                            <q-btn flat round dense color="grey-5" size="xs" icon="fa-solid fa-rotate-right" @click="undo(attr.code)">
+                                              <q-tooltip class="text-body2" anchor="top middle" self="bottom middle">
+                                                {{ui.lg.tip.redo}}
+                                              </q-tooltip>
+                                            </q-btn>
+                                          </div>
+                                        </div>
+                                        <div class="col-12" v-if="attr.isSetCustom">
+                                          <q-toggle color="purple" keep-color v-model="presetData.data[dtExIndex(attr.code)].isCustom" :label="presetData.data[dtExIndex(attr.code)].isCustom ? ui.lg.input.enableCustom : ui.lg.input.disableCustom" checked-icon="check" unchecked-icon="clear"></q-toggle>
+                                        </div>
+                                      </div>
+                                    </div>
+  
+                                    <div class="col-12">
+                                      <div class="input-panel">
+                                        <div class="row q-col-gutter-x-md">
+                                          <div class="col-12">
+                                            <div class="input-inline q-gutter-sm">
+                                              <q-toggle 
+                                                v-for="(tog, index) in attr.toggle" 
+                                                v-model="presetData.data[dtExIndex(attr.code)].toggle[index].value" 
+                                                :color="tog.color" keep-color 
+                                                :label="`${presetData.data[dtExIndex(attr.code)].toggle[index].value ? ui.lg.input.show : ui.lg.input.hide } ${tog.name} `" 
+                                                checked-icon="check" 
+                                                unchecked-icon="clear">
+                                              </q-toggle>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+  
+                                <div v-if="attr.attribute ==='button-toggle'">
+                                  <div class="row q-col-gutter-x-md q-py-sm" >
+                                    <div class="col-12">
+                                      <div class="row items-center">
+                                        <div class="col-6">
+                                          <q-chip outline color="primary" text-color="white" icon="tune" >
+                                            {{lang(attr.code)}}
+                                          </q-chip>
+                                          <q-avatar size="20px" color="red" text-color="white" icon="fa-solid fa-question" v-if="attr.description">
+                                            <q-tooltip class="text-body2" anchor="center right" self="center start">
+                                              {{tips(attr.code)}}
+                                            </q-tooltip>
+                                          </q-avatar>
+                                        </div>
+                                        <div class="col-6">
+                                          <div class="column items-end">
+                                            <q-btn flat round dense color="grey-5" size="xs" icon="fa-solid fa-rotate-right" @click="undo(attr.code)">
+                                              <q-tooltip class="text-body2" anchor="top middle" self="bottom middle">
+                                                {{ui.lg.tip.redo}}
+                                              </q-tooltip>
+                                            </q-btn>
+                                          </div>
+                                        </div>
+                                        <div class="col-12" v-if="attr.isSetCustom">
+                                          <q-toggle color="purple" keep-color v-model="presetData.data[dtExIndex(attr.code)].isCustom" :label="presetData.data[dtExIndex(attr.code)].isCustom ? ui.lg.input.enableCustom : ui.lg.input.disableCustom" checked-icon="check" unchecked-icon="clear"></q-toggle>
+                                        </div>
+                                      </div>
+                                    </div>
+  
+                                    <div class="col-12">
+                                      <div class="input-panel">
+                                        <div class="row q-col-gutter-x-md">
+                                          <div class="col-12">
+                                            <div class="q-gutter-y-md">
+                                              <q-btn-toggle 
+                                                v-model="presetData.data[dtExIndex(attr.code)].value" 
+                                                spread rounded unelevated no-wrap dense
+                                                style="border: 1px solid purple;"
+                                                :toggle-color="attr.color" 
+                                                color="white" 
+                                                :text-color="attr.color"
+                                                :options="attr.togleOptions"
+                                                :option-label="`${lang(label)}`"
+                                                >
+                                                
+                                              </q-btn-toggle>
+                                            </div>
+                                          </div>
+                                        </div>
+  
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+  
+                                <div v-if="attr.attribute ==='button-toggle-2'">
+                                  <div class="row q-col-gutter-x-md q-py-sm" >
+                                    <div class="col-12">
+                                      <div class="row items-center">
+                                        <div class="col-6">
+                                          <q-chip outline color="primary" text-color="white" icon="tune" >
+                                            {{lang(attr.code)}}
+                                          </q-chip>
+                                          <q-avatar size="20px" color="red" text-color="white" icon="fa-solid fa-question" v-if="attr.description">
+                                            <q-tooltip class="text-body2" anchor="center right" self="center start">
+                                              {{tips(attr.code)}}
+                                            </q-tooltip>
+                                          </q-avatar>
+                                        </div>
+                                        <div class="col-6">
+                                          <div class="column items-end">
+                                            <q-btn flat round dense color="grey-5" size="xs" icon="fa-solid fa-rotate-right" @click="undo(attr.code)">
+                                              <q-tooltip class="text-body2" anchor="top middle" self="bottom middle">
+                                                {{ui.lg.tip.redo}}
+                                              </q-tooltip>
+                                            </q-btn>
+                                          </div>
+                                        </div>
+                                        <div class="col-12" v-if="attr.isSetCustom">
+                                          <q-toggle color="purple" keep-color v-model="presetData.data[dtExIndex(attr.code)].isCustom" :label="presetData.data[dtExIndex(attr.code)].isCustom ? ui.lg.input.enableCustom : ui.lg.input.disableCustom" checked-icon="check" unchecked-icon="clear"></q-toggle>
+                                        </div>
+                                      </div>
+                                    </div>
+  
+                                    <div class="col-12">
+                                      <div class="input-panel">
+                                        <div class="row q-col-gutter-x-md">
+                                          <div class="col-12">
+                                            <div class="q-gutter-y-md">
+                                              <q-btn-toggle 
+                                                v-model="presetData.data[dtExIndex(attr.code)].value" 
+                                                spread rounded unelevated no-wrap dense
+                                                style="border: 1px solid purple;"
+                                                :toggle-color="attr.color" 
+                                                color="white" 
+                                                :text-color="attr.color"
+                                                :options="attr.togleOptions"
+                                                :option-label="`${lang(label)}`"
+                                                >
+                                                
+                                              </q-btn-toggle>
+                                            </div>
+                                          </div>
+                                        </div>
+  
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+
+                                <div v-if="attr.attribute ==='linear-gradient'">
+                                  <div class="row q-col-gutter-x-md q-py-sm" >
+                                    <div class="col-12">
+                                      <div class="row items-center">
+                                        <div class="col-6">
+                                          <q-chip outline color="primary" text-color="white" icon="tune" >
+                                            {{lang(attr.code)}}
+                                          </q-chip>
+                                          <q-avatar size="20px" color="red" text-color="white" icon="fa-solid fa-question" v-if="attr.description">
+                                            <q-tooltip class="text-body2" anchor="center right" self="center start">
+                                              {{tips(attr.code)}}
+                                            </q-tooltip>
+                                          </q-avatar>
+                                        </div>
+                                        <div class="col-6">
+                                          <div class="column items-end">
+                                            <q-btn flat round dense color="grey-5" size="xs" icon="fa-solid fa-rotate-right" @click="undo(attr.code)">
+                                              <q-tooltip class="text-body2" anchor="top middle" self="bottom middle">
+                                                {{ui.lg.tip.redo}}
+                                              </q-tooltip>
+                                            </q-btn>
+                                          </div>
+                                        </div>
+                                        <div class="col-12" v-if="attr.isSetCustom">
+                                          <q-toggle color="purple" keep-color v-model="presetData.data[dtExIndex(attr.code)].isCustom" :label="presetData.data[dtExIndex(attr.code)].isCustom ? ui.lg.input.enableCustom : ui.lg.input.disableCustom" checked-icon="check" unchecked-icon="clear"></q-toggle>
+                                        </div>
+                                        <div class="col-12">
+                                          <div class="input-panel">
+                                            <div class="row items-center" v-for="(gradientSet, kAttr) in presetData.data[dtExIndex(attr.code)].gradients" :key="kAttr" >
+         
+                                              <div class="col-6">
+                                                <div class="ui-color-field">
+                                                  <q-input dense borderless v-model="presetData.data[dtExIndex(attr.code)].color1" :rules="['anyColor']" color="teal" class="ui-input-color-small ui-input-color-std">
+                                                    <template v-slot:prepend>
+                                                      <q-btn round unelevated no-caps size="10px" icon="colorize" :style="{ backgroundColor: presetData.data[dtExIndex(attr.code)].gradients[kAttr].color1 }">
+                                                        <q-popup-proxy cover transition-show="scale" transition-hide="scale">
+                                                          <q-color flat square v-model="presetData.data[dtExIndex(attr.code)].gradients[kAttr].color1" :format-model="ui.colorFormat" />
+                                                        </q-popup-proxy>
+                                                      </q-btn>
+                                                    </template>
+                                                  </q-input>
+                                                </div>
+                                              </div>
+                                              <div class="col-6">
+                                                <div class="ui-color-field">
+                                                  <q-input dense borderless v-model="presetData.data[dtExIndex(attr.code)].gradients[kAttr].color2" :rules="['anyColor']" color="teal" class="ui-input-color-small ui-input-color-std">
+                                                    <template v-slot:prepend>
+                                                      <q-btn round unelevated no-caps size="10px" icon="colorize" :style="{ backgroundColor: presetData.data[dtExIndex(attr.code)].gradients[kAttr].color2 }">
+                                                        <q-popup-proxy cover transition-show="scale" transition-hide="scale">
+                                                          <q-color flat square v-model="presetData.data[dtExIndex(attr.code)].gradients[kAttr].color2" :format-model="ui.colorFormat" />
+                                                        </q-popup-proxy>
+                                                      </q-btn>
+                                                    </template>
+                                                  </q-input>
+                                                </div>
+                                              </div>
+                                              
+                                              <div class="col-2">
+                                                <q-input type="number" class="ui-input ui-input-field" input-class="ui-input-field-c" outlined rounded dense  v-model="presetData.data[dtExIndex(attr.code)].gradients[kAttr].degree" :min="attr.minDeg" :max="attr.maxDeg" color="red">
+                                                  {{presetData.data[dtExIndex(attr.code)].gradients[kAttr].unit}}
+                                                </q-input>
+                                              </div>
+                                              <div class="col-10 q-px-sm q-mt-xs">
+                                                <q-slider dense label :markers="10" v-model="presetData.data[dtExIndex(attr.code)].gradients[kAttr].degree" :min="attr.minDeg" :max="attr.maxDeg" color="red"></q-slider>
+                                              </div>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+  
+                                <div v-if="attr.attribute ==='linear-gradient-2'">
+                                  <div class="row q-col-gutter-x-md q-py-sm" >
+                                    <div class="col-12">
+                                      <div class="row items-center">
+                                        <div class="col-6">
+                                          <q-chip outline color="primary" text-color="white" icon="tune" >
+                                            {{lang(attr.code)}}
+                                          </q-chip>
+                                          <q-avatar size="20px" color="red" text-color="white" icon="fa-solid fa-question" v-if="attr.description">
+                                            <q-tooltip class="text-body2" anchor="center right" self="center start">
+                                              {{tips(attr.code)}}
+                                            </q-tooltip>
+                                          </q-avatar>
+                                        </div>
+                                        <div class="col-6">
+                                          <div class="column items-end">
+                                            <q-btn flat round dense color="grey-5" size="xs" icon="fa-solid fa-rotate-right" @click="undo(attr.code)">
+                                              <q-tooltip class="text-body2" anchor="top middle" self="bottom middle">
+                                                {{ui.lg.tip.redo}}
+                                              </q-tooltip>
+                                            </q-btn>
+                                          </div>
+                                        </div>
+                                        <div class="col-12" v-if="attr.isSetCustom">
+                                          <q-toggle color="purple" keep-color v-model="presetData.data[dtExIndex(attr.code)].isCustom" :label="presetData.data[dtExIndex(attr.code)].isCustom ? ui.lg.input.enableCustom : ui.lg.input.disableCustom" checked-icon="check" unchecked-icon="clear"></q-toggle>
+                                        </div>
+                                        <div class="col-12">
+                                          <div class="input-panel">
+                                            <div class="row items-center" v-for="(gradientSet, kAttr) in presetData.data[dtExIndex(attr.code)].gradients" :key="kAttr" >
+         
+                                              <div class="col-4">
+                                                <div class="ui-color-field">
+                                                  <q-input dense borderless v-model="presetData.data[dtExIndex(attr.code)].gradients[kAttr].color" :rules="['anyColor']" color="teal" class="ui-input-color-small ui-input-color-std">
+                                                    <template v-slot:prepend>
+                                                      <q-btn round unelevated no-caps size="10px" icon="colorize" :style="{ backgroundColor: presetData.data[dtExIndex(attr.code)].gradients[kAttr].color }">
+                                                        <q-popup-proxy cover transition-show="scale" transition-hide="scale">
+                                                          <q-color flat square v-model="presetData.data[dtExIndex(attr.code)].gradients[kAttr].color" :format-model="ui.colorFormat" />
+                                                        </q-popup-proxy>
+                                                      </q-btn>
+                                                    </template>
+                                                  </q-input>
+                                                </div>
+                                              </div>
+                                              <div class="col-2">
+                                                <q-input type="number" class="ui-input ui-input-field" input-class="ui-input-field-c" outlined rounded dense  v-model="presetData.data[dtExIndex(attr.code)].gradients[kAttr].stop" :min="attr.minStop" :max="attr.maxStop" color="red">
+                                                  {{presetData.data[dtExIndex(attr.code)].gradients[kAttr].unit}}
+                                                </q-input>
+                                              </div>
+                                              <div class="col-6 q-px-sm q-mt-xs">
+                                                <q-slider dense label :markers="10" v-model="presetData.data[dtExIndex(attr.code)].gradients[kAttr].stop" :min="attr.minStop" :max="attr.maxStop" color="red"></q-slider>
+                                              </div>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+
+                                <div v-if="attr.attribute ==='onecomme-services'">
+                                  <div class="row q-col-gutter-x-md q-py-sm" >
+                                    <div class="col-12">
+                                      <div class="row items-center">
+                                        <div class="col-6">
+                                          <q-chip outline color="primary" text-color="white" icon="tune" >
+                                            {{lang(attr.code)}}
+                                          </q-chip>
+                                          <q-avatar size="20px" color="red" text-color="white" icon="fa-solid fa-question" v-if="attr.description">
+                                            <q-tooltip class="text-body2" anchor="center right" self="center start">
+                                              {{tips(attr.code)}}
+                                            </q-tooltip>
+                                          </q-avatar>
+                                        </div>
+                                        <div class="col-6">
+                                          <div class="column items-end">
+                                            <q-btn flat round dense color="grey-5" size="xs" icon="fa-solid fa-rotate-right" @click="undo(attr.code)">
+                                              <q-tooltip class="text-body2" anchor="top middle" self="bottom middle">
+                                                {{ui.lg.tip.redo}}
+                                              </q-tooltip>
+                                            </q-btn>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <div class="col-12">
+                                      <div class="input-panel">
+                                        <div class="q-gutter-sm">
+                                          <q-select 
+                                            filled 
+                                            dense 
+                                            v-model="presetData.data[dtExIndex(attr.code)].value" 
+                                            :options="form.serviceOpt" 
+                                            label="Service ID" 
+                                            option-label="label" 
+                                            option-value="value" 
+                                            emit-value 
+                                            map-options
+                                            @filter="serviceFilterFn"
+                                          ></q-select>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+
+                                <div v-if="attr.attribute ==='onecomme-gank-id'"> 
+                                  <div class="row q-col-gutter-x-md q-py-sm" >
+                                    <div class="col-12">
+                                      <div class="row items-center">
+                                        <div class="col-6 q-gutter-x-xs">
+                                          <q-chip outline color="primary" text-color="white" icon="tune" >
+                                            {{lang(attr.code)}}
+                                          </q-chip>
+                                          <q-avatar size="20px" color="red" text-color="white" icon="fa-solid fa-question" v-if="attr.description">
+                                            <q-tooltip class="text-body2" anchor="center right" self="center start">
+                                              {{tips(attr.code)}}
+                                            </q-tooltip>
+                                          </q-avatar>
+                                          <q-avatar size="20px" color="red" text-color="white" icon="fa-solid fa-question" v-if="attr.code === 'gank-id'">
+                                            <q-tooltip class="text-body2" anchor="center right" self="center start">
+                                              {{ui.lg.tip.gankUserIdTip}}
+                                              <img :src="ui.lg.tip.gankUserIdTipImg" alt="Gank User ID" style="width: 100%; height: auto;">
+                                            </q-tooltip>
+                                          </q-avatar>
+                                        </div>
+                                        <div class="col-6">
+                                          <div class="column items-end">
+                                            <q-btn flat round dense color="grey-5" size="xs" icon="fa-solid fa-rotate-right" @click="undo(attr.code)">
+                                              <q-tooltip class="text-body2" anchor="top middle" self="bottom middle">
+                                                {{ui.lg.tip.redo}}
+                                              </q-tooltip>
+                                            </q-btn>
+                                          </div>
+                                        </div>
+                                        <div class="col-12" v-if="attr.isSetCustom">
+                                          <q-toggle color="purple" keep-color v-model="presetData.data[dtExIndex(attr.code)].isCustom" :label="presetData.data[dtExIndex(attr.code)].isCustom ? ui.lg.input.enableCustom : ui.lg.input.disableCustom" checked-icon="check" unchecked-icon="clear"></q-toggle>
+                                        </div>
+                                      </div>
+                                    </div>
+                                    
+                                    <div class="col-12">
+                                      <div class="input-panel">
+                                        <div class="q-gutter-sm">
+                                          <q-input filled v-model="presetData.data[dtExIndex(attr.code)].value" ></q-input>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+
+                                <div v-if="attr.attribute ==='onecomme-counter-current'"> 
+                                  <div class="row q-col-gutter-x-md q-py-sm" >
+                                    <div class="col-12">
+                                      <div class="row items-center">
+                                        <div class="col-6 q-gutter-x-xs">
+                                          <q-chip outline color="primary" text-color="white" icon="tune" >
+                                            {{lang(attr.code)}}
+                                          </q-chip>
+                                          <q-avatar size="20px" color="red" text-color="white" icon="fa-solid fa-question" v-if="attr.description">
+                                            <q-tooltip class="text-body2" anchor="center right" self="center start">
+                                              {{tips(attr.code)}}
+                                            </q-tooltip>
+                                          </q-avatar>
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <div class="col-12">
+                                      <div class="input-panel">
+                                        <div class="adjust-panel">
+                                          <div class="row justify-center" v-if="attr.counterIndex === 1">
+                                            <div class="col-3">
+                                              <div class="counter-reset">
+                                                <q-btn rounded outline color="red" :label="ui.lg.button.reset" padding="sm lg" size="sm" @click="resetCounter(attr.counterName)"></q-btn>
+                                              </div>
+                                            </div>
+                                            <div class="col-2">
+                                              <div class="counter-minus">
+                                                <q-btn unelevated rounded color="deep-orange-6" icon="fa fa-minus" padding="sm lg" size="sm" @click="adjustCounter(attr.counterType, attr.min, attr.max, 'decrement', attr.counterIndex, attr.counterName)"></q-btn>
+                                              </div>
+                                            </div>
+                                            <div class="col-2">
+                                              <q-input outlined rounded color="deep-orange-9" v-model="counter.counter1" type="number" :min="attr.min" :max="attr.max" class="ui-input counter-input" @blur="adjustCounter(attr.counterType, attr.min, attr.max, 'update', attr.counterIndex, attr.counterName)"></q-input>
+                                            </div>
+                                            <div class="col-2">
+                                              <div class="counter-plus">
+                                                <q-btn unelevated rounded color="deep-orange-6" icon="fa fa-plus" padding="sm lg" size="sm" @click="adjustCounter(attr.counterType, attr.min, attr.max, 'increment', attr.counterIndex, attr.counterName)"></q-btn>
+                                              </div>
+                                            </div>
+                                            <div class="col-3">
+                                              <div class="q-gutter-x-sm counter-status">
+                                                <q-btn rounded outline color="green" icon="fa fa-play" padding="sm lg" size="sm" @click="statusCounter(attr.counterName, true, attr.counterIndex)" disable v-if="counter.counter1Status"></q-btn>
+                                                <q-btn rounded color="green" icon="fa fa-play" padding="sm lg" size="sm" @click="statusCounter(attr.counterName, true, attr.counterIndex)" v-else></q-btn>
+                                                <q-btn rounded color="red" icon="fa fa-stop" padding="sm lg" size="sm" @click="statusCounter(attr.counterName, false, attr.counterIndex)" v-if="counter.counter1Status"></q-btn>
+                                                <q-btn rounded outline color="red" icon="fa fa-stop" padding="sm lg" size="sm" @click="statusCounter(attr.counterName, false, attr.counterIndex)" disable v-else></q-btn>
+                                              </div>
+                                            </div>
+                                          </div>
+                                          <div class="row justify-center" v-if="attr.counterIndex === 2">
+                                            <div class="col-3">
+                                              <div class="counter-reset">
+                                                <q-btn rounded outline color="red" :label="ui.lg.button.reset" padding="sm lg" size="sm" @click="resetCounter(attr.counterName)"></q-btn>
+                                              </div>
+                                            </div>
+                                            <div class="col-2">
+                                              <div class="counter-minus">
+                                                <q-btn unelevated rounded color="deep-orange-6" icon="fa fa-minus" padding="sm lg" size="sm" @click="adjustCounter(attr.counterType, attr.min, attr.max, 'decrement', attr.counterIndex, attr.counterName)"></q-btn>
+                                              </div>
+                                            </div>
+                                            <div class="col-2">
+                                              <q-input outlined rounded color="deep-orange-9" v-model="counter.counter2" type="number" :min="attr.min" :max="attr.max" class="ui-input counter-input" @blur="adjustCounter(attr.counterType, attr.min, attr.max, 'update', attr.counterIndex, attr.counterName)"></q-input>
+                                            </div>
+                                            <div class="col-2">
+                                              <div class="counter-plus">
+                                                <q-btn unelevated rounded color="deep-orange-6" icon="fa fa-plus" padding="sm lg" size="sm" @click="adjustCounter(attr.counterType, attr.min, attr.max, 'increment', attr.counterIndex, attr.counterName)"></q-btn>
+                                              </div>
+                                            </div>
+                                            <div class="col-3">
+                                              <div class="q-gutter-x-sm counter-status">
+                                                <q-btn rounded outline color="green" icon="fa fa-play" padding="sm lg" size="sm" @click="statusCounter(attr.counterName, true, attr.counterIndex)" disable v-if="counter.counter2Status"></q-btn>
+                                                <q-btn rounded color="green" icon="fa fa-play" padding="sm lg" size="sm" @click="statusCounter(attr.counterName, true, attr.counterIndex)" v-else></q-btn>
+                                                <q-btn rounded color="red" icon="fa fa-stop" padding="sm lg" size="sm" @click="statusCounter(attr.counterName, false, attr.counterIndex)" v-if="counter.counter2Status"></q-btn>
+                                                <q-btn rounded outline color="red" icon="fa fa-stop" padding="sm lg" size="sm" @click="statusCounter(attr.counterName, false, attr.counterIndex)" disable v-else></q-btn>
+                                              </div>
+                                            </div>
+                                          </div>
+                                          <div class="row justify-center" v-if="attr.counterIndex === 3">
+                                            <div class="col-3">
+                                              <div class="counter-reset">
+                                                <q-btn rounded outline color="red" :label="ui.lg.button.reset" padding="sm lg" size="sm" @click="resetCounter(attr.counterName)"></q-btn>
+                                              </div>
+                                            </div>
+                                            <div class="col-2">
+                                              <div class="counter-minus">
+                                                <q-btn unelevated rounded color="deep-orange-6" icon="fa fa-minus" padding="sm lg" size="sm" @click="adjustCounter(attr.counterType, attr.min, attr.max, 'decrement', attr.counterIndex, attr.counterName)"></q-btn>
+                                              </div>
+                                            </div>
+                                            <div class="col-2">
+                                              <q-input outlined rounded color="deep-orange-9" v-model="counter.counter3" type="number" :min="attr.min" :max="attr.max" class="ui-input counter-input" @blur="adjustCounter(attr.counterType, attr.min, attr.max, 'update', attr.counterIndex, attr.counterName)"></q-input>
+                                            </div>
+                                            <div class="col-2">
+                                              <div class="counter-plus">
+                                                <q-btn unelevated rounded color="deep-orange-6" icon="fa fa-plus" padding="sm lg" size="sm" @click="adjustCounter(attr.counterType, attr.min, attr.max, 'increment', attr.counterIndex, attr.counterName)"></q-btn>
+                                              </div>
+                                            </div>
+                                            <div class="col-3">
+                                              <div class="q-gutter-x-sm counter-status">
+                                                <q-btn rounded outline color="green" icon="fa fa-play" padding="sm lg" size="sm" @click="statusCounter(attr.counterName, true, attr.counterIndex)" disable v-if="counter.counter3Status"></q-btn>
+                                                <q-btn rounded color="green" icon="fa fa-play" padding="sm lg" size="sm" @click="statusCounter(attr.counterName, true, attr.counterIndex)" v-else></q-btn>
+                                                <q-btn rounded color="red" icon="fa fa-stop" padding="sm lg" size="sm" @click="statusCounter(attr.counterName, false, attr.counterIndex)" v-if="counter.counter3Status"></q-btn>
+                                                <q-btn rounded outline color="red" icon="fa fa-stop" padding="sm lg" size="sm" @click="statusCounter(attr.counterName, false, attr.counterIndex)" disable v-else></q-btn>
+                                              </div>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+
+                                <div v-if="attr.attribute ==='onecomme-counter-target'"> 
+                                  <div class="row q-col-gutter-x-md q-py-sm" >
+                                    <div class="col-12">
+                                      <div class="row items-center">
+                                        <div class="col-6 q-gutter-x-xs">
+                                          <q-chip outline color="primary" text-color="white" icon="tune" >
+                                            {{lang(attr.code)}}
+                                          </q-chip>
+                                          <q-avatar size="20px" color="red" text-color="white" icon="fa-solid fa-question" v-if="attr.description">
+                                            <q-tooltip class="text-body2" anchor="center right" self="center start">
+                                              {{tips(attr.code)}}
+                                            </q-tooltip>
+                                          </q-avatar>
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <div class="col-12">
+                                      <div class="input-panel">
+                                        <div class="adjust-panel">
+                                          <div class="row justify-center" v-if="attr.counterIndex === 1">
+                                            <div class="col-2">
+                                              <div class="counter-minus">
+                                                <q-btn unelevated rounded color="cyan-6" icon="fa fa-minus" padding="sm lg" size="sm" @click="adjustCounter(attr.counterType, attr.min, attr.max, 'decrement', attr.counterIndex, attr.counterName)"></q-btn>
+                                              </div>
+                                            </div>
+                                            <div class="col-2">
+                                              <q-input outlined rounded color="cyan-9" v-model="counter.target1" type="number" :min="attr.min" :max="attr.max" class="ui-input counter-input" @blur="adjustCounter(attr.counterType, attr.min, attr.max, 'update', attr.counterIndex, attr.counterName)"></q-input>
+                                            </div>
+                                            <div class="col-2">
+                                              <div class="counter-plus">
+                                                <q-btn unelevated rounded color="cyan-6" icon="fa fa-plus" padding="sm lg" size="sm" @click="adjustCounter(attr.counterType, attr.min, attr.max, 'increment', attr.counterIndex, attr.counterName)"></q-btn>
+                                              </div>
+                                            </div>
+                                          </div>
+                                          <div class="row justify-center" v-if="attr.counterIndex === 2">
+                                            <div class="col-2">
+                                              <div class="counter-minus">
+                                                <q-btn unelevated rounded color="cyan-6" icon="fa fa-minus" padding="sm lg" size="sm" @click="adjustCounter(attr.counterType, attr.min, attr.max, 'decrement', attr.counterIndex, attr.counterName)"></q-btn>
+                                              </div>
+                                            </div>
+                                            <div class="col-2">
+                                              <q-input outlined rounded color="cyan-9" v-model="counter.target2" type="number" :min="attr.min" :max="attr.max" class="ui-input counter-input" @blur="adjustCounter(attr.counterType, attr.min, attr.max, 'update', attr.counterIndex, attr.counterName)"></q-input>
+                                            </div>
+                                            <div class="col-2">
+                                              <div class="counter-plus">
+                                                <q-btn unelevated rounded color="cyan-6" icon="fa fa-plus" padding="sm lg" size="sm" @click="adjustCounter(attr.counterType, attr.min, attr.max, 'increment', attr.counterIndex, attr.counterName)"></q-btn>
+                                              </div>
+                                            </div>
+                                          </div>
+                                          <div class="row justify-center" v-if="attr.counterIndex === 3">
+                                            <div class="col-2">
+                                              <div class="counter-minus">
+                                                <q-btn unelevated rounded color="cyan-6" icon="fa fa-minus" padding="sm lg" size="sm" @click="adjustCounter(attr.counterType, attr.min, attr.max, 'decrement', attr.counterIndex, attr.counterName)"></q-btn>
+                                              </div>
+                                            </div>
+                                            <div class="col-2">
+                                              <q-input outlined rounded color="cyan-9" v-model="counter.target3" type="number" :min="attr.min" :max="attr.max" class="ui-input counter-input" @blur="adjustCounter(attr.counterType, attr.min, attr.max, 'update', attr.counterIndex, attr.counterName)"></q-input>
+                                            </div>
+                                            <div class="col-2">
+                                              <div class="counter-plus">
+                                                <q-btn unelevated rounded color="cyan-6" icon="fa fa-plus" padding="sm lg" size="sm" @click="adjustCounter(attr.counterType, attr.min, attr.max, 'increment', attr.counterIndex, attr.counterName)"></q-btn>
+                                              </div>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+
+                                <div v-if="attr.attribute ==='onecomme-counter-field'"> 
+                                  <div class="row q-col-gutter-x-md q-py-sm" >
+                                    <div class="col-12">
+                                      <div class="row items-center">
+                                        <div class="col-6 q-gutter-x-xs">
+                                          <q-chip outline color="primary" text-color="white" icon="tune" >
+                                            {{lang(attr.code)}}
+                                          </q-chip>
+                                          <q-avatar size="20px" color="red" text-color="white" icon="fa-solid fa-question" v-if="attr.description">
+                                            <q-tooltip class="text-body2" anchor="center right" self="center start">
+                                              {{tips(attr.code)}}
+                                            </q-tooltip>
+                                          </q-avatar>
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <div class="col-12">
+                                      <div class="input-panel">
+                                        <div class="q-gutter-sm">
+                                          <p class="tip-text">{{ui.lg.input.counterOhayouFilter}}</p>
+                                        </div>
+                                        <div class="q-gutter-sm" v-if="attr.counterIndex === 1">
+                                          <q-input outlined v-model="counterKeyWords1" type="textarea" :maxlength="form.codeMax" lazy-rules counter></q-input>
+                                        </div>
+                                        <div class="q-gutter-sm" v-if="attr.counterIndex === 2">
+                                          <q-input outlined v-model="counterKeyWords2" type="textarea" :maxlength="form.codeMax" lazy-rules counter></q-input>
+                                        </div>
+                                        <div class="q-gutter-sm" v-if="attr.counterIndex === 3">
+                                          <q-input outlined v-model="counterKeyWords3" type="textarea" :maxlength="form.codeMax" lazy-rules counter></q-input>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+
+                                <div v-if="['datetime-date-format', 'datetime-weekday-format', 'datetime-time-format'].includes(attr.attribute)">
+                                  <div class="row q-col-gutter-x-md q-py-sm" >
+                                    <div class="col-12">
+                                      <div class="row items-center">
+                                        <div class="col-6">
+                                          <q-chip outline color="primary" text-color="white" icon="tune" >
+                                            {{lang(attr.code)}}
+                                          </q-chip>
+                                          <q-avatar size="20px" color="red" text-color="white" icon="fa-solid fa-question" v-if="attr.description">
+                                            <q-tooltip class="text-body2" anchor="center right" self="center start">
+                                              {{tips(attr.code)}}
+                                            </q-tooltip>
+                                          </q-avatar>
+                                        </div>
+                                        <div class="col-6">
+                                          <div class="column items-end">
+                                            <q-btn flat round dense color="grey-5" size="xs" icon="fa-solid fa-rotate-right" @click="undo(attr.code)">
+                                              <q-tooltip class="text-body2" anchor="top middle" self="bottom middle">
+                                                {{ui.lg.tip.redo}}
+                                              </q-tooltip>
+                                            </q-btn>
+                                          </div>
+                                        </div>
+                                        
+                                      </div>
+                                    </div>
+                                    <div class="col-12">
+                                      <div class="input-panel">
+                                        <div class="q-gutter-sm" v-if="attr.attribute ==='datetime-date-format'">
+                                          <q-select 
+                                            filled 
+                                            v-model="presetData.data[dtExIndex(attr.code)].value" 
+                                            :options="form.dateFormat" 
+                                            label="Date Format" 
+                                            option-label="label" 
+                                            option-value="value" 
+                                            emit-value 
+                                            map-options
+                                          ></q-select>
+                                        </div>
+                                        <div class="q-gutter-sm" v-if="attr.attribute ==='datetime-weekday-format'">
+                                          <q-select 
+                                            filled 
+                                            v-model="presetData.data[dtExIndex(attr.code)].value" 
+                                            :options="form.weekdayFormat" 
+                                            label="Weekday Format" 
+                                            option-label="label" 
+                                            option-value="value" 
+                                            emit-value 
+                                            map-options
+                                          ></q-select>
+                                        </div>
+                                        <div class="q-gutter-sm" v-if="attr.attribute ==='datetime-time-format'">
+                                          <q-select 
+                                            filled 
+                                            v-model="presetData.data[dtExIndex(attr.code)].value" 
+                                            :options="form.timeFormat" 
+                                            label="Time Format" 
+                                            option-label="label" 
+                                            option-value="value" 
+                                            emit-value 
+                                            map-options
+                                          ></q-select>
+                                        </div>
+                                        
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+
+                              </div>
+                            </div>
+
+
+
+                          </div>
+                        </div>
+                      </q-tab-panel>
+  
+                    </q-tab-panels>
+                  </q-card>
+
+                </div>
+              </q-scroll-area>
+            </template>
+            
+          </q-splitter>
+
+
+          <div class="q-px-md q-pt-xs" v-if="presetData.status">
+            <q-card square class="q-mt-md q-mr-sm q-pa-md">
+              <div class="row">
+                <div class="col-6">
+                  <q-card-section class="q-px-sm q-pt-none q-pb-xs">
+                    <div class="row q-mb-md">
+                      <div class="col-10">
+                        <q-input filled dense readonly v-model="presetData.internalURL" :label="ui.lg.input.localhostLink"></q-input>
+                      </div>
+                      <div class="col-2 q-pl-md">
+                        <q-btn @click="copyText(presetData.internalURL)" :label="ui.lg.button.copy" color="primary"></q-btn>
+                      </div>
+                    </div>
+
+                    <div class="row q-mb-md" v-for="(value, index) in presetData.externalURL" :key="index">
+                      <div class="col-10">
+                        <q-input filled dense readonly v-model="presetData.externalURL[index]" :label="ui.lg.input.ipLink"></q-input>
+                      </div>
+                      <div class="col-2 q-pl-md">
+                        <q-btn @click="copyText(presetData.externalURL[index])" :label="ui.lg.button.copy" color="primary"></q-btn>
+                      </div>
+                    </div>
+
+                    <div class="row q-mb-md">
+                      <div class="col-10">
+                        <p class="notice">{{ui.lg.tip.msg1}}</p>
+                      </div>
+                      <div class="col-2 q-pl-md"></div>
+                    </div>
+                    
+                  </q-card-section>
+                </div>
+                <div class="col-6">
+                  <q-card-section class="q-px-sm q-pt-none q-pb-xs">
+                    <q-input filled v-model="presetData.name" :label="ui.lg.input.presetName" min="1" max="50" :rules="[val => !!val || ui.lg.validation.fieldRequired ]" > </q-input>
+                    
+                    <div class="q-pt-md q-gutter-sm">
+                      <q-btn v-if="!presetData.isOriginal" color="purple" class="ui-btn-width" icon="fa-solid fa-floppy-disk" @click="savePreset('update')" :label="ui.lg.button.save"></q-btn>
+                      <q-btn color="teal" class="ui-btn-width" icon="fa-solid fa-share-from-square" @click="savePreset('confirm')" :label="ui.lg.button.saveAs"></q-btn>
+                      <q-btn outline color="blue-grey-4" class="ui-btn-width" icon="fa-solid fa-rotate" @click="reset()" :label="ui.lg.button.reset"></q-btn>
+                      <q-btn v-if="!presetData.isOriginal" outline color="red" class="ui-btn-width" icon="fa-solid fa-trash" @click="deletePreset('confirm')" :label="ui.lg.button.delete"></q-btn>
+                    </div>
+                    
+                  </q-card-section>
+                </div>
+              </div>
+            </q-card>
+          </div>
+
+        </div>
+
+        <q-dialog v-model="isModal">
+          <q-card>
+            <q-card-section>
+              <div class="text-h6">{{modalDialog.title}}</div>
+            </q-card-section>
+    
+            
+            <q-card-section v-if="modalDialog.prefix==='save-another-preset'" class="q-pt-none" style="width: 500px;">
+              <q-input filled v-model="presetNewName" :label="ui.lg.input.presetName" min="1" max="50" :rules="[val => !!val || ui.lg.validation.fieldRequired ]" > </q-input>
+            </q-card-section>
+
+            <q-card-section v-else-if="modalDialog.prefix==='change-language'" class="q-pt-none" style="width: 300px;">
+              <q-select v-model="selectedLangOption" :options="langOption" label="Language" color="teal" options-selected-class="text-deep-orange" option-label="label" option-value="value" emit-value map-options ></q-select>
+            </q-card-section>
+            
+            <q-card-section v-else class="q-pt-none" style="width: 300px;">
+              {{modalDialog.content}}
+            </q-card-section>
+    
+            <q-card-actions align="right">
+
+                <q-btn v-if="modalDialog.isPriBtn === true " flat class="btn-fixed-width" color="primary" :label="modalDialog.priBtnLabel" v-close-popup ></q-btn>
+                <q-btn v-if="modalDialog.isSecBtn === true "flat class="btn-fixed-width" color="blue-grey-3" :label="modalDialog.secBtnLabel" v-close-popup ></q-btn>
+                <q-btn v-if="modalDialog.isAction === true " flat class="btn-fixed-width" color="primary" :label="modalDialog.actionBtnLabel" @click="modalConfirmation = true" ></q-btn>
+            </q-card-actions>
+          </q-card>
+        </q-dialog>
+
+        <div class="q-mt-xl q-pa-lg footer">
+          
+          <div class="row justify-center footer-row">
+            <div class="col-4">
+              <div class="row">
+                <div class="col-6">
+                  <div class="center-list">
+                    <div class="information-list">
+                      <div class="footer-title">Infomation</div>
+                      <ul class="footer-ul">
+                        <li class="footer-li">OneComme {{web.appVersion}}</li>
+                        <li class="footer-li">Template Utils Plugin {{web.pluginVersion}}</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-6">
+                  <div class="center-list">
+                    <div class="supporters-list">
+                      <div class="footer-title">Supporters</div>
+                      <ul class="footer-ul">
+                        <li class="footer-supporter-li">
+                          <a class="footer-supporter" href="https://x.com/en_kaien" target="_blank" rel="noopener noreferrer">
+                            <img src="https://yt3.googleusercontent.com/ZDN54NVJn7qTyOHOgNEPMioITuOeMMPm1fNfn48cmLpp2ZLxwyyJLteFqPJLgZqtkWQ1uDqlZw=s160-c-k-c0x00ffffff-no-rj">
+                            <span>閻 ( EN )</span>
+                          </a>
+                        </li>
+                        <li class="ffooter-supporter-li">
+                          <a class="footer-supporter" href="https://x.com/nekotaberry" target="_blank" rel="noopener noreferrer">
+                            <img src="https://yt3.googleusercontent.com/yWhypnuxW59aNhJm_x3JVvisIXRWh-lsm7bT3uTALJZZYQIC4eEDSVdH8f1eJHSe_q_Rzyrgxw=s160-c-k-c0x00ffffff-no-rj">
+                            <span>猫田貝莉</span>
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="footer-info">Plugin Design by {{web.pluginAuthor}}.  Built with QUASAR. </div>
+        </div>
+      </div>
+
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@3/dist/vue.global.prod.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/quasar@2.17.5/dist/quasar.umd.prod.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/quasar@2.17.5/dist/icon-set/fontawesome-v6.umd.prod.js"></script>
+    <script src="js/script.js"></script>
+  </body>
+</html>

@@ -1,0 +1,404 @@
+{
+  "parentCode": "concurrent-viewers",
+  "presetId": 1,
+  "section": [
+    {
+      "parentCode": "concurrent-viewers",
+      "code": "main",
+      "position": 0
+    }
+  ],
+  "part": [
+    {
+      "parentCode": "main",
+      "code": "Service",
+      "position": 0
+    },
+    {
+      "parentCode": "main",
+      "code": "icon",
+      "position": 1
+    },
+    {
+      "parentCode": "main",
+      "code": "counter",
+      "position": 2
+    }
+  ],
+  "attribute": [
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": false,
+        "isJs": true
+      },
+      "isSetCustom": false,
+      "isCustom": false,
+      "isOriginal": false,
+      "oriFrom": null,
+      "cssvar": "--onecomme-service",
+      "code": "onecomme-service",
+      "parentCode": "Service",
+      "attribute": "onecomme-services",
+      "value": "service-id",
+      "description": true
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": false,
+      "isCustom": false,
+      "isOriginal": false,
+      "oriFrom": null,
+      "code": "youtube-subscriber-count",
+      "parentCode": "Service",
+      "attribute": "boolean-multoggle",
+      "toggle": [
+        {
+          "code": "youtube-subscriber-count",
+          "name": "YouTube Subsciber",
+          "value": true,
+          "truevalue": "flex",
+          "falsevalue": "none",
+          "cssvar": "--youtube-subscriber-count"
+        }
+      ],
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": false,
+      "isCustom": false,
+      "isOriginal": false,
+      "oriFrom": null,
+      "code": "arrangement",
+      "parentCode": "Service",
+      "attribute": "button-toggle-2",
+      "value": "flex",
+      "color": "purple",
+      "togleOptions": [
+        {
+          "label": "Horizon",
+          "value": "flex",
+          "paramSet": [
+            {
+              "value": "flex",
+              "code": "arrangement-display"
+            }
+          ]
+        },
+        {
+          "label": "Vertical",
+          "value": "block",
+          "paramSet": [
+            {
+              "value": "block",
+              "code": "arrangement-display"
+            }
+          ]
+        }
+      ],
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": false,
+      "isCustom": false,
+      "isOriginal": false,
+      "oriFrom": null,
+      "cssvar": "--count-margin",
+      "code": "count-margin",
+      "parentCode": "Service",
+      "attribute": "margin",
+      "unit": "px",
+      "min": 0,
+      "max": 100,
+      "value": [
+        0,
+        10,
+        0,
+        0
+      ],
+      "masks": {
+        "0": "0",
+        "100": "100"
+      },
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": false,
+      "isCustom": false,
+      "isOriginal": false,
+      "oriFrom": null,
+      "cssvar": "--icon-color",
+      "code": "icon-color",
+      "parentCode": "icon",
+      "attribute": "color",
+      "value": "#6e6e6eff",
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": false,
+      "isCustom": false,
+      "isOriginal": false,
+      "oriFrom": null,
+      "cssvar": "--icon-size",
+      "code": "icon-size",
+      "parentCode": "icon",
+      "attribute": "size",
+      "value": 30,
+      "unit": "px",
+      "min": 0,
+      "max": 300,
+      "masks": {
+        "0": "0",
+        "300": "300"
+      },
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": false,
+      "isCustom": false,
+      "isOriginal": false,
+      "oriFrom": null,
+      "code": "icon-animation",
+      "parentCode": "icon",
+      "attribute": "button-toggle",
+      "truedefine": "heartbeat",
+      "falsedefine": "none",
+      "value": "none",
+      "color": "red",
+      "togleOptions": [
+        {
+          "code": "icon-animation-none",
+          "label": "None",
+          "value": "none",
+          "cssvar": "--icon-animation-none"
+        },
+        {
+          "code": "icon-animation",
+          "label": "heartbeat",
+          "value": "heartbeat",
+          "cssvar": "--icon-animation"
+        }
+      ],
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": false,
+      "isCustom": false,
+      "isOriginal": false,
+      "oriFrom": null,
+      "cssvar": "--icon-animation-time",
+      "code": "icon-animation-time",
+      "parentCode": "icon",
+      "attribute": "time",
+      "value": 2,
+      "unit": "s",
+      "min_ms": 0,
+      "max_ms": 5000,
+      "min_sec": 0,
+      "max_sec": 10,
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": false,
+      "isCustom": false,
+      "isOriginal": false,
+      "oriFrom": null,
+      "code": "counter-font",
+      "parentCode": "counter",
+      "attribute": "font",
+      "cssvarColor": "--counter-font-color",
+      "cssvarFont": "--counter-font-name",
+      "cssvarSize": "--counter-font-size",
+      "cssvarWeight": "--counter-font-weight",
+      "color": "#000000ff",
+      "font": "Noto Sans",
+      "style": "normal",
+      "type": "none",
+      "size": 30,
+      "unit": "px",
+      "weight": 600,
+      "minSize": 0,
+      "maxSize": 300,
+      "minWeight": 0,
+      "maxWeight": 900,
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": false,
+      "isCustom": false,
+      "isOriginal": false,
+      "oriFrom": null,
+      "cssvar": "--counter-margin",
+      "code": "counter-margin",
+      "parentCode": "counter",
+      "attribute": "margin",
+      "unit": "px",
+      "min": 0,
+      "max": 50,
+      "value": [
+        0,
+        0,
+        0,
+        3
+      ],
+      "masks": {
+        "0": "0",
+        "50": "50"
+      },
+      "description": false
+    }
+  ],
+  "language": [
+    {
+      "code": "main",
+      "en-US": "Main",
+      "ja": "メイン",
+      "zh-CN": "主要",
+      "zh-TW": "主要"
+    },
+    {
+      "code": "Service",
+      "en-US": "Service",
+      "ja": "枠名",
+      "zh-CN": "直播间名称",
+      "zh-TW": "聊天室名稱"
+    },
+    {
+      "code": "onecomme-service",
+      "en-US": "Service",
+      "ja": "枠名",
+      "zh-CN": "直播间名称",
+      "zh-TW": "聊天室名稱"
+    },
+    {
+      "code": "youtube-subscriber-count",
+      "en-US": "Youtube Subscriber Count",
+      "ja": "YouTubeの登録者数",
+      "zh-CN": "YouTube 订阅者数量",
+      "zh-TW": "YouTube 訂閱者數量"
+    },
+    {
+      "code": "arrangement",
+      "en-US": "Arrangement",
+      "ja": "配列",
+      "zh-CN": "排列",
+      "zh-TW": "排列"
+    },
+    {
+      "code": "count-margin",
+      "en-US": "Margin",
+      "ja": "マージン",
+      "zh-CN": "边距",
+      "zh-TW": "邊距"
+    },
+    {
+      "code": "icon",
+      "en-US": "Icon",
+      "ja": "アイコン",
+      "zh-CN": "图标",
+      "zh-TW": "圖標"
+    },
+    {
+      "code": "icon-color",
+      "en-US": "Color",
+      "ja": "色",
+      "zh-CN": "颜色",
+      "zh-TW": "顏色"
+    },
+    {
+      "code": "icon-size",
+      "en-US": "Size",
+      "ja": "サイズ",
+      "zh-CN": "大小",
+      "zh-TW": "大小"
+    },
+    {
+      "code": "icon-animation",
+      "en-US": "Icon Animation",
+      "ja": "アイコンアニメーション",
+      "zh-CN": "图标动画",
+      "zh-TW": "圖標動畫"
+    },
+    {
+      "code": "icon-animation-time",
+      "en-US": "Animation Frequency",
+      "ja": "アニメーション頻度",
+      "zh-CN": "动画频率",
+      "zh-TW": "動畫頻率"
+    },
+    {
+      "code": "counter",
+      "en-US": "Counter",
+      "ja": "カウンター",
+      "zh-CN": "计数器",
+      "zh-TW": "計數器"
+    },
+    {
+      "code": "counter-font",
+      "en-US": "Font",
+      "ja": "フォント",
+      "zh-CN": "字体",
+      "zh-TW": "字體"
+    },
+    {
+      "code": "counter-margin",
+      "en-US": "Margin",
+      "ja": "マージン",
+      "zh-CN": "边距",
+      "zh-TW": "邊距"
+    }
+  ],
+  "description": [
+    {
+      "code": "onecomme-service",
+      "en-US": "After setting the Service ID, please remember to save your changes and manually refresh the OBS resources.",
+      "ja": "Service IDの設定が完了したら、必ず保存してください。また、OBSリソースを手動でリフレッシュしてください。",
+      "zh-CN": "完成 Service ID 设置后，请勿忘保存，并手动刷新 OBS 资源。",
+      "zh-TW": "完成 Service ID 設定後，請記得儲存，並手動重新整理 OBS 資源。"
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+:root {
+--counter-font-color: #171717ff;
+--counter-font-size: 60px;
+--counter-font-family: Noto Sans;
+--counter-font-weight: 600;
+--counter-text-shadow: none;
+--counter-text-align: center;
+--target-font-color: #757575ff;
+--target-font-size: 50px;
+--target-font-family: Noto Sans;
+--target-font-weight: 500;
+--target-text-shadow: none;
+--separator-font-color: #757575ff;
+--separator-font-size: 50px;
+--separator-font-family: Noto Sans;
+--separator-font-weight: 500;
+--separator-text-shadow: none;
+--separator-margin: 0px 0px 0px 0px;
+}

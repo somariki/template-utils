@@ -1,0 +1,85 @@
+@import url("preset3.css");
+.counter {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin: var(--box-margin);
+}
+.counter .text-top {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: absolute;
+  font-family: var(--title-font-family);
+  background: var(--title-background);
+  color: var(--title-font-color);
+  font-size: var(--title-font-size);
+  font-weight: var(--title-font-weight);
+  text-shadow: var(--title-text-shadow);
+  padding: var(--title-padding);
+  border-radius: var(--title-border-radius);
+  letter-spacing: var(--title-spacing);
+}
+.counter .text-top .title::before {
+  content: var(--title-content);
+}
+.counter .container-box {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  min-width: var(--box-width);
+  padding: var(--container-padding);
+  border: var(--container-border);
+  border-radius: var(--container-border-radius);
+  background: var(--container-background);
+  margin-top: var(--container-margin-top);
+  -webkit-box-shadow: var(--container-box-shadow);
+          box-shadow: var(--container-box-shadow);
+}
+.counter .meter {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: var(--container-target-alignment);
+      -ms-flex-align: var(--container-target-alignment);
+          align-items: var(--container-target-alignment);
+}
+.counter .text-num {
+  font-family: var(--counter-font-family);
+  font-size: var(--counter-font-size);
+  font-weight: var(--counter-font-weight);
+  text-shadow: var(--counter-text-shadow);
+  color: var(--counter-font-color);
+  letter-spacing: var(--counter-spacing);
+}
+.counter .text-target {
+  opacity: var(--target-opacity);
+  background: var(--target-background);
+  font-family: var(--target-font-family);
+  font-size: var(--target-font-size);
+  font-weight: var(--target-font-weight);
+  text-shadow: var(--target-text-shadow);
+  color: var(--target-font-color);
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  padding: var(--target-padding);
+  margin: var(--target-margin);
+  border: var(--target-border);
+  border-radius: var(--target-border-radius);
+}

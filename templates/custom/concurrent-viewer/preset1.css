@@ -1,0 +1,15 @@
+:root {
+--youtube-subscriber-count: true;
+--arrangement-display: flex;
+--count-margin: 0px 10px 0px 0px;
+--icon-color: #6e6e6eff;
+--icon-size: 30px;
+--icon-animation-none: heartbeat;
+--icon-animation: none;
+--icon-animation-time: 2s;
+--counter-font-color: #000000ff;
+--counter-font-size: 30px;
+--counter-font-name: Noto Sans;
+--counter-font-weight: 600;
+--counter-margin: 0px 0px 0px 3px;
+}

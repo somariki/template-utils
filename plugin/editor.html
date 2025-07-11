@@ -1,0 +1,1642 @@
+ <!DOCTYPE html>
+<html>
+  <head>
+    <title>Template Utils | Preset Editor</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet" type="text/css">
+    <link href="https://use.fontawesome.com/releases/v6.1.1/css/all.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900|Material+Icons|Material+Icons+Outlined|Material+Icons+Round|Material+Icons+Sharp" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined|Material+Symbols+Rounded|Material+Symbols+Sharp" rel="stylesheet" type="text/css">
+    <link href="https://cdn.jsdelivr.net/npm/animate.css@^4.0.0/animate.min.css" rel="stylesheet" type="text/css">
+    <link href="https://cdn.jsdelivr.net/npm/quasar@2.17.5/dist/quasar.prod.css" rel="stylesheet" type="text/css">
+    <link href="css/editor.css" rel="stylesheet" type="text/css">
+  </head>
+  <body hidden>
+    <div id="app" class="app">
+        <div v-if="!loaded">Loading...</div>
+        <div v-else>
+            <div v-if="ui.windowWidth < ui.goodShowSize">
+                <div>To ensure the best experience, please use a screen with a width greater than {{ui.goodScreenSize}}px. Your current screen width is {{ui.windowWidth}}px.</div>
+            </div>
+            <div v-else>
+
+                <q-layout view="hHh lpR fFf">                
+                    <q-page-container>
+                        <q-banner inline-actions class="text-white bg-red">
+                            Current: {{ state.lastEvent }}
+                        </q-banner>
+
+                        <q-splitter v-model="ui.splitterCur" :style="{ height: ui.splitterHeight - 55 + 'px'}" :limits="ui.splitterLimit" emit-immediately >
+                            <template v-slot:before>
+                                <q-scroll-area :style="{ height: ui.splitterHeight - 55 + 'px'}">
+                                    <q-menu touch-position context-menu v-model="contextMenu.isVisible" >
+                                        <q-list dense style="min-width: 100px">
+                                            <q-item clickable v-if="contextMenu.level == 1">
+                                                <q-item-section @click="addNode('addRoot')" >Add Template</q-item-section>
+                                            </q-item>
+                                            <q-item clickable v-if="contextMenu.level == 1 || contextMenu.level == 2">
+                                                <q-item-section @click="addNode('addSection')" >Add Section</q-item-section>
+                                            </q-item>
+                                            <q-item clickable v-if="contextMenu.level == 2 || contextMenu.level == 3">
+                                                <q-item-section @click="addNode('addPart')" >Add Part</q-item-section>
+                                            </q-item>
+                                            <q-item clickable v-if="contextMenu.level == 3 || contextMenu.level == 4">
+                                                <q-item-section @click="addNode('addAttribute')" >Add Attribute</q-item-section>
+                                            </q-item>
+                                            <q-item clickable >
+                                                <q-item-section @click="editNode('addAttribute')" >Edit</q-item-section>
+                                            </q-item>
+                                            <q-separator></q-separator>
+                                            <q-item clickable>
+                                                <q-item-section @click="removeNode()" >Remove</q-item-section>
+                                            </q-item>
+                                        </q-list>
+                                    </q-menu>
+                                    <div class="row">
+                                        <div class="tree-container q-ma-md">
+                                            <sl-vue-tree-next v-model="nodes" ref="slVueTree" :allow-multiselect="false" @select="nodeSelected" @drop="nodeDropped" @toggle="nodeToggled" @nodecontextmenu="showContextMenu" >
+                                                <template #title="{ node }">
+                                                    <span class="item-icon">
+                                                        <i class="fa-solid fa-file" v-if="node.isLeaf"></i>
+                                                        <i class="fa-solid fa-folder" v-if="!node.isLeaf"></i>
+                                                    </span>
+                                                    {{ node.title }}
+                                                </template>
+                                                <template #toggle="{ node }">
+                                                    <span v-if="!node.isLeaf">
+                                                        <i v-if="node.isExpanded" class="fa fa-chevron-down"></i>
+                                                        <i v-if="!node.isExpanded" class="fa fa-chevron-right"></i>
+                                                    </span>
+                                                </template>
+                                                <template #sidebar="{ node }">
+                                                    <span class="function-icon visible-icon" @click="event => toggleVisibility(event, node)" v-if="node.data.isAttribute === true ">
+                                                        <i v-if="!node.data || node.data.visible !== false" class="fa fa-eye"></i>
+                                                        <i v-if="node.data && node.data.visible === false" class="fa fa-eye-slash"></i>
+                                                    </span>
+                                                    <span class="function-icon css-icon" @click="event => toggleIsCss(event, node)" v-if="node.data.isAttribute === true ">
+                                                        <i v-if="!node.data || node.data.isCss !== false" class="fa-brands fa-css3 css-icon-active"></i>
+                                                        <i v-if="node.data && node.data.isCss === false" class="fa-brands fa-css3"></i>
+                                                    </span>
+                                                    <span class="function-icon js-icon" @click="event => toggleJs(event, node)" v-if="node.data.isAttribute === true ">
+                                                        <i v-if="!node.data || node.data.isJs !== false" class="fa-brands fa-js js-icon-active"></i>
+                                                        <i v-if="node.data && node.data.isJs === false" class="fa-brands fa-js"></i>
+                                                    </span>
+                                                </template>
+                                                <template #draginfo="draginfo"> {{selectedNodesTitle}} </template>
+                                            </sl-vue-tree-next>
+                                        </div>
+                                    </div>
+                                </q-scroll-area>
+                            </template>
+                            <template v-slot:separator>
+                                <q-avatar color="primary" text-color="white" size="20px"><i class="fa fa-arrows-h" aria-hidden="true"></i></q-avatar>
+                            </template>
+                            <template v-slot:after>                       
+                                
+                                <div class="tab-header">
+                                    <q-tabs v-model="codeView.currentTab" dense class="text-grey" active-color="primary" indicator-color="primary" align="justify" narrow-indicator >
+                                        <q-tab name="root" label="Root"></q-tab>
+                                        <q-tab name="main" label="Main"></q-tab>
+                                        <q-tab name="asset" label="Asset"></q-tab>
+                                        <q-tab name="preset" label="Preset"></q-tab>
+                                        <q-tab name="css" label="CSS"></q-tab>
+                                    </q-tabs>
+                                    <q-separator></q-separator>
+                                </div>
+                                <div class="tab-content">
+                                    <q-tab-panels v-model="codeView.currentTab" animated>
+                                        <q-tab-panel name="root">
+                                            <q-btn @click="copyText(nodes)" label="Copy" color="primary"></q-btn>
+                                            <vue-json-pretty :data="nodes" show-icon="true" theme="monokai"></vue-json-pretty>
+                                        </q-tab-panel>
+                                    </q-tab-panels>
+
+                                    <q-tab-panels v-model="codeView.currentTab" animated>
+                                        <q-tab-panel name="main">
+                                            <div class="json-preview">
+                                                <q-btn @click="copyText(mainData)" label="Copy" color="primary"></q-btn>
+                                                <vue-json-pretty :data="mainData" show-icon="true" theme="monokai"></vue-json-pretty>
+                                            </div>
+                                        </q-tab-panel>
+                                    </q-tab-panels>
+
+                                    <q-tab-panels v-model="codeView.currentTab" animated>
+                                        <q-tab-panel name="asset">
+                                            <div class="json-preview">
+                                                <q-btn @click="copyText(assetData)" label="Copy" color="primary"></q-btn>
+                                                <vue-json-pretty :data="assetData" show-icon="true" theme="monokai"></vue-json-pretty>
+                                            </div>
+                                        </q-tab-panel>
+                                    </q-tab-panels>
+        
+                                    <q-tab-panels v-model="codeView.currentTab" animated>
+                                        <q-tab-panel name="preset">
+                                            <div class="json-preview">
+                                                <q-btn @click="copyText(presetData)" label="Copy" color="primary"></q-btn>
+                                                <vue-json-pretty :data="presetData" show-icon="true" theme="monokai"></vue-json-pretty>
+                                            </div>
+                                        </q-tab-panel>
+                                    </q-tab-panels>
+        
+                                    <q-tab-panels v-model="codeView.currentTab" animated>
+                                        <q-tab-panel name="css">
+                                            <div class="code-preview">
+                                                <q-btn @click="copyText(cssData)" label="Copy" color="primary"></q-btn>
+                                                <vue-json-pretty :data="cssData" show-icon="true" theme="monokai"></vue-json-pretty>
+                                            </div>
+                                        </q-tab-panel>
+                                    </q-tab-panels>
+                                </div>
+
+                            </template>
+                        </q-splitter>
+
+                        <q-page-sticky position="bottom-right" :offset="[30, 30]">
+                            <q-btn round color="accent" icon="fa-solid fa-bars" @click="ui.toolMenu = true" ></q-btn>
+                        </q-page-sticky>
+                    </q-page-container>
+                </q-layout>
+                  
+                <q-dialog v-model="isEditorModal" persistent>
+                    <q-card style="width: 700px; max-width: 80vw;">
+                      <q-card-section class="fixed-top">
+                        <div class="text-h6">Editing: {{editContent.title}}</div>
+                      </q-card-section>
+                      
+                      <q-separator></q-separator>
+              
+                      <q-card-section class="q-pa-md">
+                        
+                        <q-form ref="editorForm">
+                            <div v-if="editContent.isRoot" class="q-gutter-y-md">
+                                <q-input filled color="teal" v-model="editContent.title" label="Tamplate Name" counter :maxlength="formData.titleMax" lazy-rules :rules="formData.noemptyRules">
+                                    <template v-slot:before>
+                                        <q-icon name="fa-solid fa-spell-check" />
+                                    </template>
+                                </q-input>
+
+                                <q-input filled color="teal" v-model="editContent.rootCode" label="Code ID" counter :maxlength="formData.codeMax" lazy-rules :rules="formData.codeRules">
+                                    <template v-slot:before>
+                                        <q-icon name="fa-brands fa-get-pocket" />
+                                    </template>
+                                </q-input>
+
+                                <q-select filled color="teal" v-model="editContent.rootType" :options="formData.assetOption" label="Asset Type" lazy-rules :rules="formData.selectRules" option-label="label" option-value="value" emit-value map-options >
+                                    <template v-slot:before>
+                                        <q-icon name="fa-brands fa-get-pocket" />
+                                    </template>
+                                </q-select>
+
+                                <q-input filled color="red" v-model="editContent.indexFile" label=".html file" counter :maxlength="formData.codeMax">
+                                    <template v-slot:before>
+                                        <q-icon name="fa-solid fa-code" />
+                                    </template>
+                                </q-input>
+
+                                <q-input filled color="red" v-model="editContent.presetId" label="Preset ID" type="number">
+                                    <template v-slot:before>
+                                        <q-icon name="fa-solid fa-code" />
+                                    </template>
+                                </q-input>
+
+                                <q-input filled color="red" v-model="editContent.assetFile" label="asset.json file" counter :maxlength="formData.codeMax">
+                                    <template v-slot:before>
+                                        <q-icon name="fa-solid fa-code" />
+                                    </template>
+                                </q-input>
+
+                                <q-input filled color="red" v-model="editContent.presetFile" label="preset.json file" counter :maxlength="formData.codeMax">
+                                    <template v-slot:before>
+                                        <q-icon name="fa-solid fa-code" />
+                                    </template>
+                                </q-input>
+
+                                <q-input filled color="red" v-model="editContent.cssFile" label="preset.css file" counter :maxlength="formData.codeMax">
+                                    <template v-slot:before>
+                                        <q-icon name="fa-solid fa-code" />
+                                    </template>
+                                </q-input>
+                            </div>
+    
+                            <div v-if="editContent.isSection" class="q-gutter-y-md">
+                                <q-input filled color="teal" v-model="editContent.code" label="Section ID" counter :maxlength="formData.codeMax" lazy-rules :rules="formData.codeRules">
+                                    <template v-slot:before>
+                                        <q-icon name="fa-solid fa-code" />
+                                    </template>
+                                </q-input>
+
+                                <div class="row q-col-gutter-x-md">
+                                    <div class="col-12">
+                                      <div class="input-inline q-gutter-sm">
+                                        <q-toggle 
+                                          v-for="(tog, index) in editContent.isLanguage" 
+                                          v-model="editContent.isLanguage[index].value" 
+                                          :label="editContent.isLanguage[index].lang" 
+                                          color="green" 
+                                          keep-color
+                                          checked-icon="check" 
+                                          unchecked-icon="clear">
+                                        </q-toggle>
+                                      </div>
+                                    </div>
+                                </div>
+                                <q-separator></q-separator>
+                                <div class="row q-mt-md q-col-gutter-y-md">
+                                    <div class="col-12" v-for="(content, index) in editContent.isLanguage">
+                                        <q-input 
+                                          v-if="editContent.isLanguage[index].value === true"
+                                          filled 
+                                          v-model="editContent.language[content.lang]" 
+                                          :label="editContent.isLanguage[index].lang" 
+                                          counter 
+                                          :maxlength="formData.langMax" 
+                                          lazy-rules
+                                          dense
+                                          :rules="formData.noemptyRules"
+                                        >
+                                            <template v-slot:before>
+                                              <q-icon name="fa-solid fa-language"></q-icon>
+                                            </template>
+                                        </q-input>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div v-if="editContent.isPart" class="q-gutter-y-md">
+                                <q-input filled color="teal" v-model="editContent.code" label="Part ID" counter :maxlength="formData.codeMax" lazy-rules :rules="formData.codeRules">
+                                    <template v-slot:before>
+                                        <q-icon name="fa-solid fa-code" />
+                                    </template>
+                                </q-input>
+
+                                <div class="row q-col-gutter-x-md">
+                                    <div class="col-12">
+                                      <div class="input-inline q-gutter-sm">
+                                        <q-toggle 
+                                          v-for="(tog, index) in editContent.isLanguage" 
+                                          v-model="editContent.isLanguage[index].value" 
+                                          :label="editContent.isLanguage[index].lang" 
+                                          color="green" 
+                                          keep-color
+                                          checked-icon="check" 
+                                          unchecked-icon="clear">
+                                        </q-toggle>
+                                      </div>
+                                    </div>
+                                </div>
+                                <q-separator></q-separator>
+                                <div class="row q-mt-md q-col-gutter-y-md">
+                                    <div class="col-12" v-for="(content, index) in editContent.isLanguage">
+                                        <q-input 
+                                          v-if="editContent.isLanguage[index].value === true"
+                                          filled 
+                                          v-model="editContent.language[content.lang]" 
+                                          :label="editContent.isLanguage[index].lang" 
+                                          counter 
+                                          :maxlength="formData.langMax" 
+                                          lazy-rules
+                                          dense
+                                          :rules="formData.noemptyRules"
+                                        >
+                                            <template v-slot:before>
+                                              <q-icon name="fa-solid fa-language"></q-icon>
+                                            </template>
+                                        </q-input>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div v-if="editContent.isAttribute" class="q-gutter-y-md">
+                                <q-input filled color="teal" v-model="editContent.code" label="Code ID" counter :maxlength="formData.codeMax" lazy-rules :rules="formData.codeRules">
+                                    <template v-slot:before>
+                                        <q-icon name="fa-solid fa-code" />
+                                    </template>
+                                </q-input>
+
+                                <q-select 
+                                  filled 
+                                  color="teal" 
+                                  v-model="editContent.attribute" 
+                                  :options="formData.attrOptions" 
+                                  label="Attribute Type" 
+                                  lazy-rules 
+                                  :rules="formData.selectRules" 
+                                  option-label="label" 
+                                  option-value="value" 
+                                  emit-value 
+                                  map-options
+                                  use-input
+                                  hide-selected
+                                  fill-input
+                                  input-debounce="0"
+                                  @filter="filterAttrOpt"
+                                >
+                                    <template v-slot:before>
+                                        <q-icon name="fa-brands fa-get-pocket" />
+                                    </template>
+
+                                    <template v-slot:no-option>
+                                        <q-item>
+                                          <q-item-section class="text-grey">
+                                            No results
+                                          </q-item-section>
+                                        </q-item>
+                                    </template>
+                                </q-select>
+
+                                <q-separator></q-separator>
+                                <div class="row q-col-gutter-x-md" v-if="editContent.attributeSet">
+                                    <div class="col-4">
+                                        <div class="q-gutter-sm">
+                                            <q-toggle v-model="editContent.attributeSet.isSetCustom" color="red" :label="editContent.attributeSet.isSetCustom ? 'Allow Custom' : 'Disallow Custom' " checked-icon="check" unchecked-icon="clear" ></q-toggle>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-4">
+                                        <div class="q-gutter-sm">
+                                            <q-toggle v-model="editContent.attributeSet.isCustom" color="orange" :label="editContent.attributeSet.isCustom ? 'Enable Custom' : 'Disable Custom' " checked-icon="check" unchecked-icon="clear" ></q-toggle>
+                                        </div>
+                                    </div>
+                                    <div class="col-4">
+                                        <div class="q-gutter-sm">
+                                            <q-toggle v-model="editContent.attributeSet.isOriginal" color="orange" :label="editContent.attributeSet.isOriginal ? 'Enable Original' : 'Disable Original' " checked-icon="check" unchecked-icon="clear" ></q-toggle>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="q-gutter-sm" v-if="editContent?.attributeSet?.isOriginal">
+                                            <q-input filled color="teal" v-model="editContent.attributeSet.oriFrom" label="Refer Code ID" counter :maxlength="formData.codeMax" lazy-rules :rules="formData.codeRules">
+                                                <template v-slot:before>
+                                                    <q-icon name="fa-solid fa-code" />
+                                                </template>
+                                            </q-input>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                
+                                <q-separator></q-separator>
+
+                                <div class="row q-col-gutter-x-md" v-if="editContent.attribute === 'time' ">
+                                    <div class="col-8" v-if="editContent.attributeSet.valueType === 'number' ">
+                                        <q-input outlined v-model="editContent.attributeSet.value" label="Value" type="number"></q-input>
+                                    </div>
+
+                                    <div class="col-4">
+                                        <q-select 
+                                        outlined 
+                                        v-model="editContent.attributeSet.unit" 
+                                        :options="editContent.attributeSet.unitOption" 
+                                        label="Unit"
+                                        :rules="formData.selectRules" 
+                                        lazy-rules
+                                        emit-value 
+                                        map-options
+                                        option-label="unit" 
+                                        option-value="unit"
+                                        ></q-select>
+                                    </div>
+                                </div>
+
+                                <div class="row q-col-gutter-x-md" v-if="editContent.attribute === 'timing-function' ">
+                                    <div class="col-12" v-if="editContent.attributeSet.valueType === 'option' ">
+                                        <q-select 
+                                        outlined 
+                                        v-model="editContent.attributeSet.value" 
+                                        :options="editContent.attributeSet.unitOption" 
+                                        label="Unit"
+                                        :rules="formData.selectRules" 
+                                        lazy-rules
+                                        emit-value 
+                                        map-options
+                                        option-label="label" 
+                                        option-value="value"
+                                        ></q-select>
+                                    </div>
+                                </div>
+
+                                <div class="row q-col-gutter-x-md" v-if="['flex-column', 'flex-row', 'flex-direction'].includes(editContent.attribute)">
+                                    <q-radio v-model="editContent.attributeSet.value" v-for="(v, k) in editContent.attributeSet.unitOption" :key="k" :val="v.value" :label="v.label" color="teal"></q-radio>
+                                </div>
+
+                                <div class="row q-col-gutter-x-md" v-if="editContent.attribute ==='transform-translate'">
+                                    <q-radio v-model="editContent.attributeSet.value" v-for="(v, k) in editContent.attributeSet.unitOption" :key="k" :val="v.value" :label="v.label" color="teal"></q-radio>
+                                </div>
+
+                                <div class="row q-col-gutter-x-md" v-if="editContent.attribute ==='size'">
+                                    <div class="col-8" v-if="editContent.attributeSet.valueType === 'number' ">
+                                        <q-input outlined v-model="editContent.attributeSet.value" label="Value" type="number"></q-input>
+                                    </div>
+                                    <div class="col-4">
+                                        <q-select 
+                                        outlined 
+                                        v-model="editContent.attributeSet.unit" 
+                                        :options="editContent.attributeSet.unitOption" 
+                                        label="Unit"
+                                        :rules="formData.selectRules" 
+                                        lazy-rules
+                                        emit-value 
+                                        map-options
+                                        option-label="label" 
+                                        option-value="value"
+                                        ></q-select>
+                                    </div>
+                                    <div class="col-6">
+                                        <q-input outlined v-model="editContent.attributeSet.min" label="MIN" type="number"></q-input>
+                                    </div>
+                                    <div class="col-6">
+                                        <q-input outlined v-model="editContent.attributeSet.max" label="MAX" type="number"></q-input>
+                                    </div>
+                                </div>
+
+                                <div class="row q-col-gutter-x-md" v-if="editContent.attribute ==='size-condition'">
+                                    <div class="col-3">
+                                        <q-input outlined v-model="editContent.attributeSet.value" label="Value" type="number"></q-input>
+                                    </div>
+                                    <div class="col-3">
+                                        <div class="input-inline q-gutter-sm">
+                                            <q-toggle 
+                                                v-model="editContent.attributeSet.isDefault" 
+                                                label="Set Default" 
+                                                color="green" 
+                                                keep-color
+                                                checked-icon="check" 
+                                                unchecked-icon="clear">
+                                            </q-toggle>
+                                        </div>
+                                    </div>
+                                    <div class="col-3">
+                                        <q-select 
+                                        outlined 
+                                        v-model="editContent.attributeSet.defaultValue" 
+                                        :options="formData.sizeDefaultOpt" 
+                                        label="Unit"
+                                        :rules="formData.selectRules" 
+                                        lazy-rules
+                                        emit-value 
+                                        map-options
+                                        option-label="label" 
+                                        option-value="value"
+                                        ></q-select>
+                                    </div>
+                                    <div class="col-3">
+                                        <q-select 
+                                        outlined 
+                                        v-model="editContent.attributeSet.unit" 
+                                        :options="editContent.attributeSet.unitOption" 
+                                        label="Unit"
+                                        :rules="formData.selectRules" 
+                                        lazy-rules
+                                        emit-value 
+                                        map-options
+                                        option-label="label" 
+                                        option-value="value"
+                                        ></q-select>
+                                    </div>
+                                    <div class="col-6">
+                                        <q-input outlined v-model="editContent.attributeSet.min" label="MIN" type="number"></q-input>
+                                    </div>
+                                    <div class="col-6">
+                                        <q-input outlined v-model="editContent.attributeSet.max" label="MAX" type="number"></q-input>
+                                    </div>
+                                </div>
+
+                                <div class="row q-col-gutter-x-md" v-if="editContent.attribute ==='size-range-condition'">
+                                    <div class="col-4">
+                                        <q-input outlined v-model="editContent.attributeSet.value" label="Value" type="number"></q-input>
+                                    </div>
+                                    <div class="col-4">
+                                        <div class="input-inline q-gutter-sm">
+                                            <q-toggle 
+                                                v-model="editContent.attributeSet.isDefault" 
+                                                label="Set Default" 
+                                                color="green" 
+                                                keep-color
+                                                checked-icon="check" 
+                                                unchecked-icon="clear">
+                                            </q-toggle>
+                                        </div>
+                                    </div>
+                                    <div class="col-4">
+                                        <q-select 
+                                        outlined 
+                                        v-model="editContent.attributeSet.defaultValue" 
+                                        :options="formData.sizeDefaultOpt" 
+                                        label="Unit"
+                                        :rules="formData.selectRules" 
+                                        lazy-rules
+                                        emit-value 
+                                        map-options
+                                        option-label="label" 
+                                        option-value="value"
+                                        ></q-select>
+                                    </div>
+
+                                    <div class="col-4">
+                                        <q-input outlined v-model="editContent.attributeSet.valueMin" label="Min Value" type="number"></q-input>
+                                    </div>
+                                    <div class="col-4">
+                                        <div class="input-inline q-gutter-sm">
+                                            <q-toggle 
+                                                v-model="editContent.attributeSet.isDefaultMin" 
+                                                label="Min Set Default" 
+                                                color="green" 
+                                                keep-color
+                                                checked-icon="check" 
+                                                unchecked-icon="clear">
+                                            </q-toggle>
+                                        </div>
+                                    </div>
+                                    <div class="col-4">
+                                        <q-select 
+                                        outlined 
+                                        v-model="editContent.attributeSet.defaultValueMin" 
+                                        :options="formData.sizeDefaultOpt" 
+                                        label="Unit"
+                                        :rules="formData.selectRules" 
+                                        lazy-rules
+                                        emit-value 
+                                        map-options
+                                        option-label="label" 
+                                        option-value="value"
+                                        ></q-select>
+                                    </div>
+
+                                    <div class="col-4">
+                                        <q-input outlined v-model="editContent.attributeSet.valueMax" label="Max Value" type="number"></q-input>
+                                    </div>
+                                    <div class="col-4">
+                                        <div class="input-inline q-gutter-sm">
+                                            <q-toggle 
+                                                v-model="editContent.attributeSet.isDefaultMax" 
+                                                label="Max Set Default" 
+                                                color="green" 
+                                                keep-color
+                                                checked-icon="check" 
+                                                unchecked-icon="clear">
+                                            </q-toggle>
+                                        </div>
+                                    </div>
+                                    <div class="col-4">
+                                        <q-select 
+                                        outlined 
+                                        v-model="editContent.attributeSet.defaultValueMax" 
+                                        :options="formData.sizeDefaultOpt" 
+                                        label="Unit"
+                                        :rules="formData.selectRules" 
+                                        lazy-rules
+                                        emit-value 
+                                        map-options
+                                        option-label="label" 
+                                        option-value="value"
+                                        ></q-select>
+                                    </div>
+
+                                    
+
+                                    <div class="col-4">
+                                        <q-input outlined v-model="editContent.attributeSet.min" label="MIN" type="number"></q-input>
+                                    </div>
+                                    <div class="col-4">
+                                        <q-input outlined v-model="editContent.attributeSet.max" label="MAX" type="number"></q-input>
+                                    </div>
+                                    <div class="col-4">
+                                        <q-select 
+                                        outlined 
+                                        v-model="editContent.attributeSet.unit" 
+                                        :options="editContent.attributeSet.unitOption" 
+                                        label="Unit"
+                                        :rules="formData.selectRules" 
+                                        lazy-rules
+                                        emit-value 
+                                        map-options
+                                        option-label="label" 
+                                        option-value="value"
+                                        ></q-select>
+                                    </div>
+
+                                </div>
+
+                                <div class="row q-col-gutter-x-md" v-if="editContent.attribute ==='number'">
+                                    <div class="col-12" v-if="editContent.attributeSet.valueType === 'number' ">
+                                        <q-input outlined v-model="editContent.attributeSet.value" label="Value" type="number"></q-input>
+                                    </div>
+                                    <div class="col-6">
+                                        <q-input outlined v-model="editContent.attributeSet.min" label="MIN" type="number"></q-input>
+                                    </div>
+                                    <div class="col-6">
+                                        <q-input outlined v-model="editContent.attributeSet.max" label="MAX" type="number"></q-input>
+                                    </div>
+                                </div>
+
+                                <div class="row q-col-gutter-x-md" v-if="editContent.attribute ==='double'">
+                                    <div class="col-12" v-if="editContent.attributeSet.valueType === 'number' ">
+                                        <q-input outlined v-model="editContent.attributeSet.value" label="Value" type="number" step="0.01"></q-input>
+                                    </div>
+                                    <div class="col-6">
+                                        <q-input outlined v-model="editContent.attributeSet.min" label="MIN" type="number"></q-input>
+                                    </div>
+                                    <div class="col-6">
+                                        <q-input outlined v-model="editContent.attributeSet.max" label="MAX" type="number"></q-input>
+                                    </div>
+                                </div>
+
+                                <div class="row q-mt-xs q-col-gutter-x-md q-col-gutter-y-md" v-if="editContent.attribute ==='degree'">
+                                    <div class="col-6" v-if="editContent.attributeSet.valueType === 'number' ">
+                                        <q-input outlined v-model="editContent.attributeSet.value" label="Value" type="number"></q-input>
+                                    </div>
+                                    <div class="col-6">
+                                        <q-knob
+                                            v-model="editContent.attributeSet.value"
+                                            :min="editContent.attributeSet.min"
+                                            :max="editContent.attributeSet.max"
+                                            :angle="-180"
+                                            size="50px"
+                                            :thickness="0.6"
+                                            color="orange"
+                                            center-color="orange-10"
+                                            show-value
+                                        >
+                                        {{ editContent.attributeSet.value }}&deg;
+                                        </q-knob>
+                                    </div>
+                                    <div class="col-6">
+                                        <q-input outlined v-model="editContent.attributeSet.min" label="MIN" type="number"></q-input>
+                                    </div>
+                                    <div class="col-6">
+                                        <q-input outlined v-model="editContent.attributeSet.max" label="MAX" type="number"></q-input>
+                                    </div>
+                                </div>
+
+                                <div class="row q-col-gutter-x-md q-col-gutter-y-sm q-mt-sm" v-if="editContent.attribute ==='radius'">
+                                    
+                                    <div class="col-4" v-if="editContent.attributeSet.valueType === 'number' ">
+                                        <q-input outlined v-model="editContent.attributeSet.valueTopLeft" label="Top Left" type="number" color="purple"></q-input>
+                                    </div>
+                                    <div class="col-4" v-if="editContent.attributeSet.valueType === 'number' ">
+                                        <q-input outlined v-model="editContent.attributeSet.valueTopRight" label="Top Right" type="number" color="purple" ></q-input>
+                                    </div>
+
+                                    <div class="col-4">
+                                        <q-select 
+                                        outlined 
+                                        v-model="editContent.attributeSet.unit" 
+                                        :options="editContent.attributeSet.unitOption" 
+                                        label="Unit"
+                                        :rules="formData.selectRules" 
+                                        lazy-rules
+                                        emit-value 
+                                        map-options
+                                        option-label="label" 
+                                        option-value="value"
+                                        ></q-select>
+                                    </div>
+                                    
+                                    <div class="col-4" v-if="editContent.attributeSet.valueType === 'number' ">
+                                        <q-input outlined v-model="editContent.attributeSet.valueBottomLeft" label="Bottom Left" type="number" color="purple"></q-input>
+                                    </div>
+                                    <div class="col-4" v-if="editContent.attributeSet.valueType === 'number' ">
+                                        <q-input outlined v-model="editContent.attributeSet.valueBottomRight" label="Bottom Right" type="number" color="purple"></q-input>
+                                    </div>
+                                    
+                                    <div class="col-6">
+                                        <q-input outlined v-model="editContent.attributeSet.min" label="MIN" type="number" color="green"></q-input>
+                                    </div>
+                                    <div class="col-6">
+                                        <q-input outlined v-model="editContent.attributeSet.max" label="MAX" type="number" color="green"></q-input>
+                                    </div>
+                                    
+                                </div>
+
+                                <div class="row q-col-gutter-x-md" v-if="['border', 'border-top', 'border-right', 'border-bottom', 'border-left'].includes(editContent.attribute)">
+                                    
+                                    <div class="col-4">
+                                        <div class="q-pr-sm ui-color-field">
+                                            <q-input outlined v-model="editContent.attributeSet.color" :rules="['anyColor']" color="teal" label="Color">
+                                              <template v-slot:prepend>
+                                                <q-btn round unelevated no-caps size="10px" icon="colorize" :style="{ backgroundColor: editContent.attributeSet.color }">
+                                                  <q-popup-proxy cover transition-show="scale" transition-hide="scale">
+                                                    <q-color flat square v-model="editContent.attributeSet.color" :format-model="formData.colorFormat" />
+                                                  </q-popup-proxy>
+                                                </q-btn>
+                                              </template>
+                                            </q-input>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="col-4">
+                                        <q-input outlined v-model="editContent.attributeSet.value" label="Size" type="number" color="purple"></q-input>
+                                    </div>
+
+                                    <div class="col-4">
+                                        <q-select 
+                                        outlined 
+                                        v-model="editContent.attributeSet.unit" 
+                                        :options="editContent.attributeSet.unitOption" 
+                                        label="Unit"
+                                        :rules="formData.selectRules" 
+                                        lazy-rules
+                                        emit-value 
+                                        map-options
+                                        option-label="label" 
+                                        option-value="value"
+                                        ></q-select>
+                                    </div>
+
+                                    <div class="col-4">
+                                        <q-select 
+                                        outlined 
+                                        v-model="editContent.attributeSet.style" 
+                                        :options="editContent.attributeSet.styleOption" 
+                                        label="Style"
+                                        color="orange"
+                                        :rules="formData.selectRules" 
+                                        lazy-rules
+                                        emit-value 
+                                        map-options
+                                        option-label="label" 
+                                        option-value="value"
+                                        ></q-select>
+                                    </div>
+
+                                    <div class="col-4">
+                                        <q-input outlined v-model="editContent.attributeSet.min" label="MIN" type="number" color="green"></q-input>
+                                    </div>
+                                    <div class="col-4">
+                                        <q-input outlined v-model="editContent.attributeSet.max" label="MAX" type="number" color="green"></q-input>
+                                    </div>
+                                </div>
+
+                                <div class="row q-col-gutter-x-md q-col-gutter-y-sm q-mt-sm" v-if="editContent.attribute ==='margin'">
+                                    
+                                    <div class="col-4" v-if="editContent.attributeSet.valueType === 'number' ">
+                                        <q-input outlined v-model="editContent.attributeSet.valueTop" label="Top" type="number" color="purple"></q-input>
+                                    </div>
+                                    <div class="col-4" v-if="editContent.attributeSet.valueType === 'number' ">
+                                        <q-input outlined v-model="editContent.attributeSet.valueLeft" label="Left" type="number" color="purple" ></q-input>
+                                    </div>
+
+                                    <div class="col-4">
+                                        <q-select 
+                                        outlined 
+                                        v-model="editContent.attributeSet.unit" 
+                                        :options="editContent.attributeSet.unitOption" 
+                                        label="Unit"
+                                        :rules="formData.selectRules" 
+                                        lazy-rules
+                                        emit-value 
+                                        map-options
+                                        option-label="label" 
+                                        option-value="value"
+                                        ></q-select>
+                                    </div>
+                                    
+                                    <div class="col-4" v-if="editContent.attributeSet.valueType === 'number' ">
+                                        <q-input outlined v-model="editContent.attributeSet.valueBottom" label="Bottom" type="number" color="purple"></q-input>
+                                    </div>
+                                    <div class="col-4" v-if="editContent.attributeSet.valueType === 'number' ">
+                                        <q-input outlined v-model="editContent.attributeSet.valueRight" label="Right" type="number" color="purple"></q-input>
+                                    </div>
+                                    
+                                    <div class="col-6">
+                                        <q-input outlined v-model="editContent.attributeSet.min" label="MIN" type="number" color="green"></q-input>
+                                    </div>
+                                    <div class="col-6">
+                                        <q-input outlined v-model="editContent.attributeSet.max" label="MAX" type="number" color="green"></q-input>
+                                    </div>
+                                    
+                                </div>
+
+                                <div class="row q-col-gutter-x-md q-col-gutter-y-sm q-mt-sm" v-if="editContent.attribute ==='padding'">
+                                    
+                                    <div class="col-4" v-if="editContent.attributeSet.valueType === 'number' ">
+                                        <q-input outlined v-model="editContent.attributeSet.valueTop" label="Top" type="number" color="purple"></q-input>
+                                    </div>
+                                    <div class="col-4" v-if="editContent.attributeSet.valueType === 'number' ">
+                                        <q-input outlined v-model="editContent.attributeSet.valueLeft" label="Left" type="number" color="purple" ></q-input>
+                                    </div>
+
+                                    <div class="col-4">
+                                        <q-select 
+                                        outlined 
+                                        v-model="editContent.attributeSet.unit" 
+                                        :options="editContent.attributeSet.unitOption" 
+                                        label="Unit"
+                                        :rules="formData.selectRules" 
+                                        lazy-rules
+                                        emit-value 
+                                        map-options
+                                        option-label="label" 
+                                        option-value="value"
+                                        ></q-select>
+                                    </div>
+                                    
+                                    <div class="col-4" v-if="editContent.attributeSet.valueType === 'number' ">
+                                        <q-input outlined v-model="editContent.attributeSet.valueBottom" label="Bottom" type="number" color="purple"></q-input>
+                                    </div>
+                                    <div class="col-4" v-if="editContent.attributeSet.valueType === 'number' ">
+                                        <q-input outlined v-model="editContent.attributeSet.valueRight" label="Right" type="number" color="purple"></q-input>
+                                    </div>
+                                    
+                                    <div class="col-6">
+                                        <q-input outlined v-model="editContent.attributeSet.min" label="MIN" type="number" color="green"></q-input>
+                                    </div>
+                                    <div class="col-6">
+                                        <q-input outlined v-model="editContent.attributeSet.max" label="MAX" type="number" color="green"></q-input>
+                                    </div>
+                                    
+                                </div>
+
+                                <div class="row q-col-gutter-x-md" v-if="editContent.attribute ==='color'">
+                                    <div class="col-12">
+                                        <div class="q-pr-sm ui-color-field">
+                                            <q-input outlined v-model="editContent.attributeSet.value" :rules="['anyColor']" color="teal" label="Color">
+                                              <template v-slot:prepend>
+                                                <q-btn round unelevated no-caps size="10px" icon="colorize" :style="{ backgroundColor: editContent.attributeSet.value }">
+                                                  <q-popup-proxy cover transition-show="scale" transition-hide="scale">
+                                                    <q-color flat square v-model="editContent.attributeSet.value" :format-model="formData.colorFormat" />
+                                                  </q-popup-proxy>
+                                                </q-btn>
+                                              </template>
+                                            </q-input>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row q-col-gutter-x-md" v-if="editContent.attribute ==='font'">
+                                    <div class="col-3">
+                                        <div class="ui-color-field">
+                                            <q-input outlined v-model="editContent.attributeSet.color" :rules="['anyColor']" color="teal" label="Color">
+                                              <template v-slot:prepend>
+                                                <q-btn round unelevated no-caps size="10px" icon="colorize" :style="{ backgroundColor: editContent.attributeSet.color }">
+                                                  <q-popup-proxy cover transition-show="scale" transition-hide="scale">
+                                                    <q-color flat square v-model="editContent.attributeSet.color" :format-model="formData.colorFormat" />
+                                                  </q-popup-proxy>
+                                                </q-btn>
+                                              </template>
+                                            </q-input>
+                                        </div>
+                                    </div>
+                                    <div class="col-3">
+                                        <q-select 
+                                        outlined 
+                                        v-model="editContent.attributeSet.font" 
+                                        :options="formData.fontOpt" 
+                                        label="Font"
+                                        :rules="formData.selectRules" 
+                                        lazy-rules
+                                        emit-value 
+                                        map-options
+                                        option-label="label" 
+                                        option-value="value"
+                                        ></q-select>
+                                    </div>
+                                    <div class="col-3">
+                                        <q-select 
+                                        outlined 
+                                        v-model="editContent.attributeSet.type" 
+                                        :options="formData.fontType" 
+                                        label="Type"
+                                        :rules="formData.selectRules" 
+                                        lazy-rules
+                                        emit-value 
+                                        map-options
+                                        option-label="label" 
+                                        option-value="value"
+                                        ></q-select>
+                                    </div>
+                                    <div class="col-3">
+                                        <q-select 
+                                        outlined 
+                                        v-model="editContent.attributeSet.style" 
+                                        :options="formData.fontStyle" 
+                                        label="Style"
+                                        :rules="formData.selectRules" 
+                                        lazy-rules
+                                        emit-value 
+                                        map-options
+                                        option-label="label" 
+                                        option-value="value"
+                                        ></q-select>
+                                    </div>
+                                    <div class="col-3">
+                                        <q-input outlined v-model="editContent.attributeSet.size" label="Size" type="number"></q-input>
+                                    </div>
+                                    <div class="col-3">
+                                        <q-select 
+                                        outlined 
+                                        v-model="editContent.attributeSet.unit" 
+                                        :options="formData.fontSize" 
+                                        label="Unit"
+                                        :rules="formData.selectRules" 
+                                        lazy-rules
+                                        emit-value 
+                                        map-options
+                                        option-label="label" 
+                                        option-value="value"
+                                        ></q-select>
+                                    </div>
+                                    <div class="col-3">
+                                        <q-input outlined v-model="editContent.attributeSet.weight" label="Weight" type="number"></q-input>
+                                    </div>
+                                </div>
+
+                                <div class="row q-col-gutter-x-md q-col-gutter-y-md" v-if="editContent.attribute ==='font'">
+                                    <div class="col-6">
+                                        <q-input outlined v-model="editContent.attributeSet.minSize" label="Min Size" type="number"></q-input>
+                                    </div>
+                                    <div class="col-6">
+                                        <q-input outlined v-model="editContent.attributeSet.maxSize" label="Max Size" type="number"></q-input>
+                                    </div>
+                                    <div class="col-6">
+                                        <q-input outlined v-model="editContent.attributeSet.minWeight" label="Min Weight" type="number"></q-input>
+                                    </div>
+                                    <div class="col-6">
+                                        <q-input outlined v-model="editContent.attributeSet.maxWeight" label="Max Weight" type="number"></q-input>
+                                    </div>
+                                </div>
+
+                                <div class="row q-col-gutter-x-md" v-if="editContent.attribute ==='font'">
+                                    <div class="col-12">
+                                        <q-input filled color="teal" v-model="editContent.attributeSet.cssvarColor" label="Color CSS Variable Name" counter :maxlength="formData.codeMax" lazy-rules :rules="formData.codeRules">
+                                            <template v-slot:before>
+                                                <q-icon name="fa-solid fa-code" />
+                                            </template>
+                                        </q-input>
+                                    </div>
+                                    <div class="col-12">
+                                        <q-input filled color="teal" v-model="editContent.attributeSet.cssvarFont" label="Font CSS Variable Name" counter :maxlength="formData.codeMax" lazy-rules :rules="formData.codeRules">
+                                            <template v-slot:before>
+                                                <q-icon name="fa-solid fa-code" />
+                                            </template>
+                                        </q-input>
+                                    </div>
+                                    <div class="col-12">
+                                        <q-input filled color="teal" v-model="editContent.attributeSet.cssvarSize" label="Size CSS Variable Name" counter :maxlength="formData.codeMax" lazy-rules :rules="formData.codeRules">
+                                            <template v-slot:before>
+                                                <q-icon name="fa-solid fa-code" />
+                                            </template>
+                                        </q-input>
+                                    </div>
+                                    <div class="col-12">
+                                        <q-input filled color="teal" v-model="editContent.attributeSet.cssvarWeight" label="Weight CSS Variable Name" counter :maxlength="formData.codeMax" lazy-rules :rules="formData.codeRules">
+                                            <template v-slot:before>
+                                                <q-icon name="fa-solid fa-code" />
+                                            </template>
+                                        </q-input>
+                                    </div>
+                                </div>
+                                
+                                <div class="row q-col-gutter-x-md q-col-gutter-y-md" v-if="editContent.attribute ==='font-weight'">
+                                    <div class="col-12">
+                                        <q-input outlined v-model="editContent.attributeSet.value" label="Weight" type="number"></q-input>
+                                    </div>
+                                    <div class="col-6">
+                                        <q-input outlined v-model="editContent.attributeSet.min" label="Min Weight" type="number"></q-input>
+                                    </div>
+                                    <div class="col-6">
+                                        <q-input outlined v-model="editContent.attributeSet.max" label="Max Weight" type="number"></q-input>
+                                    </div>
+                                </div>
+
+                                <div class="row q-col-gutter-x-md" v-if="['text-align', 'justify-content', 'align-content', 'align-items', 'display', 'position'].includes(editContent.attribute)">
+                                    <div class="col-12">
+                                        <div class="q-gutter-sm">
+                                            <q-radio v-model="editContent.attributeSet.value" v-for="(v, k) in editContent.attributeSet.options" :key="k" :val="v.value" :label="v.label" color="teal"></q-radio>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row q-col-gutter-x-md" v-if="editContent.attribute ==='edge'">
+                                    <div class="col-12">
+                                        <div class="q-gutter-sm">
+                                            <q-radio v-model="editContent.attributeSet.edge" v-for="(v, k) in editContent.attributeSet.options" :key="k" :val="v.value" :label="v.label" color="teal"></q-radio>
+                                        </div>
+                                    </div>
+                                    <div class="col-4" v-if="editContent.attributeSet.valueType === 'number' ">
+                                        <q-input outlined v-model="editContent.attributeSet.value" label="Value" type="number"></q-input>
+                                    </div>
+                                    <div class="col-4">
+                                        <q-input outlined v-model="editContent.attributeSet.min" label="MIN" type="number" color="green"></q-input>
+                                    </div>
+                                    <div class="col-4">
+                                        <q-input outlined v-model="editContent.attributeSet.max" label="MAX" type="number" color="green"></q-input>
+                                    </div>
+                                </div>
+
+                                <div class="row q-col-gutter-x-md" v-if="editContent.attribute ==='image'">
+                                    <div class="col-12" v-if="editContent.attributeSet.valueType === 'string' ">
+                                        <q-input outlined v-model="editContent.attributeSet.value" label="Image" :maxlength="formData.descrMax" lazy-rules counter ></q-input>
+                                    </div>
+                                </div>
+
+                                <div class="row q-col-gutter-x-md" v-if="editContent.attribute ==='content'">
+                                    <div class="col-12" v-if="editContent.attributeSet.valueType === 'string' ">
+                                        <q-input outlined v-model="editContent.attributeSet.value" label="Content" :maxlength="formData.descrMax" lazy-rules counter ></q-input>
+                                    </div>
+                                </div>
+
+                                <div class="row q-col-gutter-x-md" v-if="editContent.attribute ==='text-shadow'">
+                                    <div class="col-9">
+                                        <div class="q-gutter-sm">
+                                            <q-toggle v-model="editContent.attributeSet.isEffect" color="red" :label="editContent.attributeSet.isEffect ? 'Effect ON' : 'Effect OFF' " checked-icon="check" unchecked-icon="clear" ></q-toggle>
+                                        </div>
+                                    </div>
+                                    <div class="col-3">
+                                        <div class="q-gutter-sm">
+                                            <div class="col-3">
+                                                <q-select 
+                                                outlined 
+                                                v-model="editContent.attributeSet.unit" 
+                                                :options="editContent.attributeSet.unitOption" 
+                                                label="Unit"
+                                                :rules="formData.selectRules" 
+                                                lazy-rules
+                                                emit-value 
+                                                map-options
+                                                option-label="label" 
+                                                option-value="value"
+                                                ></q-select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row q-col-gutter-x-md" v-if="editContent.attribute ==='text-shadow'">
+                                    <div class="col-3">
+                                        <div class="ui-color-field">
+                                            <q-input outlined v-model="editContent.attributeSet.color" :rules="['anyColor']" color="teal" label="Shadow Color">
+                                              <template v-slot:prepend>
+                                                <q-btn round unelevated no-caps size="10px" icon="colorize" :style="{ backgroundColor: editContent.attributeSet.color }">
+                                                  <q-popup-proxy cover transition-show="scale" transition-hide="scale">
+                                                    <q-color flat square v-model="editContent.attributeSet.color" :format-model="formData.colorFormat" />
+                                                  </q-popup-proxy>
+                                                </q-btn>
+                                              </template>
+                                            </q-input>
+                                        </div>
+                                    </div>
+                                    <div class="col-3">
+                                        <q-input outlined v-model="editContent.attributeSet.horizontal" label="Horizontal" type="number"></q-input>
+                                    </div>
+                                    <div class="col-3">
+                                        <q-input outlined v-model="editContent.attributeSet.vertical" label="Vertical" type="number"></q-input>
+                                    </div>
+                                    <div class="col-3">
+                                        <q-input outlined v-model="editContent.attributeSet.blur" label="Blur" type="number"></q-input>
+                                    </div>
+                                    <div class="col-3">
+                                        <q-input outlined v-model="editContent.attributeSet.minlength" label="Min Length" type="number"></q-input>
+                                    </div>
+                                    <div class="col-3">
+                                        <q-input outlined v-model="editContent.attributeSet.maxlength" label="Max Length" type="number"></q-input>
+                                    </div>
+                                    <div class="col-3">
+                                        <q-input outlined v-model="editContent.attributeSet.minblur" label="Min Blur" type="number"></q-input>
+                                    </div>
+                                    <div class="col-3">
+                                        <q-input outlined v-model="editContent.attributeSet.maxblur" label="Max Blur" type="number"></q-input>
+                                    </div>
+                                </div>
+
+                                <div class="row q-col-gutter-x-md" v-if="editContent.attribute ==='box-shadow'">
+                                    <div class="col-4">
+                                        <div class="q-gutter-sm">
+                                            <q-toggle v-model="editContent.attributeSet.isEffect" color="red" :label="editContent.attributeSet.isEffect ? 'Effect ON' : 'Effect OFF' " checked-icon="check" unchecked-icon="clear" ></q-toggle>
+                                        </div>
+                                    </div>
+                                    <div class="col-5">
+                                        <div class="q-gutter-sm">
+                                            <q-toggle v-model="editContent.attributeSet.inset" color="red" :label="editContent.attributeSet.inset ? 'Inset' : 'Outline' " checked-icon="check" unchecked-icon="clear" ></q-toggle>
+                                        </div>
+                                    </div>
+                                    <div class="col-3">
+                                        <div class="q-gutter-sm">
+                                            <div class="col-3">
+                                                <q-select 
+                                                outlined 
+                                                v-model="editContent.attributeSet.unit" 
+                                                :options="editContent.attributeSet.unitOption" 
+                                                label="Unit"
+                                                :rules="formData.selectRules" 
+                                                lazy-rules
+                                                emit-value 
+                                                map-options
+                                                option-label="label" 
+                                                option-value="value"
+                                                ></q-select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row q-col-gutter-x-md q-col-gutter-y-md" v-if="editContent.attribute ==='box-shadow'">
+                                    <div class="col-3">
+                                        <div class="ui-color-field">
+                                            <q-input outlined v-model="editContent.attributeSet.color" :rules="['anyColor']" color="teal" label="Shadow Color">
+                                              <template v-slot:prepend>
+                                                <q-btn round unelevated no-caps size="10px" icon="colorize" :style="{ backgroundColor: editContent.attributeSet.color }">
+                                                  <q-popup-proxy cover transition-show="scale" transition-hide="scale">
+                                                    <q-color flat square v-model="editContent.attributeSet.color" :format-model="formData.colorFormat" />
+                                                  </q-popup-proxy>
+                                                </q-btn>
+                                              </template>
+                                            </q-input>
+                                        </div>
+                                    </div>
+                                    <div class="col-3">
+                                        <q-input outlined v-model="editContent.attributeSet.horizontal" label="Horizontal" type="number"></q-input>
+                                    </div>
+                                    <div class="col-3">
+                                        <q-input outlined v-model="editContent.attributeSet.vertical" label="Vertical" type="number"></q-input>
+                                    </div>
+                                    <div class="col-3">
+                                        <q-input outlined v-model="editContent.attributeSet.blur" label="Blur" type="number"></q-input>
+                                    </div>
+                                    <div class="col-3">
+                                        <q-input outlined v-model="editContent.attributeSet.spread" label="Spread" type="number"></q-input>
+                                    </div>
+                                    <div class="col-3">
+                                        <q-input outlined v-model="editContent.attributeSet.minlength" label="Min Length" type="number"></q-input>
+                                    </div>
+                                    <div class="col-3">
+                                        <q-input outlined v-model="editContent.attributeSet.maxlength" label="Max Length" type="number"></q-input>
+                                    </div>
+                                    <div class="col-3">
+                                        <q-input outlined v-model="editContent.attributeSet.minblur" label="Min Blur" type="number"></q-input>
+                                    </div>
+                                    <div class="col-3">
+                                        <q-input outlined v-model="editContent.attributeSet.maxblur" label="Max Blur" type="number"></q-input>
+                                    </div>
+                                    <div class="col-3">
+                                        <q-input outlined v-model="editContent.attributeSet.minspread" label="Min Spread" type="number"></q-input>
+                                    </div>
+                                    <div class="col-3">
+                                        <q-input outlined v-model="editContent.attributeSet.maxspread" label="Max Spread" type="number"></q-input>
+                                    </div>
+                                </div> 
+
+                                <div class="boolean-multoggle" v-if="editContent.attribute ==='boolean-multoggle'">
+                                    <div class="row q-mx-xs q-my-md q-pr-md q-col-gutter-md multoggle-section" v-for="(content, index) in editContent.attributeSet.toggle" >
+                                        <div class="col-6">
+                                            <q-input filled color="teal" v-model="editContent.attributeSet.toggle[index].code" label="Code ID" counter :maxlength="formData.codeMax" lazy-rules :rules="formData.codeRules"></q-input>
+                                        </div>
+                                        <div class="col-6">
+                                            <q-input filled color="teal" v-model="editContent.attributeSet.toggle[index].name" label="Name" counter :maxlength="formData.titleMax" lazy-rules :rules="formData.noemptyRules"></q-input>
+                                        </div>
+                                        <div class="col-6">
+                                            <q-input filled color="green" v-model="editContent.attributeSet.toggle[index].truevalue" label="True Value" counter :maxlength="formData.codeMax" lazy-rules :rules="formData.codeRules"></q-input>
+                                        </div>
+                                        <div class="col-6">
+                                            <q-input filled color="pink" v-model="editContent.attributeSet.toggle[index].falsevalue" label="False Value" counter :maxlength="formData.codeMax" lazy-rules :rules="formData.codeRules"></q-input>
+                                        </div>
+                                        <div class="col-6">
+                                            <q-toggle v-model="editContent.attributeSet.toggle[index].value" color="orange" :label="editContent.attributeSet.toggle[index].value ? 'Default TRUE' : 'Default FALSE' " checked-icon="check" unchecked-icon="clear" keep-color ></q-toggle>
+                                        </div>
+                                        <div class="col-6">
+                                            <q-select 
+                                                outlined
+                                                color="purple"
+                                                v-model="editContent.attributeSet.toggle[index].color" 
+                                                :options="editContent.attributeSet.colorOption" 
+                                                label="Toggle Color"
+                                                :rules="formData.selectRules" 
+                                                lazy-rules
+                                                emit-value 
+                                                map-options
+                                                option-label="label" 
+                                                option-value="value"
+                                            ></q-select>
+                                        </div>
+                                        <div class="q-mb-md col-12">
+                                            <q-btn outline color="red" class="full-width" label="REMOVE" @click="removeMultipleToggle(index)"> </q-btn>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="q-mb-md col-12">
+                                            <q-btn color="teal" class="full-width" label="ADD TOGGLE" @click="addMultipleToggle()"> </q-btn>
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+
+                                <div class="button-toggle" v-if="editContent.attribute ==='button-toggle'">
+                                    
+                                    <div class="row q-col-gutter-md">
+                                        <div class="col-6">
+                                            <q-input filled color="green" v-model="editContent.attributeSet.truedefine" label="Define True Value" counter :maxlength="formData.codeMax" lazy-rules :rules="formData.codeRules"></q-input>
+                                        </div>
+                                        <div class="col-6">
+                                            <q-input filled color="pink" v-model="editContent.attributeSet.falsedefine" label="Define False Value" counter :maxlength="formData.codeMax" lazy-rules :rules="formData.codeRules"></q-input>
+                                        </div>
+                                        <div class="col-6">
+                                            <q-select 
+                                                outlined
+                                                color="purple"
+                                                v-model="editContent.attributeSet.color" 
+                                                :options="editContent.attributeSet.colorOption" 
+                                                label="Toggle Color"
+                                                :rules="formData.selectRules" 
+                                                lazy-rules
+                                                emit-value 
+                                                map-options
+                                                option-label="label" 
+                                                option-value="value"
+                                            ></q-select>
+                                        </div>
+                                        <div class="col-6">
+                                            <q-select 
+                                                outlined
+                                                color="deep-orange"
+                                                v-model="editContent.attributeSet.value" 
+                                                :options="editContent.attributeSet.togleOptions" 
+                                                label="Default Button"
+                                                :rules="formData.selectRules" 
+                                                lazy-rules
+                                                emit-value 
+                                                map-options
+                                                option-label="label" 
+                                                option-value="value"
+                                            ></q-select>
+                                        </div>
+                                    </div>
+                                    <div class="row q-mx-xs q-my-md q-pr-md q-col-gutter-md button-toggle-section" v-for="(content, index) in editContent.attributeSet.togleOptions" >
+                                        <div class="col-12">
+                                            <q-input filled color="teal" v-model="editContent.attributeSet.togleOptions[index].code" label="Code ID" counter :maxlength="formData.codeMax" lazy-rules :rules="formData.codeRules"></q-input>
+                                        </div>
+                                        <div class="col-12">
+                                            <q-input 
+                                              filled
+                                              color="green"
+                                              v-model="editContent.attributeSet.togleOptions[index].label" 
+                                              label="Label" 
+                                              counter 
+                                              :maxlength="formData.langMax" 
+                                              lazy-rules
+                                              :rules="formData.noemptyRules"
+                                            >
+                                            </q-input>
+                                        </div>
+                                        <div class="col-12">
+                                            <q-input filled color="brown" v-model="editContent.attributeSet.togleOptions[index].value" label="Value" counter :maxlength="formData.codeMax" lazy-rules :rules="formData.codeRules"></q-input>
+                                        </div>
+                                        <div class="q-mb-md col-12">
+                                            <q-btn outline color="red" class="full-width" label="REMOVE" @click="removeButtonToggle(index)"> </q-btn>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="q-mb-md col-12">
+                                            <q-btn color="teal" class="full-width" label="ADD BUTTON" @click="addButtonToggle()"> </q-btn>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="button-toggle-2" v-if="editContent.attribute ==='button-toggle-2'">
+                                    
+                                    <div class="row q-col-gutter-md">
+                                        <div class="col-6">
+                                            <q-select 
+                                                outlined
+                                                color="purple"
+                                                v-model="editContent.attributeSet.color" 
+                                                :options="editContent.attributeSet.colorOption" 
+                                                label="Toggle Color"
+                                                :rules="formData.selectRules" 
+                                                lazy-rules
+                                                emit-value 
+                                                map-options
+                                                option-label="label" 
+                                                option-value="value"
+                                            ></q-select>
+                                        </div>
+                                        <div class="col-6">
+                                            <q-select 
+                                                outlined
+                                                color="deep-orange"
+                                                v-model="editContent.attributeSet.value" 
+                                                :options="editContent.attributeSet.togleOptions" 
+                                                label="Default Button"
+                                                :rules="formData.selectRules" 
+                                                lazy-rules
+                                                emit-value 
+                                                map-options
+                                                option-label="label" 
+                                                option-value="value"
+                                            ></q-select>
+                                        </div>
+                                    </div>
+                                    <div class="row q-mx-xs q-my-md q-pr-md q-col-gutter-md button-toggle-section" v-for="(content, index) in editContent.attributeSet.togleOptions" >
+                                        
+                                        <div class="col-6">
+                                            <q-input 
+                                              filled
+                                              color="green"
+                                              v-model="editContent.attributeSet.togleOptions[index].label" 
+                                              label="Label" 
+                                              counter 
+                                              :maxlength="formData.langMax" 
+                                              lazy-rules
+                                              :rules="formData.noemptyRules"
+                                            >
+                                            </q-input>
+                                        </div>
+                                        <div class="col-6">
+                                            <q-input filled color="brown" v-model="editContent.attributeSet.togleOptions[index].value" label="Value" counter :maxlength="formData.codeMax" lazy-rules :rules="formData.codeRules"></q-input>
+                                        </div>
+                                        <div class="col-12" v-for="(setData, setIndex) in editContent.attributeSet.togleOptions[index].paramSet">
+                                            <div class="row q-mx-xs q-my-xs q-pr-xs q-col-gutter-xs button-toggle-section">
+                                                <div class="col-5">
+                                                    <q-input filled color="teal" v-model="editContent.attributeSet.togleOptions[index].paramSet[setIndex].code" label="CSS Variable" counter :maxlength="formData.codeMax" lazy-rules :rules="formData.codeRules"></q-input>
+                                                </div>
+                                                <div class="col-5">
+                                                    <q-input filled color="teal" v-model="editContent.attributeSet.togleOptions[index].paramSet[setIndex].value" label="CSS Value" counter :maxlength="formData.codeMax" lazy-rules :rules="formData.noemptyRules"></q-input>
+                                                </div>
+                                                <div class="col-2">
+                                                    <q-btn color="purple-10" class="full-width" label="REMOVE" @click="removeButtonToggleComboCss(index,setIndex)"> </q-btn>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="q-mb-md col-12">
+                                            <q-btn color="cyan-7" class="full-width" label="ADD CSS Variable" @click="addButtonToggleComboCss(index)"> </q-btn>
+                                        </div>
+
+                                        <div class="q-mb-md col-12">
+                                            <q-btn outline color="red" class="full-width" label="REMOVE" @click="removeButtonToggleCombo(index)"> </q-btn>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="q-mb-md col-12">
+                                            <q-btn color="teal" class="full-width" label="ADD BUTTON" @click="addButtonToggleCombo()"> </q-btn>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="linear-gradient1" v-if="editContent.attribute ==='linear-gradient'">
+                                    <div class="row q-mx-xs q-my-md q-pr-md q-col-gutter-md linear-gradient" v-for="(content, index) in editContent.attributeSet.gradients" >
+                                        <div class="col-4">
+                                            <q-input filled color="teal" v-model="editContent.attributeSet.gradients[index].degree" label="Degree" type="number" :min="editContent.attributeSet.minDeg" :max="editContent.attributeSet.maxDeg" ></q-input>
+                                        </div>
+                                        <div class="col-4">
+                                            <div class="q-pr-sm ui-color-field">
+                                                <q-input outlined v-model="editContent.attributeSet.gradients[index].color1" :rules="['anyColor']" color="teal" label="Start Color">
+                                                  <template v-slot:prepend>
+                                                    <q-btn round unelevated no-caps size="10px" icon="colorize" :style="{ backgroundColor: editContent.attributeSet.gradients[index].color1 }">
+                                                      <q-popup-proxy cover transition-show="scale" transition-hide="scale">
+                                                        <q-color flat square v-model="editContent.attributeSet.gradients[index].color1" :format-model="formData.colorFormat" />
+                                                      </q-popup-proxy>
+                                                    </q-btn>
+                                                  </template>
+                                                </q-input>
+                                            </div>
+                                        </div>
+                                        <div class="col-4">
+                                            <div class="q-pr-sm ui-color-field">
+                                                <q-input outlined v-model="editContent.attributeSet.gradients[index].color2" :rules="['anyColor']" color="teal" label="End Color">
+                                                  <template v-slot:prepend>
+                                                    <q-btn round unelevated no-caps size="10px" icon="colorize" :style="{ backgroundColor: editContent.attributeSet.gradients[index].color2 }">
+                                                      <q-popup-proxy cover transition-show="scale" transition-hide="scale">
+                                                        <q-color flat square v-model="editContent.attributeSet.gradients[index].color2" :format-model="formData.colorFormat" />
+                                                      </q-popup-proxy>
+                                                    </q-btn>
+                                                  </template>
+                                                </q-input>
+                                            </div>
+                                        </div>
+                                        <div class="q-mb-md col-12">
+                                            <q-btn outline color="red" class="full-width" label="REMOVE" @click="removeButtonLinearGradient(index)"> </q-btn>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="q-mb-md col-12">
+                                            <q-btn color="teal" class="full-width" label="ADD BUTTON" @click="addButtonLinearGradient()"> </q-btn>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="linear-gradient2" v-if="editContent.attribute ==='linear-gradient-2'">
+                                    <div class="row q-mx-xs q-my-md q-pr-md q-col-gutter-md">
+                                        <div class="col-12">
+                                            <q-input filled color="teal" v-model="editContent.attributeSet.degree" label="Degree" type="number" :min="editContent.attributeSet.minDeg" :max="editContent.attributeSet.maxDeg" ></q-input>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="row q-mx-xs q-my-md q-pr-md q-col-gutter-md linear-gradient" v-for="(content, index) in editContent.attributeSet.gradients" >
+                                        <div class="col-6">
+                                            <q-input filled color="teal" v-model="editContent.attributeSet.gradients[index].stop" label="Stop" type="number" :min="editContent.attributeSet.minStop" :max="editContent.attributeSet.maxStop" ></q-input>
+                                        </div>
+                                        <div class="col-6">
+                                            <div class="q-pr-sm ui-color-field">
+                                                <q-input outlined v-model="editContent.attributeSet.gradients[index].color" :rules="['anyColor']" color="teal" label="Start Color">
+                                                  <template v-slot:prepend>
+                                                    <q-btn round unelevated no-caps size="10px" icon="colorize" :style="{ backgroundColor: editContent.attributeSet.gradients[index].color }">
+                                                      <q-popup-proxy cover transition-show="scale" transition-hide="scale">
+                                                        <q-color flat square v-model="editContent.attributeSet.gradients[index].color" :format-model="formData.colorFormat" />
+                                                      </q-popup-proxy>
+                                                    </q-btn>
+                                                  </template>
+                                                </q-input>
+                                            </div>
+                                        </div>
+                                        <div class="q-mb-md col-12">
+                                            <q-btn outline color="red" class="full-width" label="REMOVE" @click="removeButtonLinearGradient(index)"> </q-btn>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="q-mb-md col-12">
+                                            <q-btn color="teal" class="full-width" label="ADD BUTTON" @click="addButtonLinearGradient()"> </q-btn>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row q-col-gutter-x-md" v-if="editContent.attribute ==='onecomme-services'">
+                                    <div class="col-12" v-if="editContent.attributeSet.valueType === 'string' ">
+                                        <q-input outlined v-model="editContent.attributeSet.value" label="Sevice ID" :maxlength="formData.descrMax" lazy-rules counter ></q-input>
+                                    </div>
+                                </div>
+
+                                <div class="row q-col-gutter-x-md" v-if="editContent.attribute ==='onecomme-gank-id'">
+                                    <div class="col-12" v-if="editContent.attributeSet.valueType === 'string' ">
+                                        <q-input outlined v-model="editContent.attributeSet.value" label="Gank ID" :maxlength="formData.descrMax" lazy-rules counter ></q-input>
+                                    </div>
+                                </div>
+
+                                <div class="row q-col-gutter-x-md" v-if="editContent.attribute ==='onecomme-counter-field'">
+                                    <div class="col-12">
+                                        <q-input outlined v-model="editContent.attributeSet.counterName" label="Counter Name" type="text"></q-input>
+                                    </div>
+                                    <div class="col-12">
+                                        <q-input outlined v-model="editContent.attributeSet.counterIndex" label="Counter Index" type="number"></q-input>
+                                    </div>
+                                    <div class="col-12" v-if="editContent.attributeSet.valueType === 'string' ">
+                                        <q-input outlined v-model="editContent.attributeSet.value" type="textarea" :maxlength="formData.descrMax" lazy-rules counter></q-input>
+                                    </div>
+                                </div>
+
+                                <div class="row q-col-gutter-x-md" v-if="['onecomme-counter-current', 'onecomme-counter-target'].includes(editContent.attribute)">
+                                    <div class="col-12">
+                                        <q-input outlined v-model="editContent.attributeSet.counterName" label="Counter Name" type="text"></q-input>
+                                    </div>
+                                    <div class="col-12">
+                                        <q-input outlined v-model="editContent.attributeSet.counterIndex" label="Counter Index" type="number"></q-input>
+                                    </div>
+                                    <div class="col-6">
+                                        <q-input outlined v-model="editContent.attributeSet.min" label="MIN" type="number"></q-input>
+                                    </div>
+                                    <div class="col-6">
+                                        <q-input outlined v-model="editContent.attributeSet.max" label="MAX" type="number"></q-input>
+                                    </div>
+                                </div>
+
+                                <div class="row q-col-gutter-x-md" v-if="['datetime-date-format', 'datetime-weekday-format', 'datetime-time-format'].includes(editContent.attribute)">
+                                    <div class="col-12" v-if="editContent.attribute ==='datetime-date-format'">
+                                        <q-select outlined v-model="editContent.attributeSet.value" :options="formData.dateFormat" label="Date Format Option" option-label="label" option-value="value" emit-value map-options></q-select>
+                                    </div>
+                                    <div class="col-12" v-if="editContent.attribute ==='datetime-weekday-format'">
+                                        <q-select outlined v-model="editContent.attributeSet.value" :options="formData.weekdayFormat" label="Week Format Option" option-label="label" option-value="value" emit-value map-options></q-select>
+                                    </div>
+                                    <div class="col-12" v-if="editContent.attribute ==='datetime-time-format'">
+                                        <q-select outlined v-model="editContent.attributeSet.value" :options="formData.timeFormat" label="Time Format Option" option-label="label" option-value="value" emit-value map-options></q-select>
+                                    </div>
+                                </div>
+
+                                <q-separator></q-separator>
+
+                                <div class="row q-col-gutter-x-md">
+                                    <div class="col-12">
+                                      <div class="input-inline q-gutter-sm">
+                                        <q-toggle 
+                                          v-for="(tog, index) in editContent.isLanguage" 
+                                          v-model="editContent.isLanguage[index].value" 
+                                          :label="editContent.isLanguage[index].lang" 
+                                          color="green" 
+                                          keep-color
+                                          checked-icon="check" 
+                                          unchecked-icon="clear">
+                                        </q-toggle>
+                                      </div>
+                                    </div>
+                                </div>
+
+                                <q-separator></q-separator>
+                                <div class="row q-mt-md q-col-gutter-y-md">
+                                    <div class="col-12" v-for="(content, index) in editContent.isLanguage">
+                                        <q-input 
+                                          v-if="editContent.isLanguage[index].value === true"
+                                          filled 
+                                          v-model="editContent.language[content.lang]" 
+                                          :label="editContent.isLanguage[index].lang" 
+                                          counter 
+                                          :maxlength="formData.langMax" 
+                                          lazy-rules
+                                          dense
+                                          :rules="formData.noemptyRules"
+                                        >
+                                            <template v-slot:before>
+                                              <q-icon name="fa-solid fa-language"></q-icon>
+                                            </template>
+                                        </q-input>
+                                    </div>
+                                </div>
+
+                                <div class="row q-col-gutter-x-md">
+                                    <div class="col-12">
+                                      <div class="input-inline q-gutter-sm">
+                                        <q-toggle 
+                                          v-model="editContent.isDescription" 
+                                          label="Description" 
+                                          color="purple" 
+                                          keep-color
+                                          checked-icon="check" 
+                                          unchecked-icon="clear">
+                                        </q-toggle>
+                                      </div>
+                                    </div>
+                                </div>
+
+                                <q-separator></q-separator>
+                                <div class="row q-mt-md q-col-gutter-y-md" v-if="editContent.isDescription" >
+                                    <div class="col-12" v-for="(content, index) in editContent.isLanguage">
+                                        <q-input 
+                                          v-if="editContent.isLanguage[index].value === true"
+                                          filled 
+                                          v-model="editContent.description[content.lang]" 
+                                          :label="editContent.isLanguage[index].lang" 
+                                          counter 
+                                          :maxlength="formData.descrMax" 
+                                          lazy-rules
+                                          dense
+                                          :rules="formData.noemptyRules"
+                                        >
+                                            <template v-slot:before>
+                                              <q-icon name="fa-solid fa-language"></q-icon>
+                                            </template>
+                                        </q-input>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </q-form>
+                        
+                      </q-card-section>
+              
+                      <q-card-actions class="fixed-actions" align="right">
+                        <q-btn flat :label="modalEditor.cancelBtnLabel" color="blue-grey-3" class="btn-fixed-width" v-close-popup ></q-btn>
+                        <q-btn flat :label="modalEditor.saveBtnLabel" color="primary" class="btn-fixed-width" @click="validateNode" ></q-btn>
+                      </q-card-actions>
+                    </q-card>
+                </q-dialog>
+
+                <q-dialog v-model="ui.toolMenu" seamless full-width position="bottom">
+                    <q-card>
+                        <q-card-section>
+                            <div class="row q-col-gutter-x-md q-col-gutter-y-md">
+                                <div class="col-2">
+                                    <q-input v-model="editorStore.projectFileName" outlined label="Project File Name"></q-input>
+                                </div>
+                                <div class="col-2">
+                                    <q-input v-model="editorStore.mainFileName" outlined label="Main File Name"></q-input>
+                                </div>
+                                <div class="col-2">
+                                    <q-file v-model="editorStore.uploadedFile" outlined label="Read Project" accept=".json" @update:model-value="loadProject" ></q-file>
+                                </div>
+                                <div class="col-2">
+                                    <q-select outlined color="teal" v-model="editorStore.assetFileSelected" :options="editorStore.assetFileOpt" label="Asset File Name" option-label="label" option-value="value" emit-value map-options ></q-select>
+                                </div>
+                                <div class="col-2">
+                                    <q-select outlined color="teal" v-model="editorStore.presetFileSelected" :options="editorStore.presetFileOpt" label="Preset File Name" option-label="label" option-value="value" emit-value map-options ></q-select>
+                                </div>
+                                <div class="col-2">
+                                    <q-select outlined color="teal" v-model="editorStore.cssFileSelected" :options="editorStore.cssFileOpt" label="CSS File Name" option-label="label" option-value="value" emit-value map-options ></q-select>
+                                </div>
+                            </div>
+                        </q-card-section>
+
+
+                        <q-card-section class="row items-center no-wrap">
+                            <div class="q-gutter-x-sm">
+                                <q-btn color="teal" icon="fa-solid fa-floppy-disk" label="Save Project" @click="saveProject()" ></q-btn>
+                                <q-btn color="purple-6" icon="fa-solid fa-floppy-disk" label="Save Main" @click="saveMain()" ></q-btn>
+                                <q-btn color="purple-6" icon="fa-solid fa-floppy-disk" label="Save Asset" @click="saveAsset()" ></q-btn>
+                                <q-btn color="orange" icon="fa-solid fa-palette" label="Save Preset" @click="savePreset()"></q-btn>
+                                <q-btn color="lime" icon="fa-solid fa-file-code" label="Save CSS" @click="saveCss()" ></q-btn>
+                            </div>
+                            <q-space></q-space>
+                            <q-btn flat round color="red" icon="close" v-close-popup />
+                        </q-card-section>
+                    </q-card>
+                </q-dialog>
+            </div>
+        </div>
+
+
+
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/vue@3/dist/vue.global.prod.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/quasar@2.17.5/dist/quasar.umd.prod.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/quasar@2.17.5/dist/icon-set/fontawesome-v6.umd.prod.js"></script>
+    <script src="vendor/jsonview/vue-json-pretty.js"></script>
+    <script type="module" src="js/editor.js"></script>
+  </body>
+</html>

@@ -1,0 +1,33 @@
+:root {
+--datetime-font-color: #2B2E2E;
+--datetime-font-size: 30px;
+--datetime-font-family: Noto Sans;
+--datetime-font-weight: 600;
+--datetime-line-height: 30px;
+--datetime-time-distance: 2px;
+--datetime-text-shadow: none;
+--title-box-display: flex;
+--title-box-display-none: none;
+--title-box-width: 60px;
+--title-box-bg-color: #333333;
+--title-box-border: 0px solid #FFFFFF;
+--title-box-padding: 2px 2px 2px 2px;
+--title-box-margin: 5px 5px 5px 5px;
+--title-box-border-radius: 10px 10px 10px 10px;
+--title-content: 'LIVE';
+--title-font-color: #FFFFFF;
+--title-font-size: 16px;
+--title-font-family: Noto Sans;
+--title-font-weight: 600;
+--title-text-shadow: none;
+--hcolon-display: inline-block;
+--hcolon-blink: none;
+--mcolon-display: inline-block;
+--mcolon-blink: none;
+--box-bg-color: #FFFFFF;
+--box-border: 1px solid #ccccccff;
+--box-padding: 6px 6px 6px 6px;
+--box-margin: 0px 0px 0px 0px;
+--box-border-radius: 10px 10px 10px 10px;
+--box-shadow: 0px 0px 1px 0px #333844;
+}

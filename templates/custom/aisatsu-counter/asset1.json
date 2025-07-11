@@ -1,0 +1,249 @@
+{
+  "parentCode": "aisatsu-counter",
+  "presetId": 1,
+  "section": [
+    {
+      "parentCode": "aisatsu-counter",
+      "code": "main",
+      "position": 0
+    },
+    {
+      "parentCode": "aisatsu-counter",
+      "code": "setting",
+      "position": 1
+    }
+  ],
+  "part": [
+    {
+      "parentCode": "main",
+      "code": "main-counter",
+      "position": 0
+    },
+    {
+      "parentCode": "setting",
+      "code": "font-related",
+      "position": 0
+    }
+  ],
+  "attribute": [
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": false,
+        "isJs": true
+      },
+      "isSetCustom": false,
+      "isCustom": false,
+      "isOriginal": false,
+      "oriFrom": null,
+      "code": "onecomme-counter-current",
+      "parentCode": "main-counter",
+      "attribute": "onecomme-counter-current",
+      "counterIndex": 1,
+      "counterName": "ohayou1",
+      "counterType": "current",
+      "description": false,
+      "min": 0,
+      "max": 10000,
+      "value": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": false,
+        "isJs": false
+      },
+      "isSetCustom": false,
+      "isCustom": false,
+      "isOriginal": false,
+      "oriFrom": null,
+      "code": "onecomme-counter-target",
+      "parentCode": "main-counter",
+      "attribute": "onecomme-counter-target",
+      "counterIndex": 1,
+      "counterName": "ohayou1",
+      "counterType": "target",
+      "description": false,
+      "min": 0,
+      "max": 10000,
+      "value": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": false,
+        "isJs": false
+      },
+      "isSetCustom": false,
+      "isCustom": false,
+      "isOriginal": false,
+      "oriFrom": null,
+      "code": "onecomme-counter-field",
+      "parentCode": "main-counter",
+      "counterIndex": 1,
+      "counterName": "ohayou1",
+      "attribute": "onecomme-counter-field",
+      "value": [
+        "おはよう",
+        "おはようございます",
+        "こんばんは",
+        "こんにちは",
+        "Morning",
+        "Hi",
+        "安安",
+        "晚安",
+        "午安",
+        "早安",
+        "下午好",
+        "早上好",
+        "晚上好"
+      ],
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": false,
+      "isCustom": false,
+      "isOriginal": false,
+      "oriFrom": null,
+      "code": "counter-font",
+      "parentCode": "font-related",
+      "attribute": "font",
+      "cssvarColor": "--counter-font-color",
+      "cssvarFont": "--counter-font-family",
+      "cssvarSize": "--counter-font-size",
+      "cssvarWeight": "--counter-font-weight",
+      "color": "#171717ff",
+      "font": "Noto Sans",
+      "style": "normal",
+      "type": "none",
+      "size": 60,
+      "unit": "px",
+      "weight": 500,
+      "minSize": 0,
+      "maxSize": 500,
+      "minWeight": 0,
+      "maxWeight": 900,
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": false,
+      "isCustom": false,
+      "isOriginal": false,
+      "oriFrom": null,
+      "cssvar": "--counter-text-shadow",
+      "code": "counter-text-shadow",
+      "parentCode": "font-related",
+      "attribute": "text-shadow",
+      "isEffect": false,
+      "horizontal": 0,
+      "vertical": 0,
+      "blur": 0,
+      "unit": "px",
+      "color": "#757575ff",
+      "minlength": -30,
+      "maxlength": 30,
+      "minblur": -30,
+      "maxblur": 30,
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": false,
+      "isCustom": false,
+      "isOriginal": false,
+      "oriFrom": null,
+      "cssvar": "--counter-text-align",
+      "code": "counter-text-align",
+      "parentCode": "font-related",
+      "attribute": "text-align",
+      "value": "center",
+      "description": false
+    }
+  ],
+  "language": [
+    {
+      "code": "main",
+      "en-US": "Main",
+      "ja": "メイン",
+      "zh-CN": "主要",
+      "zh-TW": "主要"
+    },
+    {
+      "code": "main-counter",
+      "en-US": "Counter",
+      "ja": "カウンター",
+      "zh-CN": "计数器",
+      "zh-TW": "計數器"
+    },
+    {
+      "code": "onecomme-counter-current",
+      "en-US": "Current Count",
+      "ja": "現在のカウント",
+      "zh-CN": "当前计数",
+      "zh-TW": "目前計數"
+    },
+    {
+      "code": "onecomme-counter-target",
+      "en-US": "Target Counter",
+      "ja": "目標カウンター",
+      "zh-CN": "目标计数器",
+      "zh-TW": "目標計數器"
+    },
+    {
+      "code": "onecomme-counter-field",
+      "en-US": "Keywords",
+      "ja": "キーワード",
+      "zh-CN": "关键词",
+      "zh-TW": "關鍵字"
+    },
+    {
+      "code": "setting",
+      "en-US": "Setting",
+      "ja": "設定",
+      "zh-CN": "设置",
+      "zh-TW": "設定"
+    },
+    {
+      "code": "font-related",
+      "en-US": "Font Related",
+      "ja": "フォント関連",
+      "zh-CN": "字体相关",
+      "zh-TW": "字體相關"
+    },
+    {
+      "code": "counter-font",
+      "en-US": "Font",
+      "ja": "フォント",
+      "zh-CN": "字体",
+      "zh-TW": "字體"
+    },
+    {
+      "code": "counter-text-shadow",
+      "en-US": "Text Shadow",
+      "ja": "文字の影",
+      "zh-CN": "文字阴影",
+      "zh-TW": "文字陰影"
+    },
+    {
+      "code": "counter-text-align",
+      "en-US": "Text Align",
+      "ja": "文字揃え",
+      "zh-CN": "文本对齐",
+      "zh-TW": "文字對齊"
+    }
+  ]
+}

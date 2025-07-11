@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>OneComme | Custom Template - Integration </title>
+    <meta name="referrer" content="no-referrer" />
+    <link rel="stylesheet" href="/plugins/onecomme.plugin.template-utils/css/fonts.css" />
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body hidden>
+    <div id="container" class="container">
+      <transition-group class="comments" name="comment" tag="div">
+        <div
+          v-for="(comment, index) in comments"
+          :class="getClassName(comment)"
+          :key="comment.data.id"
+          :style="getStyle(comment) "
+          :data-service="comment.service"
+          :data-user="comment.data.name"
+          :data-gift="comment.data.hasGift"
+          :data-owner="comment.data.isOwner"
+          :data-moderator="comment.data.isModerator"
+          :data-member="comment.data.isMember"
+          :data-is-new="comment.data.isFirstTime"
+          :data-service-name="comment.name"
+          :data-service-id="comment.id"
+          :data-paid="!!comment.data.paidText"
+        >
+          <div class="danmaku custom" v-if="comment.customStyle == 1">
+            <div class="block-gift" v-if="comment.data.hasGift == true || comment.data.hasReward == true ">
+              
+              <div class="type-member" v-if="comment.data.giftType == 'members' " >
+                <div class="box">
+                  <div class="column-1">
+                    <div :class="'comment-avatar '+ getRole(comment)">
+                      <img alt="" v-if="comment.data.profileImage" :src="comment.data.profileImage" />
+                    </div>
+                  </div>
+                  <div class="column-2">
+                    <div class="comment-user">
+                      <div :class="'user-section ' + getRole(comment)">
+                        <div class="user-displayname" >{{comment.data.displayName}}</div>
+                      </div>
+                      <div class="badges-section">
+                        <div v-for="(badge, index) in comment.data.badges" :class="'comment-badges badge-'+ index" :key="index">
+                          <img v-if="badge.url" :alt="badge.label" :src="badge.url" :title="badge.label" />
+                        </div>
+                      </div>
+                    </div>
+                    <div class="comment-content">
+                      <div class="comment-text" v-html="comment.data.comment"></div>
+                    </div>
+                  </div>
+                  <div class="column-3" >
+                    <div class="time">
+                      <div class="time-full" v-if="comment.data.timeFull">{{comment.data.timeFull}}</div>
+                      <div class="time-short" v-if="comment.data.timeShort">{{comment.data.timeShort}}</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="type-milestonechat" v-else-if="comment.data.giftType == 'milestonechat' " >
+                <div :class="getPaidtext(comment)">
+                  <div class="column-1">
+                    <div :class="'comment-avatar '+ getRole(comment)">
+                      <img alt="" v-if="comment.data.profileImage" :src="comment.data.profileImage" />
+                    </div>
+                  </div>
+                  <div class="column-2">
+                    <div class="comment-user">
+                      <div :class="'user-section ' + getRole(comment)">
+                        <div class="user-displayname" >{{comment.data.displayName}}</div>
+                      </div>
+                      <div class="badges-section">
+                        <div v-for="(badge, index) in comment.data.badges" :class="'comment-badges badge-'+ index" :key="index">
+                          <img v-if="badge.url" :alt="badge.label" :src="badge.url" :title="badge.label" />
+                        </div>
+                      </div>
+                    </div>
+                    <div class="comment-content">
+                      <div class="comment-text" v-html="comment.data.comment"></div>
+                    </div>
+                  </div>
+                  <div class="column-3" >
+
+                    <div class="label" v-if="comment.data.giftType == 'milestonechat' ">
+                      <div class="label-price" v-if="comment.data.membership.primary">{{comment.data.membership.primary}}</div>
+                    </div>
+
+                    <div class="time" v-else >
+                      <div class="time-full" v-if="comment.data.timeFull">{{comment.data.timeFull}}</div>
+                      <div class="time-short" v-if="comment.data.timeShort">{{comment.data.timeShort}}</div>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+
+              <div class="type-superchat" v-else-if="comment.data.giftType == 'superchat' " >
+                <div :class="getPaidtext(comment)">
+                  <div class="column-1">
+                    <div :class="'comment-avatar '+ getRole(comment)">
+                      <img alt="" v-if="comment.data.profileImage" :src="comment.data.profileImage" />
+                    </div>
+                  </div>
+                  <div class="column-2">
+                    <div class="comment-user">
+                      <div :class="'user-section ' + getRole(comment)">
+                        <div class="user-displayname" >{{comment.data.displayName}}</div>
+                      </div>
+                      <div class="badges-section">
+                        <div v-for="(badge, index) in comment.data.badges" :class="'comment-badges badge-'+ index" :key="index">
+                          <img v-if="badge.url" :alt="badge.label" :src="badge.url" :title="badge.label" />
+                        </div>
+                      </div>
+                    </div>
+                    <div class="comment-content">
+                      <div class="comment-text" v-html="comment.data.comment"></div>
+                    </div>
+                  </div>
+                  <div class="column-3">
+                    <div class="label"  v-if="comment.data.paidText || comment.data.price" >
+                      <div class="label-price" v-if="comment.service == 'youtube' && comment.data.paidText">{{comment.data.paidText}}</div>
+                      <div class="label-price bilibili" v-else-if="comment.service == 'bilibili' && comment.data.price"><span class="unit"></span>{{comment.data.price}}</div>
+                    </div>
+                    
+                    <div class="time" v-else >
+                      <div class="time-full" v-if="comment.data.timeFull">{{comment.data.timeFull}}</div>
+                      <div class="time-short" v-if="comment.data.timeShort">{{comment.data.timeShort}}</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="type-supersticker" v-else-if="comment.data.giftType == 'supersticker' " >
+                <div :class="getPaidtext(comment)">
+                  <div class="column-1">
+                    <div :class="'comment-avatar '+ getRole(comment)">
+                      <img alt="" v-if="comment.data.profileImage" :src="comment.data.profileImage" />
+                    </div>
+                  </div>
+                  <div class="column-2">
+                    <div class="comment-user">
+                      <div :class="'user-section ' + getRole(comment)">
+                        <div class="user-displayname" >{{comment.data.displayName}}</div>
+                      </div>
+                      <div class="badges-section">
+                        <div v-for="(badge, index) in comment.data.badges" :class="'comment-badges badge-'+ index" :key="index">
+                          <img v-if="badge.url" :alt="badge.label" :src="badge.url" :title="badge.label" />
+                        </div>
+                      </div>
+                    </div>
+                    <div class="comment-content">
+                      <div class="comment-text" v-html="comment.data.comment"></div>
+                    </div>
+                  </div>
+                  <div class="column-3">
+                    <div class="label"  v-if="comment.data.paidText" >
+                      <div class="label-price" v-if="comment.data.paidText">{{comment.data.paidText}}</div>
+                    </div>
+                    
+                    <div class="time" v-else >
+                      <div class="time-full" v-if="comment.data.timeFull">{{comment.data.timeFull}}</div>
+                      <div class="time-short" v-if="comment.data.timeShort">{{comment.data.timeShort}}</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="type-sponsorgift" v-else-if="comment.data.giftType == 'sponsorgift' " >
+                <div class="box">
+                  <div class="column-1">
+                    <div :class="'comment-avatar '+ getRole(comment)">
+                      <img alt="" v-if="comment.data.profileImage" :src="comment.data.profileImage" />
+                    </div>
+                  </div>
+                  <div class="column-2" >
+                    <div class="comment-user">
+                      <div :class="'user-section ' + getRole(comment)">
+                        <div class="user-displayname" >{{comment.data.displayName}}</div>
+                      </div>
+                      <div class="badges-section">
+                        <div class="badges-part" v-for="(badge, index) in comment.data.badges" :key="index">
+                          <div :class="'comment-badges badge-'+ index">
+                            <img v-if="badge.url" :alt="badge.label" :src="badge.url" :title="badge.label" />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="comment-content">
+                      <div class="comment-text" v-html="comment.data.comment"></div>
+                    </div>
+                  </div>
+
+                  <div class="column-3" v-if="comment.service == 'bilibili' && comment.data.price > 0">
+                    <div class="label ">
+                      <div class="label-price bilibili"><span class="unit"></span>{{comment.data.price}}</div>
+                    </div>
+                  </div>
+                  <div class="column-3" v-else-if="comment.service == 'bilibili' && comment.data.price <= 0">
+                    <div class="time">
+                      <div class="time-full" v-if="comment.data.timeFull">{{comment.data.timeFull}}</div>
+                      <div class="time-short" v-if="comment.data.timeShort">{{comment.data.timeShort}}</div>
+                    </div>
+                  </div>
+                  <div class="column-3" v-else-if="comment.service == 'youtube' && comment.data.giftCount > 0 ">
+                    <div class="label">
+                      <div class="label-count">{{comment.data.giftCount}}</div>
+                    </div>
+                  </div>
+                  <div class="column-3" v-else-if="comment.service == 'twitch' && comment.data.giftCount > 0 ">
+                    <div class="label">
+                      <div class="label-count">{{comment.data.giftCount}}</div>
+                    </div>
+                  </div>
+                  <div class="column-3" v-else>
+                    <div class="time">
+                      <div class="time-full" v-if="comment.data.timeFull">{{comment.data.timeFull}}</div>
+                      <div class="time-short" v-if="comment.data.timeShort">{{comment.data.timeShort}}</div>
+                    </div>
+                    
+                  </div>
+                </div>
+              </div>
+              
+              <div class="type-giftreceived" v-else-if="comment.data.giftType == 'giftreceived' " >
+                <div class="box">
+                  <div class="column-1">
+                    <div :class="'comment-avatar '+ getRole(comment)">
+                      <img alt="" v-if="comment.data.profileImage" :src="comment.data.profileImage" />
+                    </div>
+                  </div>
+                  <div class="column-2">
+                    <div class="comment-user">
+                      <div :class="'user-section ' + getRole(comment)">
+                        <div class="user-displayname" >{{comment.data.displayName}}</div>
+                      </div>
+                      <div class="badges-section">
+                        <div v-for="(badge, index) in comment.data.badges" :class="'comment-badges badge-'+ index" :key="index">
+                          <img v-if="badge.url" :alt="badge.label" :src="badge.url" :title="badge.label" />
+                        </div>
+                      </div>
+                    </div>
+                    <div class="comment-content">
+                      <div class="comment-text" v-html="comment.data.comment"></div>
+                    </div>
+                  </div>
+                  <div class="column-3" >
+                    <div class="time">
+                      <div class="time-full" v-if="comment.data.timeFull">{{comment.data.timeFull}}</div>
+                      <div class="time-short" v-if="comment.data.timeShort">{{comment.data.timeShort}}</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="type-reward" v-else-if="comment.data.giftType == 'reward' " >
+                <div class="box">
+                  <div class="column-1">
+                    <div :class="'comment-avatar '+ getRole(comment)">
+                      <img alt="" v-if="comment.data.profileImage" :src="comment.data.profileImage" />
+                    </div>
+                  </div>
+                  <div class="column-2">
+                    <div class="comment-user">
+                      <div :class="'user-section ' + getRole(comment)">
+                        <div class="user-displayname" >{{comment.data.displayName}}</div>
+                      </div>
+                      <div class="badges-section">
+                        <div v-for="(badge, index) in comment.data.badges" :class="'comment-badges badge-'+ index" :key="index">
+                          <img v-if="badge.url" :alt="badge.label" :src="badge.url" :title="badge.label" />
+                        </div>
+                      </div>
+                    </div>
+                    <div class="comment-content">
+                      <div class="comment-text" v-html="comment.data.comment"></div>
+                    </div>
+                  </div>
+                  <div class="column-3" >
+                    <div class="time time-full" v-if="comment.data.timeFull && comment.data.isNoComment ==true ">{{comment.data.timeFull}}</div>
+                    <div class="time time-short" v-if="comment.data.timeShort && comment.data.isNoComment ==true ">{{comment.data.timeShort}}</div>
+
+                    <div class="label label-price twitch" v-if="comment.data.reward_price && comment.data.reward_isBits == true" >{{comment.data.reward_price}} <span class="unit unit-bits"></span></div>
+                    <div class="label label-price twitch" v-else-if="comment.data.reward_price && comment.data.reward_isBits == false" >{{comment.data.reward_price}} <span class="unit unit-cp"></span></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="block-normal" v-else-if="comment.data.hasGift == false">
+              <div class="box">
+                <div class="column-1"> 
+                  <div :class="'comment-avatar '+ getRole(comment)">
+                    <img alt="" v-if="comment.data.profileImage" :src="comment.data.profileImage" />
+                  </div>
+                </div>
+                <div class="column-2">
+                  <div class="comment-user">
+                    <div :class="'user-section ' + getRole(comment)">
+                      <div class="user-displayname" >{{comment.data.displayName}}</div>
+                    </div>
+                    <div class="badges-section">
+                      <div v-for="(badge, index) in comment.data.badges" :class="'comment-badges badge-'+ index" :key="index">
+                        <img v-if="badge.url" :alt="badge.label" :src="badge.url" :title="badge.label" />
+                      </div>
+                    </div>
+                  </div>
+                  <div class="comment-content sticker-content" v-if="comment.data.sticker">
+                    <div class="comment-text" v-html="comment.data.comment"></div>
+                  </div>
+                  <div class="comment-content" v-else>
+                    <div class="comment-text" v-html="comment.data.comment"></div>
+                  </div>
+                </div>
+                <div class="column-3" >
+                  <div class="time">
+                    <div class="time-full" v-if="comment.data.timeFull">{{comment.data.timeFull}}</div>
+                    <div class="time-short" v-if="comment.data.timeShort">{{comment.data.timeShort}}</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="danmaku other" v-else>
+            <div class="block-other">
+              <div :class="getPaidtext(comment)">
+                <div class="column-1"> 
+                  <div :class="'comment-avatar '+ getRole(comment)">
+                    <img alt="" v-if="comment.data.profileImage" :src="comment.data.profileImage" />
+                  </div>
+                </div>
+                <div class="column-2">
+                  <div class="comment-user">
+                    <div :class="'user-section ' + getRole(comment)">
+                      <div class="user-displayname" >{{comment.data.displayName}}</div>
+                    </div>
+                    <div class="badges-section">
+                      <div v-for="(badge, index) in comment.data.badges" :class="'comment-badges badge-'+ index" :key="index">
+                        <img v-if="badge.url" :alt="badge.label" :src="badge.url" :title="badge.label" />
+                      </div>
+                    </div>
+                  </div>
+                  <div v-if="comment.data.paidText" class="paid-text">
+                    <strong>{{comment.data.paidText}}</strong>
+                  </div>
+                  <div v-if="comment.data.membership" class="paid-text">
+                    {{comment.data.membership.sub}} {{comment.data.membership.primary}}
+                  </div>
+                  <div class="comment-content">
+                    <div class="comment-text" v-html="comment.data.comment"></div>
+                  </div>
+                </div>
+                <div class="column-3" >
+                  <div class="time">
+                    <div class="time-full" v-if="comment.data.timeFull">{{comment.data.timeFull}}</div>
+                    <div class="time-short" v-if="comment.data.timeShort">{{comment.data.timeShort}}</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </transition-group>
+    </div>
+    <script src="../__origin/js/vue.min.js"></script>
+    <script src="../__origin/js/onesdk.js"></script>
+    <script src="/plugins/onecomme.plugin.template-utils/template.js"></script>
+  </body>
+</html>

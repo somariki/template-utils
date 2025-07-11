@@ -1,0 +1,530 @@
+{
+  "parentCode": "cleanflow",
+  "presetId": 1,
+  "dataSet": [
+    {
+      "isCustom": false,
+      "code": "comment-move-direction",
+      "value": "bottom-to-top"
+    },
+    {
+      "isCustom": false,
+      "code": "comment-width",
+      "value": 300,
+      "range": {
+        "min": 180,
+        "max": 350
+      },
+      "unit": "px",
+      "isDefault": true,
+      "isDefaultMin": true,
+      "isDefaultMax": true,
+      "defaultValue": "100%",
+      "defaultValueMin": "none",
+      "defaultValueMax": "none"
+    },
+    {
+      "isCustom": false,
+      "code": "comment-height",
+      "value": 92,
+      "range": {
+        "min": 45,
+        "max": 92
+      },
+      "unit": "px",
+      "isDefault": true,
+      "isDefaultMin": false,
+      "isDefaultMax": true,
+      "defaultValue": "100%",
+      "defaultValueMin": "none",
+      "defaultValueMax": "none"
+    },
+    {
+      "isCustom": false,
+      "code": "comment-box-margin",
+      "unit": "px",
+      "value": [
+        5,
+        8,
+        5,
+        8
+      ]
+    },
+    {
+      "isCustom": false,
+      "code": "comment-paid-width",
+      "value": 330,
+      "range": {
+        "min": 270,
+        "max": 400
+      },
+      "unit": "px",
+      "isDefault": true,
+      "isDefaultMin": true,
+      "isDefaultMax": true,
+      "defaultValue": "100%",
+      "defaultValueMin": "none",
+      "defaultValueMax": "none"
+    },
+    {
+      "isCustom": false,
+      "code": "comment-paid-height",
+      "value": 92,
+      "range": {
+        "min": 45,
+        "max": 92
+      },
+      "unit": "px",
+      "isDefault": true,
+      "isDefaultMin": true,
+      "isDefaultMax": true,
+      "defaultValue": "100%",
+      "defaultValueMin": "none",
+      "defaultValueMax": "none"
+    },
+    {
+      "isCustom": false,
+      "code": "user-row-margin",
+      "unit": "px",
+      "value": [
+        0,
+        0,
+        4,
+        0
+      ]
+    },
+    {
+      "isCustom": false,
+      "code": "column1-right-margin",
+      "value": 5,
+      "unit": "px"
+    },
+    {
+      "isCustom": false,
+      "code": "comment-bar-display",
+      "value": "on"
+    },
+    {
+      "isCustom": false,
+      "code": "comment-bar-width",
+      "value": 4,
+      "unit": "px"
+    },
+    {
+      "isCustom": false,
+      "code": "comment-bar-radius",
+      "unit": "px",
+      "value": [
+        25,
+        25,
+        25,
+        25
+      ]
+    },
+    {
+      "isCustom": false,
+      "code": "comment-bar-color-default",
+      "value": "#00000099"
+    },
+    {
+      "isCustom": false,
+      "code": "comment-bar-color-special",
+      "value": "#ffd700"
+    },
+    {
+      "isCustom": false,
+      "code": "comment-border-radius",
+      "unit": "px",
+      "value": [
+        15,
+        15,
+        15,
+        15
+      ]
+    },
+    {
+      "isCustom": false,
+      "code": "comment-bg-default-color",
+      "value": "#00000099"
+    },
+    {
+      "isCustom": false,
+      "code": "comment-bg-special-color",
+      "value": "#ffd700"
+    },
+    {
+      "isCustom": false,
+      "code": "special-sticker-size",
+      "value": 50,
+      "unit": "px"
+    },
+    {
+      "isCustom": false,
+      "code": "comment-text-font",
+      "color": "#FFFFFF",
+      "font": "Noto Sans JP",
+      "style": "normal",
+      "type": "none",
+      "size": 16,
+      "unit": "px",
+      "weight": 600
+    },
+    {
+      "isCustom": false,
+      "code": "comment-text-special-color",
+      "value": "#ffffffff"
+    },
+    {
+      "isCustom": false,
+      "code": "comment-line-height",
+      "value": 20,
+      "unit": "px"
+    },
+    {
+      "isCustom": false,
+      "code": "comment-text-default-align",
+      "value": "left"
+    },
+    {
+      "isCustom": false,
+      "code": "comment-text-special-align",
+      "value": "center"
+    },
+    {
+      "isCustom": false,
+      "code": "comment-text-padding",
+      "unit": "px",
+      "value": [
+        5,
+        10,
+        5,
+        10
+      ]
+    },
+    {
+      "isCustom": false,
+      "code": "comment-emoji-size",
+      "value": 20,
+      "unit": "px"
+    },
+    {
+      "isCustom": false,
+      "code": "comment-emoji-margin",
+      "unit": "px",
+      "value": [
+        0,
+        3,
+        0,
+        3
+      ]
+    },
+    {
+      "isCustom": false,
+      "code": "comment-sticker-size",
+      "value": 50,
+      "unit": "px"
+    },
+    {
+      "isCustom": false,
+      "code": "comment-sticker-margin",
+      "unit": "px",
+      "value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "isCustom": false,
+      "code": "special-header-bar-size",
+      "value": 15,
+      "unit": "px"
+    },
+    {
+      "isCustom": false,
+      "code": "special-header-bar-margin",
+      "unit": "px",
+      "value": [
+        5,
+        5,
+        5,
+        5
+      ]
+    },
+    {
+      "isCustom": false,
+      "code": "special-header-bar-default-color",
+      "value": "#ffffffb3"
+    },
+    {
+      "isCustom": false,
+      "code": "special-header-bar-special-color",
+      "value": "#ffffffb3"
+    },
+    {
+      "isCustom": false,
+      "code": "special-header-bar-radius",
+      "unit": "px",
+      "value": [
+        20,
+        20,
+        20,
+        20
+      ]
+    },
+    {
+      "isCustom": false,
+      "code": "special-header-icon-size",
+      "value": 20,
+      "unit": "px"
+    },
+    {
+      "isCustom": false,
+      "code": "special-header-icon-padding",
+      "value": 3,
+      "unit": "px"
+    },
+    {
+      "isCustom": false,
+      "code": "special-header-icon-color",
+      "value": "#ffd700"
+    },
+    {
+      "isCustom": false,
+      "code": "special-header-icon-bg-color",
+      "value": "#FFFFFF"
+    },
+    {
+      "isCustom": false,
+      "code": "special-header-icon-distance-top",
+      "value": 0,
+      "edge": "top",
+      "unit": "px"
+    },
+    {
+      "isCustom": false,
+      "code": "special-header-icon-distance-side",
+      "value": 12,
+      "edge": "left",
+      "unit": "px"
+    },
+    {
+      "isCustom": false,
+      "code": "special-header-padding",
+      "unit": "px",
+      "value": [
+        5,
+        5,
+        5,
+        5
+      ]
+    },
+    {
+      "isCustom": false,
+      "code": "special-footer-font",
+      "color": "#FFFFFF",
+      "font": "Noto Sans JP",
+      "style": "normal",
+      "type": "none",
+      "size": 13,
+      "unit": "px",
+      "weight": 600
+    },
+    {
+      "isCustom": false,
+      "code": "special-footer-align",
+      "value": "center"
+    },
+    {
+      "isCustom": false,
+      "code": "special-footer-default-color",
+      "value": "#ffffff66"
+    },
+    {
+      "isCustom": false,
+      "code": "special-footer-padding",
+      "unit": "px",
+      "value": [
+        5,
+        8,
+        5,
+        8
+      ]
+    },
+    {
+      "isCustom": false,
+      "code": "avatar-size",
+      "value": 25,
+      "unit": "px"
+    },
+    {
+      "isCustom": false,
+      "code": "avatar-border",
+      "value": 0,
+      "style": "none",
+      "color": "#FFFFFF",
+      "unit": "px"
+    },
+    {
+      "isCustom": false,
+      "code": "avatar-border-radius",
+      "unit": "%",
+      "value": [
+        50,
+        50,
+        50,
+        50
+      ]
+    },
+    {
+      "isCustom": false,
+      "code": "username-min-width",
+      "value": 80,
+      "unit": "px"
+    },
+    {
+      "isCustom": false,
+      "code": "username-max-width",
+      "value": 200,
+      "unit": "px"
+    },
+    {
+      "isCustom": false,
+      "code": "username-padding",
+      "unit": "px",
+      "value": [
+        3,
+        10,
+        3,
+        10
+      ]
+    },
+    {
+      "isCustom": false,
+      "code": "username-border-radius",
+      "unit": "px",
+      "value": [
+        30,
+        30,
+        30,
+        30
+      ]
+    },
+    {
+      "isCustom": false,
+      "code": "username-font-family",
+      "color": "#FFFFFF",
+      "font": "Noto Sans JP",
+      "style": "normal",
+      "type": "none",
+      "size": 13,
+      "unit": "px",
+      "weight": 600
+    },
+    {
+      "isCustom": false,
+      "code": "username-default-bg-color",
+      "value": "#707070"
+    },
+    {
+      "isCustom": false,
+      "code": "username-member-color",
+      "value": "#FFFFFF"
+    },
+    {
+      "isCustom": false,
+      "code": "username-member-bg-color",
+      "value": "#ffd700"
+    },
+    {
+      "isCustom": false,
+      "code": "username-moderator-color",
+      "value": "#FFFFFF"
+    },
+    {
+      "isCustom": false,
+      "code": "username-moderator-bg-color",
+      "value": "#930fff"
+    },
+    {
+      "isCustom": false,
+      "code": "username-owner-color",
+      "value": "#FFFFFF"
+    },
+    {
+      "isCustom": false,
+      "code": "username-owner-bg-color",
+      "value": "#c20010"
+    },
+    {
+      "isCustom": false,
+      "code": "badges-size",
+      "value": 18,
+      "unit": "px"
+    },
+    {
+      "isCustom": false,
+      "code": "badges-margin-distance",
+      "unit": "px",
+      "value": [
+        0,
+        3,
+        0,
+        3
+      ]
+    },
+    {
+      "isCustom": false,
+      "code": "comment-move-duration",
+      "value": 150,
+      "unit": "ms"
+    },
+    {
+      "isCustom": false,
+      "code": "comment-move-timing",
+      "value": "ease-out"
+    },
+    {
+      "isCustom": false,
+      "code": "comment-enter-duration",
+      "value": 150,
+      "unit": "ms"
+    },
+    {
+      "isCustom": false,
+      "code": "comment-enter-timing",
+      "value": "ease-out"
+    },
+    {
+      "isCustom": false,
+      "code": "special-header-icon-default",
+      "value": "images/diamond.svg"
+    },
+    {
+      "isCustom": false,
+      "code": "special-header-icon-gift",
+      "value": "images/gift.svg"
+    },
+    {
+      "isCustom": false,
+      "code": "special-header-icon-superchat",
+      "value": "images/heart.svg"
+    },
+    {
+      "isCustom": false,
+      "code": "special-footer-bilibili-price-unit",
+      "value": "￥"
+    },
+    {
+      "isCustom": false,
+      "code": "special-footer-twitch-price-unit-1",
+      "value": "Bits"
+    },
+    {
+      "isCustom": false,
+      "code": "special-footer-twitch-price-unit-2",
+      "value": "CP"
+    }
+  ]
+}

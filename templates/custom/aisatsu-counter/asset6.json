@@ -1,0 +1,1076 @@
+{
+  "parentCode": "hatsukensan-counter-box",
+  "presetId": 6,
+  "section": [
+    {
+      "parentCode": "hatsukensan-counter-box",
+      "code": "main",
+      "position": 0
+    },
+    {
+      "parentCode": "hatsukensan-counter-box",
+      "code": "title",
+      "position": 1
+    },
+    {
+      "parentCode": "hatsukensan-counter-box",
+      "code": "counter",
+      "position": 2
+    },
+    {
+      "parentCode": "hatsukensan-counter-box",
+      "code": "target",
+      "position": 3
+    },
+    {
+      "parentCode": "hatsukensan-counter-box",
+      "code": "container",
+      "position": 4
+    }
+  ],
+  "part": [
+    {
+      "parentCode": "main",
+      "code": "main-counter",
+      "position": 0
+    },
+    {
+      "parentCode": "title",
+      "code": "title-related",
+      "position": 0
+    },
+    {
+      "parentCode": "counter",
+      "code": "counter-related",
+      "position": 0
+    },
+    {
+      "parentCode": "target",
+      "code": "target-related",
+      "position": 0
+    },
+    {
+      "parentCode": "container",
+      "code": "container-related",
+      "position": 0
+    },
+    {
+      "parentCode": "container",
+      "code": "main-frame",
+      "position": 1
+    }
+  ],
+  "attribute": [
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": false,
+        "isJs": true
+      },
+      "isSetCustom": false,
+      "isCustom": false,
+      "isOriginal": false,
+      "oriFrom": null,
+      "code": "onecomme-counter-current",
+      "parentCode": "main-counter",
+      "attribute": "onecomme-counter-current",
+      "counterIndex": 3,
+      "counterName": "ohayou3",
+      "counterType": "current",
+      "description": false,
+      "min": 0,
+      "max": 10000,
+      "value": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": false,
+        "isJs": false
+      },
+      "isSetCustom": false,
+      "isCustom": false,
+      "isOriginal": false,
+      "oriFrom": null,
+      "code": "onecomme-counter-target",
+      "parentCode": "main-counter",
+      "attribute": "onecomme-counter-target",
+      "counterIndex": 3,
+      "counterName": "ohayou3",
+      "counterType": "target",
+      "description": false,
+      "min": 0,
+      "max": 10000,
+      "value": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": false,
+      "isCustom": false,
+      "isOriginal": false,
+      "oriFrom": null,
+      "cssvar": "--title-content",
+      "code": "title-content",
+      "parentCode": "title-related",
+      "attribute": "content",
+      "value": "あいさつ",
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": false,
+      "isCustom": false,
+      "isOriginal": false,
+      "oriFrom": null,
+      "cssvar": "--title-background",
+      "code": "title-background",
+      "parentCode": "title-related",
+      "attribute": "color",
+      "value": "#FFBB00",
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": false,
+      "isCustom": false,
+      "isOriginal": false,
+      "oriFrom": null,
+      "code": "title-font",
+      "parentCode": "title-related",
+      "attribute": "font",
+      "cssvarColor": "--title-font-color",
+      "cssvarFont": "--title-font-family",
+      "cssvarSize": "--title-font-size",
+      "cssvarWeight": "--title-font-weight",
+      "color": "#FFFFFF",
+      "font": "Noto Sans JP",
+      "style": "normal",
+      "type": "none",
+      "size": 20,
+      "unit": "px",
+      "weight": 600,
+      "minSize": 0,
+      "maxSize": 100,
+      "minWeight": 0,
+      "maxWeight": 900,
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": false,
+      "isCustom": false,
+      "isOriginal": false,
+      "oriFrom": null,
+      "cssvar": "--container-margin-top",
+      "code": "container-margin-top",
+      "parentCode": "title-related",
+      "attribute": "size",
+      "value": 20,
+      "unit": "px",
+      "min": 0,
+      "max": 100,
+      "masks": {
+        "0": "0",
+        "100": "100"
+      },
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": false,
+      "isCustom": false,
+      "isOriginal": false,
+      "oriFrom": null,
+      "cssvar": "--title-text-shadow",
+      "code": "title-text-shadow",
+      "parentCode": "title-related",
+      "attribute": "text-shadow",
+      "isEffect": false,
+      "horizontal": 0,
+      "vertical": 0,
+      "blur": 0,
+      "unit": "px",
+      "color": "#bf8c00ff",
+      "minlength": -30,
+      "maxlength": 30,
+      "minblur": -30,
+      "maxblur": 30,
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": false,
+      "isCustom": false,
+      "isOriginal": false,
+      "oriFrom": null,
+      "cssvar": "--title-spacing",
+      "code": "title-spacing",
+      "parentCode": "title-related",
+      "attribute": "size",
+      "value": -2,
+      "unit": "px",
+      "min": -30,
+      "max": 30,
+      "masks": {
+        "30": "30",
+        "-30": "-30"
+      },
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": false,
+      "isCustom": false,
+      "isOriginal": false,
+      "oriFrom": null,
+      "cssvar": "--title-padding",
+      "code": "title-padding",
+      "parentCode": "title-related",
+      "attribute": "padding",
+      "unit": "px",
+      "min": 0,
+      "max": 100,
+      "value": [
+        3,
+        15,
+        3,
+        15
+      ],
+      "masks": {
+        "0": "0",
+        "100": "100"
+      },
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": false,
+      "isCustom": false,
+      "isOriginal": false,
+      "oriFrom": null,
+      "cssvar": "--title-border-radius",
+      "code": "title-border-radius",
+      "parentCode": "title-related",
+      "attribute": "radius",
+      "unit": "px",
+      "min": 0,
+      "max": 100,
+      "value": [
+        20,
+        20,
+        20,
+        20
+      ],
+      "masks": {
+        "0": "0",
+        "100": "100"
+      },
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": false,
+      "isCustom": false,
+      "isOriginal": false,
+      "oriFrom": null,
+      "code": "counter-font",
+      "parentCode": "counter-related",
+      "attribute": "font",
+      "cssvarColor": "--counter-font-color",
+      "cssvarFont": "--counter-font-family",
+      "cssvarSize": "--counter-font-size",
+      "cssvarWeight": "--counter-font-weight",
+      "color": "#FFBB00",
+      "font": "Noto Sans",
+      "style": "normal",
+      "type": "none",
+      "size": 70,
+      "unit": "px",
+      "weight": 600,
+      "minSize": 0,
+      "maxSize": 300,
+      "minWeight": 0,
+      "maxWeight": 900,
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": false,
+      "isCustom": false,
+      "isOriginal": false,
+      "oriFrom": null,
+      "cssvar": "--counter-text-shadow",
+      "code": "counter-text-shadow",
+      "parentCode": "counter-related",
+      "attribute": "text-shadow",
+      "isEffect": false,
+      "horizontal": 0,
+      "vertical": 0,
+      "blur": 0,
+      "unit": "px",
+      "color": "#FFBB00",
+      "minlength": -30,
+      "maxlength": 30,
+      "minblur": -30,
+      "maxblur": 30,
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": false,
+      "isCustom": false,
+      "isOriginal": false,
+      "oriFrom": null,
+      "cssvar": "--counter-spacing",
+      "code": "counter-spacing",
+      "parentCode": "counter-related",
+      "attribute": "size",
+      "value": 0,
+      "unit": "px",
+      "min": -30,
+      "max": 30,
+      "masks": {
+        "30": "30",
+        "-30": "-30"
+      },
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": false,
+      "isCustom": false,
+      "isOriginal": false,
+      "oriFrom": null,
+      "cssvar": "--target-opacity",
+      "code": "target-opacity",
+      "parentCode": "target-related",
+      "attribute": "size",
+      "value": 60,
+      "unit": "%",
+      "min": 0,
+      "max": 100,
+      "masks": {
+        "0": "0",
+        "100": "100"
+      },
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": false,
+      "isCustom": false,
+      "isOriginal": false,
+      "oriFrom": null,
+      "cssvar": "--target-background",
+      "code": "target-background",
+      "parentCode": "target-related",
+      "attribute": "color",
+      "value": "#FFBB00",
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": false,
+      "isCustom": false,
+      "isOriginal": false,
+      "oriFrom": null,
+      "cssvar": "--target-border",
+      "code": "target-border",
+      "parentCode": "target-related",
+      "attribute": "border",
+      "value": 1,
+      "style": "none",
+      "color": "#FFBB00",
+      "unit": "px",
+      "min": 0,
+      "max": 10,
+      "masks": {
+        "0": "0",
+        "10": "10"
+      },
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": false,
+      "isCustom": false,
+      "isOriginal": false,
+      "oriFrom": null,
+      "code": "target-font",
+      "parentCode": "target-related",
+      "attribute": "font",
+      "cssvarColor": "--target-font-color",
+      "cssvarFont": "--target-font-family",
+      "cssvarSize": "--target-font-size",
+      "cssvarWeight": "--target-font-weight",
+      "color": "#ffffffff",
+      "font": "Noto Sans",
+      "style": "normal",
+      "type": "none",
+      "size": 30,
+      "unit": "px",
+      "weight": 500,
+      "minSize": 0,
+      "maxSize": 300,
+      "minWeight": 0,
+      "maxWeight": 900,
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": false,
+      "isCustom": false,
+      "isOriginal": false,
+      "oriFrom": null,
+      "cssvar": "--target-text-shadow",
+      "code": "target-text-shadow",
+      "parentCode": "target-related",
+      "attribute": "text-shadow",
+      "isEffect": false,
+      "horizontal": 0,
+      "vertical": 0,
+      "blur": 0,
+      "unit": "px",
+      "color": "#FFBB00",
+      "minlength": -30,
+      "maxlength": 30,
+      "minblur": -30,
+      "maxblur": 30,
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": false,
+      "isCustom": false,
+      "isOriginal": false,
+      "oriFrom": null,
+      "cssvar": "--target-padding",
+      "code": "target-padding",
+      "parentCode": "target-related",
+      "attribute": "padding",
+      "unit": "px",
+      "min": 0,
+      "max": 50,
+      "value": [
+        0,
+        10,
+        0,
+        10
+      ],
+      "masks": {
+        "0": "0",
+        "50": "50"
+      },
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": false,
+      "isCustom": false,
+      "isOriginal": false,
+      "oriFrom": null,
+      "cssvar": "--target-border-radius",
+      "code": "target-border-radius",
+      "parentCode": "target-related",
+      "attribute": "radius",
+      "unit": "px",
+      "min": 0,
+      "max": 100,
+      "value": [
+        10,
+        10,
+        10,
+        10
+      ],
+      "masks": {
+        "0": "0",
+        "100": "100"
+      },
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": false,
+      "isCustom": false,
+      "isOriginal": false,
+      "oriFrom": null,
+      "cssvar": "--container-target-alignment",
+      "code": "container-target-alignment",
+      "parentCode": "target-related",
+      "attribute": "align-items",
+      "value": "center",
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": false,
+      "isCustom": false,
+      "isOriginal": false,
+      "oriFrom": null,
+      "cssvar": "--target-margin",
+      "code": "target-margin",
+      "parentCode": "target-related",
+      "attribute": "margin",
+      "unit": "px",
+      "min": -100,
+      "max": 100,
+      "value": [
+        0,
+        0,
+        0,
+        5
+      ],
+      "masks": {
+        "100": "100",
+        "-100": "-100"
+      },
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": true,
+      "isCustom": false,
+      "isOriginal": false,
+      "oriFrom": null,
+      "cssvar": "--box-width",
+      "code": "box-width",
+      "parentCode": "container-related",
+      "attribute": "size",
+      "value": 150,
+      "unit": "px",
+      "min": 0,
+      "max": 500,
+      "masks": {
+        "0": "0",
+        "500": "500"
+      },
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": false,
+      "isCustom": false,
+      "isOriginal": false,
+      "oriFrom": null,
+      "cssvar": "--container-background",
+      "code": "container-background",
+      "parentCode": "container-related",
+      "attribute": "color",
+      "value": "#FFFFFF",
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": false,
+      "isCustom": false,
+      "isOriginal": false,
+      "oriFrom": null,
+      "cssvar": "--container-border",
+      "code": "container-border",
+      "parentCode": "container-related",
+      "attribute": "border",
+      "value": 3,
+      "style": "dashed",
+      "color": "#FFBB00",
+      "unit": "px",
+      "min": 0,
+      "max": 10,
+      "masks": {
+        "0": "0",
+        "10": "10"
+      },
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": false,
+      "isCustom": false,
+      "isOriginal": false,
+      "oriFrom": null,
+      "cssvar": "--container-box-shadow",
+      "code": "container-box-shadow",
+      "parentCode": "container-related",
+      "attribute": "box-shadow",
+      "isEffect": false,
+      "horizontal": 0,
+      "vertical": 0,
+      "blur": 0,
+      "unit": "px",
+      "color": "#FFBB00",
+      "inset": false,
+      "spread": 0,
+      "minlength": -30,
+      "maxlength": 30,
+      "minblur": -30,
+      "maxblur": 30,
+      "minspread": -20,
+      "maxspread": 20,
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": false,
+      "isCustom": false,
+      "isOriginal": false,
+      "oriFrom": null,
+      "cssvar": "--container-padding",
+      "code": "container-padding",
+      "parentCode": "container-related",
+      "attribute": "padding",
+      "unit": "px",
+      "min": 0,
+      "max": 50,
+      "value": [
+        3,
+        20,
+        3,
+        20
+      ],
+      "masks": {
+        "0": "0",
+        "50": "50"
+      },
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": false,
+      "isCustom": false,
+      "isOriginal": false,
+      "oriFrom": null,
+      "cssvar": "--container-border-radius",
+      "code": "container-border-radius",
+      "parentCode": "container-related",
+      "attribute": "radius",
+      "unit": "px",
+      "min": 0,
+      "max": 100,
+      "value": [
+        10,
+        10,
+        10,
+        10
+      ],
+      "masks": {
+        "0": "0",
+        "100": "100"
+      },
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": false,
+      "isCustom": false,
+      "isOriginal": false,
+      "oriFrom": null,
+      "cssvar": "--box-margin",
+      "code": "box-margin",
+      "parentCode": "main-frame",
+      "attribute": "margin",
+      "unit": "px",
+      "min": 0,
+      "max": 50,
+      "value": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "masks": {
+        "0": "0",
+        "50": "50"
+      },
+      "description": false
+    }
+  ],
+  "language": [
+    {
+      "code": "main",
+      "en-US": "Main",
+      "ja": "メイン",
+      "zh-CN": "主要",
+      "zh-TW": "主要"
+    },
+    {
+      "code": "main-counter",
+      "en-US": "Counter",
+      "ja": "カウンター",
+      "zh-CN": "计数器",
+      "zh-TW": "計數器"
+    },
+    {
+      "code": "onecomme-counter-current",
+      "en-US": "Current Count",
+      "ja": "現在のカウント",
+      "zh-CN": "当前计数",
+      "zh-TW": "目前計數"
+    },
+    {
+      "code": "onecomme-counter-target",
+      "en-US": "Target Counter",
+      "ja": "目標カウンター",
+      "zh-CN": "目标计数器",
+      "zh-TW": "目標計數器"
+    },
+    {
+      "code": "title",
+      "en-US": "Title",
+      "ja": "タイトル",
+      "zh-CN": "标题",
+      "zh-TW": "標題"
+    },
+    {
+      "code": "title-related",
+      "en-US": "Title Related",
+      "ja": "タイトル関連",
+      "zh-CN": "标题相关",
+      "zh-TW": "標題相關"
+    },
+    {
+      "code": "title-content",
+      "en-US": "Title",
+      "ja": "タイトル",
+      "zh-CN": "标题",
+      "zh-TW": "標題"
+    },
+    {
+      "code": "title-background",
+      "en-US": "Background Color",
+      "ja": "背景色",
+      "zh-CN": "背景色",
+      "zh-TW": "背景色"
+    },
+    {
+      "code": "title-font",
+      "en-US": "Font",
+      "ja": "フォント",
+      "zh-CN": "字体",
+      "zh-TW": "字體"
+    },
+    {
+      "code": "container-margin-top",
+      "en-US": "Title and Box Spacing",
+      "ja": "タイトルとボックスの間隔",
+      "zh-CN": "标题与盒子间距",
+      "zh-TW": "標題與盒子間距"
+    },
+    {
+      "code": "title-text-shadow",
+      "en-US": "Text Shadow",
+      "ja": "文字の影",
+      "zh-CN": "文字阴影",
+      "zh-TW": "文字陰影"
+    },
+    {
+      "code": "title-spacing",
+      "en-US": "Letter Spacing",
+      "ja": "字間",
+      "zh-CN": "字母间距",
+      "zh-TW": "字母間距"
+    },
+    {
+      "code": "title-padding",
+      "en-US": "Padding",
+      "ja": "パディング",
+      "zh-CN": "内边距",
+      "zh-TW": "內邊距"
+    },
+    {
+      "code": "title-border-radius",
+      "en-US": "Border Radius",
+      "ja": "角丸",
+      "zh-CN": "边框圆角",
+      "zh-TW": "邊框圓角"
+    },
+    {
+      "code": "counter",
+      "en-US": "Counter",
+      "ja": "カウンター",
+      "zh-CN": "计数",
+      "zh-TW": "計數"
+    },
+    {
+      "code": "counter-related",
+      "en-US": "Counter Related",
+      "ja": "カウンター関連",
+      "zh-CN": "计数器相关",
+      "zh-TW": "計數器相關"
+    },
+    {
+      "code": "counter-font",
+      "en-US": "Font",
+      "ja": "フォント",
+      "zh-CN": "字体",
+      "zh-TW": "字體"
+    },
+    {
+      "code": "counter-text-shadow",
+      "en-US": "Text Shadow",
+      "ja": "文字の影",
+      "zh-CN": "文字阴影",
+      "zh-TW": "文字陰影"
+    },
+    {
+      "code": "counter-spacing",
+      "en-US": "Letter Spacing",
+      "ja": "字間",
+      "zh-CN": "字母间距",
+      "zh-TW": "字母間距"
+    },
+    {
+      "code": "target",
+      "en-US": "Target",
+      "ja": "ターゲット",
+      "zh-CN": "目标",
+      "zh-TW": "目標"
+    },
+    {
+      "code": "target-related",
+      "en-US": "Target Related",
+      "ja": "ターゲット関連",
+      "zh-CN": "目标相关",
+      "zh-TW": "目標相關"
+    },
+    {
+      "code": "target-opacity",
+      "en-US": "Opacity",
+      "ja": "透明度",
+      "zh-CN": "透明度",
+      "zh-TW": "透明度"
+    },
+    {
+      "code": "target-background",
+      "en-US": "Background Color",
+      "ja": "背景色",
+      "zh-CN": "背景色",
+      "zh-TW": "背景色"
+    },
+    {
+      "code": "target-border",
+      "en-US": "Border",
+      "ja": "境界線",
+      "zh-CN": "边框",
+      "zh-TW": "邊框"
+    },
+    {
+      "code": "target-font",
+      "en-US": "Font",
+      "ja": "フォント",
+      "zh-CN": "字体",
+      "zh-TW": "字體"
+    },
+    {
+      "code": "target-text-shadow",
+      "en-US": "Text Shadow",
+      "ja": "文字の影",
+      "zh-CN": "文字阴影",
+      "zh-TW": "文字陰影"
+    },
+    {
+      "code": "target-padding",
+      "en-US": "Padding",
+      "ja": "パディング",
+      "zh-CN": "内边距",
+      "zh-TW": "內邊距"
+    },
+    {
+      "code": "target-border-radius",
+      "en-US": "Border Radius",
+      "ja": "角丸",
+      "zh-CN": "边框圆角",
+      "zh-TW": "邊框圓角"
+    },
+    {
+      "code": "container-target-alignment",
+      "en-US": "Target Alignment",
+      "ja": "ターゲット整列",
+      "zh-CN": "目标 对齐方式",
+      "zh-TW": "目標 對齊方式"
+    },
+    {
+      "code": "target-margin",
+      "en-US": "Margin",
+      "ja": "マージン",
+      "zh-CN": "边距",
+      "zh-TW": "邊距"
+    },
+    {
+      "code": "container",
+      "en-US": "Container",
+      "ja": "コンテナ",
+      "zh-CN": "容器",
+      "zh-TW": "容器"
+    },
+    {
+      "code": "container-related",
+      "en-US": "Container Related",
+      "ja": "コンテナ関連",
+      "zh-CN": "容器相关",
+      "zh-TW": "容器相關"
+    },
+    {
+      "code": "box-width",
+      "en-US": "Min Box Width",
+      "ja": "最小・ボックス・幅",
+      "zh-CN": "最小・盒子・宽度",
+      "zh-TW": "最小・盒子・寬度"
+    },
+    {
+      "code": "container-background",
+      "en-US": "Color",
+      "ja": "色",
+      "zh-CN": "颜色",
+      "zh-TW": "顏色"
+    },
+    {
+      "code": "container-border",
+      "en-US": "Border",
+      "ja": "境界線",
+      "zh-CN": "边框",
+      "zh-TW": "邊框"
+    },
+    {
+      "code": "container-box-shadow",
+      "en-US": "Shadow",
+      "ja": "影",
+      "zh-CN": "阴影",
+      "zh-TW": "陰影"
+    },
+    {
+      "code": "container-padding",
+      "en-US": "Padding",
+      "ja": "パディング",
+      "zh-CN": "内边距",
+      "zh-TW": "內邊距"
+    },
+    {
+      "code": "container-border-radius",
+      "en-US": "Border Radius",
+      "ja": "角丸",
+      "zh-CN": "边框圆角",
+      "zh-TW": "邊框圓角"
+    },
+    {
+      "code": "main-frame",
+      "en-US": "Main Frame",
+      "ja": "メインフレーム",
+      "zh-CN": "主框",
+      "zh-TW": "主框架"
+    },
+    {
+      "code": "box-margin",
+      "en-US": "Margin",
+      "ja": "マージン",
+      "zh-CN": "边距",
+      "zh-TW": "邊距"
+    }
+  ]
+}

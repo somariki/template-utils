@@ -1,0 +1,86 @@
+[
+  {
+    "name": "Aisatsu Counter - Basic",
+    "code": "aisatsu-counter",
+    "type": "counter",
+    "isOriginal": true,
+    "indexFile": null,
+    "assetFile": "asset1.json",
+    "presetFile": "preset1.json",
+    "cssFile": "preset1.css",
+    "presetId": 1,
+    "position": 0
+  },
+  {
+    "name": "Aisatsu Counter - With Target",
+    "code": "aisatsu-counter1",
+    "type": "counter",
+    "isOriginal": true,
+    "indexFile": "index2.html",
+    "assetFile": "asset2.json",
+    "presetFile": "preset2.json",
+    "cssFile": "preset2.css",
+    "presetId": 2,
+    "position": 1
+  },
+  {
+    "name": "Aisatsu Counter - Box",
+    "code": "aisatsu-counter-box",
+    "type": "counter",
+    "isOriginal": true,
+    "indexFile": "index3.html",
+    "assetFile": "asset3.json",
+    "presetFile": "preset3.json",
+    "cssFile": "preset3.css",
+    "presetId": 3,
+    "position": 2
+  },
+  {
+    "name": "HatsuKenSan Counter - Basic",
+    "code": "hatsukensan-counter",
+    "type": "counter",
+    "isOriginal": true,
+    "indexFile": "index4.html",
+    "assetFile": "asset4.json",
+    "presetFile": "preset4.json",
+    "cssFile": "preset4.css",
+    "presetId": 4,
+    "position": 3
+  },
+  {
+    "name": "HatsuKenSan - With Target",
+    "code": "hatsukensan-counter1",
+    "type": "counter",
+    "isOriginal": true,
+    "indexFile": "index5.html",
+    "assetFile": "asset5.json",
+    "presetFile": "preset5.json",
+    "cssFile": "preset5.css",
+    "presetId": 5,
+    "position": 4
+  },
+  {
+    "name": "HatsuKenSan Counter - Box",
+    "code": "hatsukensan-counter-box",
+    "type": "counter",
+    "isOriginal": true,
+    "indexFile": "index6.html",
+    "assetFile": "asset6.json",
+    "presetFile": "preset6.json",
+    "cssFile": "preset6.css",
+    "presetId": 6,
+    "position": 5
+  },
+  {
+    "name": "Aisatsu & HatsuKen Counter - Box",
+    "code": "aisa-hatsu-counter-box",
+    "type": "counter",
+    "isOriginal": true,
+    "indexFile": "index7.html",
+    "assetFile": "asset7.json",
+    "presetFile": "preset7.json",
+    "cssFile": "preset7.css",
+    "presetId": 7,
+    "position": 6
+  }
+]

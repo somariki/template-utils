@@ -1,0 +1,184 @@
+@import url("./preset1.css");
+.main {
+  display: var(--arrangement-display);
+}
+
+.section {
+  margin: var(--count-margin);
+}
+
+.icon {
+  -webkit-animation: var(--icon-animation) var(--icon-animation-time) ease-in-out infinite both;
+          animation: var(--icon-animation) var(--icon-animation-time) ease-in-out infinite both;
+}
+
+.viewer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.viewer .icon-viewer {
+  width: var(--icon-size);
+  height: var(--icon-size);
+  background-color: var(--icon-color);
+  -webkit-mask: url("images/live.svg") no-repeat center;
+          mask: url("images/live.svg") no-repeat center;
+  -webkit-mask-size: contain;
+          mask-size: contain;
+}
+
+.upvote {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.upvote .icon-upvote {
+  width: var(--icon-size);
+  height: var(--icon-size);
+  background-color: var(--icon-color);
+  -webkit-mask: url("images/love.svg") no-repeat center;
+          mask: url("images/love.svg") no-repeat center;
+  -webkit-mask-size: contain;
+          mask-size: contain;
+}
+
+.subscriber {
+  display: var(--youtube-subscriber-count);
+  position: relative;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.subscriber .icon-subscriber {
+  width: var(--icon-size);
+  height: var(--icon-size);
+  background-color: var(--icon-color);
+  -webkit-mask: url("images/people.svg") no-repeat center;
+          mask: url("images/people.svg") no-repeat center;
+  -webkit-mask-size: contain;
+          mask-size: contain;
+}
+
+.follower {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.follower .icon-follower {
+  width: var(--icon-size);
+  height: var(--icon-size);
+  background-color: var(--icon-color);
+  -webkit-mask: url("images/people.svg") no-repeat center;
+          mask: url("images/people.svg") no-repeat center;
+  -webkit-mask-size: contain;
+          mask-size: contain;
+}
+
+.total {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.total .icon-total {
+  width: var(--icon-size);
+  height: var(--icon-size);
+  background-color: var(--icon-color);
+  -webkit-mask: url("images/view.svg") no-repeat center;
+          mask: url("images/view.svg") no-repeat center;
+  -webkit-mask-size: contain;
+          mask-size: contain;
+}
+
+.count {
+  font-family: var(--counter-font-name);
+  font-weight: var(--counter-font-weight);
+  font-size: var(--counter-font-size);
+  color: var(--counter-font-color);
+  margin: var(--counter-margin);
+}
+
+@-webkit-keyframes heartbeat {
+  from {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    -webkit-transform-origin: center center;
+    transform-origin: center center;
+    -webkit-animation-timing-function: ease-out;
+    animation-timing-function: ease-out;
+  }
+  10% {
+    -webkit-transform: scale(0.91);
+    transform: scale(0.91);
+    -webkit-animation-timing-function: ease-in;
+    animation-timing-function: ease-in;
+  }
+  17% {
+    -webkit-transform: scale(0.98);
+    transform: scale(0.98);
+    -webkit-animation-timing-function: ease-out;
+    animation-timing-function: ease-out;
+  }
+  33% {
+    -webkit-transform: scale(0.87);
+    transform: scale(0.87);
+    -webkit-animation-timing-function: ease-in;
+    animation-timing-function: ease-in;
+  }
+  45% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    -webkit-animation-timing-function: ease-out;
+    animation-timing-function: ease-out;
+  }
+}
+
+@keyframes heartbeat {
+  from {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    -webkit-transform-origin: center center;
+    transform-origin: center center;
+    -webkit-animation-timing-function: ease-out;
+    animation-timing-function: ease-out;
+  }
+  10% {
+    -webkit-transform: scale(0.91);
+    transform: scale(0.91);
+    -webkit-animation-timing-function: ease-in;
+    animation-timing-function: ease-in;
+  }
+  17% {
+    -webkit-transform: scale(0.98);
+    transform: scale(0.98);
+    -webkit-animation-timing-function: ease-out;
+    animation-timing-function: ease-out;
+  }
+  33% {
+    -webkit-transform: scale(0.87);
+    transform: scale(0.87);
+    -webkit-animation-timing-function: ease-in;
+    animation-timing-function: ease-in;
+  }
+  45% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    -webkit-animation-timing-function: ease-out;
+    animation-timing-function: ease-out;
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "parentCode": "aisatsu-counter",
+  "presetId": 1,
+  "dataSet": [
+    {
+      "isCustom": false,
+      "code": "onecomme-counter-current",
+      "value": false
+    },
+    {
+      "isCustom": false,
+      "code": "onecomme-counter-target",
+      "value": false
+    },
+    {
+      "isCustom": false,
+      "code": "onecomme-counter-field",
+      "value": [
+        "おはよう",
+        "おはようございます",
+        "こんばんは",
+        "こんにちは",
+        "Morning",
+        "Hi",
+        "安安",
+        "晚安",
+        "午安",
+        "早安",
+        "下午好",
+        "早上好",
+        "晚上好"
+      ]
+    },
+    {
+      "isCustom": false,
+      "code": "counter-font",
+      "color": "#171717ff",
+      "font": "Noto Sans",
+      "style": "normal",
+      "type": "none",
+      "size": 60,
+      "unit": "px",
+      "weight": 500
+    },
+    {
+      "isCustom": false,
+      "code": "counter-text-shadow",
+      "isEffect": false,
+      "horizontal": 0,
+      "vertical": 0,
+      "blur": 0,
+      "unit": "px",
+      "color": "#757575ff"
+    },
+    {
+      "isCustom": false,
+      "code": "counter-text-align",
+      "value": "center"
+    }
+  ]
+}

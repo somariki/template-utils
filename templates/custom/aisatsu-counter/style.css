@@ -1,0 +1,9 @@
+@import url("preset1.css");
+.counter-value {
+  font-family: var(--counter-font-family);
+  font-size: var(--counter-font-size);
+  font-weight: var(--counter-font-weight);
+  text-shadow: var(--counter-text-shadow);
+  color: var(--counter-font-color);
+  text-align: var(--counter-text-align);
+}

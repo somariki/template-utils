@@ -1,0 +1,3948 @@
+{
+  "parentCode": "integration",
+  "presetId": 1,
+  "section": [
+    {
+      "parentCode": "integration",
+      "code": "comment",
+      "position": 0
+    },
+    {
+      "parentCode": "integration",
+      "code": "username",
+      "position": 1
+    },
+    {
+      "parentCode": "integration",
+      "code": "timelabel",
+      "position": 2
+    },
+    {
+      "parentCode": "integration",
+      "code": "animation",
+      "position": 3
+    },
+    {
+      "parentCode": "integration",
+      "code": "others",
+      "position": 4
+    }
+  ],
+  "part": [
+    {
+      "parentCode": "comment",
+      "code": "mode",
+      "position": 0
+    },
+    {
+      "parentCode": "comment",
+      "code": "outer",
+      "position": 1
+    },
+    {
+      "parentCode": "comment",
+      "code": "inner",
+      "position": 2
+    },
+    {
+      "parentCode": "comment",
+      "code": "content",
+      "position": 3
+    },
+    {
+      "parentCode": "comment",
+      "code": "emoji-image",
+      "position": 4
+    },
+    {
+      "parentCode": "comment",
+      "code": "bilibili-related",
+      "position": 5
+    },
+    {
+      "parentCode": "comment",
+      "code": "super-sticker-related",
+      "position": 6
+    },
+    {
+      "parentCode": "username",
+      "code": "avatar",
+      "position": 0
+    },
+    {
+      "parentCode": "username",
+      "code": "name",
+      "position": 1
+    },
+    {
+      "parentCode": "username",
+      "code": "roles-member",
+      "position": 2
+    },
+    {
+      "parentCode": "username",
+      "code": "roles-moderator",
+      "position": 3
+    },
+    {
+      "parentCode": "username",
+      "code": "roles-owner",
+      "position": 4
+    },
+    {
+      "parentCode": "username",
+      "code": "badges",
+      "position": 5
+    },
+    {
+      "parentCode": "timelabel",
+      "code": "label-global",
+      "position": 0
+    },
+    {
+      "parentCode": "timelabel",
+      "code": "label-super-box",
+      "position": 1
+    },
+    {
+      "parentCode": "timelabel",
+      "code": "label-milestonechat-box",
+      "position": 2
+    },
+    {
+      "parentCode": "timelabel",
+      "code": "label-member-box",
+      "position": 3
+    },
+    {
+      "parentCode": "timelabel",
+      "code": "label-sponsorgift-box",
+      "position": 4
+    },
+    {
+      "parentCode": "timelabel",
+      "code": "label-giftreceived-box",
+      "position": 5
+    },
+    {
+      "parentCode": "timelabel",
+      "code": "label-reward-box",
+      "position": 6
+    },
+    {
+      "parentCode": "animation",
+      "code": "global",
+      "position": 0
+    },
+    {
+      "parentCode": "others",
+      "code": "images",
+      "position": 0
+    },
+    {
+      "parentCode": "others",
+      "code": "unit",
+      "position": 1
+    }
+  ],
+  "attribute": [
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": false,
+      "isCustom": false,
+      "isOriginal": false,
+      "oriFrom": null,
+      "code": "comment-move-direction",
+      "parentCode": "mode",
+      "attribute": "button-toggle-2",
+      "value": "bottom-to-top",
+      "color": "pink",
+      "togleOptions": [
+        {
+          "label": "⬆",
+          "value": "bottom-to-top",
+          "paramSet": [
+            {
+              "value": "column",
+              "code": "comment-move-direction"
+            },
+            {
+              "value": "translateY(100%)",
+              "code": "comment-enter-from"
+            },
+            {
+              "value": "translateY(-100%)",
+              "code": "comment-enter-to"
+            }
+          ]
+        },
+        {
+          "label": "⬇",
+          "value": "top-to-bottom",
+          "paramSet": [
+            {
+              "value": "column-reverse",
+              "code": "comment-move-direction"
+            },
+            {
+              "value": "translateY(-100%)",
+              "code": "comment-enter-from"
+            },
+            {
+              "value": "translateY(100%)",
+              "code": "comment-enter-to"
+            }
+          ]
+        },
+        {
+          "label": "🠔",
+          "value": "right-to-left",
+          "paramSet": [
+            {
+              "value": "row",
+              "code": "comment-move-direction"
+            },
+            {
+              "value": "translateX(100%)",
+              "code": "comment-enter-from"
+            },
+            {
+              "value": "translateX(-100%)",
+              "code": "comment-enter-to"
+            }
+          ]
+        },
+        {
+          "label": "🠖",
+          "value": "left-to-right",
+          "paramSet": [
+            {
+              "value": "row-reverse",
+              "code": "comment-move-direction"
+            },
+            {
+              "value": "translateX(-100%)",
+              "code": "comment-enter-from"
+            },
+            {
+              "value": "translateX(100%)",
+              "code": "comment-enter-to"
+            }
+          ]
+        }
+      ],
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": false,
+      "isCustom": false,
+      "isOriginal": false,
+      "oriFrom": null,
+      "cssvar": "--comment-width-condition",
+      "code": "comment-width-condition",
+      "parentCode": "mode",
+      "attribute": "size-condition",
+      "value": 330,
+      "unit": "px",
+      "min": 0,
+      "max": 500,
+      "isDefault": true,
+      "defaultValue": "100%",
+      "masks": {
+        "0": "0",
+        "500": "500"
+      },
+      "description": true
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": false,
+      "isCustom": false,
+      "isOriginal": false,
+      "oriFrom": null,
+      "cssvar": "--comment-height-condition",
+      "code": "comment-height-condition",
+      "parentCode": "mode",
+      "attribute": "size-condition",
+      "value": 65,
+      "unit": "px",
+      "min": 0,
+      "max": 300,
+      "isDefault": true,
+      "defaultValue": "100%",
+      "masks": {
+        "0": "0",
+        "300": "300"
+      },
+      "description": true
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": false,
+      "isCustom": false,
+      "isOriginal": false,
+      "oriFrom": null,
+      "cssvar": "--comment-min-height",
+      "code": "comment-min-height",
+      "parentCode": "mode",
+      "attribute": "size-condition",
+      "value": 70,
+      "unit": "px",
+      "min": 0,
+      "max": 200,
+      "isDefault": false,
+      "defaultValue": "100%",
+      "masks": {
+        "0": "0",
+        "200": "200"
+      },
+      "description": true
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": false,
+      "isCustom": false,
+      "isOriginal": false,
+      "oriFrom": null,
+      "cssvar": "--comment-box-margin",
+      "code": "comment-box-margin",
+      "parentCode": "outer",
+      "attribute": "margin",
+      "unit": "px",
+      "min": 0,
+      "max": 50,
+      "value": [
+        5,
+        8,
+        5,
+        8
+      ],
+      "masks": {
+        "0": "0",
+        "50": "50"
+      },
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": false,
+      "isCustom": false,
+      "isOriginal": false,
+      "oriFrom": null,
+      "cssvar": "--comment-box-padding",
+      "code": "comment-box-padding",
+      "parentCode": "inner",
+      "attribute": "padding",
+      "unit": "px",
+      "min": 0,
+      "max": 50,
+      "value": [
+        4,
+        4,
+        4,
+        4
+      ],
+      "masks": {
+        "0": "0",
+        "50": "50"
+      },
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": false,
+      "isCustom": false,
+      "isOriginal": false,
+      "oriFrom": null,
+      "cssvar": "--comment-box-color",
+      "code": "comment-box-color",
+      "parentCode": "inner",
+      "attribute": "color",
+      "value": "#1415268a",
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": false,
+      "isCustom": false,
+      "isOriginal": false,
+      "oriFrom": null,
+      "cssvar": "--comment-box-border",
+      "code": "comment-box-border",
+      "parentCode": "inner",
+      "attribute": "border",
+      "value": 1,
+      "style": "none",
+      "color": "#ffffffff",
+      "unit": "px",
+      "min": 0,
+      "max": 10,
+      "masks": {
+        "0": "0",
+        "10": "10"
+      },
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": false,
+      "isCustom": false,
+      "isOriginal": false,
+      "oriFrom": null,
+      "cssvar": "--comment-box-radius",
+      "code": "comment-box-radius",
+      "parentCode": "inner",
+      "attribute": "radius",
+      "unit": "px",
+      "min": 0,
+      "max": 100,
+      "value": [
+        10,
+        10,
+        10,
+        10
+      ],
+      "masks": {
+        "0": "0",
+        "100": "100"
+      },
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": false,
+      "isCustom": false,
+      "isOriginal": false,
+      "oriFrom": null,
+      "cssvar": "--comment-box-shadow",
+      "code": "comment-box-shadow",
+      "parentCode": "inner",
+      "attribute": "box-shadow",
+      "isEffect": true,
+      "horizontal": 1,
+      "vertical": 1,
+      "blur": 3,
+      "unit": "px",
+      "color": "#0000004d",
+      "inset": false,
+      "spread": 1,
+      "minlength": -30,
+      "maxlength": 30,
+      "minblur": -30,
+      "maxblur": 30,
+      "minspread": -20,
+      "maxspread": 20,
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": false,
+      "isCustom": false,
+      "isOriginal": false,
+      "oriFrom": null,
+      "code": "comment-text-font",
+      "parentCode": "content",
+      "attribute": "font",
+      "cssvarColor": "--comment-text-color",
+      "cssvarFont": "--comment-text-font",
+      "cssvarSize": "--comment-text-font-size",
+      "cssvarWeight": "--comment-text-font-weight",
+      "color": "#FFFFFF",
+      "font": "Noto Sans JP",
+      "style": "normal",
+      "type": "none",
+      "size": 15,
+      "unit": "px",
+      "weight": 500,
+      "minSize": 0,
+      "maxSize": 50,
+      "minWeight": 0,
+      "maxWeight": 900,
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": false,
+      "isCustom": false,
+      "isOriginal": false,
+      "oriFrom": null,
+      "cssvar": "--comment-text-shadow",
+      "code": "comment-text-shadow",
+      "parentCode": "content",
+      "attribute": "text-shadow",
+      "isEffect": true,
+      "horizontal": 1,
+      "vertical": 2,
+      "blur": 2,
+      "unit": "px",
+      "color": "#525252ff",
+      "minlength": -30,
+      "maxlength": 30,
+      "minblur": -30,
+      "maxblur": 30,
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": false,
+      "isCustom": false,
+      "isOriginal": false,
+      "oriFrom": null,
+      "cssvar": "--comment-text-default-align",
+      "code": "comment-text-default-align",
+      "parentCode": "content",
+      "attribute": "text-align",
+      "value": "left",
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": false,
+      "isCustom": false,
+      "isOriginal": false,
+      "oriFrom": null,
+      "cssvar": "--comment-text-margin",
+      "code": "comment-text-margin",
+      "parentCode": "content",
+      "attribute": "padding",
+      "unit": "px",
+      "min": 0,
+      "max": 50,
+      "value": [
+        6,
+        5,
+        3,
+        0
+      ],
+      "masks": {
+        "0": "0",
+        "50": "50"
+      },
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": false,
+      "isCustom": false,
+      "isOriginal": false,
+      "oriFrom": null,
+      "cssvar": "--comment-emoji-size",
+      "code": "comment-emoji-size",
+      "parentCode": "emoji-image",
+      "attribute": "size",
+      "value": 18,
+      "unit": "px",
+      "min": 0,
+      "max": 100,
+      "masks": {
+        "0": "0",
+        "100": "100"
+      },
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": false,
+      "isCustom": false,
+      "isOriginal": false,
+      "oriFrom": null,
+      "cssvar": "--comment-emoji-margin",
+      "code": "comment-emoji-margin",
+      "parentCode": "emoji-image",
+      "attribute": "margin",
+      "unit": "px",
+      "min": 0,
+      "max": 50,
+      "value": [
+        0,
+        3,
+        0,
+        0
+      ],
+      "masks": {
+        "0": "0",
+        "50": "50"
+      },
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": false,
+      "isCustom": false,
+      "isOriginal": false,
+      "oriFrom": null,
+      "cssvar": "--comment-sticker-size",
+      "code": "comment-sticker-size",
+      "parentCode": "bilibili-related",
+      "attribute": "size",
+      "value": 40,
+      "unit": "px",
+      "min": 0,
+      "max": 100,
+      "masks": {
+        "0": "0",
+        "100": "100"
+      },
+      "description": true
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": false,
+      "isCustom": false,
+      "isOriginal": false,
+      "oriFrom": null,
+      "cssvar": "--special-sticker-size",
+      "code": "special-sticker-size",
+      "parentCode": "super-sticker-related",
+      "attribute": "size",
+      "value": 50,
+      "unit": "px",
+      "min": 0,
+      "max": 100,
+      "masks": {
+        "0": "0",
+        "100": "100"
+      },
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": false,
+      "isCustom": false,
+      "isOriginal": false,
+      "oriFrom": null,
+      "code": "avatar-display",
+      "parentCode": "avatar",
+      "attribute": "button-toggle",
+      "truedefine": "flex",
+      "falsedefine": "none",
+      "value": "on",
+      "color": "green",
+      "togleOptions": [
+        {
+          "code": "avatar-display",
+          "label": "ON",
+          "value": "on",
+          "cssvar": "--avatar-display"
+        },
+        {
+          "code": "avatar-display-none",
+          "label": "OFF",
+          "value": "off",
+          "cssvar": "--avatar-display-none"
+        }
+      ],
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": false,
+      "isCustom": false,
+      "isOriginal": false,
+      "oriFrom": null,
+      "cssvar": "--avatar-size",
+      "code": "avatar-size",
+      "parentCode": "avatar",
+      "attribute": "size",
+      "value": 40,
+      "unit": "px",
+      "min": 0,
+      "max": 100,
+      "masks": {
+        "0": "0",
+        "100": "100"
+      },
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": false,
+      "isCustom": false,
+      "isOriginal": false,
+      "oriFrom": null,
+      "cssvar": "--avatar-border",
+      "code": "avatar-border",
+      "parentCode": "avatar",
+      "attribute": "border",
+      "value": 3,
+      "style": "solid",
+      "color": "#ffffffff",
+      "unit": "px",
+      "min": 0,
+      "max": 10,
+      "masks": {
+        "0": "0",
+        "10": "10"
+      },
+      "description": true
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": true,
+      "isCustom": false,
+      "isOriginal": true,
+      "oriFrom": "avatar-border",
+      "cssvar": "--avatar-member-border",
+      "code": "avatar-member-border",
+      "parentCode": "avatar",
+      "attribute": "border",
+      "value": 3,
+      "style": "solid",
+      "color": "#ffffffff",
+      "unit": "px",
+      "min": 0,
+      "max": 10,
+      "masks": {
+        "0": "0",
+        "10": "10"
+      },
+      "description": true
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": true,
+      "isCustom": false,
+      "isOriginal": true,
+      "oriFrom": "avatar-border",
+      "cssvar": "--avatar-moderator-border",
+      "code": "avatar-moderator-border",
+      "parentCode": "avatar",
+      "attribute": "border",
+      "value": 3,
+      "style": "solid",
+      "color": "#ffffffff",
+      "unit": "px",
+      "min": 0,
+      "max": 10,
+      "masks": {
+        "0": "0",
+        "10": "10"
+      },
+      "description": true
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": true,
+      "isCustom": false,
+      "isOriginal": true,
+      "oriFrom": "avatar-border",
+      "cssvar": "--avatar-owner-border",
+      "code": "avatar-owner-border",
+      "parentCode": "avatar",
+      "attribute": "border",
+      "value": 3,
+      "style": "solid",
+      "color": "#ffffffff",
+      "unit": "px",
+      "min": 0,
+      "max": 10,
+      "masks": {
+        "0": "0",
+        "10": "10"
+      },
+      "description": true
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": false,
+      "isCustom": false,
+      "isOriginal": false,
+      "oriFrom": null,
+      "cssvar": "--avatar-border-radius",
+      "code": "avatar-border-radius",
+      "parentCode": "avatar",
+      "attribute": "radius",
+      "unit": "px",
+      "min": 0,
+      "max": 100,
+      "value": [
+        10,
+        10,
+        10,
+        10
+      ],
+      "masks": {
+        "0": "0",
+        "100": "100"
+      },
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": false,
+      "isCustom": false,
+      "isOriginal": false,
+      "oriFrom": null,
+      "cssvar": "--avatar-margin",
+      "code": "avatar-margin",
+      "parentCode": "avatar",
+      "attribute": "margin",
+      "unit": "px",
+      "min": 0,
+      "max": 50,
+      "value": [
+        0,
+        8,
+        0,
+        0
+      ],
+      "masks": {
+        "0": "0",
+        "50": "50"
+      },
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": false,
+      "isCustom": false,
+      "isOriginal": false,
+      "oriFrom": null,
+      "cssvar": "--username-min-width",
+      "code": "username-min-width",
+      "parentCode": "name",
+      "attribute": "size",
+      "value": 10,
+      "unit": "px",
+      "min": 0,
+      "max": 300,
+      "masks": {
+        "0": "0",
+        "300": "300"
+      },
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": false,
+      "isCustom": false,
+      "isOriginal": false,
+      "oriFrom": null,
+      "cssvar": "--username-max-width",
+      "code": "username-max-width",
+      "parentCode": "name",
+      "attribute": "size",
+      "value": 150,
+      "unit": "px",
+      "min": 0,
+      "max": 500,
+      "masks": {
+        "0": "0",
+        "500": "500"
+      },
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": false,
+      "isCustom": false,
+      "isOriginal": false,
+      "oriFrom": null,
+      "code": "username-font-family",
+      "parentCode": "name",
+      "attribute": "font",
+      "cssvarColor": "--username-font-color",
+      "cssvarFont": "--username-font-family",
+      "cssvarSize": "--username-font-size",
+      "cssvarWeight": "--username-font-weight",
+      "color": "#ffffffff",
+      "font": "Noto Sans JP",
+      "style": "normal",
+      "type": "none",
+      "size": 14,
+      "unit": "px",
+      "weight": 600,
+      "minSize": 0,
+      "maxSize": 50,
+      "minWeight": 0,
+      "maxWeight": 900,
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": false,
+      "isCustom": false,
+      "isOriginal": false,
+      "oriFrom": null,
+      "cssvar": "--username-text-shadow",
+      "code": "username-text-shadow",
+      "parentCode": "name",
+      "attribute": "text-shadow",
+      "isEffect": true,
+      "horizontal": 1,
+      "vertical": 1,
+      "blur": 1,
+      "unit": "px",
+      "color": "#bdbdbdff",
+      "minlength": -30,
+      "maxlength": 30,
+      "minblur": -30,
+      "maxblur": 30,
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": false,
+      "isCustom": false,
+      "isOriginal": false,
+      "oriFrom": null,
+      "cssvar": "--username-bg-color",
+      "code": "username-bg-color",
+      "parentCode": "name",
+      "attribute": "color",
+      "value": "#00be26ff",
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": false,
+      "isCustom": false,
+      "isOriginal": false,
+      "oriFrom": null,
+      "cssvar": "--username-box-shadow",
+      "code": "username-box-shadow",
+      "parentCode": "name",
+      "attribute": "box-shadow",
+      "isEffect": false,
+      "horizontal": 1,
+      "vertical": 1,
+      "blur": 1,
+      "unit": "px",
+      "color": "#0000004d",
+      "inset": false,
+      "spread": 0,
+      "minlength": -30,
+      "maxlength": 30,
+      "minblur": -30,
+      "maxblur": 30,
+      "minspread": -20,
+      "maxspread": 20,
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": false,
+      "isCustom": false,
+      "isOriginal": false,
+      "oriFrom": null,
+      "cssvar": "--username-border",
+      "code": "username-border",
+      "parentCode": "name",
+      "attribute": "border",
+      "value": 0,
+      "style": "none",
+      "color": "#FFFFFF",
+      "unit": "px",
+      "min": 0,
+      "max": 10,
+      "masks": {
+        "0": "0",
+        "10": "10"
+      },
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": false,
+      "isCustom": false,
+      "isOriginal": false,
+      "oriFrom": null,
+      "cssvar": "--username-padding",
+      "code": "username-padding",
+      "parentCode": "name",
+      "attribute": "padding",
+      "unit": "px",
+      "min": 0,
+      "max": 50,
+      "value": [
+        2,
+        10,
+        2,
+        10
+      ],
+      "masks": {
+        "0": "0",
+        "50": "50"
+      },
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": false,
+      "isCustom": false,
+      "isOriginal": false,
+      "oriFrom": null,
+      "cssvar": "--username-border-radius",
+      "code": "username-border-radius",
+      "parentCode": "name",
+      "attribute": "radius",
+      "unit": "px",
+      "min": 0,
+      "max": 100,
+      "value": [
+        5,
+        5,
+        5,
+        5
+      ],
+      "masks": {
+        "0": "0",
+        "100": "100"
+      },
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": true,
+      "isCustom": false,
+      "isOriginal": false,
+      "oriFrom": null,
+      "cssvar": "--username-member-text-color",
+      "code": "username-member-text-color",
+      "parentCode": "roles-member",
+      "attribute": "color",
+      "value": "#ffffffff",
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": true,
+      "isCustom": false,
+      "isOriginal": true,
+      "oriFrom": "username-bg-color",
+      "cssvar": "--username-member-bg-color",
+      "code": "username-member-bg-color",
+      "parentCode": "roles-member",
+      "attribute": "color",
+      "value": "#ff0fcbff",
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": true,
+      "isCustom": false,
+      "isOriginal": true,
+      "oriFrom": "username-box-shadow",
+      "cssvar": "--username-member-box-shadow",
+      "code": "username-member-box-shadow",
+      "parentCode": "roles-member",
+      "attribute": "box-shadow",
+      "isEffect": false,
+      "horizontal": 1,
+      "vertical": 1,
+      "blur": 1,
+      "unit": "px",
+      "color": "#0000004d",
+      "inset": true,
+      "spread": 0,
+      "minlength": -30,
+      "maxlength": 30,
+      "minblur": -30,
+      "maxblur": 30,
+      "minspread": -20,
+      "maxspread": 20,
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": true,
+      "isCustom": false,
+      "isOriginal": false,
+      "oriFrom": null,
+      "cssvar": "--username-member-text-shadow",
+      "code": "username-member-text-shadow",
+      "parentCode": "roles-member",
+      "attribute": "text-shadow",
+      "isEffect": true,
+      "horizontal": 1,
+      "vertical": 1,
+      "blur": 1,
+      "unit": "px",
+      "color": "#bdbdbdff",
+      "minlength": -30,
+      "maxlength": 30,
+      "minblur": -30,
+      "maxblur": 30,
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": true,
+      "isCustom": false,
+      "isOriginal": true,
+      "oriFrom": "username-border",
+      "cssvar": "--username-member-border",
+      "code": "username-member-border",
+      "parentCode": "roles-member",
+      "attribute": "border",
+      "value": 0,
+      "style": "none",
+      "color": "#FFFFFF",
+      "unit": "px",
+      "min": 0,
+      "max": 10,
+      "masks": {
+        "0": "0",
+        "10": "10"
+      },
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": true,
+      "isCustom": false,
+      "isOriginal": false,
+      "oriFrom": null,
+      "cssvar": "--username-moderator-text-color",
+      "code": "username-moderator-text-color",
+      "parentCode": "roles-moderator",
+      "attribute": "color",
+      "value": "#ffffffff",
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": true,
+      "isCustom": false,
+      "isOriginal": true,
+      "oriFrom": "username-bg-color",
+      "cssvar": "--username-moderator-bg-color",
+      "code": "username-moderator-bg-color",
+      "parentCode": "roles-moderator",
+      "attribute": "color",
+      "value": "#b05bffff",
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": true,
+      "isCustom": false,
+      "isOriginal": true,
+      "oriFrom": "username-box-shadow",
+      "cssvar": "--username-moderator-box-shadow",
+      "code": "username-moderator-box-shadow",
+      "parentCode": "roles-moderator",
+      "attribute": "box-shadow",
+      "isEffect": false,
+      "horizontal": 1,
+      "vertical": 1,
+      "blur": 1,
+      "unit": "px",
+      "color": "#0000004d",
+      "inset": false,
+      "spread": 0,
+      "minlength": -30,
+      "maxlength": 30,
+      "minblur": -30,
+      "maxblur": 30,
+      "minspread": -20,
+      "maxspread": 20,
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": true,
+      "isCustom": false,
+      "isOriginal": false,
+      "oriFrom": null,
+      "cssvar": "--username-moderator-text-shadow",
+      "code": "username-moderator-text-shadow",
+      "parentCode": "roles-moderator",
+      "attribute": "text-shadow",
+      "isEffect": true,
+      "horizontal": 1,
+      "vertical": 1,
+      "blur": 1,
+      "unit": "px",
+      "color": "#bdbdbdff",
+      "minlength": -30,
+      "maxlength": 30,
+      "minblur": -30,
+      "maxblur": 30,
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": true,
+      "isCustom": false,
+      "isOriginal": true,
+      "oriFrom": "username-border",
+      "cssvar": "--username-moderator-border",
+      "code": "username-moderator-border",
+      "parentCode": "roles-moderator",
+      "attribute": "border",
+      "value": 0,
+      "style": "none",
+      "color": "#FFFFFF",
+      "unit": "px",
+      "min": 0,
+      "max": 10,
+      "masks": {
+        "0": "0",
+        "10": "10"
+      },
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": true,
+      "isCustom": false,
+      "isOriginal": false,
+      "oriFrom": null,
+      "cssvar": "--username-owner-text-color",
+      "code": "username-owner-text-color",
+      "parentCode": "roles-owner",
+      "attribute": "color",
+      "value": "#ffffffff",
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": true,
+      "isCustom": false,
+      "isOriginal": true,
+      "oriFrom": "username-bg-color",
+      "cssvar": "--username-owner-bg-color",
+      "code": "username-owner-bg-color",
+      "parentCode": "roles-owner",
+      "attribute": "color",
+      "value": "#17bdffff",
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": true,
+      "isCustom": false,
+      "isOriginal": true,
+      "oriFrom": "username-box-shadow",
+      "cssvar": "--username-owner-box-shadow",
+      "code": "username-owner-box-shadow",
+      "parentCode": "roles-owner",
+      "attribute": "box-shadow",
+      "isEffect": false,
+      "horizontal": 1,
+      "vertical": 1,
+      "blur": 1,
+      "unit": "px",
+      "color": "#0000004d",
+      "inset": false,
+      "spread": 0,
+      "minlength": -30,
+      "maxlength": 30,
+      "minblur": -30,
+      "maxblur": 30,
+      "minspread": -20,
+      "maxspread": 20,
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": true,
+      "isCustom": false,
+      "isOriginal": false,
+      "oriFrom": null,
+      "cssvar": "--username-owner-text-shadow",
+      "code": "username-owner-text-shadow",
+      "parentCode": "roles-owner",
+      "attribute": "text-shadow",
+      "isEffect": true,
+      "horizontal": 1,
+      "vertical": 2,
+      "blur": 2,
+      "unit": "px",
+      "color": "#bdbdbdff",
+      "minlength": -30,
+      "maxlength": 30,
+      "minblur": -30,
+      "maxblur": 30,
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": true,
+      "isCustom": false,
+      "isOriginal": true,
+      "oriFrom": "username-border",
+      "cssvar": "--username-owner-border",
+      "code": "username-owner-border",
+      "parentCode": "roles-owner",
+      "attribute": "border",
+      "value": 0,
+      "style": "none",
+      "color": "#FFFFFF",
+      "unit": "px",
+      "min": 0,
+      "max": 10,
+      "masks": {
+        "0": "0",
+        "10": "10"
+      },
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": false,
+      "isCustom": false,
+      "isOriginal": false,
+      "oriFrom": null,
+      "cssvar": "--badges-size",
+      "code": "badges-size",
+      "parentCode": "badges",
+      "attribute": "size",
+      "value": 20,
+      "unit": "px",
+      "min": 0,
+      "max": 100,
+      "masks": {
+        "0": "0",
+        "100": "100"
+      },
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": false,
+      "isCustom": false,
+      "isOriginal": false,
+      "oriFrom": null,
+      "cssvar": "--badges-margin-distance",
+      "code": "badges-margin-distance",
+      "parentCode": "badges",
+      "attribute": "margin",
+      "unit": "px",
+      "min": 0,
+      "max": 50,
+      "value": [
+        0,
+        3,
+        0,
+        3
+      ],
+      "masks": {
+        "0": "0",
+        "50": "50"
+      },
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": false,
+      "isCustom": false,
+      "isOriginal": false,
+      "oriFrom": null,
+      "code": "label-font",
+      "parentCode": "label-global",
+      "attribute": "font",
+      "cssvarColor": "--label-font-color",
+      "cssvarFont": "--label-font-family",
+      "cssvarSize": "--label-font-size",
+      "cssvarWeight": "--label-font-weight",
+      "color": "#FFFFFF",
+      "font": "Noto Sans JP",
+      "style": "normal",
+      "type": "none",
+      "size": 14,
+      "unit": "px",
+      "weight": 600,
+      "minSize": 0,
+      "maxSize": 50,
+      "minWeight": 0,
+      "maxWeight": 900,
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": false,
+      "isCustom": false,
+      "isOriginal": false,
+      "oriFrom": null,
+      "cssvar": "--label-text-shadow",
+      "code": "label-text-shadow",
+      "parentCode": "label-global",
+      "attribute": "text-shadow",
+      "isEffect": false,
+      "horizontal": 3,
+      "vertical": 1,
+      "blur": 2,
+      "unit": "px",
+      "color": "#4e4e4e",
+      "minlength": -30,
+      "maxlength": 30,
+      "minblur": -30,
+      "maxblur": 30,
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": false,
+      "isCustom": false,
+      "isOriginal": false,
+      "oriFrom": null,
+      "cssvar": "--label-text-align",
+      "code": "label-text-align",
+      "parentCode": "label-global",
+      "attribute": "justify-content",
+      "value": "center",
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": false,
+      "isCustom": false,
+      "isOriginal": false,
+      "oriFrom": null,
+      "code": "tag-label",
+      "parentCode": "label-global",
+      "attribute": "boolean-multoggle",
+      "toggle": [
+        {
+          "code": "tag-status",
+          "name": "Tag Status",
+          "value": true,
+          "truevalue": "flex",
+          "falsevalue": "none",
+          "cssvar": "--tag-status"
+        },
+        {
+          "code": "time-status",
+          "name": "Time Status",
+          "value": true,
+          "truevalue": "flex",
+          "falsevalue": "none",
+          "cssvar": "--time-status"
+        },
+        {
+          "code": "label-status",
+          "name": "Label Status",
+          "value": true,
+          "truevalue": "flex",
+          "falsevalue": "none",
+          "cssvar": "--label-status"
+        }
+      ],
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": false,
+      "isCustom": false,
+      "isOriginal": false,
+      "oriFrom": null,
+      "code": "time-format",
+      "parentCode": "label-global",
+      "attribute": "button-toggle",
+      "truedefine": "block",
+      "falsedefine": "none",
+      "value": "short",
+      "color": "purple",
+      "togleOptions": [
+        {
+          "code": "time-short",
+          "label": "time-format-short",
+          "value": "short",
+          "cssvar": "--time-short"
+        },
+        {
+          "code": "time-full",
+          "label": "time-format-full",
+          "value": "full",
+          "cssvar": "--time-full"
+        }
+      ],
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": false,
+      "isCustom": false,
+      "isOriginal": false,
+      "oriFrom": null,
+      "cssvar": "--label-bg-color",
+      "code": "label-bg-color",
+      "parentCode": "label-global",
+      "attribute": "color",
+      "value": "#ff1f1f00",
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": false,
+      "isCustom": false,
+      "isOriginal": false,
+      "oriFrom": null,
+      "cssvar": "--label-border",
+      "code": "label-border",
+      "parentCode": "label-global",
+      "attribute": "border",
+      "value": 2,
+      "style": "solid",
+      "color": "#FFFFFF",
+      "unit": "px",
+      "min": 0,
+      "max": 10,
+      "masks": {
+        "0": "0",
+        "10": "10"
+      },
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": false,
+      "isCustom": false,
+      "isOriginal": false,
+      "oriFrom": null,
+      "cssvar": "--label-box-shadow",
+      "code": "label-box-shadow",
+      "parentCode": "label-global",
+      "attribute": "box-shadow",
+      "isEffect": true,
+      "horizontal": 1,
+      "vertical": 1,
+      "blur": 1,
+      "unit": "px",
+      "color": "#0000004d",
+      "inset": false,
+      "spread": 0,
+      "minlength": -30,
+      "maxlength": 30,
+      "minblur": -30,
+      "maxblur": 30,
+      "minspread": -20,
+      "maxspread": 20,
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": false,
+      "isCustom": false,
+      "isOriginal": false,
+      "oriFrom": null,
+      "cssvar": "--label-padding",
+      "code": "label-padding",
+      "parentCode": "label-global",
+      "attribute": "padding",
+      "unit": "px",
+      "min": 0,
+      "max": 50,
+      "value": [
+        0,
+        9,
+        0,
+        9
+      ],
+      "masks": {
+        "0": "0",
+        "50": "50"
+      },
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": false,
+      "isCustom": false,
+      "isOriginal": false,
+      "oriFrom": null,
+      "cssvar": "--label-radius",
+      "code": "label-radius",
+      "parentCode": "label-global",
+      "attribute": "radius",
+      "unit": "px",
+      "min": 0,
+      "max": 100,
+      "value": [
+        50,
+        50,
+        50,
+        50
+      ],
+      "masks": {
+        "0": "0",
+        "100": "100"
+      },
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": false,
+      "isCustom": false,
+      "isOriginal": false,
+      "oriFrom": null,
+      "cssvar": "--label-position-right",
+      "code": "label-position-right",
+      "parentCode": "label-global",
+      "attribute": "edge",
+      "value": 5,
+      "edge": "right",
+      "unit": "px",
+      "min": -100,
+      "max": 100,
+      "masks": {
+        "100": "100",
+        "-100": "-100"
+      },
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": false,
+      "isCustom": false,
+      "isOriginal": false,
+      "oriFrom": null,
+      "cssvar": "--label-position-top",
+      "code": "label-position-top",
+      "parentCode": "label-global",
+      "attribute": "edge",
+      "value": 4,
+      "edge": "top",
+      "unit": "px",
+      "min": -100,
+      "max": 100,
+      "masks": {
+        "100": "100",
+        "-100": "-100"
+      },
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": false,
+      "isCustom": false,
+      "isOriginal": false,
+      "oriFrom": null,
+      "cssvar": "--label-min-width",
+      "code": "label-min-width",
+      "parentCode": "label-global",
+      "attribute": "size",
+      "value": 35,
+      "unit": "px",
+      "min": 0,
+      "max": 100,
+      "masks": {
+        "0": "0",
+        "100": "100"
+      },
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": true,
+      "isCustom": false,
+      "isOriginal": false,
+      "oriFrom": null,
+      "cssvar": "--label-super-text-color",
+      "code": "label-super-text-color",
+      "parentCode": "label-super-box",
+      "attribute": "color",
+      "value": "#ffffff",
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": true,
+      "isCustom": false,
+      "isOriginal": true,
+      "oriFrom": "label-text-shadow",
+      "cssvar": "--label-super-text-shadow",
+      "code": "label-super-text-shadow",
+      "parentCode": "label-super-box",
+      "attribute": "text-shadow",
+      "isEffect": false,
+      "horizontal": 3,
+      "vertical": 1,
+      "blur": 2,
+      "unit": "px",
+      "color": "#4e4e4e",
+      "minlength": -30,
+      "maxlength": 30,
+      "minblur": -30,
+      "maxblur": 30,
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": true,
+      "isCustom": false,
+      "isOriginal": true,
+      "oriFrom": "label-bg-color",
+      "cssvar": "--label-super-bg-color",
+      "code": "label-super-bg-color",
+      "parentCode": "label-super-box",
+      "attribute": "color",
+      "value": "#ffffff00",
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": true,
+      "isCustom": false,
+      "isOriginal": true,
+      "oriFrom": "label-border",
+      "cssvar": "--label-super-border",
+      "code": "label-super-border",
+      "parentCode": "label-super-box",
+      "attribute": "border",
+      "value": 2,
+      "style": "none",
+      "color": "#FFFFFF",
+      "unit": "px",
+      "min": 0,
+      "max": 10,
+      "masks": {
+        "0": "0",
+        "10": "10"
+      },
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": true,
+      "isCustom": false,
+      "isOriginal": true,
+      "oriFrom": "label-radius",
+      "cssvar": "--label-super-radius",
+      "code": "label-super-radius",
+      "parentCode": "label-super-box",
+      "attribute": "radius",
+      "unit": "px",
+      "min": 0,
+      "max": 100,
+      "value": [
+        50,
+        50,
+        50,
+        50
+      ],
+      "masks": {
+        "0": "0",
+        "100": "100"
+      },
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": true,
+      "isCustom": false,
+      "isOriginal": true,
+      "oriFrom": "label-box-shadow",
+      "cssvar": "--label-super-box-shadow",
+      "code": "label-super-box-shadow",
+      "parentCode": "label-super-box",
+      "attribute": "box-shadow",
+      "isEffect": false,
+      "horizontal": 1,
+      "vertical": 1,
+      "blur": 1,
+      "unit": "px",
+      "color": "#0000004d",
+      "inset": false,
+      "spread": 0,
+      "minlength": -30,
+      "maxlength": 30,
+      "minblur": -30,
+      "maxblur": 30,
+      "minspread": -20,
+      "maxspread": 20,
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": true,
+      "isCustom": false,
+      "isOriginal": false,
+      "oriFrom": null,
+      "cssvar": "--label-milestonechat-text-color",
+      "code": "label-milestonechat-text-color",
+      "parentCode": "label-milestonechat-box",
+      "attribute": "color",
+      "value": "#ffffff",
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": true,
+      "isCustom": false,
+      "isOriginal": true,
+      "oriFrom": "label-text-shadow",
+      "cssvar": "--label-milestonechat-text-shadow",
+      "code": "label-milestonechat-text-shadow",
+      "parentCode": "label-milestonechat-box",
+      "attribute": "text-shadow",
+      "isEffect": false,
+      "horizontal": 3,
+      "vertical": 1,
+      "blur": 2,
+      "unit": "px",
+      "color": "#4e4e4e",
+      "minlength": -30,
+      "maxlength": 30,
+      "minblur": -30,
+      "maxblur": 30,
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": true,
+      "isCustom": false,
+      "isOriginal": true,
+      "oriFrom": "label-bg-color",
+      "cssvar": "--label-milestonechat-bg-color",
+      "code": "label-milestonechat-bg-color",
+      "parentCode": "label-milestonechat-box",
+      "attribute": "color",
+      "value": "#ffffff00",
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": true,
+      "isCustom": false,
+      "isOriginal": true,
+      "oriFrom": "label-border",
+      "cssvar": "--label-milestonechat-border",
+      "code": "label-milestonechat-border",
+      "parentCode": "label-milestonechat-box",
+      "attribute": "border",
+      "value": 2,
+      "style": "none",
+      "color": "#FFF",
+      "unit": "px",
+      "min": 0,
+      "max": 10,
+      "masks": {
+        "0": "0",
+        "10": "10"
+      },
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": true,
+      "isCustom": false,
+      "isOriginal": true,
+      "oriFrom": "label-radius",
+      "cssvar": "--label-milestonechat-radius",
+      "code": "label-milestonechat-radius",
+      "parentCode": "label-milestonechat-box",
+      "attribute": "radius",
+      "unit": "px",
+      "min": 0,
+      "max": 100,
+      "value": [
+        50,
+        50,
+        50,
+        50
+      ],
+      "masks": {
+        "0": "0",
+        "100": "100"
+      },
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": true,
+      "isCustom": false,
+      "isOriginal": true,
+      "oriFrom": "label-box-shadow",
+      "cssvar": "--label-milestonechat-box-shadow",
+      "code": "label-milestonechat-box-shadow",
+      "parentCode": "label-milestonechat-box",
+      "attribute": "box-shadow",
+      "isEffect": false,
+      "horizontal": 1,
+      "vertical": 1,
+      "blur": 1,
+      "unit": "px",
+      "color": "#0000004d",
+      "inset": false,
+      "spread": 0,
+      "minlength": -30,
+      "maxlength": 30,
+      "minblur": -30,
+      "maxblur": 30,
+      "minspread": -20,
+      "maxspread": 20,
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": true,
+      "isCustom": false,
+      "isOriginal": false,
+      "oriFrom": null,
+      "cssvar": "--label-member-text-color",
+      "code": "label-member-text-color",
+      "parentCode": "label-member-box",
+      "attribute": "color",
+      "value": "#ffffff",
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": true,
+      "isCustom": false,
+      "isOriginal": true,
+      "oriFrom": "label-text-shadow",
+      "cssvar": "--label-member-text-shadow",
+      "code": "label-member-text-shadow",
+      "parentCode": "label-member-box",
+      "attribute": "text-shadow",
+      "isEffect": false,
+      "horizontal": 3,
+      "vertical": 1,
+      "blur": 2,
+      "unit": "px",
+      "color": "#4e4e4e",
+      "minlength": -30,
+      "maxlength": 30,
+      "minblur": -30,
+      "maxblur": 30,
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": true,
+      "isCustom": false,
+      "isOriginal": true,
+      "oriFrom": "label-bg-color",
+      "cssvar": "--label-member-bg-color",
+      "code": "label-member-bg-color",
+      "parentCode": "label-member-box",
+      "attribute": "color",
+      "value": "#ffffff00",
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": true,
+      "isCustom": false,
+      "isOriginal": true,
+      "oriFrom": "label-border",
+      "cssvar": "--label-member-border",
+      "code": "label-member-border",
+      "parentCode": "label-member-box",
+      "attribute": "border",
+      "value": 2,
+      "style": "solid",
+      "color": "#FFFFFF",
+      "unit": "px",
+      "min": 0,
+      "max": 10,
+      "masks": {
+        "0": "0",
+        "10": "10"
+      },
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": true,
+      "isCustom": false,
+      "isOriginal": true,
+      "oriFrom": "label-radius",
+      "cssvar": "--label-member-radius",
+      "code": "label-member-radius",
+      "parentCode": "label-member-box",
+      "attribute": "radius",
+      "unit": "px",
+      "min": 0,
+      "max": 100,
+      "value": [
+        50,
+        50,
+        50,
+        50
+      ],
+      "masks": {
+        "0": "0",
+        "100": "100"
+      },
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": true,
+      "isCustom": false,
+      "isOriginal": true,
+      "oriFrom": "label-box-shadow",
+      "cssvar": "--label-member-box-shadow",
+      "code": "label-member-box-shadow",
+      "parentCode": "label-member-box",
+      "attribute": "box-shadow",
+      "isEffect": false,
+      "horizontal": 1,
+      "vertical": 1,
+      "blur": 1,
+      "unit": "px",
+      "color": "#0000004d",
+      "inset": false,
+      "spread": 0,
+      "minlength": -30,
+      "maxlength": 30,
+      "minblur": -30,
+      "maxblur": 30,
+      "minspread": -20,
+      "maxspread": 20,
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": true,
+      "isCustom": false,
+      "isOriginal": false,
+      "oriFrom": null,
+      "cssvar": "--label-sponsorgift-text-color",
+      "code": "label-sponsorgift-text-color",
+      "parentCode": "label-sponsorgift-box",
+      "attribute": "color",
+      "value": "#ffffff",
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": false,
+      "isCustom": false,
+      "isOriginal": false,
+      "oriFrom": null,
+      "cssvar": "--label-sponsorgift-icon-color",
+      "code": "label-sponsorgift-icon-color",
+      "parentCode": "label-sponsorgift-box",
+      "attribute": "color",
+      "value": "#FFFFFF",
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": true,
+      "isCustom": false,
+      "isOriginal": true,
+      "oriFrom": "label-text-shadow",
+      "cssvar": "--label-sponsorgift-text-shadow",
+      "code": "label-sponsorgift-text-shadow",
+      "parentCode": "label-sponsorgift-box",
+      "attribute": "text-shadow",
+      "isEffect": false,
+      "horizontal": 3,
+      "vertical": 1,
+      "blur": 2,
+      "unit": "px",
+      "color": "#4e4e4e",
+      "minlength": -30,
+      "maxlength": 30,
+      "minblur": -30,
+      "maxblur": 30,
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": true,
+      "isCustom": false,
+      "isOriginal": true,
+      "oriFrom": "label-bg-color",
+      "cssvar": "--label-sponsorgift-bg-color",
+      "code": "label-sponsorgift-bg-color",
+      "parentCode": "label-sponsorgift-box",
+      "attribute": "color",
+      "value": "#ffffff00",
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": true,
+      "isCustom": false,
+      "isOriginal": true,
+      "oriFrom": "label-border",
+      "cssvar": "--label-sponsorgift-border",
+      "code": "label-sponsorgift-border",
+      "parentCode": "label-sponsorgift-box",
+      "attribute": "border",
+      "value": 2,
+      "style": "none",
+      "color": "#FFFFFF",
+      "unit": "px",
+      "min": 0,
+      "max": 10,
+      "masks": {
+        "0": "0",
+        "10": "10"
+      },
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": true,
+      "isCustom": false,
+      "isOriginal": true,
+      "oriFrom": "label-radius",
+      "cssvar": "--label-sponsorgift-radius",
+      "code": "label-sponsorgift-radius",
+      "parentCode": "label-sponsorgift-box",
+      "attribute": "radius",
+      "unit": "px",
+      "min": 0,
+      "max": 100,
+      "value": [
+        50,
+        50,
+        50,
+        50
+      ],
+      "masks": {
+        "0": "0",
+        "100": "100"
+      },
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": true,
+      "isCustom": false,
+      "isOriginal": true,
+      "oriFrom": "label-box-shadow",
+      "cssvar": "--label-sponsorgift-box-shadow",
+      "code": "label-sponsorgift-box-shadow",
+      "parentCode": "label-sponsorgift-box",
+      "attribute": "box-shadow",
+      "isEffect": false,
+      "horizontal": 1,
+      "vertical": 1,
+      "blur": 1,
+      "unit": "px",
+      "color": "#0000004d",
+      "inset": false,
+      "spread": 0,
+      "minlength": -30,
+      "maxlength": 30,
+      "minblur": -30,
+      "maxblur": 30,
+      "minspread": -20,
+      "maxspread": 20,
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": true,
+      "isCustom": false,
+      "isOriginal": false,
+      "oriFrom": null,
+      "cssvar": "--label-giftreceived-text-color",
+      "code": "label-giftreceived-text-color",
+      "parentCode": "label-giftreceived-box",
+      "attribute": "color",
+      "value": "#ffffff",
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": true,
+      "isCustom": false,
+      "isOriginal": true,
+      "oriFrom": "label-text-shadow",
+      "cssvar": "--label-giftreceived-text-shadow",
+      "code": "label-giftreceived-text-shadow",
+      "parentCode": "label-giftreceived-box",
+      "attribute": "text-shadow",
+      "isEffect": false,
+      "horizontal": 3,
+      "vertical": 1,
+      "blur": 2,
+      "unit": "px",
+      "color": "#4e4e4e",
+      "minlength": -30,
+      "maxlength": 30,
+      "minblur": -30,
+      "maxblur": 30,
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": true,
+      "isCustom": false,
+      "isOriginal": true,
+      "oriFrom": "label-bg-color",
+      "cssvar": "--label-giftreceived-bg-color",
+      "code": "label-giftreceived-bg-color",
+      "parentCode": "label-giftreceived-box",
+      "attribute": "color",
+      "value": "#ffffffff",
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": true,
+      "isCustom": false,
+      "isOriginal": true,
+      "oriFrom": "label-border",
+      "cssvar": "--label-giftreceived-border",
+      "code": "label-giftreceived-border",
+      "parentCode": "label-giftreceived-box",
+      "attribute": "border",
+      "value": 2,
+      "style": "none",
+      "color": "#FFF",
+      "unit": "px",
+      "min": 0,
+      "max": 10,
+      "masks": {
+        "0": "0",
+        "10": "10"
+      },
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": true,
+      "isCustom": false,
+      "isOriginal": true,
+      "oriFrom": "label-radius",
+      "cssvar": "--label-giftreceived-radius",
+      "code": "label-giftreceived-radius",
+      "parentCode": "label-giftreceived-box",
+      "attribute": "radius",
+      "unit": "px",
+      "min": 0,
+      "max": 100,
+      "value": [
+        50,
+        50,
+        50,
+        50
+      ],
+      "masks": {
+        "0": "0",
+        "100": "100"
+      },
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": true,
+      "isCustom": false,
+      "isOriginal": true,
+      "oriFrom": "label-box-shadow",
+      "cssvar": "--label-giftreceived-box-shadow",
+      "code": "label-giftreceived-box-shadow",
+      "parentCode": "label-giftreceived-box",
+      "attribute": "box-shadow",
+      "isEffect": false,
+      "horizontal": 1,
+      "vertical": 1,
+      "blur": 1,
+      "unit": "px",
+      "color": "#0000004d",
+      "inset": false,
+      "spread": 0,
+      "minlength": -30,
+      "maxlength": 30,
+      "minblur": -30,
+      "maxblur": 30,
+      "minspread": -20,
+      "maxspread": 20,
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": true,
+      "isCustom": false,
+      "isOriginal": false,
+      "oriFrom": null,
+      "cssvar": "--label-reward-text-color",
+      "code": "label-reward-text-color",
+      "parentCode": "label-reward-box",
+      "attribute": "color",
+      "value": "#ffffff",
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": true,
+      "isCustom": false,
+      "isOriginal": true,
+      "oriFrom": "label-text-shadow",
+      "cssvar": "--label-reward-text-shadow",
+      "code": "label-reward-text-shadow",
+      "parentCode": "label-reward-box",
+      "attribute": "text-shadow",
+      "isEffect": false,
+      "horizontal": 3,
+      "vertical": 1,
+      "blur": 2,
+      "unit": "px",
+      "color": "#4e4e4e",
+      "minlength": -30,
+      "maxlength": 30,
+      "minblur": -30,
+      "maxblur": 30,
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": true,
+      "isCustom": false,
+      "isOriginal": true,
+      "oriFrom": "label-bg-color",
+      "cssvar": "--label-reward-bg-color",
+      "code": "label-reward-bg-color",
+      "parentCode": "label-reward-box",
+      "attribute": "color",
+      "value": "#ffffffff",
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": true,
+      "isCustom": false,
+      "isOriginal": true,
+      "oriFrom": "label-border",
+      "cssvar": "--label-reward-border",
+      "code": "label-reward-border",
+      "parentCode": "label-reward-box",
+      "attribute": "border",
+      "value": 2,
+      "style": "none",
+      "color": "#FFFFFF",
+      "unit": "px",
+      "min": 0,
+      "max": 10,
+      "masks": {
+        "0": "0",
+        "10": "10"
+      },
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": true,
+      "isCustom": false,
+      "isOriginal": true,
+      "oriFrom": "label-radius",
+      "cssvar": "--label-reward-radius",
+      "code": "label-reward-radius",
+      "parentCode": "label-reward-box",
+      "attribute": "radius",
+      "unit": "px",
+      "min": 0,
+      "max": 100,
+      "value": [
+        50,
+        50,
+        50,
+        50
+      ],
+      "masks": {
+        "0": "0",
+        "100": "100"
+      },
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": true,
+      "isCustom": false,
+      "isOriginal": true,
+      "oriFrom": "label-box-shadow",
+      "cssvar": "--label-reward-box-shadow",
+      "code": "label-reward-box-shadow",
+      "parentCode": "label-reward-box",
+      "attribute": "box-shadow",
+      "isEffect": false,
+      "horizontal": 1,
+      "vertical": 1,
+      "blur": 1,
+      "unit": "px",
+      "color": "#0000004d",
+      "inset": false,
+      "spread": 0,
+      "minlength": -30,
+      "maxlength": 30,
+      "minblur": -30,
+      "maxblur": 30,
+      "minspread": -20,
+      "maxspread": 20,
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": false,
+      "isCustom": false,
+      "isOriginal": false,
+      "oriFrom": null,
+      "cssvar": "--comment-move-duration",
+      "code": "comment-move-duration",
+      "parentCode": "global",
+      "attribute": "time",
+      "value": 150,
+      "unit": "ms",
+      "min_ms": 0,
+      "max_ms": 5000,
+      "min_sec": 0,
+      "max_sec": 10,
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": false,
+      "isCustom": false,
+      "isOriginal": false,
+      "oriFrom": null,
+      "cssvar": "--comment-move-timing",
+      "code": "comment-move-timing",
+      "parentCode": "global",
+      "attribute": "timing-function",
+      "value": "ease-out",
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": false,
+      "isCustom": false,
+      "isOriginal": false,
+      "oriFrom": null,
+      "cssvar": "--comment-enter-duration",
+      "code": "comment-enter-duration",
+      "parentCode": "global",
+      "attribute": "time",
+      "value": 150,
+      "unit": "ms",
+      "min_ms": 0,
+      "max_ms": 5000,
+      "min_sec": 0,
+      "max_sec": 10,
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": false,
+      "isCustom": false,
+      "isOriginal": false,
+      "oriFrom": null,
+      "cssvar": "--comment-enter-timing",
+      "code": "comment-enter-timing",
+      "parentCode": "global",
+      "attribute": "timing-function",
+      "value": "ease-out",
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": false,
+      "isCustom": false,
+      "isOriginal": false,
+      "oriFrom": null,
+      "cssvar": "--label-gift-icon",
+      "code": "label-gift-icon",
+      "parentCode": "images",
+      "attribute": "image",
+      "value": "images/gift-svgrepo-com.svg",
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": false,
+      "isCustom": false,
+      "isOriginal": false,
+      "oriFrom": null,
+      "cssvar": "--label-bilibili-unit",
+      "code": "label-bilibili-unit",
+      "parentCode": "unit",
+      "attribute": "content",
+      "value": "￥",
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": false,
+      "isCustom": false,
+      "isOriginal": false,
+      "oriFrom": null,
+      "cssvar": "--label-twitch-unit-bits",
+      "code": "label-twitch-unit-bits",
+      "parentCode": "unit",
+      "attribute": "content",
+      "value": "Bits",
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": false,
+      "isCustom": false,
+      "isOriginal": false,
+      "oriFrom": null,
+      "cssvar": "--label-twitch-unit-cp",
+      "code": "label-twitch-unit-cp",
+      "parentCode": "unit",
+      "attribute": "content",
+      "value": "CP",
+      "description": false
+    }
+  ],
+  "language": [
+    {
+      "code": "comment",
+      "en-US": "Comment",
+      "ja": "コメント",
+      "zh-CN": "评论区",
+      "zh-TW": "留言區"
+    },
+    {
+      "code": "mode",
+      "en-US": "Mode",
+      "ja": "モード",
+      "zh-CN": "模式",
+      "zh-TW": "模式"
+    },
+    {
+      "code": "comment-move-direction",
+      "en-US": "Comment move direction",
+      "ja": "コメント移動の方向",
+      "zh-CN": "评论移动方向",
+      "zh-TW": "留言移動方向"
+    },
+    {
+      "code": "comment-width-condition",
+      "en-US": "Comment Width",
+      "ja": "コメント・幅",
+      "zh-CN": "评论・宽度",
+      "zh-TW": "留言・寬度"
+    },
+    {
+      "code": "comment-height-condition",
+      "en-US": "Comment Height",
+      "ja": "コメント・高さ",
+      "zh-CN": "评论・高度",
+      "zh-TW": "留言・高度"
+    },
+    {
+      "code": "comment-min-height",
+      "en-US": "Min Height",
+      "ja": "最小の高さ",
+      "zh-CN": "最小高度",
+      "zh-TW": "最小高度"
+    },
+    {
+      "code": "outer",
+      "en-US": "Comment Outer",
+      "ja": "コメント 外枠",
+      "zh-CN": "评论 外框",
+      "zh-TW": "留言 外框"
+    },
+    {
+      "code": "comment-box-margin",
+      "en-US": "Margin",
+      "ja": "マージン",
+      "zh-CN": "外边距",
+      "zh-TW": "外邊距"
+    },
+    {
+      "code": "inner",
+      "en-US": "Comment Inner",
+      "ja": "コメント内側",
+      "zh-CN": "评论 内框",
+      "zh-TW": "留言 內框"
+    },
+    {
+      "code": "comment-box-padding",
+      "en-US": "Padding",
+      "ja": "パディング",
+      "zh-CN": "内边距",
+      "zh-TW": "內邊距"
+    },
+    {
+      "code": "comment-box-color",
+      "en-US": "Background Color",
+      "ja": "背景色",
+      "zh-CN": "背景色",
+      "zh-TW": "背景色"
+    },
+    {
+      "code": "comment-box-border",
+      "en-US": "Border",
+      "ja": "境界線",
+      "zh-CN": "边框",
+      "zh-TW": "邊框"
+    },
+    {
+      "code": "comment-box-radius",
+      "en-US": "Border Radius",
+      "ja": "枠の角丸",
+      "zh-CN": "边框圆角",
+      "zh-TW": "邊框圓角"
+    },
+    {
+      "code": "comment-box-shadow",
+      "en-US": "Shadow",
+      "ja": "影",
+      "zh-CN": "阴影",
+      "zh-TW": "陰影"
+    },
+    {
+      "code": "content",
+      "en-US": "Comment",
+      "ja": "コメント",
+      "zh-CN": "评论",
+      "zh-TW": "留言"
+    },
+    {
+      "code": "comment-text-font",
+      "en-US": "Font",
+      "ja": "フォント",
+      "zh-CN": "字体",
+      "zh-TW": "字體"
+    },
+    {
+      "code": "comment-text-shadow",
+      "en-US": "Text shadow",
+      "ja": "文字の影",
+      "zh-CN": "文字阴影",
+      "zh-TW": "文字陰影"
+    },
+    {
+      "code": "comment-text-default-align",
+      "en-US": "Text Align",
+      "ja": "文字揃え",
+      "zh-CN": "文本对齐",
+      "zh-TW": "文本對齊"
+    },
+    {
+      "code": "comment-text-margin",
+      "en-US": "Text Margin",
+      "ja": "テキスト・マージン",
+      "zh-CN": "文字・外边距",
+      "zh-TW": "文字・外邊距"
+    },
+    {
+      "code": "emoji-image",
+      "en-US": "Emoji and Image",
+      "ja": "絵文字と画像",
+      "zh-CN": "表情与图片",
+      "zh-TW": "表情與圖片"
+    },
+    {
+      "code": "comment-emoji-size",
+      "en-US": "Comment Emoji Size",
+      "ja": "コメント絵文字のサイズ",
+      "zh-CN": "评论 表情图 大小",
+      "zh-TW": "留言 表情圖 大小"
+    },
+    {
+      "code": "comment-emoji-margin",
+      "en-US": "Comment Emoji Margin",
+      "ja": "コメント絵文字の余白",
+      "zh-CN": "评论 表情图 外边距",
+      "zh-TW": "留言 表情圖 外邊距"
+    },
+    {
+      "code": "bilibili-related",
+      "en-US": "Bilibili Related",
+      "ja": "ビリビリ関連",
+      "zh-CN": "哔哩哔哩相关",
+      "zh-TW": "嗶哩嗶哩相關"
+    },
+    {
+      "code": "comment-sticker-size",
+      "en-US": "Emoji Image Size",
+      "ja": "絵文字のサイズ",
+      "zh-CN": "表情图 大小",
+      "zh-TW": "表情圖 大小"
+    },
+    {
+      "code": "super-sticker-related",
+      "en-US": "YouTube Super Sticker Related",
+      "ja": "YouTube スーパーステッカー関連",
+      "zh-CN": "YouTube 超级贴图相关",
+      "zh-TW": "YouTube 超級貼圖相關"
+    },
+    {
+      "code": "special-sticker-size",
+      "en-US": "Super Sticker Size",
+      "ja": "スーパーステッカー・サイズ",
+      "zh-CN": "超级贴图 大小",
+      "zh-TW": "超級貼圖 大小"
+    },
+    {
+      "code": "username",
+      "en-US": "User Name",
+      "ja": "ユーザー名",
+      "zh-CN": "用户名",
+      "zh-TW": "用戶名"
+    },
+    {
+      "code": "avatar",
+      "en-US": "Avatar",
+      "ja": "アバター",
+      "zh-CN": "头像",
+      "zh-TW": "頭像"
+    },
+    {
+      "code": "avatar-display",
+      "en-US": "Avatar On/Off",
+      "ja": "アバター・オン/オフ",
+      "zh-CN": "头像・开/关",
+      "zh-TW": "頭像・開/關"
+    },
+    {
+      "code": "avatar-size",
+      "en-US": "Avatar size",
+      "ja": "アバター・ サイズ",
+      "zh-CN": "头像・大小",
+      "zh-TW": "頭像・大小"
+    },
+    {
+      "code": "avatar-border",
+      "en-US": "Avatar border",
+      "ja": "アバター・境界線",
+      "zh-CN": "头像・边框",
+      "zh-TW": "頭像・邊框"
+    },
+    {
+      "code": "avatar-member-border",
+      "en-US": "Member Avatar Border",
+      "ja": "メンバー・アバター・境界線",
+      "zh-CN": "会员・头像・边框",
+      "zh-TW": "會員・頭像・邊框"
+    },
+    {
+      "code": "avatar-moderator-border",
+      "en-US": "Moderator Avatar border",
+      "ja": "モデレーター・アバター・境界線",
+      "zh-CN": "管理员・头像・边框",
+      "zh-TW": "管理員・頭像・邊框"
+    },
+    {
+      "code": "avatar-owner-border",
+      "en-US": "Owner Avatar border",
+      "ja": "配信者・アバター・境界線",
+      "zh-CN": "主播・头像・边框",
+      "zh-TW": "實況主・頭像・邊框"
+    },
+    {
+      "code": "avatar-border-radius",
+      "en-US": "Border Radius",
+      "ja": "枠の角丸",
+      "zh-CN": "边框圆角",
+      "zh-TW": "邊框圓角"
+    },
+    {
+      "code": "avatar-margin",
+      "en-US": "Avatar Margin",
+      "ja": "アバター ・マージン",
+      "zh-CN": "头像・外边距",
+      "zh-TW": "頭像・外邊距"
+    },
+    {
+      "code": "name",
+      "en-US": "Name",
+      "ja": "名前",
+      "zh-CN": "名字",
+      "zh-TW": "名字"
+    },
+    {
+      "code": "username-min-width",
+      "en-US": "Username Min width",
+      "ja": "ユーザー名・最小幅",
+      "zh-CN": "用户名・框最小宽度",
+      "zh-TW": "用戶名・框最小寬度"
+    },
+    {
+      "code": "username-max-width",
+      "en-US": "Username Max Width",
+      "ja": "ユーザー名・最大幅",
+      "zh-CN": "用户名・框最大宽度",
+      "zh-TW": "用戶名・框最大寬度"
+    },
+    {
+      "code": "username-font-family",
+      "en-US": "Font",
+      "ja": "フォント",
+      "zh-CN": "字体",
+      "zh-TW": "字體"
+    },
+    {
+      "code": "username-text-shadow",
+      "en-US": "Text Shadow",
+      "ja": "文字の影",
+      "zh-CN": "文字阴影",
+      "zh-TW": "文字陰影"
+    },
+    {
+      "code": "username-bg-color",
+      "en-US": "Background Color",
+      "ja": "背景色",
+      "zh-CN": "背景颜色",
+      "zh-TW": "背景顏色"
+    },
+    {
+      "code": "username-box-shadow",
+      "en-US": "Shadow",
+      "ja": "影",
+      "zh-CN": "阴影",
+      "zh-TW": "陰影"
+    },
+    {
+      "code": "username-border",
+      "en-US": "Border",
+      "ja": "境界線",
+      "zh-CN": "边框",
+      "zh-TW": "邊框"
+    },
+    {
+      "code": "username-padding",
+      "en-US": "Username padding",
+      "ja": "ユーザー名のパディング",
+      "zh-CN": "用户名 框内边距",
+      "zh-TW": "用戶名 框內邊距"
+    },
+    {
+      "code": "username-border-radius",
+      "en-US": "Username border radius",
+      "ja": "ユーザー名の角丸",
+      "zh-CN": "用户名 边框弧度",
+      "zh-TW": "用戶名 邊框弧度"
+    },
+    {
+      "code": "roles-member",
+      "en-US": "Member",
+      "ja": "メンバー",
+      "zh-CN": "会员",
+      "zh-TW": "會員"
+    },
+    {
+      "code": "username-member-text-color",
+      "en-US": "Font Color",
+      "ja": "フォント・色",
+      "zh-CN": "字体・颜色",
+      "zh-TW": "字體・顏色"
+    },
+    {
+      "code": "username-member-bg-color",
+      "en-US": "Background Color",
+      "ja": "背景色",
+      "zh-CN": "背景颜色",
+      "zh-TW": "背景顏色"
+    },
+    {
+      "code": "username-member-box-shadow",
+      "en-US": "Shadow",
+      "ja": "影",
+      "zh-CN": "阴影",
+      "zh-TW": "陰影"
+    },
+    {
+      "code": "username-member-text-shadow",
+      "en-US": "Text Shadow",
+      "ja": "文字の影",
+      "zh-CN": "文字阴影",
+      "zh-TW": "文字陰影"
+    },
+    {
+      "code": "username-member-border",
+      "en-US": "Border",
+      "ja": "境界線",
+      "zh-CN": "边框",
+      "zh-TW": "邊框"
+    },
+    {
+      "code": "roles-moderator",
+      "en-US": "Moderator",
+      "ja": "モデレーター",
+      "zh-CN": "管理员",
+      "zh-TW": "管理員/扳手"
+    },
+    {
+      "code": "username-moderator-text-color",
+      "en-US": "Font Color",
+      "ja": "フォント・色",
+      "zh-CN": "字体・颜色",
+      "zh-TW": "字體・顏色"
+    },
+    {
+      "code": "username-moderator-bg-color",
+      "en-US": "Username moderator background color",
+      "ja": "ユーザー名モデレーター背景色",
+      "zh-CN": "用户名 管理员 背景颜色",
+      "zh-TW": "用戶名 管理員 背景顏色"
+    },
+    {
+      "code": "username-moderator-box-shadow",
+      "en-US": "Shadow",
+      "ja": "影",
+      "zh-CN": "阴影",
+      "zh-TW": "陰影"
+    },
+    {
+      "code": "username-moderator-text-shadow",
+      "en-US": "Text Shadow",
+      "ja": "文字の影",
+      "zh-CN": "文字阴影",
+      "zh-TW": "文字陰影"
+    },
+    {
+      "code": "username-moderator-border",
+      "en-US": "Border",
+      "ja": "境界線",
+      "zh-CN": "边框",
+      "zh-TW": "邊框"
+    },
+    {
+      "code": "roles-owner",
+      "en-US": "Owner",
+      "ja": "配信者",
+      "zh-CN": "主播",
+      "zh-TW": "實況主"
+    },
+    {
+      "code": "username-owner-text-color",
+      "en-US": "Font Color",
+      "ja": "フォント・色",
+      "zh-CN": "字体・颜色",
+      "zh-TW": "字體・顏色"
+    },
+    {
+      "code": "username-owner-bg-color",
+      "en-US": "Background Color",
+      "ja": "背景色",
+      "zh-CN": "背景颜色",
+      "zh-TW": "背景顏色"
+    },
+    {
+      "code": "username-owner-box-shadow",
+      "en-US": "Shadow",
+      "ja": "影",
+      "zh-CN": "阴影",
+      "zh-TW": "陰影"
+    },
+    {
+      "code": "username-owner-text-shadow",
+      "en-US": "Text Shadow",
+      "ja": "文字の影",
+      "zh-CN": "文字阴影",
+      "zh-TW": "文字陰影"
+    },
+    {
+      "code": "username-owner-border",
+      "en-US": "Border",
+      "ja": "境界線",
+      "zh-CN": "边框",
+      "zh-TW": "邊框"
+    },
+    {
+      "code": "badges",
+      "en-US": "Badges",
+      "ja": "バッジ",
+      "zh-CN": "徽章",
+      "zh-TW": "徽章"
+    },
+    {
+      "code": "badges-size",
+      "en-US": "Badges size",
+      "ja": "バッジのサイズ",
+      "zh-CN": "徽章大小",
+      "zh-TW": "徽章大小"
+    },
+    {
+      "code": "badges-margin-distance",
+      "en-US": "Margin",
+      "ja": "バッジのマージン",
+      "zh-CN": "徽章 外边距",
+      "zh-TW": "徽章 外邊距"
+    },
+    {
+      "code": "timelabel",
+      "en-US": "Time & Label",
+      "ja": "時間とラベル",
+      "zh-CN": "时间与标签",
+      "zh-TW": "時間與標籤"
+    },
+    {
+      "code": "label-global",
+      "en-US": "Global",
+      "ja": "グローバル",
+      "zh-CN": "全局",
+      "zh-TW": "全域"
+    },
+    {
+      "code": "label-font",
+      "en-US": "Time & Label font",
+      "ja": "時間とラベルのフォント",
+      "zh-CN": "时间与标签 字体",
+      "zh-TW": "時間與標籤 字體"
+    },
+    {
+      "code": "label-text-shadow",
+      "en-US": "Label Text Shadow",
+      "ja": "ラベルの文字影",
+      "zh-CN": "标签 文字阴影",
+      "zh-TW": "標籤 文字陰影"
+    },
+    {
+      "code": "label-text-align",
+      "en-US": "Label text alignment",
+      "ja": "ラベルテキストの揃え",
+      "zh-CN": "标签 文本 对齐方式",
+      "zh-TW": "標籤 文本 對齊方式"
+    },
+    {
+      "code": "tag-label",
+      "en-US": "Tag Label Status",
+      "ja": "タグラベルのステータス",
+      "zh-CN": "标签状态",
+      "zh-TW": "標籤狀態"
+    },
+    {
+      "code": "time-format",
+      "en-US": "Time Format",
+      "ja": "時間形式",
+      "zh-CN": "时间格式",
+      "zh-TW": "時間格式"
+    },
+    {
+      "code": "label-bg-color",
+      "en-US": "Label Background Color",
+      "ja": "ラベルの背景色",
+      "zh-CN": "标签 背景颜色",
+      "zh-TW": "標籤 背景顏色"
+    },
+    {
+      "code": "label-border",
+      "en-US": "Label Border",
+      "ja": "ラベルの枠",
+      "zh-CN": "标签 边框",
+      "zh-TW": "標籤 邊框"
+    },
+    {
+      "code": "label-box-shadow",
+      "en-US": "Label Shadow",
+      "ja": "ラベルの影",
+      "zh-CN": "标签 阴影",
+      "zh-TW": "標籤 陰影"
+    },
+    {
+      "code": "label-padding",
+      "en-US": "Label Padding",
+      "ja": "ラベルのパディング",
+      "zh-CN": "标签 内边距",
+      "zh-TW": "標籤 內邊距"
+    },
+    {
+      "code": "label-radius",
+      "en-US": "Label Radius",
+      "ja": "ラベルの角丸",
+      "zh-CN": "标签 框边弧度",
+      "zh-TW": "標籤 框邊弧度"
+    },
+    {
+      "code": "label-position-right",
+      "en-US": "Label X-Axis Position",
+      "ja": "ラベル X軸 位置",
+      "zh-CN": "标签 X轴 位置",
+      "zh-TW": "標籤 X軸 位置"
+    },
+    {
+      "code": "label-position-top",
+      "en-US": "Label Y-Axis Position",
+      "ja": "ラベル Y軸 位置",
+      "zh-CN": "标签 Y轴 位置",
+      "zh-TW": "標籤 Y軸 位置"
+    },
+    {
+      "code": "label-min-width",
+      "en-US": "Label Min Width",
+      "ja": "ラベル・最小幅",
+      "zh-CN": "标签・框最小宽度",
+      "zh-TW": "标签・框最小寬度"
+    },
+    {
+      "code": "label-super-box",
+      "en-US": "Superchat & Supersticker Box",
+      "ja": "スーパーチャットとスーパーステッカー",
+      "zh-CN": "超级留言与超级贴图",
+      "zh-TW": "超級留言與超級貼圖"
+    },
+    {
+      "code": "label-super-text-color",
+      "en-US": "Label Text Color",
+      "ja": "ラベルの文字色",
+      "zh-CN": "标签 文本颜色",
+      "zh-TW": "標籤 文字顏色"
+    },
+    {
+      "code": "label-super-text-shadow",
+      "en-US": "Label Text Shadow",
+      "ja": "ラベルの文字影",
+      "zh-CN": "标签 文字阴影",
+      "zh-TW": "標籤 文字陰影"
+    },
+    {
+      "code": "label-super-bg-color",
+      "en-US": "Label Background Color",
+      "ja": "ラベルの背景色",
+      "zh-CN": "标签 背景颜色",
+      "zh-TW": "標籤 背景顏色"
+    },
+    {
+      "code": "label-super-border",
+      "en-US": "Label Border",
+      "ja": "ラベルの枠",
+      "zh-CN": "标签 边框",
+      "zh-TW": "標籤 邊框"
+    },
+    {
+      "code": "label-super-radius",
+      "en-US": "Label Radius",
+      "ja": "ラベルの角丸",
+      "zh-CN": "标签 框边弧度",
+      "zh-TW": "標籤 框邊弧度"
+    },
+    {
+      "code": "label-super-box-shadow",
+      "en-US": "Label Shadow",
+      "ja": "ラベルの影",
+      "zh-CN": "标签 阴影",
+      "zh-TW": "標籤 陰影"
+    },
+    {
+      "code": "label-milestonechat-box",
+      "en-US": "Milestonechat",
+      "ja": "メンバーシップコメント",
+      "zh-CN": "会员评论",
+      "zh-TW": "會員留言"
+    },
+    {
+      "code": "label-milestonechat-text-color",
+      "en-US": "Label Text Color",
+      "ja": "ラベルの文字色",
+      "zh-CN": "标签 文本颜色",
+      "zh-TW": "標籤 文字顏色"
+    },
+    {
+      "code": "label-milestonechat-text-shadow",
+      "en-US": "Label Text Shadow",
+      "ja": "ラベルの文字影",
+      "zh-CN": "标签 文字阴影",
+      "zh-TW": "標籤 文字陰影"
+    },
+    {
+      "code": "label-milestonechat-bg-color",
+      "en-US": "Label Background Color",
+      "ja": "ラベルの背景色",
+      "zh-CN": "标签 背景颜色",
+      "zh-TW": "標籤 背景顏色"
+    },
+    {
+      "code": "label-milestonechat-border",
+      "en-US": "Label Border",
+      "ja": "ラベルの枠",
+      "zh-CN": "标签 边框",
+      "zh-TW": "標籤 邊框"
+    },
+    {
+      "code": "label-milestonechat-radius",
+      "en-US": "Label Radius",
+      "ja": "ラベルの角丸",
+      "zh-CN": "标签 框边弧度",
+      "zh-TW": "標籤 框邊弧度"
+    },
+    {
+      "code": "label-milestonechat-box-shadow",
+      "en-US": "Label Shadow",
+      "ja": "ラベルの影",
+      "zh-CN": "标签 阴影",
+      "zh-TW": "標籤 陰影"
+    },
+    {
+      "code": "label-member-box",
+      "en-US": "Membership / Subscribe",
+      "ja": "メンバーシップ／サブスクライブ",
+      "zh-CN": "会员／订阅",
+      "zh-TW": "會員／訂閱"
+    },
+    {
+      "code": "label-member-text-color",
+      "en-US": "Label Text Color",
+      "ja": "ラベルの文字色",
+      "zh-CN": "标签 文本颜色",
+      "zh-TW": "標籤 文字顏色"
+    },
+    {
+      "code": "label-member-text-shadow",
+      "en-US": "Label Text Shadow",
+      "ja": "ラベルの文字影",
+      "zh-CN": "标签 文字阴影",
+      "zh-TW": "標籤 文字陰影"
+    },
+    {
+      "code": "label-member-bg-color",
+      "en-US": "Label Background Color",
+      "ja": "ラベルの背景色",
+      "zh-CN": "标签 背景颜色",
+      "zh-TW": "標籤 背景顏色"
+    },
+    {
+      "code": "label-member-border",
+      "en-US": "Label Border",
+      "ja": "ラベルの枠",
+      "zh-CN": "标签 边框",
+      "zh-TW": "標籤 邊框"
+    },
+    {
+      "code": "label-member-radius",
+      "en-US": "Label Radius",
+      "ja": "ラベルの角丸",
+      "zh-CN": "标签 框边弧度",
+      "zh-TW": "標籤 框邊弧度"
+    },
+    {
+      "code": "label-member-box-shadow",
+      "en-US": "Label Shadow",
+      "ja": "ラベルの影",
+      "zh-CN": "标签 阴影",
+      "zh-TW": "標籤 陰影"
+    },
+    {
+      "code": "label-sponsorgift-box",
+      "en-US": "Gift",
+      "ja": "ギフト",
+      "zh-CN": "礼物",
+      "zh-TW": "禮物"
+    },
+    {
+      "code": "label-sponsorgift-text-color",
+      "en-US": "Label Text Color",
+      "ja": "ラベルの文字色",
+      "zh-CN": "标签 文本颜色",
+      "zh-TW": "標籤 文字顏色"
+    },
+    {
+      "code": "label-sponsorgift-icon-color",
+      "en-US": "Gift Icon Color",
+      "ja": "ギフト・アイコン・色",
+      "zh-CN": "礼物・图标・颜色",
+      "zh-TW": "禮物・圖標・顏色"
+    },
+    {
+      "code": "label-sponsorgift-text-shadow",
+      "en-US": "Label Text Shadow",
+      "ja": "ラベルの文字影",
+      "zh-CN": "标签 文字阴影",
+      "zh-TW": "標籤 文字陰影"
+    },
+    {
+      "code": "label-sponsorgift-bg-color",
+      "en-US": "Label Background Color",
+      "ja": "ラベルの背景色",
+      "zh-CN": "标签 背景颜色",
+      "zh-TW": "標籤 背景顏色"
+    },
+    {
+      "code": "label-sponsorgift-border",
+      "en-US": "Label Border",
+      "ja": "ラベルの枠",
+      "zh-CN": "标签 边框",
+      "zh-TW": "標籤 邊框"
+    },
+    {
+      "code": "label-sponsorgift-radius",
+      "en-US": "Label Radius",
+      "ja": "ラベルの角丸",
+      "zh-CN": "标签 框边弧度",
+      "zh-TW": "標籤 框陰影"
+    },
+    {
+      "code": "label-sponsorgift-box-shadow",
+      "en-US": "Label Shadow",
+      "ja": "ラベルの影",
+      "zh-CN": "标签 阴影",
+      "zh-TW": "標籤 陰影"
+    },
+    {
+      "code": "label-giftreceived-box",
+      "en-US": "Gift Received",
+      "ja": "ギフト受取",
+      "zh-CN": "领取礼物",
+      "zh-TW": "領取禮物"
+    },
+    {
+      "code": "label-giftreceived-text-color",
+      "en-US": "Label Text Color",
+      "ja": "ラベルの文字色",
+      "zh-CN": "标签 文本颜色",
+      "zh-TW": "標籤 文字顏色"
+    },
+    {
+      "code": "label-giftreceived-text-shadow",
+      "en-US": "Label Text Shadow",
+      "ja": "ラベルの文字影",
+      "zh-CN": "标签 文字阴影",
+      "zh-TW": "標籤 文字陰影"
+    },
+    {
+      "code": "label-giftreceived-bg-color",
+      "en-US": "Label Background Color",
+      "ja": "ラベルの背景色",
+      "zh-CN": "标签 背景颜色",
+      "zh-TW": "標籤 背景顏色"
+    },
+    {
+      "code": "label-giftreceived-border",
+      "en-US": "Label Border",
+      "ja": "ラベルの枠",
+      "zh-CN": "标签 边框",
+      "zh-TW": "標籤 邊框"
+    },
+    {
+      "code": "label-giftreceived-radius",
+      "en-US": "Label Radius",
+      "ja": "ラベルの角丸",
+      "zh-CN": "标签 框边弧度",
+      "zh-TW": "標籤 框邊弧度"
+    },
+    {
+      "code": "label-giftreceived-box-shadow",
+      "en-US": "Label Shadow",
+      "ja": "ラベルの影",
+      "zh-CN": "标签 阴影",
+      "zh-TW": "標籤 陰影"
+    },
+    {
+      "code": "label-reward-box",
+      "en-US": "Reward Box",
+      "ja": "換えギフトのボックス",
+      "zh-CN": "兑换礼物 框",
+      "zh-TW": "兌換禮物 框"
+    },
+    {
+      "code": "label-reward-text-color",
+      "en-US": "Label Text Color",
+      "ja": "ラベルの文字色",
+      "zh-CN": "标签 文本颜色",
+      "zh-TW": "標籤 文字顏色"
+    },
+    {
+      "code": "label-reward-text-shadow",
+      "en-US": "Label Text Shadow",
+      "ja": "ラベルの文字影",
+      "zh-CN": "标签 文字阴影",
+      "zh-TW": "標籤 文字陰影"
+    },
+    {
+      "code": "label-reward-bg-color",
+      "en-US": "Label Background Color",
+      "ja": "ラベルの背景色",
+      "zh-CN": "标签 背景颜色",
+      "zh-TW": "標籤 背景顏色"
+    },
+    {
+      "code": "label-reward-border",
+      "en-US": "Label Border",
+      "ja": "ラベルの枠",
+      "zh-CN": "标签 边框",
+      "zh-TW": "標籤 邊框"
+    },
+    {
+      "code": "label-reward-radius",
+      "en-US": "Label Radius",
+      "ja": "ラベルの角丸",
+      "zh-CN": "标签 框边弧度",
+      "zh-TW": "標籤 框邊弧度"
+    },
+    {
+      "code": "label-reward-box-shadow",
+      "en-US": "Label Shadow",
+      "ja": "ラベルの影",
+      "zh-CN": "标签 阴影",
+      "zh-TW": "標籤 陰影"
+    },
+    {
+      "code": "animation",
+      "en-US": "Animation",
+      "ja": "アニメーション",
+      "zh-CN": "动画",
+      "zh-TW": "動畫"
+    },
+    {
+      "code": "global",
+      "en-US": "Global",
+      "ja": "グローバル",
+      "zh-CN": "全局",
+      "zh-TW": "全域"
+    },
+    {
+      "code": "comment-move-duration",
+      "en-US": "Comment move duration",
+      "ja": "コメント移動の時間",
+      "zh-CN": "评论移动时长",
+      "zh-TW": "留言移動時長"
+    },
+    {
+      "code": "comment-move-timing",
+      "en-US": "Comment move timing",
+      "ja": "コメント移動のタイミング",
+      "zh-CN": "评论移动曲线",
+      "zh-TW": "留言移動曲線"
+    },
+    {
+      "code": "comment-enter-duration",
+      "en-US": "Comment enter duration",
+      "ja": "コメント入力の時間",
+      "zh-CN": "评论进入时长",
+      "zh-TW": "留言進入時長"
+    },
+    {
+      "code": "comment-enter-timing",
+      "en-US": "Comment enter timing",
+      "ja": "コメント入力のタイミング",
+      "zh-CN": "评论进入曲线",
+      "zh-TW": "留言進入曲線"
+    },
+    {
+      "code": "others",
+      "en-US": "Others",
+      "ja": "その他",
+      "zh-CN": "其他",
+      "zh-TW": "其他"
+    },
+    {
+      "code": "images",
+      "en-US": "Images",
+      "ja": "画像",
+      "zh-CN": "图片",
+      "zh-TW": "圖片"
+    },
+    {
+      "code": "label-gift-icon",
+      "en-US": "Gift Icon",
+      "ja": "ギフトアイコン",
+      "zh-CN": "礼物图标",
+      "zh-TW": "禮物圖示"
+    },
+    {
+      "code": "unit",
+      "en-US": "Unit",
+      "ja": "単位",
+      "zh-CN": "单位",
+      "zh-TW": "單位"
+    },
+    {
+      "code": "label-bilibili-unit",
+      "en-US": "Bilibili Coin Unit",
+      "ja": "ビリビリコインの単位",
+      "zh-CN": "哔哩哔哩 货币 单位",
+      "zh-TW": "嗶哩嗶哩 貨幣 單位"
+    },
+    {
+      "code": "label-twitch-unit-bits",
+      "en-US": "Twitch Coin Unit",
+      "ja": "Twitchコインの単位",
+      "zh-CN": "Twitch 货币 单位",
+      "zh-TW": "Twitch 貨幣 單位"
+    },
+    {
+      "code": "label-twitch-unit-cp",
+      "en-US": "Twitch point unit",
+      "ja": "Twitchポイントの単位",
+      "zh-CN": "Twitch 点数 单位",
+      "zh-TW": "圖奇 點數 單位"
+    }
+  ],
+  "description": [
+    {
+      "code": "comment-width-condition",
+      "en-US": "Enable width setting when using horizontal layout mode.",
+      "ja": "横書きモードでは、幅の設定を有効にする必要があります。",
+      "zh-CN": "在横排模式，需开启宽度大小",
+      "zh-TW": "在橫排模式，需開啟寬度大小"
+    },
+    {
+      "code": "comment-height-condition",
+      "en-US": "Enable height setting when using horizontal layout mode.",
+      "ja": "横書きモードでは、高さの設定を有効にする必要があります。",
+      "zh-CN": "在横排模式，需开启高度大小",
+      "zh-TW": "在橫排模式，需開啟高度大小"
+    },
+    {
+      "code": "comment-min-height",
+      "en-US": "To save space, you can enable this option. When disabled, the height of the comment box will vary with the content and may appear uneven.",
+      "ja": "スペースを節約したい場合は、このオンションをオフにできます。オンにすると、コメント欄の高さが内容によって変動し、不揃いになることがあります。",
+      "zh-CN": "为节省空间可以开启该选项，关闭后留言框高度会根据内容变化而不一致。",
+      "zh-TW": "為節省空間可以開啟此選項，關閉後留言框高度會根據內容變化而不一致。"
+    },
+    {
+      "code": "comment-sticker-size",
+      "en-US": "Only for Bilibili",
+      "ja": "ビリビリ専用",
+      "zh-CN": "仅限哔哩哔哩",
+      "zh-TW": "僅限嗶哩嗶哩"
+    },
+    {
+      "code": "avatar-border",
+      "en-US": "Default is Solid, select None to disable",
+      "ja": "デフォルトはSolidで、無効にするにはNoneを選択してください",
+      "zh-CN": "默认是Solid，关闭请选择None",
+      "zh-TW": "默認是Solid, 關閉請選None"
+    },
+    {
+      "code": "avatar-member-border",
+      "en-US": "Default is Solid, select None to disable",
+      "ja": "デフォルトはSolidで、無効にするにはNoneを選択してください",
+      "zh-CN": "默认是Solid，关闭请选择None",
+      "zh-TW": "默認是Solid, 關閉請選None"
+    },
+    {
+      "code": "avatar-moderator-border",
+      "en-US": "Default is Solid, select None to disable",
+      "ja": "デフォルトはSolidで、無効にするにはNoneを選択してください",
+      "zh-CN": "默认是Solid，关闭请选择None",
+      "zh-TW": "默認是Solid, 關閉請選None"
+    },
+    {
+      "code": "avatar-owner-border",
+      "en-US": "Default is Solid, select None to disable",
+      "ja": "デフォルトはSolidで、無効にするにはNoneを選択してください",
+      "zh-CN": "默认是Solid，关闭请选择None",
+      "zh-TW": "默認是Solid, 關閉請選None"
+    }
+  ]
+}

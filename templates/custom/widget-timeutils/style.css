@@ -1,0 +1,144 @@
+@import url("./preset.css");
+@-webkit-keyframes blink {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+@keyframes blink {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+.time {
+  display: block;
+  position: relative;
+}
+.time .time-frame {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: var(--t1-frame-bg-color);
+  width: var(--t1-frame-width);
+  height: auto;
+  padding: var(--t1-frame-padding);
+  border: var(--t1-frame-border);
+  border-radius: var(--t1-frame-border-radius);
+  -webkit-box-shadow: var(--t1-frame-box-shadow);
+          box-shadow: var(--t1-frame-box-shadow);
+}
+.time .title-box {
+  display: var(--t1-title-box-display);
+  position: relative;
+  width: var(--t1-title-box-width);
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  background-color: var(--t1-title-box-bg-color);
+  padding: var(--t1-title-box-padding);
+  margin: var(--t1-title-box-margin);
+  border: var(--t1-title-box-border);
+  border-radius: var(--t1-title-box-border-radius);
+}
+.time .title {
+  font-family: var(--t1-title-font-family);
+  font-size: var(--t1-title-font-size);
+  font-weight: var(--t1-title-font-weight);
+  color: var(--t1-title-font-color);
+  text-shadow: var(--t1-title-text-shadow);
+}
+.time .title::after {
+  content: var(--t1-title-content);
+}
+.time .time-box {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  line-height: 1;
+  background-color: var(--t1-time-box-bg-color);
+  padding: var(--t1-time-box-padding);
+  margin: var(--t1-time-box-margin);
+  border: var(--t1-time-box-border);
+  border-radius: var(--t1-time-box-border-radius);
+}
+.time .hour {
+  font-family: var(--t1-hour-font-family);
+  font-size: var(--t1-hour-font-size);
+  font-weight: var(--t1-hour-font-weight);
+  color: var(--t1-hour-font-color);
+  text-shadow: var(--t1-hour-text-shadow);
+  margin: var(--t1-hour-font-margin);
+}
+.time .minute {
+  font-family: var(--t1-minute-font-family);
+  font-size: var(--t1-minute-font-size);
+  font-weight: var(--t1-minute-font-weight);
+  color: var(--t1-minute-font-color);
+  text-shadow: var(--t1-minute-text-shadow);
+  margin: var(--t1-minute-font-margin);
+}
+.time .second {
+  display: var(--t1-second-display);
+  font-family: var(--t1-second-font-family);
+  font-size: var(--t1-second-font-size);
+  font-weight: var(--t1-second-font-weight);
+  color: var(--t1-second-font-color);
+  text-shadow: var(--t1-second-text-shadow);
+  margin: var(--t1-second-font-margin);
+}
+.time .meridiem {
+  font-family: var(--t1-meridiem-font-family);
+  font-size: var(--t1-meridiem-font-size);
+  font-weight: var(--t1-meridiem-font-weight);
+  color: var(--t1-meridiem-font-color);
+  text-shadow: var(--t1-meridiem-text-shadow);
+  margin: var(--t1-meridiem-font-margin);
+}
+.time .hour-colon {
+  font-family: var(--t1-hour-colon-font-family);
+  font-size: var(--t1-hour-colon-font-size);
+  font-weight: var(--t1-hour-colon-font-weight);
+  color: var(--t1-hour-colon-font-color);
+  -webkit-animation: var(--t1-hour-colon-blink) 1s infinite;
+          animation: var(--t1-hour-colon-blink) 1s infinite;
+  text-shadow: var(--t1-hour-colon-text-shadow);
+  margin: var(--t1-hour-colon-font-margin);
+}
+.time .minute-colon {
+  display: var(--t1-minute-colon-display);
+  font-family: var(--t1-minute-colon-font-family);
+  font-size: var(--t1-minute-colon-font-size);
+  font-weight: var(--t1-minute-colon-font-weight);
+  color: var(--t1-minute-colon-font-color);
+  text-shadow: var(--t1-minute-colon-text-shadow);
+  margin: var(--t1-minute-colon-font-margin);
+}
+.time .hour12 {
+  display: var(--t1-hour12-display);
+}
+.time .hour24 {
+  display: var(--t1-hour24-display);
+}
+.time .meridiem-small {
+  display: var(--t1-meridiem-small-display);
+}
+.time .meridiem-cap {
+  display: var(--t1-meridiem-cap-display);
+}

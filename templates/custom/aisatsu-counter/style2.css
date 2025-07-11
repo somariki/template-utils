@@ -1,0 +1,29 @@
+@import url("preset2.css");
+.counter {
+  text-align: var(--counter-text-align);
+}
+
+.counter-value {
+  font-family: var(--counter-font-family);
+  font-size: var(--counter-font-size);
+  font-weight: var(--counter-font-weight);
+  text-shadow: var(--counter-text-shadow);
+  color: var(--counter-font-color);
+}
+
+.counter-target {
+  font-family: var(--target-font-family);
+  font-size: var(--target-font-size);
+  font-weight: var(--target-font-weight);
+  text-shadow: var(--target-text-shadow);
+  color: var(--target-font-color);
+}
+
+.separator {
+  font-family: var(--separator-font-family);
+  font-size: var(--separator-font-size);
+  font-weight: var(--separator-font-weight);
+  text-shadow: var(--separator-text-shadow);
+  color: var(--separator-font-color);
+  margin: var(--separator-margin);
+}

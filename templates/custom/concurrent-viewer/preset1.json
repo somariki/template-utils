@@ -1,0 +1,81 @@
+{
+  "parentCode": "concurrent-viewers",
+  "presetId": 1,
+  "dataSet": [
+    {
+      "isCustom": false,
+      "code": "onecomme-service",
+      "value": "service-id"
+    },
+    {
+      "isCustom": false,
+      "code": "youtube-subscriber-count",
+      "toggle": [
+        {
+          "code": "youtube-subscriber-count",
+          "value": true
+        }
+      ]
+    },
+    {
+      "isCustom": false,
+      "code": "arrangement",
+      "value": "flex"
+    },
+    {
+      "isCustom": false,
+      "code": "count-margin",
+      "unit": "px",
+      "value": [
+        0,
+        10,
+        0,
+        0
+      ]
+    },
+    {
+      "isCustom": false,
+      "code": "icon-color",
+      "value": "#6e6e6eff"
+    },
+    {
+      "isCustom": false,
+      "code": "icon-size",
+      "value": 30,
+      "unit": "px"
+    },
+    {
+      "isCustom": false,
+      "code": "icon-animation",
+      "value": "none"
+    },
+    {
+      "isCustom": false,
+      "code": "icon-animation-time",
+      "value": 2,
+      "unit": "s"
+    },
+    {
+      "isCustom": false,
+      "code": "counter-font",
+      "color": "#000000ff",
+      "font": "Noto Sans",
+      "style": "normal",
+      "type": "none",
+      "size": 30,
+      "unit": "px",
+      "weight": 600
+    },
+    {
+      "isCustom": false,
+      "code": "counter-margin",
+      "unit": "px",
+      "value": [
+        0,
+        0,
+        0,
+        3
+      ]
+    }
+  ]
+}

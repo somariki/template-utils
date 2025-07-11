@@ -1,0 +1,2026 @@
+@import url("./preset1.css");
+html,
+body {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  line-height: 1.5;
+  overflow: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  background-color: rgba(0, 0, 0, 0);
+  margin: 0px auto;
+  overflow: hidden;
+}
+
+[hidden] {
+  display: none;
+}
+
+.container {
+  position: relative;
+  height: 100%;
+}
+
+.comments {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: var(--comment-move-direction);
+          flex-direction: var(--comment-move-direction);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  height: 100%;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.comment {
+  margin: var(--comment-box-margin);
+}
+
+.danmaku {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+  width: 100%;
+  min-height: var(--comment-min-height);
+}
+.danmaku .block-gift {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+  width: 100%;
+}
+.danmaku .block-gift .type-member {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+  width: 100%;
+}
+.danmaku .block-gift .type-member .box {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+  width: 100%;
+  background-color: var(--comment-box-color);
+  -webkit-box-shadow: var(--comment-box-shadow);
+          box-shadow: var(--comment-box-shadow);
+  padding: var(--comment-box-padding);
+  border: var(--comment-box-border);
+  border-radius: var(--comment-box-radius);
+}
+.danmaku .block-gift .type-member .column-1 {
+  display: var(--avatar-display);
+  position: relative;
+}
+.danmaku .block-gift .type-member .column-1 .comment-avatar {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  min-width: var(--avatar-size);
+  width: var(--avatar-size);
+  height: var(--avatar-size);
+  background-color: #FFF;
+  border: var(--avatar-border);
+  border-radius: var(--avatar-border-radius);
+  margin: var(--avatar-margin);
+  overflow: hidden;
+}
+.danmaku .block-gift .type-member .column-1 .comment-avatar.role-owner {
+  border: var(--avatar-owner-border);
+}
+.danmaku .block-gift .type-member .column-1 .comment-avatar.role-member {
+  border: var(--avatar-member-border);
+}
+.danmaku .block-gift .type-member .column-1 .comment-avatar.role-moderator {
+  border: var(--avatar-moderator-border);
+}
+.danmaku .block-gift .type-member .column-1 .comment-avatar img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  z-index: 1;
+}
+.danmaku .block-gift .type-member .column-2 {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 100%;
+}
+.danmaku .block-gift .type-member .column-2 .comment-user {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+.danmaku .block-gift .type-member .column-2 .comment-user .user-section {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+  font-family: var(--username-font-family);
+  font-size: var(--username-font-size);
+  font-weight: var(--username-font-weight);
+  color: var(--username-font-color);
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  max-width: var(--username-max-width);
+  min-width: var(--username-min-width);
+  padding: var(--username-padding);
+  background-color: var(--username-bg-color);
+  border-radius: var(--username-border-radius);
+}
+.danmaku .block-gift .type-member .column-2 .comment-user .role-member {
+  background-color: var(--username-member-bg-color);
+  -webkit-box-shadow: var(--username-member-box-shadow);
+          box-shadow: var(--username-member-box-shadow);
+  border: var(--username-member-border);
+}
+.danmaku .block-gift .type-member .column-2 .comment-user .role-member .user-displayname {
+  color: var(--username-member-text-color);
+  text-shadow: var(--username-member-text-shadow);
+}
+.danmaku .block-gift .type-member .column-2 .comment-user .role-moderator {
+  background-color: var(--username-moderator-bg-color);
+  -webkit-box-shadow: var(--username-moderator-box-shadow);
+          box-shadow: var(--username-moderator-box-shadow);
+  border: var(--username-moderator-border);
+}
+.danmaku .block-gift .type-member .column-2 .comment-user .role-moderator .user-displayname {
+  color: var(--username-moderator-text-color);
+  text-shadow: var(--username-moderator-text-shadow);
+}
+.danmaku .block-gift .type-member .column-2 .comment-user .role-owner {
+  background-color: var(--username-owner-bg-color);
+  -webkit-box-shadow: var(--username-owner-box-shadow);
+          box-shadow: var(--username-owner-box-shadow);
+  border: var(--username-owner-border);
+}
+.danmaku .block-gift .type-member .column-2 .comment-user .role-owner .user-displayname {
+  color: var(--username-owner-text-color);
+  text-shadow: var(--username-owner-text-shadow);
+}
+.danmaku .block-gift .type-member .column-2 .comment-user .user-displayname {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.danmaku .block-gift .type-member .column-2 .comment-user .badges-section {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.danmaku .block-gift .type-member .column-2 .comment-user .badges-section .comment-badges {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: var(--badges-margin-distance);
+}
+.danmaku .block-gift .type-member .column-2 .comment-user .badges-section .comment-badges img {
+  width: auto;
+  height: var(--badges-size);
+}
+.danmaku .block-gift .type-member .column-2 .comment-content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+  width: 100%;
+}
+.danmaku .block-gift .type-member .column-2 .comment-content .comment-text {
+  display: block;
+  font-family: var(--comment-text-font);
+  font-size: var(--comment-text-font-size);
+  font-weight: var(--comment-text-font-weight);
+  text-align: var(--comment-text-default-align);
+  color: var(--comment-text-color);
+  text-shadow: var(--comment-text-shadow);
+  margin: var(--comment-text-margin);
+  overflow: hidden;
+  width: var(--comment-width-condition);
+  height: var(--comment-height-condition);
+}
+.danmaku .block-gift .type-member .column-2 .comment-content .comment-text img {
+  height: var(--comment-emoji-size);
+  vertical-align: middle;
+  margin: var(--comment-emoji-margin);
+  width: auto;
+}
+.danmaku .block-gift .type-member .column-2 .comment-content .comment-text .gift-image {
+  height: var(--comment-emoji-size);
+  vertical-align: middle;
+  margin: var(--comment-emoji-margin);
+  width: auto;
+}
+.danmaku .block-gift .type-member .column-3 {
+  display: var(--tag-status);
+  position: absolute;
+  font-family: var(--label-font-family);
+  font-size: var(--label-font-size);
+  font-weight: var(--label-font-weight);
+  color: var(--label-font-color);
+  text-shadow: var(--label-text-shadow);
+  top: var(--label-position-top);
+  right: var(--label-position-right);
+}
+.danmaku .block-gift .type-member .column-3 .time {
+  display: var(--time-status);
+  color: var(--label-member-text-color);
+  background-color: var(--label-member-bg-color);
+  min-width: var(--label-min-width);
+  text-shadow: var(--label-member-text-shadow);
+  padding: var(--label-padding);
+  border: var(--label-member-border);
+  border-radius: var(--label-member-radius);
+  -webkit-box-shadow: var(--label-member-box-shadow);
+          box-shadow: var(--label-member-box-shadow);
+  -webkit-box-pack: var(--label-text-align);
+      -ms-flex-pack: var(--label-text-align);
+          justify-content: var(--label-text-align);
+}
+.danmaku .block-gift .type-member .column-3 .time-full {
+  display: var(--time-full);
+}
+.danmaku .block-gift .type-member .column-3 .time-short {
+  display: var(--time-short);
+}
+.danmaku .block-gift .type-milestonechat {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+  width: 100%;
+}
+.danmaku .block-gift .type-milestonechat .box {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+  width: 100%;
+  background-color: var(--comment-box-color);
+  -webkit-box-shadow: var(--comment-box-shadow);
+          box-shadow: var(--comment-box-shadow);
+  padding: var(--comment-box-padding);
+  border: var(--comment-box-border);
+  border-radius: var(--comment-box-radius);
+}
+.danmaku .block-gift .type-milestonechat .box-paidtext {
+  background-color: var(--lcv-background-color);
+}
+.danmaku .block-gift .type-milestonechat .column-1 {
+  display: var(--avatar-display);
+  position: relative;
+}
+.danmaku .block-gift .type-milestonechat .column-1 .comment-avatar {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  min-width: var(--avatar-size);
+  width: var(--avatar-size);
+  height: var(--avatar-size);
+  background-color: #FFF;
+  border: var(--avatar-border);
+  border-radius: var(--avatar-border-radius);
+  margin: var(--avatar-margin);
+  overflow: hidden;
+}
+.danmaku .block-gift .type-milestonechat .column-1 .comment-avatar.role-owner {
+  border: var(--avatar-owner-border);
+}
+.danmaku .block-gift .type-milestonechat .column-1 .comment-avatar.role-member {
+  border: var(--avatar-member-border);
+}
+.danmaku .block-gift .type-milestonechat .column-1 .comment-avatar.role-moderator {
+  border: var(--avatar-moderator-border);
+}
+.danmaku .block-gift .type-milestonechat .column-1 .comment-avatar img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  z-index: 1;
+}
+.danmaku .block-gift .type-milestonechat .column-2 {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 100%;
+}
+.danmaku .block-gift .type-milestonechat .column-2 .comment-user {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+.danmaku .block-gift .type-milestonechat .column-2 .comment-user .user-section {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+  font-family: var(--username-font-family);
+  font-size: var(--username-font-size);
+  font-weight: var(--username-font-weight);
+  color: var(--username-font-color);
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  max-width: var(--username-max-width);
+  min-width: var(--username-min-width);
+  padding: var(--username-padding);
+  background-color: var(--username-bg-color);
+  border-radius: var(--username-border-radius);
+}
+.danmaku .block-gift .type-milestonechat .column-2 .comment-user .role-member {
+  background-color: var(--username-member-bg-color);
+  -webkit-box-shadow: var(--username-member-box-shadow);
+          box-shadow: var(--username-member-box-shadow);
+  border: var(--username-member-border);
+}
+.danmaku .block-gift .type-milestonechat .column-2 .comment-user .role-member .user-displayname {
+  color: var(--username-member-text-color);
+  text-shadow: var(--username-member-text-shadow);
+}
+.danmaku .block-gift .type-milestonechat .column-2 .comment-user .role-moderator {
+  background-color: var(--username-moderator-bg-color);
+  -webkit-box-shadow: var(--username-moderator-box-shadow);
+          box-shadow: var(--username-moderator-box-shadow);
+  border: var(--username-moderator-border);
+}
+.danmaku .block-gift .type-milestonechat .column-2 .comment-user .role-moderator .user-displayname {
+  color: var(--username-moderator-text-color);
+  text-shadow: var(--username-moderator-text-shadow);
+}
+.danmaku .block-gift .type-milestonechat .column-2 .comment-user .role-owner {
+  background-color: var(--username-owner-bg-color);
+  -webkit-box-shadow: var(--username-owner-box-shadow);
+          box-shadow: var(--username-owner-box-shadow);
+  border: var(--username-owner-border);
+}
+.danmaku .block-gift .type-milestonechat .column-2 .comment-user .role-owner .user-displayname {
+  color: var(--username-owner-text-color);
+  text-shadow: var(--username-owner-text-shadow);
+}
+.danmaku .block-gift .type-milestonechat .column-2 .comment-user .user-displayname {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.danmaku .block-gift .type-milestonechat .column-2 .comment-user .badges-section {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.danmaku .block-gift .type-milestonechat .column-2 .comment-user .badges-section .comment-badges {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: var(--badges-margin-distance);
+}
+.danmaku .block-gift .type-milestonechat .column-2 .comment-user .badges-section .comment-badges img {
+  width: auto;
+  height: var(--badges-size);
+}
+.danmaku .block-gift .type-milestonechat .column-2 .comment-content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+  width: 100%;
+}
+.danmaku .block-gift .type-milestonechat .column-2 .comment-content .comment-text {
+  display: block;
+  font-family: var(--comment-text-font);
+  font-size: var(--comment-text-font-size);
+  font-weight: var(--comment-text-font-weight);
+  text-align: var(--comment-text-default-align);
+  color: var(--comment-text-color);
+  text-shadow: var(--comment-text-shadow);
+  margin: var(--comment-text-margin);
+  overflow: hidden;
+  width: var(--comment-width-condition);
+  height: var(--comment-height-condition);
+}
+.danmaku .block-gift .type-milestonechat .column-2 .comment-content .comment-text img {
+  height: var(--comment-emoji-size);
+  vertical-align: middle;
+  margin-left: var(--comment-emoji-margin);
+  width: auto;
+}
+.danmaku .block-gift .type-milestonechat .column-2 .comment-content .comment-text .gift-image {
+  height: var(--comment-emoji-size);
+  vertical-align: middle;
+  margin-left: var(--comment-emoji-margin);
+  width: auto;
+}
+.danmaku .block-gift .type-milestonechat .column-3 {
+  display: var(--tag-status);
+  position: absolute;
+  font-family: var(--label-font-family);
+  font-size: var(--label-font-size);
+  font-weight: var(--label-font-weight);
+  color: var(--label-font-color);
+  text-shadow: var(--label-text-shadow);
+  top: var(--label-position-top);
+  right: var(--label-position-right);
+}
+.danmaku .block-gift .type-milestonechat .column-3 .time {
+  display: var(--time-status);
+  color: var(--label-milestonechat-text-color);
+  background-color: var(--label-milestonechat-bg-color);
+  min-width: var(--label-min-width);
+  text-shadow: var(--label-milestonechat-text-shadow);
+  padding: var(--label-padding);
+  border: var(--label-milestonechat-border);
+  border-radius: var(--label-milestonechat-radius);
+  -webkit-box-shadow: var(--label-milestonechat-box-shadow);
+          box-shadow: var(--label-milestonechat-box-shadow);
+  -webkit-box-pack: var(--label-text-align);
+      -ms-flex-pack: var(--label-text-align);
+          justify-content: var(--label-text-align);
+}
+.danmaku .block-gift .type-milestonechat .column-3 .time-full {
+  display: var(--time-full);
+}
+.danmaku .block-gift .type-milestonechat .column-3 .time-short {
+  display: var(--time-short);
+}
+.danmaku .block-gift .type-milestonechat .column-3 .label {
+  display: var(--label-status);
+  color: var(--label-milestonechat-text-color);
+  background-color: var(--label-milestonechat-bg-color);
+  min-width: var(--label-min-width);
+  text-shadow: var(--label-milestonechat-text-shadow);
+  padding: var(--label-padding);
+  border: var(--label-milestonechat-border);
+  border-radius: var(--label-milestonechat-radius);
+  -webkit-box-shadow: var(--label-milestonechat-box-shadow);
+          box-shadow: var(--label-milestonechat-box-shadow);
+  -webkit-box-pack: var(--label-text-align);
+      -ms-flex-pack: var(--label-text-align);
+          justify-content: var(--label-text-align);
+}
+.danmaku .block-gift .type-superchat {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+  width: 100%;
+}
+.danmaku .block-gift .type-superchat .box {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+  width: 100%;
+  background-color: var(--comment-box-color);
+  -webkit-box-shadow: var(--comment-box-shadow);
+          box-shadow: var(--comment-box-shadow);
+  padding: var(--comment-box-padding);
+  border: var(--comment-box-border);
+  border-radius: var(--comment-box-radius);
+}
+.danmaku .block-gift .type-superchat .box-paidtext {
+  background-color: var(--lcv-background-color);
+}
+.danmaku .block-gift .type-superchat .column-1 {
+  display: var(--avatar-display);
+  position: relative;
+}
+.danmaku .block-gift .type-superchat .column-1 .comment-avatar {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  min-width: var(--avatar-size);
+  width: var(--avatar-size);
+  height: var(--avatar-size);
+  background-color: #FFF;
+  border: var(--avatar-border);
+  border-radius: var(--avatar-border-radius);
+  margin: var(--avatar-margin);
+  overflow: hidden;
+}
+.danmaku .block-gift .type-superchat .column-1 .comment-avatar.role-owner {
+  border: var(--avatar-owner-border);
+}
+.danmaku .block-gift .type-superchat .column-1 .comment-avatar.role-member {
+  border: var(--avatar-member-border);
+}
+.danmaku .block-gift .type-superchat .column-1 .comment-avatar.role-moderator {
+  border: var(--avatar-moderator-border);
+}
+.danmaku .block-gift .type-superchat .column-1 .comment-avatar img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  z-index: 1;
+}
+.danmaku .block-gift .type-superchat .column-2 {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 100%;
+}
+.danmaku .block-gift .type-superchat .column-2 .comment-user {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+.danmaku .block-gift .type-superchat .column-2 .comment-user .user-section {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+  font-family: var(--username-font-family);
+  font-size: var(--username-font-size);
+  font-weight: var(--username-font-weight);
+  color: var(--username-font-color);
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  max-width: var(--username-max-width);
+  min-width: var(--username-min-width);
+  padding: var(--username-padding);
+  background-color: var(--username-bg-color);
+  border-radius: var(--username-border-radius);
+}
+.danmaku .block-gift .type-superchat .column-2 .comment-user .role-member {
+  background-color: var(--username-member-bg-color);
+  -webkit-box-shadow: var(--username-member-box-shadow);
+          box-shadow: var(--username-member-box-shadow);
+  border: var(--username-member-border);
+}
+.danmaku .block-gift .type-superchat .column-2 .comment-user .role-member .user-displayname {
+  color: var(--username-member-text-color);
+  text-shadow: var(--username-member-text-shadow);
+}
+.danmaku .block-gift .type-superchat .column-2 .comment-user .role-moderator {
+  background-color: var(--username-moderator-bg-color);
+  -webkit-box-shadow: var(--username-moderator-box-shadow);
+          box-shadow: var(--username-moderator-box-shadow);
+  border: var(--username-moderator-border);
+}
+.danmaku .block-gift .type-superchat .column-2 .comment-user .role-moderator .user-displayname {
+  color: var(--username-moderator-text-color);
+  text-shadow: var(--username-moderator-text-shadow);
+}
+.danmaku .block-gift .type-superchat .column-2 .comment-user .role-owner {
+  background-color: var(--username-owner-bg-color);
+  -webkit-box-shadow: var(--username-owner-box-shadow);
+          box-shadow: var(--username-owner-box-shadow);
+  border: var(--username-owner-border);
+}
+.danmaku .block-gift .type-superchat .column-2 .comment-user .role-owner .user-displayname {
+  color: var(--username-owner-text-color);
+  text-shadow: var(--username-owner-text-shadow);
+}
+.danmaku .block-gift .type-superchat .column-2 .comment-user .user-displayname {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.danmaku .block-gift .type-superchat .column-2 .comment-user .badges-section {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.danmaku .block-gift .type-superchat .column-2 .comment-user .badges-section .comment-badges {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: var(--badges-margin-distance);
+}
+.danmaku .block-gift .type-superchat .column-2 .comment-user .badges-section .comment-badges img {
+  width: auto;
+  height: var(--badges-size);
+}
+.danmaku .block-gift .type-superchat .column-2 .comment-content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+  width: 100%;
+}
+.danmaku .block-gift .type-superchat .column-2 .comment-content .comment-text {
+  display: block;
+  font-family: var(--comment-text-font);
+  font-size: var(--comment-text-font-size);
+  font-weight: var(--comment-text-font-weight);
+  text-align: var(--comment-text-default-align);
+  color: var(--comment-text-color);
+  text-shadow: var(--comment-text-shadow);
+  margin: var(--comment-text-margin);
+  overflow: hidden;
+  width: var(--comment-width-condition);
+  height: var(--comment-height-condition);
+}
+.danmaku .block-gift .type-superchat .column-2 .comment-content .comment-text img {
+  height: var(--comment-emoji-size);
+  vertical-align: middle;
+  margin: var(--comment-emoji-margin);
+  width: auto;
+}
+.danmaku .block-gift .type-superchat .column-2 .comment-content .comment-text .gift-image {
+  height: var(--comment-emoji-size);
+  vertical-align: middle;
+  margin: var(--comment-emoji-margin);
+  width: auto;
+}
+.danmaku .block-gift .type-superchat .column-3 {
+  display: var(--tag-status);
+  position: absolute;
+  font-family: var(--label-font-family);
+  font-size: var(--label-font-size);
+  font-weight: var(--label-font-weight);
+  color: var(--label-font-color);
+  text-shadow: var(--label-text-shadow);
+  top: var(--label-position-top);
+  right: var(--label-position-right);
+}
+.danmaku .block-gift .type-superchat .column-3 .time {
+  display: var(--time-status);
+  color: var(--label-super-text-color);
+  background-color: var(--label-super-bg-color);
+  min-width: var(--label-min-width);
+  text-shadow: var(--label-super-text-shadow);
+  padding: var(--label-padding);
+  border: var(--label-super-border);
+  border-radius: var(--label-super-radius);
+  -webkit-box-shadow: var(--label-super-box-shadow);
+          box-shadow: var(--label-super-box-shadow);
+  -webkit-box-pack: var(--label-text-align);
+      -ms-flex-pack: var(--label-text-align);
+          justify-content: var(--label-text-align);
+}
+.danmaku .block-gift .type-superchat .column-3 .time-full {
+  display: var(--time-full);
+}
+.danmaku .block-gift .type-superchat .column-3 .time-short {
+  display: var(--time-short);
+}
+.danmaku .block-gift .type-superchat .column-3 .label {
+  display: var(--label-status);
+  color: var(--label-super-text-color);
+  background-color: var(--label-super-bg-color);
+  min-width: var(--label-min-width);
+  text-shadow: var(--label-super-text-shadow);
+  padding: var(--label-padding);
+  border: var(--label-super-border);
+  border-radius: var(--label-super-radius);
+  -webkit-box-shadow: var(--label-super-box-shadow);
+          box-shadow: var(--label-super-box-shadow);
+  -webkit-box-pack: var(--label-text-align);
+      -ms-flex-pack: var(--label-text-align);
+          justify-content: var(--label-text-align);
+}
+.danmaku .block-gift .type-superchat .column-3 .bilibili .unit::after {
+  content: var(--label-bilibili-unit);
+}
+.danmaku .block-gift .type-superchat .column-3 .twitch .unit::after {
+  content: var(--label-twitch-unit);
+}
+.danmaku .block-gift .type-supersticker {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+  width: 100%;
+}
+.danmaku .block-gift .type-supersticker .box {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+  width: 100%;
+  background-color: var(--comment-box-color);
+  -webkit-box-shadow: var(--comment-box-shadow);
+          box-shadow: var(--comment-box-shadow);
+  padding: var(--comment-box-padding);
+  border: var(--comment-box-border);
+  border-radius: var(--comment-box-radius);
+}
+.danmaku .block-gift .type-supersticker .box-paidtext {
+  background-color: var(--lcv-background-color);
+}
+.danmaku .block-gift .type-supersticker .column-1 {
+  display: var(--avatar-display);
+  position: relative;
+}
+.danmaku .block-gift .type-supersticker .column-1 .comment-avatar {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  min-width: var(--avatar-size);
+  width: var(--avatar-size);
+  height: var(--avatar-size);
+  background-color: #FFF;
+  border: var(--avatar-border);
+  border-radius: var(--avatar-border-radius);
+  margin: var(--avatar-margin);
+  overflow: hidden;
+}
+.danmaku .block-gift .type-supersticker .column-1 .comment-avatar.role-owner {
+  border: var(--avatar-owner-border);
+}
+.danmaku .block-gift .type-supersticker .column-1 .comment-avatar.role-member {
+  border: var(--avatar-member-border);
+}
+.danmaku .block-gift .type-supersticker .column-1 .comment-avatar.role-moderator {
+  border: var(--avatar-moderator-border);
+}
+.danmaku .block-gift .type-supersticker .column-1 .comment-avatar img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  z-index: 1;
+}
+.danmaku .block-gift .type-supersticker .column-2 {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 100%;
+}
+.danmaku .block-gift .type-supersticker .column-2 .comment-user {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+.danmaku .block-gift .type-supersticker .column-2 .comment-user .user-section {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+  font-family: var(--username-font-family);
+  font-size: var(--username-font-size);
+  font-weight: var(--username-font-weight);
+  color: var(--username-font-color);
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  max-width: var(--username-max-width);
+  min-width: var(--username-min-width);
+  padding: var(--username-padding);
+  background-color: var(--username-bg-color);
+  border-radius: var(--username-border-radius);
+}
+.danmaku .block-gift .type-supersticker .column-2 .comment-user .role-member {
+  background-color: var(--username-member-bg-color);
+  -webkit-box-shadow: var(--username-member-box-shadow);
+          box-shadow: var(--username-member-box-shadow);
+  border: var(--username-member-border);
+}
+.danmaku .block-gift .type-supersticker .column-2 .comment-user .role-member .user-displayname {
+  color: var(--username-member-text-color);
+  text-shadow: var(--username-member-text-shadow);
+}
+.danmaku .block-gift .type-supersticker .column-2 .comment-user .role-moderator {
+  background-color: var(--username-moderator-bg-color);
+  -webkit-box-shadow: var(--username-moderator-box-shadow);
+          box-shadow: var(--username-moderator-box-shadow);
+  border: var(--username-moderator-border);
+}
+.danmaku .block-gift .type-supersticker .column-2 .comment-user .role-moderator .user-displayname {
+  color: var(--username-moderator-text-color);
+  text-shadow: var(--username-moderator-text-shadow);
+}
+.danmaku .block-gift .type-supersticker .column-2 .comment-user .role-owner {
+  background-color: var(--username-owner-bg-color);
+  -webkit-box-shadow: var(--username-owner-box-shadow);
+          box-shadow: var(--username-owner-box-shadow);
+  border: var(--username-owner-border);
+}
+.danmaku .block-gift .type-supersticker .column-2 .comment-user .role-owner .user-displayname {
+  color: var(--username-owner-text-color);
+  text-shadow: var(--username-owner-text-shadow);
+}
+.danmaku .block-gift .type-supersticker .column-2 .comment-user .user-displayname {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.danmaku .block-gift .type-supersticker .column-2 .comment-user .badges-section {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.danmaku .block-gift .type-supersticker .column-2 .comment-user .badges-section .comment-badges {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: var(--badges-margin-distance);
+}
+.danmaku .block-gift .type-supersticker .column-2 .comment-user .badges-section .comment-badges img {
+  width: auto;
+  height: var(--badges-size);
+}
+.danmaku .block-gift .type-supersticker .column-2 .comment-content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+  width: calc(100% - var(--special-sticker-size));
+}
+.danmaku .block-gift .type-supersticker .column-2 .comment-content .comment-text {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+  font-family: var(--comment-text-font);
+  font-size: var(--comment-text-font-size);
+  font-weight: var(--comment-text-font-weight);
+  text-align: var(--comment-text-default-align);
+  color: var(--comment-text-color);
+  text-shadow: var(--comment-text-shadow);
+  margin: var(--comment-text-margin);
+  overflow: hidden;
+  width: var(--comment-width-condition);
+  height: var(--comment-height-condition);
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+.danmaku .block-gift .type-supersticker .column-2 .comment-content .comment-text img {
+  height: var(--special-sticker-size);
+  vertical-align: middle;
+  width: auto;
+}
+.danmaku .block-gift .type-supersticker .column-2 .comment-content .comment-text .gift-image {
+  height: var(--special-sticker-size);
+  vertical-align: middle;
+  width: auto;
+}
+.danmaku .block-gift .type-supersticker .column-3 {
+  display: var(--tag-status);
+  position: absolute;
+  font-family: var(--label-font-family);
+  font-size: var(--label-font-size);
+  font-weight: var(--label-font-weight);
+  color: var(--label-font-color);
+  text-shadow: var(--label-text-shadow);
+  top: var(--label-position-top);
+  right: var(--label-position-right);
+}
+.danmaku .block-gift .type-supersticker .column-3 .time {
+  display: var(--time-status);
+  color: var(--label-super-text-color);
+  background-color: var(--label-super-bg-color);
+  min-width: var(--label-min-width);
+  text-shadow: var(--label-super-text-shadow);
+  padding: var(--label-padding);
+  border: var(--label-super-border);
+  border-radius: var(--label-super-radius);
+  -webkit-box-shadow: var(--label-super-box-shadow);
+          box-shadow: var(--label-super-box-shadow);
+  -webkit-box-pack: var(--label-text-align);
+      -ms-flex-pack: var(--label-text-align);
+          justify-content: var(--label-text-align);
+}
+.danmaku .block-gift .type-supersticker .column-3 .time-full {
+  display: var(--time-full);
+}
+.danmaku .block-gift .type-supersticker .column-3 .time-short {
+  display: var(--time-short);
+}
+.danmaku .block-gift .type-supersticker .column-3 .label {
+  display: var(--label-status);
+  color: var(--label-super-text-color);
+  background-color: var(--label-super-bg-color);
+  min-width: var(--label-min-width);
+  text-shadow: var(--label-super-text-shadow);
+  padding: var(--label-padding);
+  border: var(--label-super-border);
+  border-radius: var(--label-super-radius);
+  -webkit-box-shadow: var(--label-super-box-shadow);
+          box-shadow: var(--label-super-box-shadow);
+  -webkit-box-pack: var(--label-text-align);
+      -ms-flex-pack: var(--label-text-align);
+          justify-content: var(--label-text-align);
+}
+.danmaku .block-gift .type-sponsorgift {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+  width: 100%;
+}
+.danmaku .block-gift .type-sponsorgift .box {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+  width: 100%;
+  background-color: var(--comment-box-color);
+  -webkit-box-shadow: var(--comment-box-shadow);
+          box-shadow: var(--comment-box-shadow);
+  padding: var(--comment-box-padding);
+  border: var(--comment-box-border);
+  border-radius: var(--comment-box-radius);
+}
+.danmaku .block-gift .type-sponsorgift .column-1 {
+  display: var(--avatar-display);
+  position: relative;
+}
+.danmaku .block-gift .type-sponsorgift .column-1 .comment-avatar {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  min-width: var(--avatar-size);
+  width: var(--avatar-size);
+  height: var(--avatar-size);
+  background-color: #FFF;
+  border: var(--avatar-border);
+  border-radius: var(--avatar-border-radius);
+  margin: var(--avatar-margin);
+  overflow: hidden;
+}
+.danmaku .block-gift .type-sponsorgift .column-1 .comment-avatar.role-owner {
+  border: var(--avatar-owner-border);
+}
+.danmaku .block-gift .type-sponsorgift .column-1 .comment-avatar.role-member {
+  border: var(--avatar-member-border);
+}
+.danmaku .block-gift .type-sponsorgift .column-1 .comment-avatar.role-moderator {
+  border: var(--avatar-moderator-border);
+}
+.danmaku .block-gift .type-sponsorgift .column-1 .comment-avatar.role-owner {
+  border: var(--avatar-owner-border);
+}
+.danmaku .block-gift .type-sponsorgift .column-1 .comment-avatar.role-member {
+  border: var(--avatar-member-border);
+}
+.danmaku .block-gift .type-sponsorgift .column-1 .comment-avatar.role-moderator {
+  border: var(--avatar-moderator-border);
+}
+.danmaku .block-gift .type-sponsorgift .column-1 .comment-avatar img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  z-index: 1;
+}
+.danmaku .block-gift .type-sponsorgift .column-2 {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 100%;
+}
+.danmaku .block-gift .type-sponsorgift .column-2 .comment-user {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+.danmaku .block-gift .type-sponsorgift .column-2 .comment-user .user-section {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+  font-family: var(--username-font-family);
+  font-size: var(--username-font-size);
+  font-weight: var(--username-font-weight);
+  color: var(--username-font-color);
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  max-width: var(--username-max-width);
+  min-width: var(--username-min-width);
+  padding: var(--username-padding);
+  background-color: var(--username-bg-color);
+  border-radius: var(--username-border-radius);
+}
+.danmaku .block-gift .type-sponsorgift .column-2 .comment-user .role-member {
+  background-color: var(--username-member-bg-color);
+  -webkit-box-shadow: var(--username-member-box-shadow);
+          box-shadow: var(--username-member-box-shadow);
+  border: var(--username-member-border);
+}
+.danmaku .block-gift .type-sponsorgift .column-2 .comment-user .role-member .user-displayname {
+  color: var(--username-member-text-color);
+  text-shadow: var(--username-member-text-shadow);
+}
+.danmaku .block-gift .type-sponsorgift .column-2 .comment-user .role-moderator {
+  background-color: var(--username-moderator-bg-color);
+  -webkit-box-shadow: var(--username-moderator-box-shadow);
+          box-shadow: var(--username-moderator-box-shadow);
+  border: var(--username-moderator-border);
+}
+.danmaku .block-gift .type-sponsorgift .column-2 .comment-user .role-moderator .user-displayname {
+  color: var(--username-moderator-text-color);
+  text-shadow: var(--username-moderator-text-shadow);
+}
+.danmaku .block-gift .type-sponsorgift .column-2 .comment-user .role-owner {
+  background-color: var(--username-owner-bg-color);
+  -webkit-box-shadow: var(--username-owner-box-shadow);
+          box-shadow: var(--username-owner-box-shadow);
+  border: var(--username-owner-border);
+}
+.danmaku .block-gift .type-sponsorgift .column-2 .comment-user .role-owner .user-displayname {
+  color: var(--username-owner-text-color);
+  text-shadow: var(--username-owner-text-shadow);
+}
+.danmaku .block-gift .type-sponsorgift .column-2 .comment-user .user-displayname {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.danmaku .block-gift .type-sponsorgift .column-2 .comment-user .badges-section {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.danmaku .block-gift .type-sponsorgift .column-2 .comment-user .badges-section .comment-badges {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: var(--badges-margin-distance);
+}
+.danmaku .block-gift .type-sponsorgift .column-2 .comment-user .badges-section .comment-badges img {
+  width: auto;
+  height: var(--badges-size);
+}
+.danmaku .block-gift .type-sponsorgift .column-2 .comment-content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+  width: 100%;
+}
+.danmaku .block-gift .type-sponsorgift .column-2 .comment-content .comment-text {
+  display: block;
+  font-family: var(--comment-text-font);
+  font-size: var(--comment-text-font-size);
+  font-weight: var(--comment-text-font-weight);
+  text-align: var(--comment-text-default-align);
+  color: var(--comment-text-color);
+  text-shadow: var(--comment-text-shadow);
+  margin: var(--comment-text-margin);
+  overflow: hidden;
+  width: var(--comment-width-condition);
+  height: var(--comment-height-condition);
+}
+.danmaku .block-gift .type-sponsorgift .column-2 .comment-content .comment-text img {
+  height: var(--comment-emoji-size);
+  vertical-align: middle;
+  margin: var(--comment-emoji-margin);
+  width: auto;
+}
+.danmaku .block-gift .type-sponsorgift .column-2 .comment-content .comment-text .gift-image {
+  height: var(--comment-emoji-size);
+  vertical-align: middle;
+  margin: var(--comment-emoji-margin);
+  width: auto;
+}
+.danmaku .block-gift .type-sponsorgift .column-3 {
+  display: var(--tag-status);
+  position: absolute;
+  font-family: var(--label-font-family);
+  font-size: var(--label-font-size);
+  font-weight: var(--label-font-weight);
+  color: var(--label-font-color);
+  text-shadow: var(--label-text-shadow);
+  top: var(--label-position-top);
+  right: var(--label-position-right);
+}
+.danmaku .block-gift .type-sponsorgift .column-3 .time {
+  display: var(--time-status);
+  color: var(--label-sponsorgift-text-color);
+  background-color: var(--label-sponsorgift-bg-color);
+  min-width: var(--label-min-width);
+  text-shadow: var(--label-sponsorgift-text-shadow);
+  padding: var(--label-padding);
+  border: var(--label-sponsorgift-border);
+  border-radius: var(--label-sponsorgift-radius);
+  -webkit-box-shadow: var(--label-sponsorgift-box-shadow);
+          box-shadow: var(--label-sponsorgift-box-shadow);
+  -webkit-box-pack: var(--label-text-align);
+      -ms-flex-pack: var(--label-text-align);
+          justify-content: var(--label-text-align);
+}
+.danmaku .block-gift .type-sponsorgift .column-3 .time-full {
+  display: var(--time-full);
+}
+.danmaku .block-gift .type-sponsorgift .column-3 .time-short {
+  display: var(--time-short);
+}
+.danmaku .block-gift .type-sponsorgift .column-3 .label {
+  display: var(--label-status);
+  color: var(--label-sponsorgift-text-color);
+  background-color: var(--label-sponsorgift-bg-color);
+  min-width: var(--label-min-width);
+  text-shadow: var(--label-sponsorgift-text-shadow);
+  padding: var(--label-padding);
+  border: var(--label-sponsorgift-border);
+  border-radius: var(--label-sponsorgift-radius);
+  -webkit-box-shadow: var(--label-sponsorgift-box-shadow);
+          box-shadow: var(--label-sponsorgift-box-shadow);
+  -webkit-box-pack: var(--label-text-align);
+      -ms-flex-pack: var(--label-text-align);
+          justify-content: var(--label-text-align);
+}
+.danmaku .block-gift .type-sponsorgift .column-3 .label-count::after {
+  display: inline-block;
+  content: ""; /* Empty content since we're using background-image */
+  text-shadow: var(--label-sponsorgift-text-shadow);
+  -webkit-box-shadow: var(--label-sponsorgift-box-shadow);
+          box-shadow: var(--label-sponsorgift-box-shadow);
+  background-color: var(--label-sponsorgift-icon-color);
+  -webkit-mask-image: var(--label-gift-icon);
+          mask-image: var(--label-gift-icon);
+  margin-left: 3px;
+  margin-bottom: -1px;
+  width: var(--label-font-size);
+  height: var(--label-font-size);
+}
+.danmaku .block-gift .type-sponsorgift .column-3 .bilibili .unit::after {
+  content: var(--label-bilibili-unit);
+}
+.danmaku .block-gift .type-sponsorgift .column-3 .twitch .unit::after {
+  content: var(--label-twitch-unit);
+}
+.danmaku .block-gift .type-giftreceived {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+  width: 100%;
+}
+.danmaku .block-gift .type-giftreceived .box {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+  width: 100%;
+  background-color: var(--comment-box-color);
+  -webkit-box-shadow: var(--comment-box-shadow);
+          box-shadow: var(--comment-box-shadow);
+  padding: var(--comment-box-padding);
+  border: var(--comment-box-border);
+  border-radius: var(--comment-box-radius);
+}
+.danmaku .block-gift .type-giftreceived .column-1 {
+  display: var(--avatar-display);
+  position: relative;
+}
+.danmaku .block-gift .type-giftreceived .column-1 .comment-avatar {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  min-width: var(--avatar-size);
+  width: var(--avatar-size);
+  height: var(--avatar-size);
+  background-color: #FFF;
+  border: var(--avatar-border);
+  border-radius: var(--avatar-border-radius);
+  margin: var(--avatar-margin);
+  overflow: hidden;
+}
+.danmaku .block-gift .type-giftreceived .column-1 .comment-avatar.role-owner {
+  border: var(--avatar-owner-border);
+}
+.danmaku .block-gift .type-giftreceived .column-1 .comment-avatar.role-member {
+  border: var(--avatar-member-border);
+}
+.danmaku .block-gift .type-giftreceived .column-1 .comment-avatar.role-moderator {
+  border: var(--avatar-moderator-border);
+}
+.danmaku .block-gift .type-giftreceived .column-1 .comment-avatar img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  z-index: 1;
+}
+.danmaku .block-gift .type-giftreceived .column-2 {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 100%;
+}
+.danmaku .block-gift .type-giftreceived .column-2 .comment-user {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+.danmaku .block-gift .type-giftreceived .column-2 .comment-user .user-section {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+  font-family: var(--username-font-family);
+  font-size: var(--username-font-size);
+  font-weight: var(--username-font-weight);
+  color: var(--username-font-color);
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  max-width: var(--username-max-width);
+  min-width: var(--username-min-width);
+  padding: var(--username-padding);
+  background-color: var(--username-bg-color);
+  border-radius: var(--username-border-radius);
+}
+.danmaku .block-gift .type-giftreceived .column-2 .comment-user .role-member {
+  background-color: var(--username-member-bg-color);
+  -webkit-box-shadow: var(--username-member-box-shadow);
+          box-shadow: var(--username-member-box-shadow);
+  border: var(--username-member-border);
+}
+.danmaku .block-gift .type-giftreceived .column-2 .comment-user .role-member .user-displayname {
+  color: var(--username-member-text-color);
+  text-shadow: var(--username-member-text-shadow);
+}
+.danmaku .block-gift .type-giftreceived .column-2 .comment-user .role-moderator {
+  background-color: var(--username-moderator-bg-color);
+  -webkit-box-shadow: var(--username-moderator-box-shadow);
+          box-shadow: var(--username-moderator-box-shadow);
+  border: var(--username-moderator-border);
+}
+.danmaku .block-gift .type-giftreceived .column-2 .comment-user .role-moderator .user-displayname {
+  color: var(--username-moderator-text-color);
+  text-shadow: var(--username-moderator-text-shadow);
+}
+.danmaku .block-gift .type-giftreceived .column-2 .comment-user .role-owner {
+  background-color: var(--username-owner-bg-color);
+  -webkit-box-shadow: var(--username-owner-box-shadow);
+          box-shadow: var(--username-owner-box-shadow);
+  border: var(--username-owner-border);
+}
+.danmaku .block-gift .type-giftreceived .column-2 .comment-user .role-owner .user-displayname {
+  color: var(--username-owner-text-color);
+  text-shadow: var(--username-owner-text-shadow);
+}
+.danmaku .block-gift .type-giftreceived .column-2 .comment-user .user-displayname {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.danmaku .block-gift .type-giftreceived .column-2 .comment-user .badges-section {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.danmaku .block-gift .type-giftreceived .column-2 .comment-user .badges-section .comment-badges {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: var(--badges-margin-distance);
+}
+.danmaku .block-gift .type-giftreceived .column-2 .comment-user .badges-section .comment-badges img {
+  width: auto;
+  height: var(--badges-size);
+}
+.danmaku .block-gift .type-giftreceived .column-2 .comment-content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 100%;
+}
+.danmaku .block-gift .type-giftreceived .column-2 .comment-content .comment-text {
+  display: block;
+  font-family: var(--comment-text-font);
+  font-size: var(--comment-text-font-size);
+  font-weight: var(--comment-text-font-weight);
+  text-align: var(--comment-text-default-align);
+  color: var(--comment-text-color);
+  text-shadow: var(--comment-text-shadow);
+  margin: var(--comment-text-margin);
+  overflow: hidden;
+  width: var(--comment-width-condition);
+  height: var(--comment-height-condition);
+}
+.danmaku .block-gift .type-giftreceived .column-2 .comment-content .comment-text img {
+  height: var(--comment-emoji-size);
+  vertical-align: middle;
+  margin: var(--comment-emoji-margin);
+  width: auto;
+}
+.danmaku .block-gift .type-giftreceived .column-2 .comment-content .comment-text .gift-image {
+  height: var(--comment-emoji-size);
+  vertical-align: middle;
+  margin: var(--comment-emoji-margin);
+  width: auto;
+}
+.danmaku .block-gift .type-giftreceived .column-3 {
+  display: var(--tag-status);
+  position: absolute;
+  font-family: var(--label-font-family);
+  font-size: var(--label-font-size);
+  font-weight: var(--label-font-weight);
+  color: var(--label-font-color);
+  text-shadow: var(--label-text-shadow);
+  top: var(--label-position-top);
+  right: var(--label-position-right);
+}
+.danmaku .block-gift .type-giftreceived .column-3 .time {
+  display: var(--time-status);
+  color: var(--label-giftreceived-text-color);
+  background-color: var(--label-giftreceived-bg-color);
+  min-width: var(--label-min-width);
+  text-shadow: var(--label-giftreceived-text-shadow);
+  padding: var(--label-padding);
+  border: var(--label-giftreceived-border);
+  border-radius: var(--label-giftreceived-radius);
+  -webkit-box-shadow: var(--label-giftreceived-box-shadow);
+          box-shadow: var(--label-giftreceived-box-shadow);
+  -webkit-box-pack: var(--label-text-align);
+      -ms-flex-pack: var(--label-text-align);
+          justify-content: var(--label-text-align);
+}
+.danmaku .block-gift .type-giftreceived .column-3 .time-full {
+  display: var(--time-full);
+}
+.danmaku .block-gift .type-giftreceived .column-3 .time-short {
+  display: var(--time-short);
+}
+.danmaku .block-gift .type-reward {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+  width: 100%;
+}
+.danmaku .block-gift .type-reward .box {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+  width: 100%;
+  background-color: var(--comment-box-color);
+  -webkit-box-shadow: var(--comment-box-shadow);
+          box-shadow: var(--comment-box-shadow);
+  padding: var(--comment-box-padding);
+  border: var(--comment-box-border);
+  border-radius: var(--comment-box-radius);
+}
+.danmaku .block-gift .type-reward .column-1 {
+  display: var(--avatar-display);
+  position: relative;
+}
+.danmaku .block-gift .type-reward .column-1 .comment-avatar {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  min-width: var(--avatar-size);
+  width: var(--avatar-size);
+  height: var(--avatar-size);
+  background-color: #FFF;
+  border: var(--avatar-border);
+  border-radius: var(--avatar-border-radius);
+  margin: var(--avatar-margin);
+  overflow: hidden;
+}
+.danmaku .block-gift .type-reward .column-1 .comment-avatar.role-owner {
+  border: var(--avatar-owner-border);
+}
+.danmaku .block-gift .type-reward .column-1 .comment-avatar.role-member {
+  border: var(--avatar-member-border);
+}
+.danmaku .block-gift .type-reward .column-1 .comment-avatar.role-moderator {
+  border: var(--avatar-moderator-border);
+}
+.danmaku .block-gift .type-reward .column-1 .comment-avatar img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  z-index: 1;
+}
+.danmaku .block-gift .type-reward .column-2 {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 100%;
+}
+.danmaku .block-gift .type-reward .column-2 .comment-user {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+.danmaku .block-gift .type-reward .column-2 .comment-user .user-section {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+  font-family: var(--username-font-family);
+  font-size: var(--username-font-size);
+  font-weight: var(--username-font-weight);
+  color: var(--username-font-color);
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  max-width: var(--username-max-width);
+  min-width: var(--username-min-width);
+  padding: var(--username-padding);
+  background-color: var(--username-bg-color);
+  border-radius: var(--username-border-radius);
+}
+.danmaku .block-gift .type-reward .column-2 .comment-user .role-member {
+  background-color: var(--username-member-bg-color);
+  -webkit-box-shadow: var(--username-member-box-shadow);
+          box-shadow: var(--username-member-box-shadow);
+  border: var(--username-member-border);
+}
+.danmaku .block-gift .type-reward .column-2 .comment-user .role-member .user-displayname {
+  color: var(--username-member-text-color);
+  text-shadow: var(--username-member-text-shadow);
+}
+.danmaku .block-gift .type-reward .column-2 .comment-user .role-moderator {
+  background-color: var(--username-moderator-bg-color);
+  -webkit-box-shadow: var(--username-moderator-box-shadow);
+          box-shadow: var(--username-moderator-box-shadow);
+  border: var(--username-moderator-border);
+}
+.danmaku .block-gift .type-reward .column-2 .comment-user .role-moderator .user-displayname {
+  color: var(--username-moderator-text-color);
+  text-shadow: var(--username-moderator-text-shadow);
+}
+.danmaku .block-gift .type-reward .column-2 .comment-user .role-owner {
+  background-color: var(--username-owner-bg-color);
+  -webkit-box-shadow: var(--username-owner-box-shadow);
+          box-shadow: var(--username-owner-box-shadow);
+  border: var(--username-owner-border);
+}
+.danmaku .block-gift .type-reward .column-2 .comment-user .role-owner .user-displayname {
+  color: var(--username-owner-text-color);
+  text-shadow: var(--username-owner-text-shadow);
+}
+.danmaku .block-gift .type-reward .column-2 .comment-user .user-displayname {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.danmaku .block-gift .type-reward .column-2 .comment-user .badges-section {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.danmaku .block-gift .type-reward .column-2 .comment-user .badges-section .comment-badges {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: var(--badges-margin-distance);
+}
+.danmaku .block-gift .type-reward .column-2 .comment-user .badges-section .comment-badges img {
+  width: auto;
+  height: var(--badges-size);
+}
+.danmaku .block-gift .type-reward .column-2 .comment-content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+  width: 100%;
+}
+.danmaku .block-gift .type-reward .column-2 .comment-content .comment-text {
+  display: block;
+  font-family: var(--comment-text-font);
+  font-size: var(--comment-text-font-size);
+  font-weight: var(--comment-text-font-weight);
+  text-align: var(--comment-text-default-align);
+  color: var(--comment-text-color);
+  text-shadow: var(--comment-text-shadow);
+  margin: var(--comment-text-margin);
+  overflow: hidden;
+  width: var(--comment-width-condition);
+  height: var(--comment-height-condition);
+}
+.danmaku .block-gift .type-reward .column-2 .comment-content .comment-text img {
+  height: var(--comment-emoji-size);
+  vertical-align: middle;
+  margin: var(--comment-emoji-margin);
+  width: auto;
+}
+.danmaku .block-gift .type-reward .column-2 .comment-content .comment-text .gift-image {
+  height: var(--comment-emoji-size);
+  vertical-align: middle;
+  margin: var(--comment-emoji-margin);
+  width: auto;
+}
+.danmaku .block-gift .type-reward .column-3 {
+  display: var(--tag-status);
+  position: absolute;
+  font-family: var(--label-font-family);
+  font-size: var(--label-font-size);
+  font-weight: var(--label-font-weight);
+  color: var(--label-font-color);
+  text-shadow: var(--label-text-shadow);
+  top: var(--label-position-top);
+  right: var(--label-position-right);
+}
+.danmaku .block-gift .type-reward .column-3 .time {
+  display: var(--time-status);
+  color: var(--label-reward-text-color);
+  background-color: var(--label-reward-bg-color);
+  min-width: var(--label-min-width);
+  text-shadow: var(--label-reward-text-shadow);
+  padding: var(--label-padding);
+  border: var(--label-reward-border);
+  border-radius: var(--label-reward-radius);
+  -webkit-box-shadow: var(--label-reward-box-shadow);
+          box-shadow: var(--label-reward-box-shadow);
+  -webkit-box-pack: var(--label-text-align);
+      -ms-flex-pack: var(--label-text-align);
+          justify-content: var(--label-text-align);
+}
+.danmaku .block-gift .type-reward .column-3 .time-full {
+  display: var(--time-full);
+}
+.danmaku .block-gift .type-reward .column-3 .time-short {
+  display: var(--time-short);
+}
+.danmaku .block-gift .type-reward .column-3 .label {
+  display: var(--label-status);
+  color: var(--label-reward-text-color);
+  background-color: var(--label-reward-bg-color);
+  min-width: var(--label-min-width);
+  text-shadow: var(--label-reward-text-shadow);
+  padding: var(--label-padding);
+  border: var(--label-reward-border);
+  border-radius: var(--label-reward-radius);
+  -webkit-box-shadow: var(--label-reward-box-shadow);
+          box-shadow: var(--label-reward-box-shadow);
+  -webkit-box-pack: var(--label-text-align);
+      -ms-flex-pack: var(--label-text-align);
+          justify-content: var(--label-text-align);
+}
+.danmaku .block-gift .type-reward .column-3 .bilibili .unit::after {
+  content: var(--label-bilibili-unit);
+}
+.danmaku .block-gift .type-reward .column-3 .twitch .unit.unit-bits::after {
+  content: var(--label-twitch-unit-bits);
+}
+.danmaku .block-gift .type-reward .column-3 .twitch .unit.unit-cp::after {
+  content: var(--label-twitch-unit-cp);
+}
+.danmaku .block-other,
+.danmaku .block-normal {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+  width: 100%;
+}
+.danmaku .block-other .box,
+.danmaku .block-normal .box {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+  width: 100%;
+  background-color: var(--comment-box-color);
+  -webkit-box-shadow: var(--comment-box-shadow);
+          box-shadow: var(--comment-box-shadow);
+  padding: var(--comment-box-padding);
+  border: var(--comment-box-border);
+  border-radius: var(--comment-box-radius);
+}
+.danmaku .block-other .box-paidtext,
+.danmaku .block-normal .box-paidtext {
+  background-color: var(--lcv-background-color);
+}
+.danmaku .block-other .column-1,
+.danmaku .block-normal .column-1 {
+  display: var(--avatar-display);
+  position: relative;
+}
+.danmaku .block-other .column-1 .comment-avatar,
+.danmaku .block-normal .column-1 .comment-avatar {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  min-width: var(--avatar-size);
+  width: var(--avatar-size);
+  height: var(--avatar-size);
+  background-color: #FFF;
+  border: var(--avatar-border);
+  border-radius: var(--avatar-border-radius);
+  margin: var(--avatar-margin);
+  overflow: hidden;
+}
+.danmaku .block-other .column-1 .comment-avatar.role-owner,
+.danmaku .block-normal .column-1 .comment-avatar.role-owner {
+  border: var(--avatar-owner-border);
+}
+.danmaku .block-other .column-1 .comment-avatar.role-member,
+.danmaku .block-normal .column-1 .comment-avatar.role-member {
+  border: var(--avatar-member-border);
+}
+.danmaku .block-other .column-1 .comment-avatar.role-moderator,
+.danmaku .block-normal .column-1 .comment-avatar.role-moderator {
+  border: var(--avatar-moderator-border);
+}
+.danmaku .block-other .column-1 .comment-avatar img,
+.danmaku .block-normal .column-1 .comment-avatar img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  z-index: 1;
+}
+.danmaku .block-other .column-2,
+.danmaku .block-normal .column-2 {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 100%;
+}
+.danmaku .block-other .column-2 .comment-user,
+.danmaku .block-normal .column-2 .comment-user {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+.danmaku .block-other .column-2 .comment-user .user-section,
+.danmaku .block-normal .column-2 .comment-user .user-section {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+  font-family: var(--username-font-family);
+  font-size: var(--username-font-size);
+  font-weight: var(--username-font-weight);
+  color: var(--username-font-color);
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  max-width: var(--username-max-width);
+  min-width: var(--username-min-width);
+  padding: var(--username-padding);
+  background-color: var(--username-bg-color);
+  text-shadow: var(--username-text-shadow);
+  -webkit-box-shadow: var(--username-box-shadow);
+          box-shadow: var(--username-box-shadow);
+  border: var(--username-border);
+  border-radius: var(--username-border-radius);
+}
+.danmaku .block-other .column-2 .comment-user .role-member,
+.danmaku .block-normal .column-2 .comment-user .role-member {
+  background-color: var(--username-member-bg-color);
+  -webkit-box-shadow: var(--username-member-box-shadow);
+          box-shadow: var(--username-member-box-shadow);
+  border: var(--username-member-border);
+}
+.danmaku .block-other .column-2 .comment-user .role-member .user-displayname,
+.danmaku .block-normal .column-2 .comment-user .role-member .user-displayname {
+  color: var(--username-member-text-color);
+  text-shadow: var(--username-member-text-shadow);
+}
+.danmaku .block-other .column-2 .comment-user .role-moderator,
+.danmaku .block-normal .column-2 .comment-user .role-moderator {
+  background-color: var(--username-moderator-bg-color);
+  -webkit-box-shadow: var(--username-moderator-box-shadow);
+          box-shadow: var(--username-moderator-box-shadow);
+  border: var(--username-moderator-border);
+}
+.danmaku .block-other .column-2 .comment-user .role-moderator .user-displayname,
+.danmaku .block-normal .column-2 .comment-user .role-moderator .user-displayname {
+  color: var(--username-moderator-text-color);
+  text-shadow: var(--username-moderator-text-shadow);
+}
+.danmaku .block-other .column-2 .comment-user .role-owner,
+.danmaku .block-normal .column-2 .comment-user .role-owner {
+  background-color: var(--username-owner-bg-color);
+  -webkit-box-shadow: var(--username-owner-box-shadow);
+          box-shadow: var(--username-owner-box-shadow);
+  border: var(--username-owner-border);
+}
+.danmaku .block-other .column-2 .comment-user .role-owner .user-displayname,
+.danmaku .block-normal .column-2 .comment-user .role-owner .user-displayname {
+  color: var(--username-owner-text-color);
+  text-shadow: var(--username-owner-text-shadow);
+}
+.danmaku .block-other .column-2 .comment-user .user-displayname,
+.danmaku .block-normal .column-2 .comment-user .user-displayname {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.danmaku .block-other .column-2 .comment-user .badges-section,
+.danmaku .block-normal .column-2 .comment-user .badges-section {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.danmaku .block-other .column-2 .comment-user .badges-section .comment-badges,
+.danmaku .block-normal .column-2 .comment-user .badges-section .comment-badges {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: var(--badges-margin-distance);
+}
+.danmaku .block-other .column-2 .comment-user .badges-section .comment-badges img,
+.danmaku .block-normal .column-2 .comment-user .badges-section .comment-badges img {
+  width: auto;
+  height: var(--badges-size);
+}
+.danmaku .block-other .column-2 .paid-text,
+.danmaku .block-normal .column-2 .paid-text {
+  font-family: var(--comment-text-font);
+  font-size: var(--comment-text-font-size);
+  font-weight: var(--comment-text-font-weight);
+  text-align: var(--comment-text-default-align);
+  color: var(--comment-text-color);
+  text-shadow: var(--comment-text-shadow);
+}
+.danmaku .block-other .column-2 .comment-content,
+.danmaku .block-normal .column-2 .comment-content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+  width: 100%;
+}
+.danmaku .block-other .column-2 .comment-content .comment-text,
+.danmaku .block-normal .column-2 .comment-content .comment-text {
+  display: block;
+  font-family: var(--comment-text-font);
+  font-size: var(--comment-text-font-size);
+  font-weight: var(--comment-text-font-weight);
+  text-align: var(--comment-text-default-align);
+  color: var(--comment-text-color);
+  text-shadow: var(--comment-text-shadow);
+  margin: var(--comment-text-margin);
+  overflow: hidden;
+  width: var(--comment-width-condition);
+  height: var(--comment-height-condition);
+}
+.danmaku .block-other .column-2 .comment-content .comment-text img,
+.danmaku .block-normal .column-2 .comment-content .comment-text img {
+  height: var(--comment-emoji-size);
+  vertical-align: middle;
+  margin: var(--comment-emoji-margin);
+  width: auto;
+}
+.danmaku .block-other .column-2 .comment-content .comment-text .gift-image,
+.danmaku .block-normal .column-2 .comment-content .comment-text .gift-image {
+  height: var(--comment-emoji-size);
+  vertical-align: middle;
+  margin: var(--comment-emoji-margin);
+  width: auto;
+}
+.danmaku .block-other .column-2 .sticker-content,
+.danmaku .block-normal .column-2 .sticker-content {
+  width: calc(100% - var(--comment-sticker-size));
+  margin: 0 !important;
+}
+.danmaku .block-other .column-2 .sticker-content .comment-text,
+.danmaku .block-normal .column-2 .sticker-content .comment-text {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+  width: var(--comment-width-condition);
+  height: var(--comment-height-condition);
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+.danmaku .block-other .column-2 .sticker-content .comment-text img,
+.danmaku .block-normal .column-2 .sticker-content .comment-text img {
+  height: var(--comment-sticker-size);
+  vertical-align: middle;
+  margin: 0 !important;
+  width: auto;
+}
+.danmaku .block-other .column-2 .sticker-content .comment-text .gift-image,
+.danmaku .block-normal .column-2 .sticker-content .comment-text .gift-image {
+  height: var(--comment-sticker-size);
+  vertical-align: middle;
+  margin: 0 !important;
+  width: auto;
+}
+.danmaku .block-other .column-3,
+.danmaku .block-normal .column-3 {
+  display: var(--tag-status);
+  position: absolute;
+  font-family: var(--label-font-family);
+  font-size: var(--label-font-size);
+  font-weight: var(--label-font-weight);
+  color: var(--label-font-color);
+  text-shadow: var(--label-text-shadow);
+  top: var(--label-position-top);
+  right: var(--label-position-right);
+}
+.danmaku .block-other .column-3 .time,
+.danmaku .block-normal .column-3 .time {
+  display: var(--time-status);
+  background-color: var(--label-bg-color);
+  min-width: var(--label-min-width);
+  padding: var(--label-padding);
+  border: var(--label-border);
+  border-radius: var(--label-radius);
+  -webkit-box-shadow: var(--label-box-shadow);
+          box-shadow: var(--label-box-shadow);
+  -webkit-box-pack: var(--label-text-align);
+      -ms-flex-pack: var(--label-text-align);
+          justify-content: var(--label-text-align);
+}
+.danmaku .block-other .column-3 .time-full,
+.danmaku .block-normal .column-3 .time-full {
+  display: var(--time-full);
+}
+.danmaku .block-other .column-3 .time-short,
+.danmaku .block-normal .column-3 .time-short {
+  display: var(--time-short);
+}
+
+.comment.comment-leave-active {
+  -webkit-animation: none;
+          animation: none;
+}
+
+.comment-enter-active,
+.comment-leave-active {
+  -webkit-transition: all var(--comment-enter-duration) var(--comment-enter-timing);
+  transition: all var(--comment-enter-duration) var(--comment-enter-timing);
+}
+
+.comment-enter-from {
+  -webkit-transform: var(--comment-enter-from) !important;
+          transform: var(--comment-enter-from) !important;
+}
+
+.comment-leave-to {
+  -webkit-transform: var(--comment-enter-to) !important;
+          transform: var(--comment-enter-to) !important;
+}
+
+.comment-move {
+  -webkit-transition: all var(--comment-move-duration) var(--comment-move-timing) !important;
+  transition: all var(--comment-move-duration) var(--comment-move-timing) !important;
+}

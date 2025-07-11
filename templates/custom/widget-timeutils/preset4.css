@@ -1,0 +1,28 @@
+:root {
+--widget-time-display: inline-block;
+--widget-date-display: inline-block;
+--widget-week-display: none;
+--widget-text-align: center;
+--widget-font-color: #2B2E2E;
+--widget-font-size: 30px;
+--widget-font-family: New Tegomin;
+--widget-font-weight: 600;
+--widget-line-height: 16px;
+--widget-text-shadow: none;
+--time-distance: 2px;
+--date-distance: 2px;
+--spliter1-display: true;
+--spliter2-display: false;
+--spliter-height: 2px;
+--spliter-color: #333333;
+--hcolon-display: inline-block;
+--hcolon-blink: none;
+--mcolon-display: none;
+--mcolon-blink: none;
+--box-bg-color: #ffffff00;
+--box-border: 1px solid #333333;
+--box-padding: 10px 10px 10px 10px;
+--box-margin: 0px 0px 0px 0px;
+--box-border-radius: 0px 0px 0px 0px;
+--box-shadow: 0px 0px 1px 0px #333844;
+}

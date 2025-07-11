@@ -1,0 +1,98 @@
+[
+  {
+    "name": "With Avatar - Black",
+    "code": "integration",
+    "type": "comment-template",
+    "isOriginal": true,
+    "indexFile": null,
+    "assetFile": "asset1.json",
+    "presetFile": "preset1.json",
+    "cssFile": "preset1.css",
+    "presetId": 1,
+    "position": 0
+  },
+  {
+    "name": "With Avatar - White",
+    "code": "integration",
+    "type": "comment-template",
+    "isOriginal": true,
+    "indexFile": null,
+    "assetFile": "asset1.json",
+    "presetFile": "preset2.json",
+    "cssFile": "preset2.css",
+    "presetId": 2,
+    "position": 1
+  },
+  {
+    "name": "With Round Avatar - Black",
+    "code": "integration",
+    "type": "comment-template",
+    "isOriginal": true,
+    "indexFile": null,
+    "assetFile": "asset1.json",
+    "presetFile": "preset3.json",
+    "cssFile": "preset3.css",
+    "presetId": 3,
+    "position": 2
+  },
+  {
+    "name": "Without Avatar - Black",
+    "code": "integration",
+    "type": "comment-template",
+    "isOriginal": true,
+    "indexFile": null,
+    "assetFile": "asset1.json",
+    "presetFile": "preset4.json",
+    "cssFile": "preset4.css",
+    "presetId": 4,
+    "position": 3
+  },
+  {
+    "name": "With Avatar - Black Horizon",
+    "code": "integration",
+    "type": "comment-template",
+    "isOriginal": true,
+    "indexFile": null,
+    "assetFile": "asset1.json",
+    "presetFile": "preset5.json",
+    "cssFile": "preset5.css",
+    "presetId": 5,
+    "position": 4
+  },
+  {
+    "name": "With Avatar - White Horizon",
+    "code": "integration",
+    "type": "comment-template",
+    "isOriginal": true,
+    "indexFile": null,
+    "assetFile": "asset1.json",
+    "presetFile": "preset6.json",
+    "cssFile": "preset6.css",
+    "presetId": 6,
+    "position": 5
+  },
+  {
+    "name": "With Round Avatar - Black Horizon",
+    "code": "integration",
+    "type": "comment-template",
+    "isOriginal": true,
+    "indexFile": null,
+    "assetFile": "asset1.json",
+    "presetFile": "preset7.json",
+    "cssFile": "preset7.css",
+    "presetId": 7,
+    "position": 6
+  },
+  {
+    "name": "Without Avatar - Black Horizon",
+    "code": "integration",
+    "type": "comment-template",
+    "isOriginal": true,
+    "indexFile": null,
+    "assetFile": "asset1.json",
+    "presetFile": "preset8.json",
+    "cssFile": "preset8.css",
+    "presetId": 8,
+    "position": 7
+  }
+]

@@ -1,0 +1,197 @@
+@import url("./preset4.css");
+.box {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: var(--box-width);
+  background-color: var(--box-bg-color);
+  padding: var(--box-padding);
+  margin: var(--box-margin);
+  border: var(--box-border);
+  border-radius: var(--box-border-radius);
+  -webkit-box-shadow: var(--box-shadow);
+          box-shadow: var(--box-shadow);
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: var(--widget-text-align);
+      -ms-flex-align: var(--widget-text-align);
+          align-items: var(--widget-text-align);
+}
+
+.widget {
+  font-family: var(--widget-font-family);
+  font-size: var(--widget-font-size);
+  font-weight: var(--widget-font-weight);
+  color: var(--widget-font-color);
+  text-shadow: var(--widget-text-shadow);
+  line-height: var(--widget-line-height);
+}
+
+.time {
+  display: var(--widget-time-display);
+  color: var(--time-font-color);
+  font-size: var(--time-font-size);
+  line-height: var(--time-line-height);
+}
+
+.date {
+  display: var(--widget-date-display);
+  color: var(--date-font-color);
+  font-size: var(--date-font-size);
+  line-height: var(--date-line-height);
+}
+
+.separator {
+  color: var(--separator-font-color);
+  font-size: var(--separator-font-size);
+  margin-left: var(--date-distance);
+  margin-right: var(--date-distance);
+}
+
+.week {
+  display: var(--widget-week-display);
+  color: var(--week-font-color);
+  font-size: var(--week-font-size);
+  line-height: var(--week-line-height);
+}
+
+.year {
+  color: var(--date-year-font-color);
+  font-size: var(--date-year-font-size);
+}
+
+.year-unit {
+  color: var(--date-unit-font-color);
+  font-size: var(--date-unit-font-size);
+}
+
+.month {
+  color: var(--date-month-font-color);
+  font-size: var(--date-month-font-size);
+}
+
+.month-unit {
+  color: var(--date-unit-font-color);
+  font-size: var(--date-unit-font-size);
+}
+
+.day {
+  color: var(--date-day-font-color);
+  font-size: var(--date-day-font-size);
+}
+
+.day-unit {
+  color: var(--date-unit-font-color);
+  font-size: var(--date-unit-font-size);
+}
+
+.small-week {
+  color: var(--date-week-font-color);
+  font-size: var(--date-week-font-size);
+}
+
+.hour {
+  color: var(--hour-font-color);
+  font-size: var(--hour-font-size);
+  margin-right: var(--time-distance);
+}
+
+.h-unit {
+  color: var(--hunit-font-color);
+  font-size: var(--hunit-font-size);
+  margin-left: var(--time-distance);
+  margin-right: var(--time-distance);
+}
+
+.h-colon {
+  display: var(--hcolon-display);
+  color: var(--hcolon-font-color);
+  font-size: var(--minute-font-size);
+  -webkit-animation: var(--hcolon-blink) 1s infinite;
+          animation: var(--hcolon-blink) 1s infinite;
+}
+
+.minute {
+  color: var(--minute-font-color);
+  font-size: var(--minute-font-size);
+  margin-left: var(--time-distance);
+  margin-right: var(--time-distance);
+}
+
+.m-unit {
+  color: var(--munit-font-color);
+  font-size: var(--munit-font-size);
+  margin-left: var(--time-distance);
+}
+
+.m-colon {
+  display: var(--mcolon-display);
+  color: var(--mcolon-font-color);
+  font-size: var(--second-font-size);
+  -webkit-animation: var(--mcolon-blink) 1s infinite;
+          animation: var(--mcolon-blink) 1s infinite;
+}
+
+.second {
+  color: var(--second-font-color);
+  font-size: var(--second-font-size);
+  margin-left: var(--time-distance);
+}
+
+.s-unit {
+  color: var(--sunit-font-color);
+  font-size: var(--sunit-font-size);
+  margin-left: var(--time-distance);
+}
+
+.meridiem {
+  color: var(--meridiem-font-color);
+  font-size: var(--meridiem-font-size);
+  margin-left: var(--time-distance);
+}
+
+.f-meridiem {
+  color: var(--meridiem-font-color);
+  font-size: var(--meridiem-font-size);
+  margin-right: var(--time-distance);
+}
+
+.spliter {
+  width: 100%;
+  max-width: var(--spliter-width);
+  height: var(--spliter-height);
+  background-color: var(--spliter-color);
+  margin: var(--spliter-margin);
+}
+
+.spliter1 {
+  display: var(--spliter1-display);
+}
+
+.spliter2 {
+  display: var(--spliter2-display);
+}
+
+@-webkit-keyframes blink {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+@keyframes blink {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}

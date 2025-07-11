@@ -1,0 +1,1010 @@
+{
+  "parentCode": "datetime-widget1",
+  "presetId": 1,
+  "section": [
+    {
+      "parentCode": "datetime-widget1",
+      "code": "setting",
+      "position": 0
+    },
+    {
+      "parentCode": "datetime-widget1",
+      "code": "more",
+      "position": 1
+    },
+    {
+      "parentCode": "datetime-widget1",
+      "code": "box",
+      "position": 2
+    }
+  ],
+  "part": [
+    {
+      "parentCode": "setting",
+      "code": "setting-clock",
+      "position": 0
+    },
+    {
+      "parentCode": "more",
+      "code": "advance-setting-hour",
+      "position": 0
+    },
+    {
+      "parentCode": "more",
+      "code": "advance-setting-minute",
+      "position": 1
+    },
+    {
+      "parentCode": "more",
+      "code": "advance-setting-second",
+      "position": 2
+    },
+    {
+      "parentCode": "more",
+      "code": "advance-setting-meridiem",
+      "position": 3
+    },
+    {
+      "parentCode": "box",
+      "code": "container",
+      "position": 0
+    }
+  ],
+  "attribute": [
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": true,
+      "isCustom": false,
+      "cssvar": "--box-width",
+      "code": "box-width",
+      "parentCode": "setting-clock",
+      "attribute": "size",
+      "value": 150,
+      "unit": "px",
+      "min": 0,
+      "max": 800,
+      "masks": {
+        "0": "0",
+        "800": "800"
+      },
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": false,
+        "isJs": true
+      },
+      "isSetCustom": false,
+      "isCustom": false,
+      "code": "datetime-time-format",
+      "parentCode": "setting-clock",
+      "value": 9,
+      "attribute": "datetime-time-format",
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": false,
+      "isCustom": false,
+      "code": "datetime-widget-font",
+      "parentCode": "setting-clock",
+      "attribute": "font",
+      "cssvarColor": "--datetime-font-color",
+      "cssvarFont": "--datetime-font-family",
+      "cssvarSize": "--datetime-font-size",
+      "cssvarWeight": "--datetime-font-weight",
+      "color": "#2B2E2E",
+      "font": "Noto Sans",
+      "style": "normal",
+      "type": "none",
+      "size": 30,
+      "unit": "px",
+      "weight": 600,
+      "minSize": 0,
+      "maxSize": 100,
+      "minWeight": 0,
+      "maxWeight": 900,
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": false,
+      "isCustom": false,
+      "cssvar": "--widget-text-align",
+      "code": "widget-text-align",
+      "parentCode": "setting-clock",
+      "attribute": "align-items",
+      "value": "center",
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": false,
+      "isCustom": false,
+      "cssvar": "--datetime-time-distance",
+      "code": "datetime-time-distance",
+      "parentCode": "setting-clock",
+      "attribute": "size",
+      "value": 2,
+      "unit": "px",
+      "min": 0,
+      "max": 20,
+      "masks": {
+        "0": "0",
+        "20": "20"
+      },
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": false,
+      "isCustom": false,
+      "cssvar": "--datetime-text-shadow",
+      "code": "datetime-text-shadow",
+      "parentCode": "setting-clock",
+      "attribute": "text-shadow",
+      "isEffect": false,
+      "horizontal": 0,
+      "vertical": 0,
+      "blur": 0,
+      "unit": "px",
+      "color": "#191817",
+      "minlength": -30,
+      "maxlength": 30,
+      "minblur": -30,
+      "maxblur": 30,
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": true,
+      "isCustom": false,
+      "cssvar": "--hour-font-color",
+      "code": "hour-font-color",
+      "parentCode": "advance-setting-hour",
+      "attribute": "color",
+      "value": "#2B2E2E",
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": true,
+      "isCustom": false,
+      "cssvar": "--hour-font-size",
+      "code": "hour-font-size",
+      "parentCode": "advance-setting-hour",
+      "attribute": "size",
+      "value": 30,
+      "unit": "px",
+      "min": 0,
+      "max": 100,
+      "masks": {
+        "0": "0",
+        "100": "100"
+      },
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": true,
+      "isCustom": false,
+      "cssvar": "--hunit-font-color",
+      "code": "hunit-font-color",
+      "parentCode": "advance-setting-hour",
+      "attribute": "color",
+      "value": "#2B2E2E",
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": true,
+      "isCustom": false,
+      "cssvar": "--hunit-font-size",
+      "code": "hunit-font-size",
+      "parentCode": "advance-setting-hour",
+      "attribute": "size",
+      "value": 30,
+      "unit": "px",
+      "min": 0,
+      "max": 100,
+      "masks": {
+        "0": "0",
+        "100": "100"
+      },
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": true,
+      "isCustom": false,
+      "cssvar": "--minute-font-color",
+      "code": "minute-font-color",
+      "parentCode": "advance-setting-minute",
+      "attribute": "color",
+      "value": "#2B2E2E",
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": true,
+      "isCustom": false,
+      "cssvar": "--minute-font-size",
+      "code": "minute-font-size",
+      "parentCode": "advance-setting-minute",
+      "attribute": "size",
+      "value": 30,
+      "unit": "px",
+      "min": 0,
+      "max": 100,
+      "masks": {
+        "0": "0",
+        "100": "100"
+      },
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": false,
+      "isCustom": false,
+      "code": "minute-colon-display",
+      "parentCode": "advance-setting-minute",
+      "attribute": "button-toggle-2",
+      "value": "on",
+      "color": "amber",
+      "togleOptions": [
+        {
+          "label": "OFF",
+          "value": "off",
+          "paramSet": [
+            {
+              "value": "none",
+              "code": "hcolon-display"
+            },
+            {
+              "value": "none",
+              "code": "hcolon-blink"
+            }
+          ]
+        },
+        {
+          "label": "ON",
+          "value": "on",
+          "paramSet": [
+            {
+              "value": "inline-block",
+              "code": "hcolon-display"
+            },
+            {
+              "value": "none",
+              "code": "hcolon-blink"
+            }
+          ]
+        },
+        {
+          "label": "BLINK",
+          "value": "blink",
+          "paramSet": [
+            {
+              "value": "inline-block",
+              "code": "hcolon-display"
+            },
+            {
+              "value": "blink",
+              "code": "hcolon-blink"
+            }
+          ]
+        }
+      ],
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": true,
+      "isCustom": false,
+      "cssvar": "--hcolon-font-color",
+      "code": "hcolon-font-color",
+      "parentCode": "advance-setting-minute",
+      "attribute": "color",
+      "value": "#2B2E2E",
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": true,
+      "isCustom": false,
+      "cssvar": "--munit-font-color",
+      "code": "munit-font-color",
+      "parentCode": "advance-setting-minute",
+      "attribute": "color",
+      "value": "#2B2E2E",
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": true,
+      "isCustom": false,
+      "cssvar": "--munit-font-size",
+      "code": "munit-font-size",
+      "parentCode": "advance-setting-minute",
+      "attribute": "size",
+      "value": 30,
+      "unit": "px",
+      "min": 0,
+      "max": 100,
+      "masks": {
+        "0": "0",
+        "100": "100"
+      },
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": true,
+      "isCustom": false,
+      "cssvar": "--second-font-color",
+      "code": "second-font-color",
+      "parentCode": "advance-setting-second",
+      "attribute": "color",
+      "value": "#7a7a7a",
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": true,
+      "isCustom": false,
+      "cssvar": "--second-font-size",
+      "code": "second-font-size",
+      "parentCode": "advance-setting-second",
+      "attribute": "size",
+      "value": 20,
+      "unit": "px",
+      "min": 0,
+      "max": 100,
+      "masks": {
+        "0": "0",
+        "100": "100"
+      },
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": false,
+      "isCustom": false,
+      "code": "second-colon-display",
+      "parentCode": "advance-setting-second",
+      "attribute": "button-toggle-2",
+      "value": "on",
+      "color": "amber",
+      "togleOptions": [
+        {
+          "label": "OFF",
+          "value": "off",
+          "paramSet": [
+            {
+              "value": "none",
+              "code": "mcolon-display"
+            },
+            {
+              "value": "none",
+              "code": "mcolon-blink"
+            }
+          ]
+        },
+        {
+          "label": "ON",
+          "value": "on",
+          "paramSet": [
+            {
+              "value": "inline-block",
+              "code": "mcolon-display"
+            },
+            {
+              "value": "none",
+              "code": "mcolon-blink"
+            }
+          ]
+        },
+        {
+          "label": "BLINK",
+          "value": "blink",
+          "paramSet": [
+            {
+              "value": "inline-block",
+              "code": "mcolon-display"
+            },
+            {
+              "value": "blink",
+              "code": "mcolon-blink"
+            }
+          ]
+        }
+      ],
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": true,
+      "isCustom": false,
+      "cssvar": "--mcolon-font-color",
+      "code": "mcolon-font-color",
+      "parentCode": "advance-setting-second",
+      "attribute": "color",
+      "value": "#2B2E2E",
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": true,
+      "isCustom": false,
+      "cssvar": "--sunit-font-color",
+      "code": "sunit-font-color",
+      "parentCode": "advance-setting-second",
+      "attribute": "color",
+      "value": "#2B2E2E",
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": true,
+      "isCustom": false,
+      "cssvar": "--sunit-font-size",
+      "code": "sunit-font-size",
+      "parentCode": "advance-setting-second",
+      "attribute": "size",
+      "value": 30,
+      "unit": "px",
+      "min": 0,
+      "max": 100,
+      "masks": {
+        "0": "0",
+        "100": "100"
+      },
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": true,
+      "isCustom": false,
+      "cssvar": "--meridiem-font-color",
+      "code": "meridiem-font-color",
+      "parentCode": "advance-setting-meridiem",
+      "attribute": "color",
+      "value": "#2B2E2E",
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": true,
+      "isCustom": false,
+      "cssvar": "--meridiem-font-size",
+      "code": "meridiem-font-size",
+      "parentCode": "advance-setting-meridiem",
+      "attribute": "size",
+      "value": 30,
+      "unit": "px",
+      "min": 0,
+      "max": 100,
+      "masks": {
+        "0": "0",
+        "100": "100"
+      },
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": false,
+      "isCustom": false,
+      "cssvar": "--box-bg-color",
+      "code": "box-bg-color",
+      "parentCode": "container",
+      "attribute": "color",
+      "value": "#FFFFFF",
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": false,
+      "isCustom": false,
+      "cssvar": "--box-border",
+      "code": "box-border",
+      "parentCode": "container",
+      "attribute": "border",
+      "value": 1,
+      "style": "solid",
+      "color": "#ccccccff",
+      "unit": "px",
+      "min": 0,
+      "max": 10,
+      "masks": {
+        "0": "0",
+        "10": "10"
+      },
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": false,
+      "isCustom": false,
+      "cssvar": "--box-padding",
+      "code": "box-padding",
+      "parentCode": "container",
+      "attribute": "padding",
+      "unit": "px",
+      "min": 0,
+      "max": 50,
+      "value": [
+        3,
+        6,
+        3,
+        6
+      ],
+      "masks": {
+        "0": "0",
+        "50": "50"
+      },
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": false,
+      "isCustom": false,
+      "cssvar": "--box-margin",
+      "code": "box-margin",
+      "parentCode": "container",
+      "attribute": "margin",
+      "unit": "px",
+      "min": 0,
+      "max": 50,
+      "value": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "masks": {
+        "0": "0",
+        "50": "50"
+      },
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": false,
+      "isCustom": false,
+      "cssvar": "--box-border-radius",
+      "code": "box-border-radius",
+      "parentCode": "container",
+      "attribute": "radius",
+      "unit": "px",
+      "min": 0,
+      "max": 100,
+      "value": [
+        10,
+        10,
+        10,
+        10
+      ],
+      "masks": {
+        "0": "0",
+        "100": "100"
+      },
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": false,
+      "isCustom": false,
+      "cssvar": "--box-shadow",
+      "code": "box-shadow",
+      "parentCode": "container",
+      "attribute": "box-shadow",
+      "isEffect": true,
+      "horizontal": 0,
+      "vertical": 0,
+      "blur": 1,
+      "unit": "px",
+      "color": "#333844",
+      "inset": false,
+      "spread": 0,
+      "minlength": -30,
+      "maxlength": 30,
+      "minblur": -30,
+      "maxblur": 30,
+      "minspread": -20,
+      "maxspread": 20,
+      "description": false
+    }
+  ],
+  "language": [
+    {
+      "code": "setting",
+      "en-US": "Setting",
+      "ja": "設定",
+      "zh-CN": "设置",
+      "zh-TW": "設定"
+    },
+    {
+      "code": "setting-clock",
+      "en-US": "Clock",
+      "ja": "時計",
+      "zh-CN": "时钟",
+      "zh-TW": "時鐘"
+    },
+    {
+      "code": "box-width",
+      "en-US": "Frame Width",
+      "ja": "フレーム・幅",
+      "zh-CN": "框・宽度",
+      "zh-TW": "框・寬度"
+    },
+    {
+      "code": "datetime-time-format",
+      "en-US": "Clock",
+      "ja": "時計",
+      "zh-CN": "时钟",
+      "zh-TW": "時鐘"
+    },
+    {
+      "code": "datetime-widget-font",
+      "en-US": "Font",
+      "ja": "フォント",
+      "zh-CN": "字体",
+      "zh-TW": "字體"
+    },
+    {
+      "code": "widget-text-align",
+      "en-US": "Text Align",
+      "ja": "文字揃え",
+      "zh-CN": "文本对齐",
+      "zh-TW": "文本對齊"
+    },
+    {
+      "code": "datetime-time-distance",
+      "en-US": "Distance",
+      "ja": "距離",
+      "zh-CN": "距离",
+      "zh-TW": "距離"
+    },
+    {
+      "code": "datetime-text-shadow",
+      "en-US": "Text Shadow",
+      "ja": "文字の影",
+      "zh-CN": "文字阴影",
+      "zh-TW": "文字陰影"
+    },
+    {
+      "code": "more",
+      "en-US": "More",
+      "ja": "その他",
+      "zh-CN": "更多",
+      "zh-TW": "更多"
+    },
+    {
+      "code": "advance-setting-hour",
+      "en-US": "Advance Setting : Hour",
+      "ja": "詳細設定：時",
+      "zh-CN": "更多设定：时",
+      "zh-TW": "更多設定：時"
+    },
+    {
+      "code": "hour-font-color",
+      "en-US": "Digit Font Color",
+      "ja": "フォント・色",
+      "zh-CN": "字体・颜色",
+      "zh-TW": "字體・顏色"
+    },
+    {
+      "code": "hour-font-size",
+      "en-US": "Font Size",
+      "ja": "フォント・サイズ",
+      "zh-CN": "字体・大小",
+      "zh-TW": "字體・大小"
+    },
+    {
+      "code": "hunit-font-color",
+      "en-US": "Hour Unit Color",
+      "ja": "「時」時間の単位・色",
+      "zh-CN": "「时」时间的单位・颜色",
+      "zh-TW": "「時」時間的單位・顏色"
+    },
+    {
+      "code": "hunit-font-size",
+      "en-US": "Hour Unit Size",
+      "ja": "「時」時間の単位・サイズ",
+      "zh-CN": "「时」时间的单位・大小",
+      "zh-TW": "「時」時間的單位・大小"
+    },
+    {
+      "code": "advance-setting-minute",
+      "en-US": "Advance Setting : Minute",
+      "ja": "詳細設定：分",
+      "zh-CN": "更多设定：分",
+      "zh-TW": "更多設定：分"
+    },
+    {
+      "code": "minute-font-color",
+      "en-US": "Digit Font Color",
+      "ja": "フォント・色",
+      "zh-CN": "字体・颜色",
+      "zh-TW": "字體・顏色"
+    },
+    {
+      "code": "minute-font-size",
+      "en-US": "Font Size",
+      "ja": "フォント・サイズ",
+      "zh-CN": "字体・大小",
+      "zh-TW": "字體・大小"
+    },
+    {
+      "code": "minute-colon-display",
+      "en-US": "Colon「:」ON/OFF",
+      "ja": "コロン「:」オン・オフ",
+      "zh-CN": "冒号「:」开/关",
+      "zh-TW": "冒號「:」開/關"
+    },
+    {
+      "code": "hcolon-font-color",
+      "en-US": "Colon「:」Font Color",
+      "ja": "コロン「:」フォント・色",
+      "zh-CN": "冒号「:」字体・颜色",
+      "zh-TW": "冒號「:」字體・顏色"
+    },
+    {
+      "code": "munit-font-color",
+      "en-US": "Minute Unit Color",
+      "ja": "「分」時間の単位・色",
+      "zh-CN": "「分」时间的单位・颜色",
+      "zh-TW": "「分」時間的單位・顏色"
+    },
+    {
+      "code": "munit-font-size",
+      "en-US": "Minute Unit Size",
+      "ja": "「分」時間の単位・サイズ",
+      "zh-CN": "「分」时间的单位・大小",
+      "zh-TW": "「分」時間的單位・大小"
+    },
+    {
+      "code": "advance-setting-second",
+      "en-US": "Advance Setting : Second",
+      "ja": "詳細設定：秒",
+      "zh-CN": "更多设定：秒",
+      "zh-TW": "更多設定：秒"
+    },
+    {
+      "code": "second-font-color",
+      "en-US": "Digit Font Color",
+      "ja": "フォント・色",
+      "zh-CN": "字体・颜色",
+      "zh-TW": "字體・顏色"
+    },
+    {
+      "code": "second-font-size",
+      "en-US": "Font Size",
+      "ja": "フォント・サイズ",
+      "zh-CN": "字体・大小",
+      "zh-TW": "字體・大小"
+    },
+    {
+      "code": "second-colon-display",
+      "en-US": "Colon「:」ON/OFF",
+      "ja": "コロン「:」オン・オフ",
+      "zh-CN": "冒号「:」开/关",
+      "zh-TW": "冒號「:」開/關"
+    },
+    {
+      "code": "mcolon-font-color",
+      "en-US": "Colon「:」Font Color",
+      "ja": "コロン「:」フォント・色",
+      "zh-CN": "冒号「:」字体・颜色",
+      "zh-TW": "冒號「:」字體・顏色"
+    },
+    {
+      "code": "sunit-font-color",
+      "en-US": "Second Unit Color",
+      "ja": "「秒」時間の単位・色",
+      "zh-CN": "「秒」时间的单位・颜色",
+      "zh-TW": "「秒」時間的單位・顏色"
+    },
+    {
+      "code": "sunit-font-size",
+      "en-US": "Second Unit Size",
+      "ja": "「秒」時間の単位・サイズ",
+      "zh-CN": "「秒」时间的单位・大小",
+      "zh-TW": "「秒」時間的單位・大小"
+    },
+    {
+      "code": "advance-setting-meridiem",
+      "en-US": "Meridiem (AM/PM)",
+      "ja": "午前／午後（AM／PM）",
+      "zh-CN": "上午/下午（AM/PM）",
+      "zh-TW": "上午/下午（AM/PM）"
+    },
+    {
+      "code": "meridiem-font-color",
+      "en-US": "Font Color",
+      "ja": "フォント・色",
+      "zh-CN": "字体・颜色",
+      "zh-TW": "字體・顏色"
+    },
+    {
+      "code": "meridiem-font-size",
+      "en-US": "Font Size",
+      "ja": "フォント・サイズ",
+      "zh-CN": "字体・大小",
+      "zh-TW": "字體・大小"
+    },
+    {
+      "code": "box",
+      "en-US": "Box",
+      "ja": "枠",
+      "zh-CN": "框",
+      "zh-TW": "框"
+    },
+    {
+      "code": "container",
+      "en-US": "Container",
+      "ja": "コンテナ",
+      "zh-CN": "容器",
+      "zh-TW": "容器"
+    },
+    {
+      "code": "box-bg-color",
+      "en-US": "Background Color",
+      "ja": "背景色",
+      "zh-CN": "背景色",
+      "zh-TW": "背景色"
+    },
+    {
+      "code": "box-border",
+      "en-US": "Border",
+      "ja": "境界線",
+      "zh-CN": "边框",
+      "zh-TW": "邊框"
+    },
+    {
+      "code": "box-padding",
+      "en-US": "Padding",
+      "ja": "パディング",
+      "zh-CN": "内边距",
+      "zh-TW": "內邊距"
+    },
+    {
+      "code": "box-margin",
+      "en-US": "Margin",
+      "ja": "マージン",
+      "zh-CN": "外边距",
+      "zh-TW": "外邊距"
+    },
+    {
+      "code": "box-border-radius",
+      "en-US": "Border Radius",
+      "ja": "角丸",
+      "zh-CN": "边框圆角",
+      "zh-TW": "邊框圓角"
+    },
+    {
+      "code": "box-shadow",
+      "en-US": "Shadow",
+      "ja": "影",
+      "zh-CN": "阴影",
+      "zh-TW": "陰影"
+    }
+  ]
+}

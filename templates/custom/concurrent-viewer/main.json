@@ -1,0 +1,14 @@
+[
+  {
+    "name": "Concurrent Viewers",
+    "code": "concurrent-viewers",
+    "type": "concurrent-viewers",
+    "isOriginal": true,
+    "indexFile": null,
+    "assetFile": "asset1.json",
+    "presetFile": "preset1.json",
+    "cssFile": "preset1.css",
+    "presetId": 1,
+    "position": 0
+  }
+]

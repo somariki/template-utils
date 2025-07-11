@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>OneComme | Time Utils</title>
+        <link rel="stylesheet" href="/plugins/onecomme.plugin.template-utils/css/fonts.css" />
+        <link rel="stylesheet" href="./style1.css" />
+    </head>
+    <body hidden>
+        <div id="app" class="app">
+            <div class="box">
+                <div class="widget time" v-if="format.time" v-html="format.time"></div>
+            </div>
+        </div>
+        
+        <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/dayjs@1/plugin/utc.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/dayjs@1/plugin/timezone.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/dayjs@1/plugin/updateLocale.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/dayjs@1/plugin/localizedFormat.js"></script>
+        <script src="/plugins/onecomme.plugin.template-utils/template-time.js"></script>
+
+    </body>
+</html>

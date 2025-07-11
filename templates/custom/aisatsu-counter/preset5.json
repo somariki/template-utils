@@ -1,0 +1,95 @@
+{
+  "parentCode": "hatsukensan-counter1",
+  "presetId": 5,
+  "dataSet": [
+    {
+      "isCustom": false,
+      "code": "onecomme-counter-current",
+      "value": false
+    },
+    {
+      "isCustom": false,
+      "code": "onecomme-counter-target",
+      "value": false
+    },
+    {
+      "isCustom": false,
+      "code": "counter-font",
+      "color": "#171717ff",
+      "font": "Noto Sans",
+      "style": "normal",
+      "type": "none",
+      "size": 60,
+      "unit": "px",
+      "weight": 600
+    },
+    {
+      "isCustom": false,
+      "code": "counter-text-shadow",
+      "isEffect": false,
+      "horizontal": 0,
+      "vertical": 0,
+      "blur": 0,
+      "unit": "px",
+      "color": "#757575ff"
+    },
+    {
+      "isCustom": false,
+      "code": "counter-text-align",
+      "value": "center"
+    },
+    {
+      "isCustom": false,
+      "code": "target-font",
+      "color": "#757575ff",
+      "font": "Noto Sans",
+      "style": "normal",
+      "type": "none",
+      "size": 50,
+      "unit": "px",
+      "weight": 500
+    },
+    {
+      "isCustom": false,
+      "code": "target-text-shadow",
+      "isEffect": false,
+      "horizontal": 0,
+      "vertical": 0,
+      "blur": 0,
+      "unit": "px",
+      "color": "#757575ff"
+    },
+    {
+      "isCustom": false,
+      "code": "separator-font",
+      "color": "#757575ff",
+      "font": "Noto Sans",
+      "style": "normal",
+      "type": "none",
+      "size": 50,
+      "unit": "px",
+      "weight": 500
+    },
+    {
+      "isCustom": false,
+      "code": "separator-text-shadow",
+      "isEffect": false,
+      "horizontal": 0,
+      "vertical": 0,
+      "blur": 0,
+      "unit": "px",
+      "color": "#757575ff"
+    },
+    {
+      "isCustom": false,
+      "code": "separator-margin",
+      "unit": "px",
+      "value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    }
+  ]
+}

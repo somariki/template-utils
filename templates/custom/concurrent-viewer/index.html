@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>OneComme | Custom Template - Integration </title>
+    <meta name="referrer" content="no-referrer" />
+    <link rel="stylesheet" href="/plugins/onecomme.plugin.template-utils/css/fonts.css" />
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body hidden>
+    <div id="app" class="app">
+      <div class="main">
+        <div class="section viewer" v-if="visitorData.viewer">
+          <div class="icon icon-viewer"></div>
+          <div class="count count-viewer">{{visitorData.viewer}}</div>
+        </div>
+        <div class="section upvote" v-if="visitorData.upVote" >
+          <div class="icon icon-upvote"></div>
+          <div class="count count-upvote">{{visitorData.upVote}}</div>
+        </div>
+        <div class="section subscriber" v-if="visitorData.subscriberCount" >
+          <div class="icon icon-subscriber"></div>
+          <div class="count count-subscriber">{{visitorData.subscriberCount}}</div>
+        </div>
+        <div class="section follower" v-if="visitorData.follower" >
+          <div class="icon icon-follower"></div>
+          <div class="count count-follower">{{visitorData.follower}}</div>
+        </div>
+        <div class="section total" v-if="visitorData.total" >
+          <div class="icon icon-total"></div>
+          <div class="count count-total">{{visitorData.total}}</div>
+        </div>
+      </div>
+    </div>
+    <script src="../__origin/js/vue.min.js"></script>
+    <!--script src="../__origin/js/onesdk.js"></script-->
+    <!--script src="onesdk.js"></script-->
+    <script src="/plugins/onecomme.plugin.template-utils/template-viewer.js"></script>
+  </body>
+</html>

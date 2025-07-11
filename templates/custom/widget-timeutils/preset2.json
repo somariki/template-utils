@@ -1,0 +1,348 @@
+{
+  "parentCode": "datetime-widget2",
+  "presetId": 2,
+  "dataSet": [
+    {
+      "isCustom": false,
+      "code": "box-width",
+      "value": 180,
+      "unit": "px"
+    },
+    {
+      "isCustom": false,
+      "code": "datetime-mode",
+      "value": "time-date-week"
+    },
+    {
+      "isCustom": false,
+      "code": "datetime-time-format",
+      "value": 9
+    },
+    {
+      "isCustom": false,
+      "code": "datetime-date-format",
+      "value": 26
+    },
+    {
+      "isCustom": false,
+      "code": "datetime-weekday-format",
+      "value": 3
+    },
+    {
+      "isCustom": false,
+      "code": "widget-text-align",
+      "value": "center"
+    },
+    {
+      "isCustom": false,
+      "code": "widget-font",
+      "color": "#2B2E2E",
+      "font": "Zen Dots",
+      "style": "normal",
+      "type": "none",
+      "size": 30,
+      "unit": "px",
+      "weight": 600
+    },
+    {
+      "isCustom": false,
+      "code": "widget-line-height",
+      "value": 20,
+      "unit": "px"
+    },
+    {
+      "isCustom": false,
+      "code": "widget-text-shadow",
+      "isEffect": false,
+      "horizontal": 0,
+      "vertical": 0,
+      "blur": 2,
+      "unit": "px",
+      "color": "#191817"
+    },
+    {
+      "isCustom": false,
+      "code": "time-distance",
+      "value": 2,
+      "unit": "px"
+    },
+    {
+      "isCustom": false,
+      "code": "date-distance",
+      "value": 2,
+      "unit": "px"
+    },
+    {
+      "isCustom": false,
+      "code": "time-font-color",
+      "value": "#2B2E2E"
+    },
+    {
+      "isCustom": false,
+      "code": "time-font-size",
+      "value": 30,
+      "unit": "px"
+    },
+    {
+      "isCustom": true,
+      "code": "time-line-height",
+      "value": 18,
+      "unit": "px"
+    },
+    {
+      "isCustom": false,
+      "code": "hour-font-color",
+      "value": "#2B2E2E"
+    },
+    {
+      "isCustom": false,
+      "code": "hour-font-size",
+      "value": 30,
+      "unit": "px"
+    },
+    {
+      "isCustom": false,
+      "code": "hunit-font-color",
+      "value": "#2B2E2E"
+    },
+    {
+      "isCustom": false,
+      "code": "hunit-font-size",
+      "value": 30,
+      "unit": "px"
+    },
+    {
+      "isCustom": false,
+      "code": "minute-font-color",
+      "value": "#2B2E2E"
+    },
+    {
+      "isCustom": false,
+      "code": "minute-font-size",
+      "value": 30,
+      "unit": "px"
+    },
+    {
+      "isCustom": false,
+      "code": "minute-colon-display",
+      "value": "blink"
+    },
+    {
+      "isCustom": false,
+      "code": "hcolon-font-color",
+      "value": "#2B2E2E"
+    },
+    {
+      "isCustom": false,
+      "code": "munit-font-color",
+      "value": "#2B2E2E"
+    },
+    {
+      "isCustom": false,
+      "code": "munit-font-size",
+      "value": 30,
+      "unit": "px"
+    },
+    {
+      "isCustom": false,
+      "code": "second-font-color",
+      "value": "#7a7a7a"
+    },
+    {
+      "isCustom": false,
+      "code": "second-font-size",
+      "value": 20,
+      "unit": "px"
+    },
+    {
+      "isCustom": false,
+      "code": "second-colon-display",
+      "value": "on"
+    },
+    {
+      "isCustom": false,
+      "code": "mcolon-font-color",
+      "value": "#2B2E2E"
+    },
+    {
+      "isCustom": false,
+      "code": "sunit-font-color",
+      "value": "#2B2E2E"
+    },
+    {
+      "isCustom": false,
+      "code": "sunit-font-size",
+      "value": 30,
+      "unit": "px"
+    },
+    {
+      "isCustom": false,
+      "code": "meridiem-font-color",
+      "value": "#2B2E2E"
+    },
+    {
+      "isCustom": true,
+      "code": "meridiem-font-size",
+      "value": 16,
+      "unit": "px"
+    },
+    {
+      "isCustom": false,
+      "code": "date-font-color",
+      "value": "#2B2E2E"
+    },
+    {
+      "isCustom": true,
+      "code": "date-font-size",
+      "value": 14,
+      "unit": "px"
+    },
+    {
+      "isCustom": false,
+      "code": "date-line-height",
+      "value": 14,
+      "unit": "px"
+    },
+    {
+      "isCustom": false,
+      "code": "separator-font-color",
+      "value": "#2B2E2E"
+    },
+    {
+      "isCustom": false,
+      "code": "separator-font-size",
+      "value": 30,
+      "unit": "px"
+    },
+    {
+      "isCustom": false,
+      "code": "date-year-font-color",
+      "value": "#2B2E2E"
+    },
+    {
+      "isCustom": false,
+      "code": "date-year-font-size",
+      "value": 30,
+      "unit": "px"
+    },
+    {
+      "isCustom": false,
+      "code": "date-month-font-color",
+      "value": "#2B2E2E"
+    },
+    {
+      "isCustom": false,
+      "code": "date-month-font-size",
+      "value": 30,
+      "unit": "px"
+    },
+    {
+      "isCustom": false,
+      "code": "date-day-font-color",
+      "value": "#2B2E2E"
+    },
+    {
+      "isCustom": false,
+      "code": "date-day-font-size",
+      "value": 30,
+      "unit": "px"
+    },
+    {
+      "isCustom": false,
+      "code": "date-unit-font-color",
+      "value": "#2B2E2E"
+    },
+    {
+      "isCustom": false,
+      "code": "date-unit-font-size",
+      "value": 30,
+      "unit": "px"
+    },
+    {
+      "isCustom": false,
+      "code": "date-week-font-color",
+      "value": "#2B2E2E"
+    },
+    {
+      "isCustom": false,
+      "code": "date-week-font-size",
+      "value": 20,
+      "unit": "px"
+    },
+    {
+      "isCustom": false,
+      "code": "week-font-color",
+      "value": "#2B2E2E"
+    },
+    {
+      "isCustom": true,
+      "code": "week-font-size",
+      "value": 23,
+      "unit": "px"
+    },
+    {
+      "isCustom": false,
+      "code": "week-line-height",
+      "value": 23,
+      "unit": "px"
+    },
+    {
+      "isCustom": false,
+      "code": "box-bg-color",
+      "value": "#ffffffff"
+    },
+    {
+      "isCustom": false,
+      "code": "box-border",
+      "value": 1,
+      "style": "solid",
+      "color": "#ccccccff",
+      "unit": "px"
+    },
+    {
+      "isCustom": false,
+      "code": "box-padding",
+      "unit": "px",
+      "value": [
+        10,
+        10,
+        10,
+        10
+      ]
+    },
+    {
+      "isCustom": false,
+      "code": "box-margin",
+      "unit": "px",
+      "value": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "isCustom": false,
+      "code": "box-border-radius",
+      "unit": "px",
+      "value": [
+        10,
+        10,
+        10,
+        10
+      ]
+    },
+    {
+      "isCustom": false,
+      "code": "box-shadow",
+      "isEffect": true,
+      "horizontal": 0,
+      "vertical": 0,
+      "blur": 1,
+      "unit": "px",
+      "color": "#333844",
+      "inset": false,
+      "spread": 0
+    }
+  ]
+}

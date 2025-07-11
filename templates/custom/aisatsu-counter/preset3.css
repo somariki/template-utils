@@ -1,0 +1,37 @@
+:root {
+--title-content: 'あいさつ';
+--title-background: #FFBB00;
+--title-font-color: #FFFFFF;
+--title-font-size: 20px;
+--title-font-family: Noto Sans JP;
+--title-font-weight: 600;
+--container-margin-top: 20px;
+--title-text-shadow: none;
+--title-spacing: -2px;
+--title-padding: 3px 15px 3px 15px;
+--title-border-radius: 20px 20px 20px 20px;
+--counter-font-color: #FFBB00;
+--counter-font-size: 70px;
+--counter-font-family: Noto Sans;
+--counter-font-weight: 600;
+--counter-text-shadow: none;
+--counter-spacing: 0px;
+--target-opacity: 60%;
+--target-background: #FFBB00;
+--target-border: none;
+--target-font-color: #ffffffff;
+--target-font-size: 30px;
+--target-font-family: Noto Sans;
+--target-font-weight: 500;
+--target-text-shadow: none;
+--target-padding: 0px 10px 0px 10px;
+--target-border-radius: 10px 10px 10px 10px;
+--container-target-alignment: center;
+--target-margin: 0px 0px 0px 5px;
+--container-background: #FFFFFF;
+--container-border: 3px dashed #FFBB00;
+--container-box-shadow: none;
+--container-padding: 3px 20px 3px 20px;
+--container-border-radius: 10px 10px 10px 10px;
+--box-margin: 0px 0px 0px 0px;
+}

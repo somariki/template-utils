@@ -1,0 +1,1310 @@
+{
+  "parentCode": "gank-basic",
+  "presetId": 1,
+  "section": [
+    {
+      "parentCode": "gank-basic",
+      "code": "main-section",
+      "position": 0
+    },
+    {
+      "parentCode": "gank-basic",
+      "code": "standard-layout",
+      "position": 1
+    },
+    {
+      "parentCode": "gank-basic",
+      "code": "condensed-layout",
+      "position": 2
+    }
+  ],
+  "part": [
+    {
+      "parentCode": "main-section",
+      "code": "account-settings",
+      "position": 0
+    },
+    {
+      "parentCode": "main-section",
+      "code": "layout",
+      "position": 1
+    },
+    {
+      "parentCode": "main-section",
+      "code": "progress-bar",
+      "position": 2
+    },
+    {
+      "parentCode": "main-section",
+      "code": "progress",
+      "position": 3
+    },
+    {
+      "parentCode": "standard-layout",
+      "code": "standard-layout-title",
+      "position": 0
+    },
+    {
+      "parentCode": "standard-layout",
+      "code": "std-footer",
+      "position": 1
+    },
+    {
+      "parentCode": "condensed-layout",
+      "code": "condensed-layout-title",
+      "position": 0
+    },
+    {
+      "parentCode": "condensed-layout",
+      "code": "targetamount",
+      "position": 1
+    },
+    {
+      "parentCode": "condensed-layout",
+      "code": "side",
+      "position": 2
+    }
+  ],
+  "attribute": [
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": false,
+        "isJs": true
+      },
+      "isSetCustom": false,
+      "isCustom": false,
+      "isOriginal": false,
+      "oriFrom": null,
+      "code": "gank-enable",
+      "parentCode": "account-settings",
+      "attribute": "button-toggle",
+      "truedefine": "true",
+      "falsedefine": "false",
+      "value": "off",
+      "color": "orange",
+      "togleOptions": [
+        {
+          "code": "gank-enable-on",
+          "label": "ON",
+          "value": "on",
+          "cssvar": "--gank-enable-on"
+        },
+        {
+          "code": "gank-enable-off",
+          "label": "OFF",
+          "value": "off",
+          "cssvar": "--gank-enable-off"
+        }
+      ],
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": false,
+        "isJs": true
+      },
+      "isSetCustom": false,
+      "isCustom": false,
+      "isOriginal": false,
+      "oriFrom": null,
+      "cssvar": "--gank-id",
+      "code": "gank-id",
+      "parentCode": "account-settings",
+      "attribute": "onecomme-gank-id",
+      "value": "",
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": false,
+      "isCustom": false,
+      "isOriginal": false,
+      "oriFrom": null,
+      "code": "donation-layout",
+      "parentCode": "layout",
+      "attribute": "button-toggle",
+      "truedefine": "block",
+      "falsedefine": "none",
+      "value": "standard",
+      "color": "lime",
+      "togleOptions": [
+        {
+          "code": "layout-standard-display",
+          "label": "Standard Layout",
+          "value": "standard",
+          "cssvar": "--layout-standard-display"
+        },
+        {
+          "code": "layout-condensed-display",
+          "label": "Condensed Layout",
+          "value": "condensed",
+          "cssvar": "--layout-condensed-display"
+        }
+      ],
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": false,
+      "isCustom": false,
+      "isOriginal": false,
+      "oriFrom": null,
+      "cssvar": "--bar-color",
+      "code": "bar-color",
+      "parentCode": "progress-bar",
+      "attribute": "color",
+      "value": "#9F80FC",
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": false,
+      "isCustom": false,
+      "isOriginal": false,
+      "oriFrom": null,
+      "cssvar": "--bar-background-color",
+      "code": "bar-background-color",
+      "parentCode": "progress-bar",
+      "attribute": "color",
+      "value": "#E4E0EF",
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": false,
+      "isCustom": false,
+      "isOriginal": false,
+      "oriFrom": null,
+      "cssvar": "--bar-top",
+      "code": "bar-top",
+      "parentCode": "progress-bar",
+      "attribute": "edge",
+      "value": 0,
+      "edge": "top",
+      "unit": "px",
+      "min": -100,
+      "max": 100,
+      "masks": {
+        "100": "100",
+        "-100": "-100"
+      },
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": false,
+      "isCustom": false,
+      "isOriginal": false,
+      "oriFrom": null,
+      "cssvar": "--bar-left",
+      "code": "bar-left",
+      "parentCode": "progress-bar",
+      "attribute": "edge",
+      "value": 0,
+      "edge": "left",
+      "unit": "px",
+      "min": -100,
+      "max": 100,
+      "masks": {
+        "100": "100",
+        "-100": "-100"
+      },
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": false,
+      "isCustom": false,
+      "isOriginal": false,
+      "oriFrom": null,
+      "cssvar": "--bar-height",
+      "code": "bar-height",
+      "parentCode": "progress-bar",
+      "attribute": "size",
+      "value": 35,
+      "unit": "px",
+      "min": 0,
+      "max": 100,
+      "masks": {
+        "0": "0",
+        "100": "100"
+      },
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": false,
+      "isCustom": false,
+      "isOriginal": false,
+      "oriFrom": null,
+      "cssvar": "--bar-box-shadow",
+      "code": "bar-box-shadow",
+      "parentCode": "progress-bar",
+      "attribute": "box-shadow",
+      "isEffect": true,
+      "horizontal": 0,
+      "vertical": 0,
+      "blur": 1,
+      "unit": "px",
+      "color": "#000000bf",
+      "inset": false,
+      "spread": 0,
+      "minlength": -30,
+      "maxlength": 30,
+      "minblur": -30,
+      "maxblur": 30,
+      "minspread": -20,
+      "maxspread": 20,
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": false,
+      "isCustom": false,
+      "isOriginal": false,
+      "oriFrom": null,
+      "cssvar": "--bar-border",
+      "code": "bar-border",
+      "parentCode": "progress-bar",
+      "attribute": "border",
+      "value": 3,
+      "style": "solid",
+      "color": "#9F80FC",
+      "unit": "px",
+      "min": 0,
+      "max": 10,
+      "masks": {
+        "0": "0",
+        "10": "10"
+      },
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": false,
+      "isCustom": false,
+      "isOriginal": false,
+      "oriFrom": null,
+      "cssvar": "--bar-border-inner",
+      "code": "bar-border-inner",
+      "parentCode": "progress-bar",
+      "attribute": "border",
+      "value": 3,
+      "style": "solid",
+      "color": "#FFFFFF",
+      "unit": "px",
+      "min": 0,
+      "max": 10,
+      "masks": {
+        "0": "0",
+        "10": "10"
+      },
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": false,
+      "isCustom": false,
+      "isOriginal": false,
+      "oriFrom": null,
+      "cssvar": "--bar-border-radius",
+      "code": "bar-border-radius",
+      "parentCode": "progress-bar",
+      "attribute": "radius",
+      "unit": "px",
+      "min": 0,
+      "max": 100,
+      "value": [
+        50,
+        0,
+        0,
+        50
+      ],
+      "masks": {
+        "0": "0",
+        "100": "100"
+      },
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": false,
+      "isCustom": false,
+      "isOriginal": false,
+      "oriFrom": null,
+      "cssvar": "--bar-background-border-radius",
+      "code": "bar-background-border-radius",
+      "parentCode": "progress-bar",
+      "attribute": "radius",
+      "unit": "px",
+      "min": 0,
+      "max": 100,
+      "value": [
+        50,
+        50,
+        50,
+        50
+      ],
+      "masks": {
+        "0": "0",
+        "100": "100"
+      },
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": false,
+      "isCustom": false,
+      "isOriginal": false,
+      "oriFrom": null,
+      "code": "progress-font",
+      "parentCode": "progress",
+      "attribute": "font",
+      "cssvarColor": "--progress-color",
+      "cssvarFont": "--progress-font",
+      "cssvarSize": "--progress-font-size",
+      "cssvarWeight": "--progress-font-weight",
+      "color": "#423469",
+      "font": "Hachi Maru Pop",
+      "style": "normal",
+      "type": "none",
+      "size": 12,
+      "unit": "px",
+      "weight": 600,
+      "minSize": 0,
+      "maxSize": 50,
+      "minWeight": 0,
+      "maxWeight": 900,
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": false,
+      "isCustom": false,
+      "isOriginal": false,
+      "oriFrom": null,
+      "code": "standard-title-display",
+      "parentCode": "standard-layout-title",
+      "attribute": "button-toggle",
+      "truedefine": "block",
+      "falsedefine": "none",
+      "value": "on",
+      "color": "blue",
+      "togleOptions": [
+        {
+          "code": "std-title-display",
+          "label": "On",
+          "value": "on",
+          "cssvar": "--std-title-display"
+        },
+        {
+          "code": "std-title-display-none",
+          "label": "Off",
+          "value": "off",
+          "cssvar": "--std-title-display-none"
+        }
+      ],
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": false,
+      "isCustom": false,
+      "isOriginal": false,
+      "oriFrom": null,
+      "code": "std-title-font",
+      "parentCode": "standard-layout-title",
+      "attribute": "font",
+      "cssvarColor": "--std-title-font-color",
+      "cssvarFont": "--std-title-font",
+      "cssvarSize": "--std-title-font-size",
+      "cssvarWeight": "--std-title-font-weight",
+      "color": "#9F80FC",
+      "font": "Hachi Maru Pop",
+      "style": "normal",
+      "type": "none",
+      "size": 14,
+      "unit": "px",
+      "weight": 600,
+      "minSize": 0,
+      "maxSize": 50,
+      "minWeight": 0,
+      "maxWeight": 900,
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": false,
+      "isCustom": false,
+      "isOriginal": false,
+      "oriFrom": null,
+      "cssvar": "--std-title-align",
+      "code": "std-title-align",
+      "parentCode": "standard-layout-title",
+      "attribute": "text-align",
+      "value": "center",
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": false,
+      "isCustom": false,
+      "isOriginal": false,
+      "oriFrom": null,
+      "cssvar": "--std-title-text-shadow",
+      "code": "std-title-text-shadow",
+      "parentCode": "standard-layout-title",
+      "attribute": "text-shadow",
+      "isEffect": true,
+      "horizontal": 0,
+      "vertical": 0,
+      "blur": 1,
+      "unit": "px",
+      "color": "#383838d1",
+      "minlength": -30,
+      "maxlength": 30,
+      "minblur": -30,
+      "maxblur": 30,
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": false,
+      "isCustom": false,
+      "isOriginal": false,
+      "oriFrom": null,
+      "cssvar": "--std-title-padding",
+      "code": "std-title-padding",
+      "parentCode": "standard-layout-title",
+      "attribute": "padding",
+      "unit": "px",
+      "min": 0,
+      "max": 50,
+      "value": [
+        4,
+        0,
+        4,
+        0
+      ],
+      "masks": {
+        "0": "0",
+        "50": "50"
+      },
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": false,
+      "isCustom": false,
+      "isOriginal": false,
+      "oriFrom": null,
+      "code": "standard-footer-display",
+      "parentCode": "std-footer",
+      "attribute": "button-toggle",
+      "truedefine": "flex",
+      "falsedefine": "none",
+      "value": "on",
+      "color": "blue",
+      "togleOptions": [
+        {
+          "code": "std-footer-display",
+          "label": "On",
+          "value": "on",
+          "cssvar": "--std-footer-display"
+        },
+        {
+          "code": "std-footer-display-none",
+          "label": "Off",
+          "value": "off",
+          "cssvar": "--std-footer-display-none"
+        }
+      ],
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": false,
+      "isCustom": false,
+      "isOriginal": false,
+      "oriFrom": null,
+      "cssvar": "--std-footer-top",
+      "code": "std-footer-top",
+      "parentCode": "std-footer",
+      "attribute": "edge",
+      "value": 0,
+      "edge": "top",
+      "unit": "px",
+      "min": -100,
+      "max": 100,
+      "masks": {
+        "100": "100",
+        "-100": "-100"
+      },
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": false,
+      "isCustom": false,
+      "isOriginal": false,
+      "oriFrom": null,
+      "code": "std-footer-font",
+      "parentCode": "std-footer",
+      "attribute": "font",
+      "cssvarColor": "--std-footer-font-color",
+      "cssvarFont": "--std-footer-font",
+      "cssvarSize": "--std-footer-font-size",
+      "cssvarWeight": "--std-footer-font-weight",
+      "color": "#61009eff",
+      "font": "Hachi Maru Pop",
+      "style": "normal",
+      "type": "none",
+      "size": 14,
+      "unit": "px",
+      "weight": 600,
+      "minSize": 0,
+      "maxSize": 50,
+      "minWeight": 0,
+      "maxWeight": 900,
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": false,
+      "isCustom": false,
+      "isOriginal": false,
+      "oriFrom": null,
+      "cssvar": "--std-footer-text-shadow",
+      "code": "std-footer-text-shadow",
+      "parentCode": "std-footer",
+      "attribute": "text-shadow",
+      "isEffect": true,
+      "horizontal": 0,
+      "vertical": 0,
+      "blur": 1,
+      "unit": "px",
+      "color": "#000000bf",
+      "minlength": -30,
+      "maxlength": 30,
+      "minblur": -30,
+      "maxblur": 30,
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": false,
+      "isCustom": false,
+      "isOriginal": false,
+      "oriFrom": null,
+      "cssvar": "--std-footer-font-padding",
+      "code": "std-footer-font-padding",
+      "parentCode": "std-footer",
+      "attribute": "padding",
+      "unit": "px",
+      "min": 0,
+      "max": 50,
+      "value": [
+        4,
+        0,
+        4,
+        0
+      ],
+      "masks": {
+        "0": "0",
+        "50": "50"
+      },
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": false,
+      "isCustom": false,
+      "isOriginal": false,
+      "oriFrom": null,
+      "code": "condensed-title-display",
+      "parentCode": "condensed-layout-title",
+      "attribute": "button-toggle",
+      "truedefine": "block",
+      "falsedefine": "none",
+      "value": "on",
+      "color": "blue",
+      "togleOptions": [
+        {
+          "code": "cond-title-display",
+          "label": "On",
+          "value": "on",
+          "cssvar": "--cond-title-display"
+        },
+        {
+          "code": "cond-title-display-none",
+          "label": "Off",
+          "value": "off",
+          "cssvar": "--cond-title-display-none"
+        }
+      ],
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": false,
+      "isCustom": false,
+      "isOriginal": false,
+      "oriFrom": null,
+      "code": "cond-title-font",
+      "parentCode": "condensed-layout-title",
+      "attribute": "font",
+      "cssvarColor": "--cond-title-font-color",
+      "cssvarFont": "--cond-title-font",
+      "cssvarSize": "--cond-title-font-size",
+      "cssvarWeight": "--cond-title-font-weight",
+      "color": "#FFFFFF",
+      "font": "Hachi Maru Pop",
+      "style": "normal",
+      "type": "none",
+      "size": 14,
+      "unit": "px",
+      "weight": 600,
+      "minSize": 0,
+      "maxSize": 50,
+      "minWeight": 0,
+      "maxWeight": 900,
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": false,
+      "isCustom": false,
+      "isOriginal": false,
+      "oriFrom": null,
+      "cssvar": "--cond-title-align",
+      "code": "cond-title-align",
+      "parentCode": "condensed-layout-title",
+      "attribute": "text-align",
+      "value": "left",
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": false,
+      "isCustom": false,
+      "isOriginal": false,
+      "oriFrom": null,
+      "cssvar": "--cond-title-text-shadow",
+      "code": "cond-title-text-shadow",
+      "parentCode": "condensed-layout-title",
+      "attribute": "text-shadow",
+      "isEffect": true,
+      "horizontal": 0,
+      "vertical": 0,
+      "blur": 1,
+      "unit": "px",
+      "color": "#FFFFFF",
+      "minlength": -30,
+      "maxlength": 30,
+      "minblur": -30,
+      "maxblur": 30,
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": false,
+      "isCustom": false,
+      "isOriginal": false,
+      "oriFrom": null,
+      "cssvar": "--cond-title-padding",
+      "code": "cond-title-padding",
+      "parentCode": "condensed-layout-title",
+      "attribute": "padding",
+      "unit": "px",
+      "min": 0,
+      "max": 50,
+      "value": [
+        4,
+        0,
+        4,
+        0
+      ],
+      "masks": {
+        "0": "0",
+        "50": "50"
+      },
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": false,
+      "isCustom": false,
+      "isOriginal": false,
+      "oriFrom": null,
+      "code": "condensed-targetamount-display",
+      "parentCode": "targetamount",
+      "attribute": "button-toggle",
+      "truedefine": "block",
+      "falsedefine": "none",
+      "value": "on",
+      "color": "blue",
+      "togleOptions": [
+        {
+          "code": "cond-targetamount-display",
+          "label": "On",
+          "value": "on",
+          "cssvar": "--cond-targetamount-display"
+        },
+        {
+          "code": "cond-targetamount-display-none",
+          "label": "Off",
+          "value": "off",
+          "cssvar": "--cond-targetamount-display-none"
+        }
+      ],
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": false,
+      "isCustom": false,
+      "isOriginal": false,
+      "oriFrom": null,
+      "code": "cond-targetamount-font",
+      "parentCode": "targetamount",
+      "attribute": "font",
+      "cssvarColor": "--cond-targetamount-font-color",
+      "cssvarFont": "--cond-targetamount-font",
+      "cssvarSize": "--cond-targetamount-font-size",
+      "cssvarWeight": "--cond-targetamount-font-weight",
+      "color": "#8C7ABC",
+      "font": "Hachi Maru Pop",
+      "style": "normal",
+      "type": "none",
+      "size": 14,
+      "unit": "px",
+      "weight": 600,
+      "minSize": 0,
+      "maxSize": 50,
+      "minWeight": 0,
+      "maxWeight": 900,
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": false,
+      "isCustom": false,
+      "isOriginal": false,
+      "oriFrom": null,
+      "cssvar": "--cond-targetamount-padding",
+      "code": "cond-targetamount-padding",
+      "parentCode": "targetamount",
+      "attribute": "padding",
+      "unit": "px",
+      "min": 0,
+      "max": 50,
+      "value": [
+        4,
+        0,
+        4,
+        0
+      ],
+      "masks": {
+        "0": "0",
+        "50": "50"
+      },
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": false,
+      "isCustom": false,
+      "isOriginal": false,
+      "oriFrom": null,
+      "cssvar": "--cond-targetamount-text-shadow",
+      "code": "cond-targetamount-text-shadow",
+      "parentCode": "targetamount",
+      "attribute": "text-shadow",
+      "isEffect": true,
+      "horizontal": 0,
+      "vertical": 0,
+      "blur": 1,
+      "unit": "px",
+      "color": "#000000bf",
+      "minlength": -30,
+      "maxlength": 30,
+      "minblur": -30,
+      "maxblur": 30,
+      "description": false
+    },
+    {
+      "flag": {
+        "isVisible": true,
+        "isCss": true,
+        "isJs": false
+      },
+      "isSetCustom": false,
+      "isCustom": false,
+      "isOriginal": false,
+      "oriFrom": null,
+      "cssvar": "--cond-side-padding",
+      "code": "cond-side-padding",
+      "parentCode": "side",
+      "attribute": "size",
+      "value": 32,
+      "unit": "px",
+      "min": 0,
+      "max": 100,
+      "masks": {
+        "0": "0",
+        "100": "100"
+      },
+      "description": false
+    }
+  ],
+  "language": [
+    {
+      "code": "main-section",
+      "en-US": "Main",
+      "ja": "主要",
+      "zh-CN": "主要",
+      "zh-TW": "主要"
+    },
+    {
+      "code": "account-settings",
+      "en-US": "Account Settings",
+      "ja": "アカウント設定",
+      "zh-CN": "账户设置",
+      "zh-TW": "帳戶設定"
+    },
+    {
+      "code": "gank-enable",
+      "en-US": "Module On / Off",
+      "ja": "モジュールのオン / オフ",
+      "zh-CN": "模块 开 / 关",
+      "zh-TW": "模組 開 / 關"
+    },
+    {
+      "code": "gank-id",
+      "en-US": "Gank ID",
+      "ja": "Gank ID",
+      "zh-CN": "Gank ID",
+      "zh-TW": "Gank ID"
+    },
+    {
+      "code": "layout",
+      "en-US": "Layout",
+      "ja": "レイアウト",
+      "zh-CN": "布局",
+      "zh-TW": "佈局"
+    },
+    {
+      "code": "donation-layout",
+      "en-US": "Layout",
+      "ja": "レイアウト",
+      "zh-CN": "布局",
+      "zh-TW": "佈局"
+    },
+    {
+      "code": "progress-bar",
+      "en-US": "Progress Bar",
+      "ja": "プログレスバー",
+      "zh-CN": "进度条",
+      "zh-TW": "進度條"
+    },
+    {
+      "code": "bar-color",
+      "en-US": "Bar Color",
+      "ja": "バーの色",
+      "zh-CN": "进度条颜色",
+      "zh-TW": "進度條顏色"
+    },
+    {
+      "code": "bar-background-color",
+      "en-US": "Bar Background Color",
+      "ja": "バーの背景色",
+      "zh-CN": "进度条背景颜色",
+      "zh-TW": "進度條背景顏色"
+    },
+    {
+      "code": "bar-top",
+      "en-US": "Position Y-axis",
+      "ja": "位置Y軸",
+      "zh-CN": "位置Y轴",
+      "zh-TW": "位置Y軸"
+    },
+    {
+      "code": "bar-left",
+      "en-US": "Position X-axis",
+      "ja": "位置X軸",
+      "zh-CN": "位置X轴",
+      "zh-TW": "位置X軸"
+    },
+    {
+      "code": "bar-height",
+      "en-US": "Bar Size",
+      "ja": "バーのサイズ",
+      "zh-CN": "进度条大小",
+      "zh-TW": "進度條大小"
+    },
+    {
+      "code": "bar-box-shadow",
+      "en-US": "Bar Shadow",
+      "ja": "バー影",
+      "zh-CN": "进度条阴影",
+      "zh-TW": "進度條陰影"
+    },
+    {
+      "code": "bar-border",
+      "en-US": "Bar Border",
+      "ja": "バーの枠線",
+      "zh-CN": "进度条边框",
+      "zh-TW": "進度條邊框"
+    },
+    {
+      "code": "bar-border-inner",
+      "en-US": "Bar Border Inner",
+      "ja": "バーの内枠",
+      "zh-CN": "进度条内边框",
+      "zh-TW": "進度條內邊框"
+    },
+    {
+      "code": "bar-border-radius",
+      "en-US": "Border Radius",
+      "ja": "枠線半径",
+      "zh-CN": "边框圆角",
+      "zh-TW": "邊框圓角"
+    },
+    {
+      "code": "bar-background-border-radius",
+      "en-US": "Background Radius",
+      "ja": "背景半径の角丸",
+      "zh-CN": "背景圆角",
+      "zh-TW": "背景圓角"
+    },
+    {
+      "code": "progress",
+      "en-US": "Progress Text",
+      "ja": "進行状況のテキスト",
+      "zh-CN": "进度文本",
+      "zh-TW": "進度文字"
+    },
+    {
+      "code": "progress-font",
+      "en-US": "Font",
+      "ja": "フォント",
+      "zh-CN": "字体",
+      "zh-TW": "字體"
+    },
+    {
+      "code": "standard-layout",
+      "en-US": "Standard Layout",
+      "ja": "標準レイアウト",
+      "zh-CN": "标准布局",
+      "zh-TW": "標準佈局"
+    },
+    {
+      "code": "standard-layout-title",
+      "en-US": "Title",
+      "ja": "題名",
+      "zh-CN": "标题",
+      "zh-TW": "標題"
+    },
+    {
+      "code": "standard-title-display",
+      "en-US": "ON / OFF",
+      "ja": "オン / オフ",
+      "zh-CN": "开 / 关",
+      "zh-TW": "開 / 關"
+    },
+    {
+      "code": "std-title-font",
+      "en-US": "Font",
+      "ja": "フォント",
+      "zh-CN": "字体",
+      "zh-TW": "字體"
+    },
+    {
+      "code": "std-title-align",
+      "en-US": "Text Align",
+      "ja": "文字揃え",
+      "zh-CN": "文本对齐",
+      "zh-TW": "文本對齊"
+    },
+    {
+      "code": "std-title-text-shadow",
+      "en-US": "Text Shadow",
+      "ja": "文字影",
+      "zh-CN": "文字阴影",
+      "zh-TW": "文字陰影"
+    },
+    {
+      "code": "std-title-padding",
+      "en-US": "Padding",
+      "ja": "パディング",
+      "zh-CN": "边距",
+      "zh-TW": "邊距"
+    },
+    {
+      "code": "std-footer",
+      "en-US": "Footer",
+      "ja": "下部",
+      "zh-CN": "底部 数字",
+      "zh-TW": "底部 數字"
+    },
+    {
+      "code": "standard-footer-display",
+      "en-US": "ON / OFF",
+      "ja": "オン / オフ",
+      "zh-CN": "开 / 关",
+      "zh-TW": "開 / 關"
+    },
+    {
+      "code": "std-footer-top",
+      "en-US": "Position Y-axis",
+      "ja": "位置Y軸",
+      "zh-CN": "位置Y轴",
+      "zh-TW": "位置Y軸"
+    },
+    {
+      "code": "std-footer-font",
+      "en-US": "Font",
+      "ja": "フォント",
+      "zh-CN": "字体",
+      "zh-TW": "字體"
+    },
+    {
+      "code": "std-footer-text-shadow",
+      "en-US": "Text Shadow",
+      "ja": "文字影",
+      "zh-CN": "文字阴影",
+      "zh-TW": "文字陰影"
+    },
+    {
+      "code": "std-footer-font-padding",
+      "en-US": "Footer Padding",
+      "ja": "パディング",
+      "zh-CN": "边距",
+      "zh-TW": "邊距"
+    },
+    {
+      "code": "condensed-layout",
+      "en-US": "Condensed Layout",
+      "ja": "圧縮レイアウト",
+      "zh-CN": "简约布局",
+      "zh-TW": "簡約佈局"
+    },
+    {
+      "code": "condensed-layout-title",
+      "en-US": "Title",
+      "ja": "題名",
+      "zh-CN": "标题",
+      "zh-TW": "標題"
+    },
+    {
+      "code": "condensed-title-display",
+      "en-US": "ON / OFF",
+      "ja": "オン / オフ",
+      "zh-CN": "开 / 关",
+      "zh-TW": "開 / 關"
+    },
+    {
+      "code": "cond-title-font",
+      "en-US": "Font",
+      "ja": "フォント",
+      "zh-CN": "字体",
+      "zh-TW": "字體"
+    },
+    {
+      "code": "cond-title-align",
+      "en-US": "Text Align",
+      "ja": "文字揃え",
+      "zh-CN": "文本对齐",
+      "zh-TW": "文本對齊"
+    },
+    {
+      "code": "cond-title-text-shadow",
+      "en-US": "Text Shadow",
+      "ja": "文字影",
+      "zh-CN": "文字阴影",
+      "zh-TW": "文字陰影"
+    },
+    {
+      "code": "cond-title-padding",
+      "en-US": "Padding",
+      "ja": "パディング",
+      "zh-CN": "边距",
+      "zh-TW": "邊距"
+    },
+    {
+      "code": "targetamount",
+      "en-US": "Target Amount",
+      "ja": "目標金額",
+      "zh-CN": "目标金额",
+      "zh-TW": "目標金額"
+    },
+    {
+      "code": "condensed-targetamount-display",
+      "en-US": "ON / OFF",
+      "ja": "オン / オフ",
+      "zh-CN": "开 / 关",
+      "zh-TW": "開 / 關"
+    },
+    {
+      "code": "cond-targetamount-font",
+      "en-US": "Font",
+      "ja": "フォント",
+      "zh-CN": "字体",
+      "zh-TW": "字體"
+    },
+    {
+      "code": "cond-targetamount-padding",
+      "en-US": "Padding",
+      "ja": "ディング",
+      "zh-CN": "边距",
+      "zh-TW": "邊距"
+    },
+    {
+      "code": "cond-targetamount-text-shadow",
+      "en-US": "Text Shadow",
+      "ja": "文字影",
+      "zh-CN": "文字阴影",
+      "zh-TW": "文字陰影"
+    },
+    {
+      "code": "side",
+      "en-US": "Title & Target Amount",
+      "ja": "題名と目標金額",
+      "zh-CN": "标题和目标金额",
+      "zh-TW": "標題和目標金額"
+    },
+    {
+      "code": "cond-side-padding",
+      "en-US": "Distance",
+      "ja": "距離",
+      "zh-CN": "距离",
+      "zh-TW": "距離"
+    }
+  ]
+}

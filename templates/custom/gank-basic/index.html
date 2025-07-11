@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Gank Donation Overlay</title>
+    <link rel="stylesheet" href="/plugins/onecomme.plugin.template-utils/css/fonts.css" />
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body hidden>
+    <div id="app" class="app">
+        <div v-if="gank.enableDonationOverlay === true && gank.userId">
+          <div class="layout-standard">
+            <div class="title"> {{goalsDonation.title}} </div>
+            <div class="bar">
+              <div class="progress"> ${{goalsDonation.balance}} ({{goalsDonation.balancePercentage}}%) </div>
+              <div class="bar-progress" :style="{ width: goalsDonation.progressPercentage + '%'}">
+              </div>
+            </div>
+            <div class="footer">
+              <div class="min-amount"> ${{goalsDonation.firstBalance}} </div>
+              <div class="target-amount"> ${{goalsDonation.target}} </div>
+            </div>
+          </div>
+          <div class="layout-condensed">
+            <div class="bar">
+              <div class="progress"> ${{goalsDonation.firstBalance}} ({{goalsDonation.balancePercentage}}%) </div>
+              <div class="sides">
+                <div class="title"> {{goalsDonation.title}} </div>
+                <div class="target-amount"> ${{goalsDonation.target}} </div>
+              </div>
+              <div class="bar-progress" :style="{ width: goalsDonation.progressPercentage + '%'}"></div>
+            </div>
+          </div>
+        </div>
+        <div v-else>
+          <div>Gank module is OFF or User Id is empty.</div>
+        </div>
+    </div>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
+    <script src="/plugins/onecomme.plugin.template-utils/template-gank.js"></script>
+  </body>
+</html>
