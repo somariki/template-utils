@@ -99,6 +99,13 @@ https://youtu.be/9cNlF6AbJ_8
 
 # Update Log
 
+### Version 3.2.0 July 31, 2025
+1. Add Color-Image attribute.
+2. Update comment template able to calculate comment content height and add class. 
+
+### Version 3.1.0 July 14, 2025
+1. Add Inno Setup Windows Installer
+
 ### Version 3.0.0 July 12, 2025
 
 Description:
