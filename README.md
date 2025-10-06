@@ -99,6 +99,11 @@ https://youtu.be/9cNlF6AbJ_8
 
 # Update Log
 
+### Version 3.3.0 October 07, 2025
+1. **Core Framework Upgrade**: Refactored the underlying framework structure to enhance system stability and performance.
+2. **Real-time Preset Sync**: Added real-time preset synchronization feature - changes take effect immediately without manual OBS refresh.
+3. **Independent Save Bar**: Footer save bar is now separated from the main interface, with toggle icon for quick access.
+
 ### Version 3.2.0 July 31, 2025
 1. Add Color-Image attribute.
 2. Update comment template able to calculate comment content height and add class. 
